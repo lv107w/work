@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let list = [{ a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }]
+
+    add(list[1].a) // 传入了一个具体的number类型的 值 add(2)
+
+    add(list[1]) // 传入了一个对象 内部直接修改了这个对象对应属性 a的值
+
+    function add(item) {
+      console.log(list)
+      // item++ 修改了传入的
+      item.a = item.a + 1
+    }
+
+    oDom.addEventListener('click', translate.bind(null,3))
+
+    function translate(e){
+      
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则表达式基础写法</title>
+</head>
+
+<body>
+  <script>
+    /*
+      正则表达式 regExp
+      用于匹配文本 字符串
+      Reg = /pattern/modifiers; /\d+/gi 字面量
+
+       new RegExp(“\d+”,”gi”); 实例化
+
+       test 验证方法 正则表达式.test(需要验证的字符串)
+    */
+
+
+    var regExp = new RegExp('[1-9]\d{6,12}'); //实例化方式
+
+
+
+    var regExpStr = /^[1-9]\d{6,12}$/; //匹配一个7 - 13位的 数字 第一位是1-9
+
+
+    // console.log(/海牙/.test('今天的田海 牙七真好'));// false
+
+    // //文本中是否有数字0-9
+    // console.log(/\d/.test('今天的田海牙3七真好'));// true
+
+    // //是否存在字母[a-zA-Z]
+    // console.log(/[a-zA-Z]/.test('423452ff352352'));// true
+
+
+
+    // /表达式内容/
+
+    //基础完全匹配
+
+    console.log(/abc/.test('331abc23a43b432v'));
+
+    //基础或匹配
+    console.log(/abc|acb|adv/.test('331ab4c23acb43b432'));
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

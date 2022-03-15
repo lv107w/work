@@ -1,0 +1,98 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-12 20:32:33
+ * @LastEditTime: 2020-08-12 23:21:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event对象 偏移量 坐标</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      position: relative;
+      height: 1500px;
+      background: #ccc url('images/bird.png');
+    }
+
+    .box {
+      position: fixed;
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      margin: 20px;
+      border: 2px solid green;
+      background-color: #fff;
+    }
+
+    .child {
+      width: 50px;
+      height: 50px;
+      padding: 20px;
+      margin: 20px;
+      border: 2px solid red;
+      background-color: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="child"></div>
+  </div>
+  <script src='js/common.js'></script>
+  <script>
+
+
+    /*
+
+      event对象中包含很多的坐标属性
+      他们都是鼠标指针尖端在触发事件的时候 的坐标位置
+
+      *clientX clientY 
+      触发事件时鼠标指针距离window窗口左上角的位置
+      
+      坐标原点为 window窗口的左上角 
+
+      *pageX pageY
+      触发事件时鼠标指针距离docuemnt文档左上角的位置
+      坐标原点为 document文档的左上角 
+      
+      *offsetX offsetY
+      元素content内容区域的左上角为原点
+      以当前事件的目标对象边框内沿(content)左上角为原点，定位x轴坐标
+
+      ~ screenX screenY
+      触发事件时鼠标指针距离 屏幕视窗(显示器)左上角的位置
+      
+      ~ layerX layerY
+      触发事件的DOM对象的DOM树上的父级(祖级)中最近的拥有定位属性的元素的左上角为原点 (鸡肋)
+     
+    
+    */
+    var oBox = $('.box');
+    var oChild = $('.child')
+
+    // oBox.addEventListener('click', function (e) {
+    //   console.log(e.layerX, e.layerY);
+    // }, false);
+
+
+    oChild.addEventListener('click', function (e) {
+      console.log(e.layerX, e.layerY);
+    }, false)
+
+  </script>
+</body>
+
+</html>

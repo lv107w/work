@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吸顶导航</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/header.css">
+  <style>
+    .cq-header {
+      background-color: #222;
+    }
+
+    .cq-header.fixed {
+      background-color: #fff;
+      position: fixed;
+    }
+
+    .cq-header.fixed .cq-head-nav a {
+      color: #222;
+    }
+
+    .fill-wrap {
+      height: 490px;
+      margin: 10px 0;
+    }
+
+    .bg222 {
+      background-color: pink;
+    }
+
+    .bg960 {
+      background-color: #960;
+    }
+
+    .bg0f5 {
+      background-color: #0f5;
+    }
+
+    .bg368 {
+      background-color: #368;
+    }
+    .fixed {
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="head" class="cq-header">
+    <div class="cq-head-wrap w1160 flex flex-between">
+      <div class="cq-head-logo">
+        <h1>
+          <span class="visib-hid">橙子</span>
+          <a href="#">
+            <img id="logo" src="images/logo-rev.png" width="92" height="36" alt="logo">
+          </a>
+        </h1>
+      </div>
+      <div class="cq-head-nav flex ">
+        <ul class="flex ">
+          <li><a href="#" class="pr10">首页</a></li>
+          <li class="pull-list ">
+            <a href="#" class="icon pr10 icon-arrow-down flex flex-center">橙品牌</a>
+            <ul class="pull-list-item">
+              <li><a href="#">橙金融</a></li>
+              <li><a href="#">橙积分</a></li>
+              <li><a href="#">橙营销</a></li>
+              <li><a href="#">橙福利</a></li>
+            </ul>
+          </li>
+          <li><a href="#">橙权益</a></li>
+          <li><a href="#">行业案例</a></li>
+          <li><a href="#">新闻动态</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="fill-wrap bg222"></div>
+  <div class="fill-wrap bg960"></div>
+  <div class="fill-wrap bg0f5"></div>
+  <div class="fill-wrap bg368"></div>
+
+  <script src='js/common.js'></script>
+  <script>
+    var oHeader = $('#head');
+    var oLogo = $('#logo');
+    var headH = oHeader.offsetHeight;
+    var headT = getPosition(oHeader).top;
+    var isTemp = true;
+    var tempHead;
+
+
+    document.addEventListener('scroll', function (e) {
+      if (getScroll().top > headT) {
+        if (isTemp) {
+          tempHead = oHeader.cloneNode(true);
+          document.body.insertBefore(tempHead, oHeader);
+          isTemp = false;
+        }
+        oLogo.src = 'images/logo.png';
+        oHeader.classList.add('fixed');
+      } else {
+        oHeader.classList.remove('fixed');
+        oLogo.src = 'images/logo-rev.png';
+        if (tempHead) {
+          tempHead.remove();
+          isTemp = true;
+        }
+      }
+    }, false);
+
+    function getScroll() {
+      return {
+        top: document.documentElement.scrollTop || document.body.scrollTop,
+        left: document.documentElement.scrollLeft || document.body.scrollLeft
+      }
+    }
+  </script>
+</body>
+
+</html>

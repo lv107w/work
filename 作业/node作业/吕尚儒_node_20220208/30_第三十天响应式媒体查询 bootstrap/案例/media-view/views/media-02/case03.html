@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 栅格化 grid</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    header,
+    footer,
+    div {
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      background-color: #ccc;
+    }
+
+    .red {
+      background-color: rgb(146, 6, 6);
+    }
+
+    .pink {
+      background-color: pink;
+    }
+
+    .skyblue {
+      background-color: skyblue;
+    }
+
+
+    .green {
+      background-color: rgb(27, 138, 33);
+    }
+
+    .orange {
+      background-color: orange;
+    }
+
+    .purple {
+      background-color: purple;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: 240px auto 240px;
+    }
+
+
+
+    main {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 2fr 4fr;
+      grid-template-rows: 200px 100px 150px;
+      grid-gap: 20px;
+    }
+
+    main>div:nth-of-type(1) {
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      grid-template-rows: 2fr 2fr;
+      grid-gap: 5px;
+
+    }
+
+    main>div>span {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    我是header
+  </header>
+  <main>
+    <div class="red">
+      <span>11</span>
+      <span>12</span>
+      <span>21</span>
+      <span>22</span>
+    </div>
+    <div class="purple">2</div>
+    <div class="pink">3</div>
+    <div class="skyblue">4</div>
+    <div class="orange">5</div>
+    <div class="green">6</div>
+  </main>
+  <footer>
+    我是footer
+  </footer>
+
+</body>
+
+</html>
+<!-- 
+
+  Grid布局和Flex布局有一定程度的相似
+  指定内部容器多个item的位置 
+
+  flex 布局是根据 轴线 (主轴 辅轴) 只能规划item针对轴线的位置进行布局 
+
+  Grid 可以直接划分"行" "列"  产生单元格 指定item所在的 单元格 
+
+
+  1.容器(wrap)与项目(item)
+
+    wrap
+      display: grid (item=>block)| inline-grid(item=>inline-block)
+    
+    item子元素 (float display:inline-block vertical-align  cloumn-* ) 样式失效
+
+    grid-template-columns 指定容器每一列的宽度 参数数量决定列数量
+    grid-template-rows 指定容器每一行的高度 参数数量决定行数量
+      repeat(3,33%) 重复几次 (次数,...参数)  
+      auto-fill 列数自动 根据设置宽度 自动填满行
+      fr (fraction 片段)
+      minmax(min,max)返回一个长度范围 接收两个参数
+      auto 由浏览器自动决定长度
+      [c1]
+
+  间距
+    grid-row-gap 行间距
+    gird-column-gap 列间距
+    grid-gap:  <grid-row-gap>  <gird-column-gap>
+
+
+  grid-template-areas 
+      
+        调整位置
+  指定item四个边框 分别定为在哪根网格线上 > 决定item的位置
+
+ grid-cloumn-start 左边框所在的垂直网格线
+ grid-cloumn-end 右边框所在的垂直网格线
+ grid-row-start 上边框所在的垂直网格线
+ grid-row-end 下边框所在的垂直网格线
+    grid-column: <start-line> / <end-line>
+    grid-row: <start-line> / <end-line>
+
+    grid-area: <row-start>/<cloumn-start>/<row-end>/<column-end>
+
+调整对齐方式 : flex
+justify-self
+ 设置单元格内容的 水平位置 <左中右> (start end center)(宽度 内容本身宽度) stretch(拉伸 宽度铺满单元格)
+align-self 
+  设置单元格内容的 竖直位置 <左中右> (start end center)(宽度 内容本身宽度) stretch(拉伸 宽度铺满单元格)
+
+
+place-self <align-self> <justify-self>
+
+
+单元格内的元素 可以设置宽度高度 可以通过justify align 调整在单元格内的位置(左中右 上中下)
+   
+
+
+
+    
+    
+
+  2.行(row)与列(column)
+
+  3. 单元格(cell) 
+  
+  4. 网格线(grid line)
+
+
+  
+
+
+  
+
+ -->

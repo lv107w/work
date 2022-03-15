@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态加载script</title>
+  <style>
+    html {
+      font-size: 50px;
+      color: #222;
+    }
+
+    .wrap {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap"></div>
+  <script>
+
+    function require(path, callback) {
+      let script = document.createElement('script');
+      script.src = path;
+      script.async = "async"; //xhtml1.0 DTD下 script的async属性值必须是 "async"
+      document.body.appendChild(script);
+      script.onload = function () {
+        callback && callback();
+      }
+    }
+
+    function define() {
+
+    }
+    require('./js/jquery-1.12.1.js', function () {
+      $('.wrap').click(function () {
+        $(this).css({ backgroundColor: 'blue' })
+      })
+    })
+  </script>
+</body>
+
+</html>

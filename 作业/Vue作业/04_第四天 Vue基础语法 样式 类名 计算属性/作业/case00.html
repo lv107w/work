@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      margin: 40px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #f1f1f1;
+    }
+
+    .active {
+      color: red;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .yellow {
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="changeColor">点击切换状态</button>
+    <p class="desc" :class="colors">{{message}}</p>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          message: 'hello Vue',
+          isActive: false,
+          activeClass: 'active',
+          colors: {
+            'red': true,
+            'blue': false,
+            'yellow': false
+          },
+          colorIdx: 0
+        }
+      },
+      methods: {
+        changeColor() {
+          this.colorIdx++
+          this.colorIdx = this.colorIdx % 3
+          this.colors = Object.fromEntries(Object.entries(this.colors).map(([key, value], index) => {
+            value =false
+            if(index === this.colorIdx) {
+              value = true
+            }
+            return [key, value]
+          }))
+        }
+      }
+    })
+  </script>
+</body>
+</html>

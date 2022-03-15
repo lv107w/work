@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 栅格化 grid</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    header,
+    footer,
+    div {
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      background-color: #ccc;
+    }
+
+    .red {
+      background-color: rgb(146, 6, 6);
+    }
+
+    .pink {
+      background-color: pink;
+    }
+
+    .skyblue {
+      background-color: skyblue;
+    }
+
+
+    .green {
+      background-color: rgb(27, 138, 33);
+    }
+
+    .orange {
+      background-color: orange;
+    }
+
+    .purple {
+      background-color: purple;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: 240px auto 240px;
+    }
+
+
+
+    main {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 2fr 4fr;
+      grid-template-rows: 200px 100px 150px;
+      grid-gap: 20px;
+    }
+
+    main>div:nth-of-type(1) {
+      /* grid-column: 2/3; */
+      /*grid-column-start:2; grid-column-end:3*/
+      /* grid-row: 2/3; */
+      /* row-start/column-start/row-end/column-end*/
+      grid-area: 3/1/4/2;
+
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    我是header
+  </header>
+  <main>
+    <div class="red">1</div>
+    <div class="purple">2</div>
+    <div class="pink">3</div>
+    <div class="skyblue">4</div>
+    <div class="orange">5</div>
+    <div class="green">6</div>
+  </main>
+  <footer>
+    我是footer
+  </footer>
+
+</body>
+
+</html>
+<!-- 
+
+  Grid布局和Flex布局有一定程度的相似
+  指定内部容器多个item的位置 
+
+  flex 布局是根据 轴线 (主轴 辅轴) 只能规划item针对轴线的位置进行布局 
+
+  Grid 可以直接划分"行" "列"  产生单元格 指定item所在的 单元格 
+
+
+  1.容器(wrap)与项目(item)
+
+    wrap
+      display: grid (item=>block)| inline-grid(item=>inline-block)
+    
+    item子元素 (float display:inline-block vertical-align  cloumn-* ) 样式失效
+
+    grid-template-columns 指定容器每一列的宽度 参数数量决定列数量
+    grid-template-rows 指定容器每一行的高度 参数数量决定行数量
+      repeat(3,33%) 重复几次 (次数,...参数)  
+      auto-fill 列数自动 根据设置宽度 自动填满行
+      fr (fraction 片段)
+      minmax(min,max)返回一个长度范围 接收两个参数
+      auto 由浏览器自动决定长度
+      [c1]
+
+  间距
+    grid-row-gap 行间距
+    gird-column-gap 列间距
+    grid-gap:  <grid-row-gap>  <gird-column-gap>
+
+
+  grid-template-areas 
+      
+      指定item四个边框 分别定为在哪根网格线上 > 决定item的位置
+ grid-cloumn-start 左边框所在的垂直网格线
+ grid-cloumn-end 右边框所在的垂直网格线
+ grid-row-start 上边框所在的垂直网格线
+ grid-row-end 下边框所在的垂直网格线
+
+
+
+    grid-column: <start-line> / <end-line>
+    grid-row: <start-line> / <end-line>
+
+       grid-area: <row-start>/<cloumn-start>/<row-end>/<column-end>
+   
+
+
+
+    
+    
+
+  2.行(row)与列(column)
+
+  3. 单元格(cell) 
+  
+  4. 网格线(grid line)
+
+
+  
+
+
+  
+
+ -->

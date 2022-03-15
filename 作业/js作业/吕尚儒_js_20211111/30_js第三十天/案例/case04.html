@@ -1,0 +1,107 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-14 13:31:50
+ * @LastEditTime: 2020-08-15 21:50:27
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      width: 800px;
+      height: 400px;
+      padding: 20px;
+      box-shadow: 0 0 8px #222;
+    }
+
+    .container div {
+      width: 350px;
+      height: 380px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+      line-height: 20px;
+      word-break: break-all;
+    }
+
+    .input-box {
+      color: #368;
+      outline: none;
+    }
+
+    .show-box {
+      color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-box" contenteditable></div>
+    <div class="show-box"></div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /* 
+      inputBox 
+        用户输入内容到inputBox 
+        用户正在输入的时候不进行翻译处理
+        用户停止输入的时候 
+          我们将翻译后的文本 展示到 showBox中
+    
+
+      可以监听到用户输入 无法监听到不输入这个事情
+
+
+      防抖 降频
+      
+     */
+    var oInput = $('.input-box');
+    var oShow = $('.show-box');
+    var timeOut;
+    //监听输入
+    oInput.addEventListener('input', function () {
+      clearTimeout(timeOut);//清除了上一次触发事件时 设置的定时器
+      timeOut = setTimeout(function () {
+        console.log(oInput.innerText);
+      }, 500);
+    }, false)
+
+/* 
+    function translate(str) {
+      return str.split("").reverse().join("");
+    } */
+
+
+
+  </script>
+</body>
+
+</html>

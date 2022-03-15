@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="num">
+    {{ num }}
+  </div>
+
+  <script>
+
+    //发布者
+    class Dep {
+      constructor() {
+        //订阅者列表
+        this.subs = []
+      }
+ 
+      addSub(sub) {
+        this.subs.push(sub)
+      }
+
+      //发布通知
+      notify() {
+        this.subs.map(sub => {
+          sub.updata()
+        })
+      }
+    }
+
+    //订阅者
+    class Watcher {
+      constructor(vm, node, name) {
+        this.name = name
+        this.node = node
+        this.vm = vm
+        Dep.target = this
+        this.init()
+      }
+
+      init() {
+        this.updata()
+        Dep.target = null
+      }
+
+      get() {
+        this.value = this.vm[this.name]
+      }
+
+      updata() {
+        this.get()
+        this.node.nodeValue = this.value
+        this.node.value = this.value
+      }
+    }
+
+
+    function nodeToFragement(node, vm) {
+      let flag = document.createDocumentFragment()
+      let child
+
+      //循环获取node的第一个子节点,移动到fragment里
+      //当元素获取完，child 为 undefined, 
+      while(child = node.firstChild) {
+        //所有node节点经过compile处理： 
+        compile(child, vm)
+        flag.append(child)
+      }
+      return flag
+    }
+
+    //处理模板, 提取{{差值}}
+    function compile(node, vm) {
+      let reg = /\{\{(.*)\}\}/
+      //nodeType === 1  => 元素类型节点
+      if(node.nodeType === 1) {
+        let attrs = node.attributes
+        for(let i = 0, len = attrs.length; i < len ;i++) {
+          if(attrs[i].nodeName === 'v-model') {
+            let name = attrs[i].nodeValue
+            //创建观察者，等待通知
+            new Watcher(vm, node, name)
+            node.addEventListener('input', (e) => {
+              //vm.num = oInput.value
+              //vm属性左查询联动 ===== set触发， 发布者发布通知
+              vm[name] = e.target.value
+            })
+            node.removeAttribute('v-model')
+          }
+        }
+      }
+      //text类型
+      if(node.nodeType === 3) {
+        if(reg.test(node.nodeValue)) {
+          let name = RegExp.$1
+          name = name.trim()
+          //创建观察者
+          new Watcher(vm, node, name)
+          //vm属性右查询联动 ==== get触发 发布者添加观察者到观察者数组
+          node.nodeValue = vm[name]
+        }
+      }
+    }
+
+    //把vm.data的属性直接挂载在到vm上， 并对属性值进行代理检测
+    function observe(obj, vm) {
+      Object.entries(obj).map(([key, val]) => {
+        defineReactive(vm, key, val)
+      })
+    }
+
+    //代理检测
+    function defineReactive(obj, key, val) {
+      let dep = new Dep()
+      Object.defineProperty(obj, key, {
+        get() {
+          console.log(`读取数据${val}`);
+          if(Dep.target) {
+            dep.addSub(Dep.target)
+          }
+          return val
+        },
+        set(newVal) {
+          if(val === newVal) {
+            return
+          }
+          
+          val = newVal
+          dep.notify()
+          console.log(`更新数据${val}`);
+        }
+      })
+    }
+
+    class Vue {
+      constructor({el, data}) {
+        this.data = data
+        observe(this.data, this)
+        let ele = document.querySelector(el)
+        let dom = nodeToFragement(ele, this)
+        ele.appendChild(dom)
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num: 1
+      }
+    })
+  </script>
+</body>
+</html>

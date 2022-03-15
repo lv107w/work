@@ -1,0 +1,43 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-14 21:09:12
+ * @LastEditTime: 2020-08-14 21:14:24
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case01.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组练习</title>
+</head>
+
+<body>
+  <script>
+    var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    //[ 'b', 'c','a', 'd', 'e', 'f', 'g']
+    // ["b", "c", "a", "d", "e", "f", "g"]
+
+    /*
+      用什么方法可以完成 元素在指定位置插入 / 删除指定位置元素
+      splice
+
+      1. 先把0 拿掉 arr.splice(index,1)
+      2. 把0 插入到 2后面 arr.splice(index,0,item)
+
+    */
+
+    arr.splice(0, 1); //从下标0 开始删除 删除1位
+    console.log(arr);
+
+    arr.splice(2, 0, 'a'); //在下标2位置删除0位 在下标2 之前添加 'a';
+    console.log(arr);
+
+
+  </script>
+</body>
+
+</html>

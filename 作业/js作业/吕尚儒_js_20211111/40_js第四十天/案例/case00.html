@@ -1,0 +1,208 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-27 20:35:30
+ * @LastEditTime: 2020-08-27 21:47:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6 声明命令 let
+
+  </title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      变量提升
+
+      解析模式
+
+
+      let 声明变量
+          1. 不会进行变量提升 无法在声明之前使用let声明的变量
+          2. let声明的变量不容许重复声明 预解析阶段会对let声明的变量锁定 所有其他在同一个域下的声明都会报错
+
+          3. let会开启块级作用域
+
+          4.
+
+    */
+    /*  变量提升对比
+         console.log(x);
+         var x = 10;
+         console.log(x);
+
+         console.log(x);
+         let x = 10;
+         console.log(x);
+     */
+
+    //var 声明可以重复声明同一个变量 除了第一次var声明生效 后续都被忽略
+    /*
+      var x = 10;
+      console.log(x); //10
+      var x = 20; //如果x声明过了 会忽略掉
+      console.log(x); //20
+
+      var x;
+      x = 10;
+      console.log(x);
+      x = 20; //
+      console.log(x);
+
+      var result;
+      for (var key in obj) {
+        result = key;
+      } */
+
+    //使用let声明的变量 不容许重复声明 同一个域中 let声明的变量会被提前锁定 不容许重复声明
+
+    /*     var x = 10;
+        let x = 20; */
+
+    /*
+      1.  for if 没有独立的局部作用域
+      2.  i 是全局变量(当前案例环境下) i指代内存地址 [内存地址:[值]]
+      3. 每一个地址里面的值在每个时刻都只可能是一个唯一的状态(值)
+      4. 内部push的fn fn内部作用域引用了外部作用域的变量 i
+      5. 当arr[1]() 执行的时候 解析函数内部变量指向 发现i指向全局 i 对应地址当前存储的值是 5
+      6. 循环中每次循环的时候 立刻调用一个IIFE匿名函数 并将i的值
+
+      7. 左查询(赋值) 右查询(调用) 作为实参传递的时候是右查询
+
+      8. IIFE (结构体表达式)(调用前面的结构体 传递实参)
+        fn()
+
+      9. 块级别作用域
+
+    */
+    /* var arr = [];
+    var i = 0;
+    for (; i < 5; i++) {
+      (function (i) {
+        var i = 0; //i=1; i=2
+        arr.push(function () {
+          console.log(i);
+        })
+      })(i);
+    }
+    console.log(i);
+    // i
+    arr[1](); //5
+
+
+    var w = 10;
+    function fn(w) {
+      console.log(w); //30
+      // var w;
+      //函数的形参会作为函数的局部变量隐式声明
+      w = 20;
+      // console.log(w); //20
+    }
+    fn(w); //变量作为实参传递的时候 是将当前时刻变量的值传入
+
+    fn(调用w);//右查询 w  左查询
+
+    x = 300; //x为左查询 (赋值)
+
+    y = x; //x为右查询 y为左查询
+
+
+
+    w = 30;
+    fn(w);
+
+    console.log(w); //10 */
+
+    // function fn() {
+
+    // }
+    /*
+        if(){}
+
+        switch(){}
+
+        while(){}
+
+        for(){} */
+
+    // var arr = [];
+    // for (let i = 0; i < 5; i++) {
+    //   arr.push(function () {
+    //     console.log(i);
+    //   });
+    // }
+    // arr[1]();
+    // arr[2]();
+
+    // var x = 10;
+    // function fn() {
+    //   var x = 20;
+    // }
+
+
+
+    // let num = 10;
+    // if (true) {
+    //   var num = 20;
+    //   console.log(num); //10
+    // }
+
+    // var num;
+    // let num = 10;
+    // if (true) {
+    //   num = 20;
+    //   console.log(num); //10
+    // }
+
+    //如果在某一个作用域中有let声明某一个变量 那在这个作用域中就不能再let声明之前使用这个变量
+    /*
+     let num = 10; //全局作用域
+     function fn() {//
+       console.log(num); //Uncaught ReferenceError: Cannot access 'num' before initialization
+       let num = 20; //局部作用域
+     }
+     fn();
+
+
+     function fn() {
+       console.log(num);
+       num = 20; //局部作用域
+     }
+
+     fn();
+     let num = 10; //全局作用域
+
+     */
+    //作用域链: 外部作用域无法访问内部作用域的私有变量  作用域访问只能由内之外 由下至上
+    // function fn() {
+    //   var x = 20;
+    // }
+    // fn();
+    // console.log(x);// 20
+
+    // {
+    //   let x = 10;
+    //   console.log(x);
+    // }
+
+    // if () {
+    //   let name = 'kyogre'
+    // }
+
+
+
+
+  </script>
+</body>
+
+</html>

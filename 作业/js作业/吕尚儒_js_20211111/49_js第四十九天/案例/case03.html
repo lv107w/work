@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>es6 object写法 </title>
+</head>
+
+<body>
+  <script>
+
+    let name = 'kyogre'
+
+    const O = { name }
+
+    console.log(O);
+
+    function fn(a, b) {
+      a += b;
+      b *= 2;
+      return { a, b }
+    }
+    console.log(fn(3, 4));
+
+
+    const person = {
+      name,
+      eat() {
+        console.log(`${this.name} 正在吃饭~`)
+      }
+    }
+
+    person.eat();
+
+
+    // let E = {
+
+    // }
+
+    // E.name = 'eeeeeeeeeeeee';
+
+    // E['age'] = 13;
+
+    // console.log(E);
+
+    let KyogreAge = 'age';
+
+
+    let E = {
+      [name]: 'hahaha',
+      ['Kyogre' + 'Age']: 13
+    }
+
+
+    console.log(E);
+
+
+    /*
+      我们有一个数组
+
+
+     */
+
+    let mapArr = [
+      {
+        city: '北京', number: '001'
+      }, {
+        city: '上海', number: '002'
+      }, {
+        city: '广州', number: '003'
+      }
+    ];
+
+    let h = 'hahaha';
+
+    let mapJson = {
+      name: mapArr[0]['number'],
+      [h]: 32131231
+    };
+
+    mapJson['name']; //右查询 mapJson对象中 属性名称为 'name'的属性的值
+
+
+    // mapJson[h] = 123;
+    // mapJson[mapArr[0]['city']] = mapArr[0]['number'];
+    // for (let i = 0; i < mapArr.length; i++) {
+    //   mapJson[mapArr[i]['city']] = mapArr[i]['number'];
+    // }
+
+
+    console.log(mapJson);
+
+
+
+    let lastWord = 'last word';
+
+    const a = {
+      'first word': 'hello',
+      [lastWord]: 'world'
+    };
+
+    a['first word'] // "hello"
+    a[lastWord] // "world"
+    a['last word'] // "world"
+
+
+
+    /*
+    错误 不可以混用
+    const foo = 'bar';
+    const bar = 'abc';
+    const baz = { [foo] };
+
+     */
+
+
+  </script>
+</body>
+
+</html>

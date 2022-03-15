@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo
+
+  </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <input type="button" value="点击切换">
+  <script src="js/common.js"></script>
+  <script>
+    var oBox = $('.box');
+    var oBtn = $('input');
+
+    oBtn.addEventListener('click', function fn1() {
+      animate(oBox, { width: '200px', height: '200px', backgroundColor: 'blue' }, 1500, function () {
+        animate(oBox, { width: '100px', height: '100px', backgroundColor: 'green' }, 1000)
+      })
+    }, false);
+
+
+    function animate(ele, styleJson, time, callback) {
+      ele.style.transition = `${time}ms linear`;
+      setStyle(ele, styleJson);
+
+      ele.addEventListener('transitionend', end, false);
+      function end() {
+        ele.style.transition = '0';
+        callback && callback();
+
+        ele.removeEventListener('transitionend', end, false);
+      }
+    }
+  </script>
+</body>
+
+</html>

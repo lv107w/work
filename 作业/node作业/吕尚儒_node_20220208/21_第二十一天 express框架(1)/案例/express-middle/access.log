@@ -1,0 +1,6 @@
+::ffff:127.0.0.1 - GET /log HTTP/1.1 404 1787 - 46.917 ms
+::ffff:127.0.0.1 - GET /stylesheets/style.css HTTP/1.1 304 - - 1.272 ms
+::ffff:127.0.0.1 - GET /log HTTP/1.1 404 1787 - 2.810 ms
+::ffff:127.0.0.1 - GET /stylesheets/style.css HTTP/1.1 304 - - 0.278 ms
+::ffff:127.0.0.1 - GET / HTTP/1.1 304 - - 3.367 ms
+::ffff:127.0.0.1 - GET /stylesheets/style.css HTTP/1.1 304 - - 0.451 ms

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prototype 与 __proto__</title>
+</head>
+<body>
+  <script>
+    //Array举例
+    let arr = new Array();
+    console.log(arr.__proto__ === Array.prototype); //true
+    console.log(arr.__proto__.__proto__ === Object.prototype); //true
+    console.log(arr.__proto__.__proto__.__proto__ === null); //true
+    
+    console.log(Array.prototype.__proto__ === Object.prototype); //true
+    console.log(Object.prototype.__proto__); //null
+
+    /*
+    arr1.__proto__ => Array.prototype
+
+    arr1.__proto__.__proto__ => Object.prototype
+
+    Array.prototype.__proto__ => Object.prototype
+
+    arr1.__proto__.__proto__.__proto__ => null
+
+    Object.prototype.__proto__ => null
+
+    arr1是Array的实例化对象 的原型指向Array的原型
+
+    Array的原型(prototype)的原型指向(__proto__) 指向Object的原型(prototype)
+
+    Array的原型的原型是Object的原型  
+    */
+    
+
+
+    //Array Object 是构造函数, 都是 Function 的实例化
+    console.log(typeof Array);  //function
+    console.log(typeof Object); //function
+    
+    console.log(Array.__proto__ === Function.prototype); //true
+    console.log(Object.__proto__ === Function.prototype); //true
+
+
+    //Function 函数对象是由它本身创建的, 所以Function的__proto__ 就是Function的prototype
+    console.log(Function.__proto__ === Function.prototype);  //true
+
+    //Function.prototype也是对象，所以也是Object的实例化
+    console.log(Function.prototype.__proto__ === Object.prototype); //true
+
+
+
+
+    // 函数的原型也是对象，也是Object的实例化，比如：
+    // Array.prototype.__proto__ === Object.prototype
+    // Function.prototype.__proto__ === Object.prototype
+    //但是Object会有问题，虽然Object也是函数，Object是作为函数来讲他的原型Object.prototype  Object.prototype也是Object实例化
+    console.log(Object.prototype.__proto__ === Object.prototype); //false
+    console.log(Object.prototype.__proto__); //null
+
+    //冲突出现了 我是我爸爸 无法解释 单纯用js的自身规则无法自圆其说
+    //引入上届概念  Object.prototype.__proto__ = null
+
+
+
+  </script>
+</body>
+</html>

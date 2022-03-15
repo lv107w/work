@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      程序(函数)调用自身的编程技巧
+      把大的问题 拆解成一个个小问题处理
+
+      两个阶段
+        1. 前进阶段(递归阶段)
+        2. 终止阶段(返回阶段)
+      必须有结束条件(递归边界) 
+    */
+
+    let o = {
+      c: {
+        c: {
+          c: {
+            c: {
+              c: '恭喜你'
+            }
+          }
+        }
+      }
+    }
+    /*
+       找宝藏
+       找到对象 o里面的属性[[[c]]]的值为 '恭喜你'
+       找到后返回 '恭喜你找到宝藏'
+     */
+
+    let count = 0;
+    function findResult(o) {
+      if(o['c'] !== '恭喜你') {
+        count++;
+        return findResult(o['c']); //前进阶段
+      }
+      return '恭喜你找到了宝藏'; //终止阶段
+    }
+    console.log(findResult(o));
+    console.log(count);
+
+
+     /* 
+      100 + 99 + 98 + ...1
+    */
+    function getCountNum(n) {
+      if(n !== 1) return n + getCountNum(n - 1); //前进阶段
+      return 1; //终止阶段
+      
+    }
+    console.log(getCountNum(100));
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>继承</title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      OOP
+      封装 继承 多态
+
+      js没有类的概念 要实现OOP只能通过模拟
+
+      封装
+        构造函数 原型
+
+      继承
+        1. 如何继承原型上的方法 原型继承 
+           Children.prototype = new Parent();
+           Children.prototype.__proto__ = Parent.prototype;
+        2. 继承构造函数 
+            父类的构造函数在子类中call执行 传参
+        3. 原型继承 + 构造函数继承 = 组合继承 (js经典继承)
+
+        4. 寄生继承
+         
+     */
+
+
+    function Animal(name = '小安', age = 1, sex = '母') {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      this.children = [1, 2, 3, 4, 5];
+    }
+
+    Animal.prototype.eat = function () {
+      console.log(`${this.constructor.name} ${this.name} 正在吃饭`);
+    }
+
+    Animal.prototype.sayHi = function () {
+      console.log(`我是${this.name} 我今年${this.age}岁了 我的性别是${this.sex} 我属于${this.constructor.name}类目`);
+    }
+
+
+    function Cat(name, age, sex, color = 'orange') {
+      Animal.call(this, name, age, sex);
+      this.color = color;
+    }
+
+    Cat.prototype = new Animal();//{ ,__proto__:{sayHi,eat}}
+
+    // 构造函数.prototype  new Animal(); constructor覆盖
+    Cat.prototype.constructor = Cat;
+
+    Cat.prototype.showName = function () {
+      console.log(this.name);
+    }
+
+    Cat.prototype.showAge = function () {
+      console.log(this.age);
+    }
+
+    Cat.prototype.sayHi = function () {
+      console.log(`我是${this.name} 我今年${this.age}岁了 我的性别是${this.sex} 我属于${this.constructor.name}类目我的颜色是${this.color}`);
+    }
+
+    function Pig(name = '佩奇', age = 1, weight = 100, sex = '母') {
+      Animal.call(this, name, age, sex);
+      this.weight = weight;
+    }
+
+    Pig.prototype = Object.create(Animal.prototype)
+    Pig.prototype.constructor = Pig;
+
+    Pig.prototype.showName = function () {
+      console.log(this.name)
+    }
+
+    Pig.prototype.showAge = function () {
+      console.log(this.age)
+    }
+    Pig.prototype.sayHi = function () {
+      console.log(`我是${this.name} 我今年${this.age}岁了 我的性别是${this.sex} 我属于${this.constructor.name}类目我的颜色是${this.color}`);
+    }
+
+    // inheritPrototype(Pig, Animal);
+
+
+    // function inheritPrototype(childFunc, parentFunc) {
+    //   var prototype = realizeInheritance(parentFunc.prototype)   //创建对象,我们继续是用原型式继承的创建
+    //   prototype.constructor = childFunc              //增强对象
+    //   childFunc.prototype = prototype                //指定对象
+    // }
+    // function realizeInheritance(parent) {
+    //   // 临时函数
+    //   function tempFunc() { }
+    //   tempFunc.prototype = parent
+    //   return new tempFunc()
+    // }
+
+    let animal = new Animal();
+    let pig = new Pig();
+
+
+    pig.sayHi();
+    animal.sayHi()
+
+
+
+
+  </script>
+</body>
+
+</html>

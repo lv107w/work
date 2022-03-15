@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+{{{html}}}
+<p>welcome to {{msg}}</p>
+
+<ul>
+  {{#each list}}
+  <li>{{this}} {{@key}} {{@index}}</li>
+  {{/each}}
+   
+  {{#each obc}}
+  <li>{{@key}} {{this}}</li>
+  {{/each}}
+
+  {{#each orderList}}
+  <li>
+    <h3>{{name}}</h3>
+    <p>{{price}}</p>
+    <p class="{{#if @last}}product-item{{/if}}" style="{{#if host}}background: red;{{/if}}">热卖</p>
+    
+  </li>
+  {{/each}}
+</ul>

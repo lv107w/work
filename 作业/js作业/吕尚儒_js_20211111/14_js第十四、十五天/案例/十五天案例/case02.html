@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    函数执行的时候
+    创建上下文环境 
+       1. 作用域解析 作用域链创建 根据作用域确定变量关系
+       2. 寻找this的指向
+    
+    */
+    function a(nms) {
+      console.log(arguments);
+      //var nms
+      //fun b 
+
+      // nms = 100;
+      // console.log(nms);
+      function b() {
+        var w = 10;
+        console.log(nms);
+        nms = 20;
+      }
+    }
+
+    a(1, 2, 3); //
+
+    function a() {
+      var x = 10;
+    }
+
+    function c() {
+      var x = 20;
+      function b() {
+        x = 30;
+      }
+      b();
+      a();
+      console.log(x); //
+    }
+    c();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全局上下文</title>
+</head>
+
+<body>
+  <script>
+    var a = 10;
+
+    /*
+      由上至下 一句 一句 执行代码
+      1. 创建一个全局对象，在浏览器中这个全局对象就是 window 对象。
+      2. 将 this 指针指向这个全局对象。一个程序中只能存在一个全局执行上下文。
+    */
+
+    a = 10;
+
+    a = a || 20;
+
+    console.log(a);
+
+    a = function () {
+      console.log(this);
+    }
+
+    a();
+
+    console.log(window.a);
+
+    function fn() {
+      console.log(this.name);
+    }
+    fn();
+
+
+    var obj = {
+      name: 'zs',
+      fn: function () {
+        console.log(this.name);
+      }
+    }
+
+    var name = 'ls';
+
+    fn(); //ls
+
+    //创建一个执行上下文环境
+
+
+
+
+  </script>
+</body>
+
+</html>

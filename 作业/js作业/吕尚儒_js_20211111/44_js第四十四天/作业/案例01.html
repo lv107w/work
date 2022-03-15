@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+</head>
+<body>
+  <script>
+    //函数内部this指向在函数调用的时刻确定 谁调用函数 this指向谁
+    const o = {
+      a: 10
+    }
+    const o1 = {
+      a: 20
+    }
+
+    function fn() {
+      console.log(this.a);
+    }
+    function fn1() {
+      this.a = 30;
+      fn(); //函数调用主体为window（在非严格模式下）
+    }
+    fn1.call(o);
+  </script>
+</body>
+</html>

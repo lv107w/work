@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>执行上下文 this</title>
+</head>
+
+<body>
+  <script>
+
+    function fn() {
+      console.log(this);
+    }
+
+    var obj = {
+      fn: function () {
+        console.log(this);
+      }
+    };
+
+    obj.fn(); //obj
+
+
+    var obj = {
+      name: 'lv',
+      showName: function () {
+        console.log(this.name); //lv
+        (function () { //IIFE 自调用匿名函数 window
+          console.log(this.name); //undefined
+        })();
+      }
+    }
+
+    window.showName; //undefined
+    //a 不是函数
+    //b 不存在
+    //结果 a
+
+
+
+
+  </script>
+</body>
+
+</html>

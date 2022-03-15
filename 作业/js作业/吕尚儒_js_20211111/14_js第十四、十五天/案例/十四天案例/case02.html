@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象 属性取值 赋值</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      a: 1,
+      b: 2,
+      c: 3
+    }
+
+    var name = 'a';
+    obj.b = 5;
+    obj['b'] = 100;
+
+    var arr = [1, 2, 3, 4, 5];
+    for (var i = 0, len = arr.length; i < len; i++) {
+      // console.log(arr[i]);
+    }
+
+
+    for (var key in obj) {
+      console.log(key, obj[key]);
+      // key 属性名称 obj[key] 属性值 key 变量存储的是字符串 'a' 'b' 'c'
+      console.log(key, obj.key); //obj['key']
+    }
+
+
+    console.log(obj);
+    delete obj.a;
+
+    console.log(obj);
+    obj.a = 1;
+    console.log(obj.a);
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

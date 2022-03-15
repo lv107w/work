@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+</head>
+
+<body>
+  <script>
+    let module = (function module() {
+      var num;
+      num = 10;
+      return {
+        get() {
+          return num;
+        },
+        set(param) {
+          num = param
+        }
+      }
+    })();
+
+
+    console.log(module.get())
+
+    module.set(100);
+
+    console.log(module.get())
+
+
+
+
+  </script>
+</body>
+
+</html>

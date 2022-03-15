@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>回收机制</title>
+</head>
+
+<body>
+  <script>
+    /*
+     垃圾回收机制 垃圾GC回收
+      函数没有执行的时候
+        有对应的函数存储空间存放函数内容体(不解析)
+        函数开始执行的时候 会解析内容 根据内容 声明变量赋予空间
+        函数执行完成之后 私有局部变量的地址空间会被回收
+        (私有变量在没有被期望需要的时候)
+
+        闭包
+    */
+
+    function a() {
+      var x = 1;
+      return function () {
+        x++; //持有上级作用域的变量
+        return x;
+      }
+    }
+    var w = a()();
+    console.log(a()());
+    console.log(a()());
+    console.log(a()());
+    console.log(a()());
+    // console.log(result);
+
+
+
+  </script>
+</body>
+
+</html>

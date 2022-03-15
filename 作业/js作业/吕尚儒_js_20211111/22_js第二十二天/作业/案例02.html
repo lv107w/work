@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="wrap">
+    <p class="des">我会被替换掉的 好伤心</p>
+
+    <p class="des">我准备替换掉我前面那个哥们</p>
+  </div>
+
+  <script>
+    var oWrap = document.querySelector('#wrap');
+    var aDes = oWrap.querySelectorAll('.des');
+
+    var newDes = document.createElement('p');
+    newDes.className = 'des';
+    newDes.innerText = '我要代替你';
+    oWrap.replaceChild(newDes, aDes[0]);
+    console.log(aDes[0], aDes[1]);
+  </script>
+</body>
+</html>

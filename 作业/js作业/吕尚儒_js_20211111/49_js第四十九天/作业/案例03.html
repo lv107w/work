@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>es6 object写法</title>
+</head>
+<body>
+  <script>
+    let name = 'kyogre';
+    const O = {name};
+    
+    console.log(O);
+
+    function fn(a, b) {
+      a += b;
+      b *= 2;
+      return {a, b};
+    }
+    console.log(fn(3,4));
+
+    const person = {
+      name,
+      eat() {
+        console.log(`${this.name} 正在吃饭`);
+      }
+    }
+
+    person.eat();
+
+
+
+    //计算属性名
+    let E = {
+      [name]: 'hahah',
+      ['Kyogre' + 'Age']: 12
+    }
+
+    console.log(E); //{kyogre: 'hahah', KyogreAge: 12}
+    console.log(E[name]); //hahah
+
+
+    let mapArr = [
+      {
+        city: '北京', number: '001'
+      }, {
+        city: '上海', number: '002'
+      }, {
+        city: '广州', number: '003'
+      }
+    ];
+
+    let mapJson = {
+      [mapArr[0]['city']]: mapArr[0]['number']
+    }
+    console.log(mapJson);
+  </script>
+</body>
+</html>

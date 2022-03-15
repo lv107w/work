@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call</title>
+  <style>
+    .btn {
+      width: 90px;
+      height: 30px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="btn">点我</div>
+  <script>
+    const oBtn = document.querySelector('.btn');
+
+
+    //构造函数
+    function Pig(name, age) {
+      this.age = age || 3;
+      this.name = name || 'peiqi';
+      this.sayHi = function () {
+        console.log(`你好我是 ${this.name}今年 :${this.age}岁了!`);
+      }
+    }
+
+    const newPig = new Pig('狗蛋', 9);
+
+
+    const OBJ = {
+      petName: 'kyogre',
+      age: 18,
+      sayHi: function () {
+        console.log(`你好我是 ${this.petName}今年 :${this.age}岁了!`);
+      }
+    }
+
+    newPig.sayHi();
+
+    OBJ.sayHi();
+
+    let sayHi = function () {
+      console.log(this);
+      console.log(`你好我是 ${this.petName}今年 :${this.age}岁了!`);
+    };
+
+
+    sayHi();
+
+    oBtn.onclick = function () {
+      window.setTimeout(function () {
+        console.log(this);
+        console.log(this.innerText); //
+      }, 0);
+    }
+
+
+
+  </script>
+</body>
+
+</html>

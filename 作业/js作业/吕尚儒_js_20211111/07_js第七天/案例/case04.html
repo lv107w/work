@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组</title>
+</head>
+
+<body>
+  <script>
+
+    var names = '张三,李四,王五,赵六';
+
+    names = '张三,李四,王九,赵六';
+
+    var arr = [1, 2, 3, 4, 5];
+    arr = ['哈哈', 1, true, NaN, null];
+
+    console.log(arr, arr.length);
+    arr[2] = false;
+    console.log(arr[2]);
+
+    // arr.length = 2;
+    console.log(arr);
+
+    //只读
+    var str = '海牙老师真的好好看啊';
+
+    str.length = 2;
+    console.log(str.length);
+
+
+
+  </script>
+</body>
+
+</html>

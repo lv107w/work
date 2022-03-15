@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue watch</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      margin: 40px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #f1f1f1;
+    }
+
+    .blog-desc--active,
+    .active {
+      color: red;
+    }
+
+    .on {
+      background-color: orange;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .yellow {
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <form action="javascript:;">
+      <input type="text" name="letter" v-model="letter">
+      <!-- <button @click="translate(letter)">翻译</button> -->
+      <br>
+      <!-- <p>{{translate(letter)}} ----- methods</p>  -->
+      <p>{{letterTrans}} ---- watch</p>
+    </form>
+
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: '你好 我好 大家好才是真的好',
+          letter: '',
+          letterTrans: '',
+          obj:{
+              val:'123',
+              title:'哈哈哈'
+          }
+        }
+      },
+      methods: {
+         translate(val) {
+          //调用式 
+          axios.get(`http://127.0.0.1:3000/translate?q=${val}`).then(res => {
+            this.letterTrans = res.data
+          
+          }).catch()
+          //async 函数中 return结果都会包装为 promise对象
+        }
+      },
+      computed: {
+        translateLetter() {
+          //属性 getters 语法糖 同步 及时性的 return结果 不要使用异步
+          let value = ''
+
+        }
+      },
+      watch: {
+        //监听属性变化后 调用对应的watcher回调
+        // async letter(newVal, oldVal) {
+        //   console.log('change watch')
+        //  let res = await axios.get(`http://127.0.0.1:3000/translate?q=${newVal}`)
+        //  this.letterTrans = res.data
+        // }
+        // obj:{
+        //    handler(newVal, oldVal){
+        //       console.log(newVal, oldVal)
+        //       this.letterTrans = newVal.value.val
+        //   },
+        //   deep:true //深度监听
+        // }
+        'obj.val':{
+          //监听 obj属性的val属性的变化
+           handler(newVal, oldVal){
+              this.letterTrans = newVal
+              
+          },
+        }
+      }
+    })
+
+    /*
+      watch 侦听器
+
+      自定义侦听器 
+      当对应属性发生变化的时候 响应执行
+      侦听属性的变化 回调(当前值,之前值)
+
+      watch:{
+        属性名称(当前值,之前值){
+
+        }
+      }
+
+      watch 容许执行异步操作 
+
+
+      computed 及时性计算属性 同步(不能异步) 响应
+      methods 调用式 可响应 可异步 主动
+          异步条件限制
+           事件=> 不可(async await)  可(then catch)
+           view {{method(属性)}} 需要直接 return  (非响应处理)
+      watch 针对属性被动 触发 当属性改变的时候触发setter && 两次值不同
+            可异步 没有return 要求
+      
+                      
+      属性 :
+        handler 属性改变时触发的回调函数
+        immediate 组件创建时刻执行与否
+        deep 深度监听  不推荐使用(非常的消耗性能)
+          监听的属性是对象的话 不开启deep 对象子属性变化不会触发watch
+          开启了deep 对象内部所有子属性变化 都会触发watch
+    
+    
+    */
+  </script>
+</body>
+
+</html>

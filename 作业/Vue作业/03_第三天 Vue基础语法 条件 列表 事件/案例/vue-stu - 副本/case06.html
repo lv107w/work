@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue methods</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <input type="text" v-model="name">
+      <button @click="add">添加</button>
+    </div>
+    <ul>
+      <li v-for="(item, i) in list" :key="item.id" :data-idx="i" :data-id="item.id">
+        <input type="checkbox"> {{item.name}}
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  // 创建 Vue 实例，得到 ViewModel
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      name: '',
+      newId: 3,
+      list: [
+        { id: 1, name: '苹果' },
+        { id: 2, name: '核桃' },
+        { id: 3, name: '桃子' }
+      ]
+    },
+    methods: {
+      add() {
+        //注意这里是unshift
+        this.list.unshift({ id: ++this.newId, name: this.name })
+        this.name = ''
+      }
+    }
+  });
+</script>
+
+</html>

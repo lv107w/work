@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象Object 可枚举</title>
+</head>
+
+<body>
+  <script>
+
+    const O = {
+      name: 'kyogre'
+    }
+
+    let arr = [1, 2, 3, 4, 5];
+
+    console.log(arr);
+    console.log(O);
+
+    for (let key in O) {
+      console.log(key)
+    }
+
+    for (let i in arr) {
+      console.log(arr[i]);
+    }
+
+    for (let i of arr) {
+      console.log(`${i} of `);
+    }
+
+
+    let str = new String('123');
+    console.log(str);
+
+    let s = '13';
+
+    console.log(s);
+
+    /*
+      对象
+
+        属性
+
+      arr.length arr[0] arr[1] arr.0
+
+      O[name]
+
+        length 不可枚举 (无法通过循环遍历的方式找到)
+        __proto__ 不可枚举的
+
+
+      arr.length 可读的
+      for(arr) length 循环遍历中去迭代arr的属性的时候 这是一个枚举过程
+
+
+     */
+  </script>
+</body>
+
+</html>

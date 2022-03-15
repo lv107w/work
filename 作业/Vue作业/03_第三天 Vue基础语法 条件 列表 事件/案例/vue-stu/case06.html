@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue v-for key</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <input v-model="inputVal" type="text"><button @click="addList">新增</button>
+    <ul>
+      <li :title="item.id" v-for="(item,idx) in list" :key="item.id">
+        <input type="checkbox"> {{item.content}}
+      </li>
+    </ul>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    //:key  唯一 不可变
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          inputVal: '',
+          idx: 3,
+          list: [
+            {
+              id: 1,
+              content: '回锅肉',
+              count: 0
+            },
+            {
+              id: 2,
+              content: '炒土豆',
+              count: 0
+            },
+            {
+              id: 3,
+              content: '佛跳墙',
+              count: 0
+            }
+          ]
+        }
+      },
+      methods: {
+        addList() {
+          this.list.unshift({
+            id: ++this.idx,
+            content: this.inputVal,
+            count: 0
+          })
+        }
+      }
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>

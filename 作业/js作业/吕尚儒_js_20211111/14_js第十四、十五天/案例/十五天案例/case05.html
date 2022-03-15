@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>执行栈</title>
+</head>
+
+<body>
+  <script>
+    /*
+      javascript是单线程的
+      单线程 多线程
+      机器的目的是为了处理某一种特定事情而产生
+      javascript执行代码是通过 执行栈 模式
+    */
+
+    // var a = 10;
+
+    // a(); //报错了
+
+    // console.log(10);
+
+    // a = function () {
+
+    // }
+
+    // alert(a);
+
+    // console.log(a);
+
+    // a = 10;
+
+    // function foo(b) {
+    //   return b;
+    // }
+
+    // function bar(a) {
+    //   return foo(a);
+    // }
+
+    // console.log(bar(6)); //6
+
+
+    var color = "blue";
+    function changeColor() {
+      var anotherColor = "red";
+      function swapColors() {
+        var tempColor = anotherColor;
+        anotherColor = color;
+        color = tempColor;
+      }
+      swapColors();
+    }
+
+
+    changeColor();
+
+  </script>
+</body>
+
+</html>

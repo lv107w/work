@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue switchTab</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .tab-wrap {
+      display: flex;
+      flex-direction: column;
+      margin: 100px auto;
+      width: 280px;
+      height: 380px;
+      border: 1px solid #222;
+    }
+
+    .tab-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      text-align: center;
+    }
+
+    .tab-title>a {
+      flex: 1;
+      padding: 2px 10px;
+      line-height: 40px;
+      color: #222;
+    }
+
+    .tab-title>a+a {
+      border-left: 1px solid #ccc
+    }
+
+    .tab-content {
+      flex: 1;
+      position: relative;
+      border-top: 1px solid #222;
+    }
+
+    .tab-item {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      line-height: 180px;
+      text-align: center;
+    }
+
+    .tab-title>a.active {
+      background-color: #222;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div class="tab-wrap">
+      <div class="tab-title">
+        <a href="javascript:;" @click.prevent.stop="switchTabs(idx)" :class={active:idx===tabIdx}
+          v-for="(item,idx) in tabs">{{item.title}}</a>
+      </div>
+      <div class="tab-content">
+        <div class="tab-item">{{tabs[tabIdx].content}}</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#container',
+      data() {
+        return {
+          tabIdx: 0,
+          tabs: [
+            {
+              title: '新闻',
+              content: '我是内容 --- 新闻内容'
+            },
+            {
+              title: '财经',
+              content: '我是内容 --- 财经内容'
+            },
+            {
+              title: '历史',
+              content: '我是内容 --- 历史内容'
+            }
+          ]
+        }
+      },
+      methods: {
+        switchTabs(idx) {
+          this.tabIdx = idx
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

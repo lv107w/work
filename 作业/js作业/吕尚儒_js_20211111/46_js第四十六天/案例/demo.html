@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function Dog(name = '大黄') {
+      this.name = name;
+    }
+    Dog.prototype.age = 13;
+    Dog.prototype.children = ['小白', '大白'];
+    let dog = new Dog('皮特');
+    let dog2 = new Dog('哈利');
+    console.log(dog.age, dog.name);
+
+    console.log(dog.hasOwnProperty('age'), dog.hasOwnProperty('name'));
+
+    dog2.age = 22;
+    console.log(dog.age, dog2.age, dog.__proto__.age);
+    console.log(dog.hasOwnProperty('age'), dog2.hasOwnProperty('age'));
+
+
+
+
+    dog2.children[0] = '小黑';
+    dog.children = ['小宝', '大宝'];
+    console.log(dog.children, dog2.children, dog.__proto__.children);
+    console.log(dog.hasOwnProperty('children'), dog2.hasOwnProperty('children'));
+
+
+
+    class Pig {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      static pt = 10;
+      eat() {
+        console.log(`${this.name} 吃了一吨苞米`)
+      }
+    }
+
+    let pig = new Pig('peiq', 3)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item ,idex) in list">{{item.content}} == {{idex}}</li>
+    </ul>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          list: [
+            {
+              id: 1,
+              content: '红烧肉'
+            },
+            {
+              id: 2,
+              content: '水煮鱼'
+            },
+            {
+              id: 3,
+              content: '麻辣烫'
+            }
+          ]
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      padding: 20px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <p class="view"></p>
+  <p class="view1"></p>
+
+  <script>
+    //view视图层 用于数据的展示，渲染数据到dom
+    class View {
+      constructor(controller, id) {
+        this.ele = document.querySelector(id)
+        this.ele.addEventListener('click', controller.add.bind(controller))
+      }
+
+      render(model) {
+        console.log(model.getVal());
+        this.ele.innerText = model.getVal()
+      }
+    }
+
+    //控制层 用于处理业务逻辑
+    class Controller {
+      constructor() {
+        this.init()
+      }
+
+      init() {
+        this.model = new Model()
+        this.view = new View(this, '.view')
+        this.view1 = new View(this, '.view1')
+        this.model.register(this.view)
+        this.model.register(this.view1)
+        this.model.notify()
+      }
+
+      add() {
+        this.model.add()
+        this.model.notify()
+      }
+    }
+
+    //数据层 业务逻辑所需数据以及数据处理方法的封装
+    class Model {
+      constructor() {
+        this.num = 0
+        this.views = []
+      }
+
+      add() {
+        this.num++
+      }
+
+      sub() {
+        this.num--
+      }
+ 
+      getVal() {
+        return this.num
+      }
+
+      register(view) {
+        this.views.push(view)
+      }
+
+      //发布
+      notify() {
+        this.views.forEach((item) => {
+          item.render(this)
+        })
+      }
+    }
+
+    new Controller()
+    /* 
+    功能：点击p标签， 实现p元素展示的数据改变
+
+    视图层监听到点击事件，
+    控制层调用数据层数据处理方法， 
+    最后数据层调用view层渲染数据到页面
+    */
+  </script>
+</body>
+</html>

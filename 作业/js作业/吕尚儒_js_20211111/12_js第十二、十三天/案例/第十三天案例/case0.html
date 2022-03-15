@@ -1,0 +1,140 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-27 15:52:22
+ * @LastEditTime: 2020-07-27 22:30:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象的创建</title>
+</head>
+
+<body>
+  <script>
+    /*
+      面向对象编程 
+        把面抽象成概念
+      vs 
+      面向过程开发
+        吃 面条
+          1. 种小麦
+          2. 浇水 施肥 
+          3. 收割
+          4. 磨粉
+          5. 揉面
+          6. 切
+          7. 烧水
+          8. 下锅
+          9. 我要出去 一下 回来的时候 锅烧穿了
+      
+    
+    */
+
+    // var obj = new Object(); //new 构造函数();
+    // obj.name = '张三';
+    // obj.age = 18;
+    // obj.sex = 1;
+
+
+
+    // var obj1 = new Object(); //new 构造函数();
+    // obj1.name = '李四';
+    // obj1.age = 19;
+    // obj1.sex = 0;
+
+
+    // var obj2 = new Object(); //new 构造函数();
+    // obj2.name = '王武';
+    // obj2.age = 22;
+    // obj2.sex = 1;
+
+    /**
+     * 工厂模式 集中管理 高效 
+     */
+    function createStudent(name, age, sex) {
+      var obj = new Object(); //new 构造函数();
+      obj.name = name;
+      obj.age = age;
+      obj.sex = sex;
+      obj.speak = function () {
+        console.log('我要学习,学习使我快乐,学习让我成长!');
+      }
+      return obj;
+    }
+
+    function createCat(name, age, sex) {
+      var obj = new Object(); //new 构造函数();
+      obj.name = name;
+      obj.age = age;
+      obj.sex = sex;
+      obj.speak = function () {
+        console.log('喵 喵 喵~~');
+      }
+      return obj;
+    }
+
+
+
+
+
+    var stu1 = createStudent('小明', 99, 0);
+
+    var stu2 = createCat('橘子', 1, 1);
+
+
+
+    /**
+    * javascript 中没有类 用javascript 做面向对象开发 OOP  是用js 原型来模拟
+      构造函数
+        1. 构造函数名首字母是大写的 名词
+
+    */
+
+    function Student(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      this.speak = function () { //
+        console.log('我要学习,学习使我快乐,学习让我成长!' + '我叫' + this.name);
+      }
+    }
+
+
+
+    var x = 18;
+
+    var stu3 = new Student('张三', 18, 1);
+
+    console.log(stu3.name);
+    var stu4 = new Student('李四', 18, 1);
+
+    stu3.speak();
+
+    console.log(stu3 instanceof Student);
+
+
+    /*
+      构造函数 模具 工厂 孵化器
+      1. 本质上还是函数 名字首字母大写
+      2. 构造函数实例化 new 关键字
+      3. 函数体内使用this关键字，代表所要生成的对象实例。
+
+      this
+      0. this是 对象 的代指 this永远指向对象 this是动态的 不到最后 无法确定具体指向哪个对象
+      1. 函数中的this指向 ?  谁(对象)调用这个函数 this指向谁
+      2. 构造函数中的this指向谁 ? 指向构造函数实例化的对象
+    */
+
+
+
+  </script>
+
+</body>
+
+</html>

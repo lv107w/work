@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function name属性</title>
+</head>
+<body>
+  <script>
+    //变量命名函数 函数名存在 返回函数名
+    let a = function add() {}
+    console.log(a.name); //add
+ 
+    //变量命名函数 函数名不存在 返回变量名称
+    let b = function() {}
+    console.log(b.name); //b
+
+
+    //纯粹匿名函数值 name为 '' 空字符串
+    let arr = [];
+    for(let i = 0; i < 3; i++) {
+      arr.push(function(){
+        console.log(i);
+      })
+    }
+
+    console.log(arr[0].name); //''空字符串
+
+    //构造函数 anonymous
+    console.log((new Function).name); //anonymous
+
+    //bind => bound + 函数名
+    console.log((function foo() {}).bind({}).name);//bound foo
+
+    //IIFE + bind
+    console.log((function() {}).bind({}).name); //bound 
+
+    const O = {
+      age: 11
+    }
+
+    const O1 = {
+      age: 1
+    }
+
+    function fn() {
+      console.log(this.age);
+    }
+    fn.call(O1); //1
+
+    let fn1 = fn.bind(O);
+    fn1.call(O1); //11
+
+
+    //用于判断某个函数是否是bind的产物
+    function isBoundFuns(funs) {
+      return /bound/ig.test(funs.name);
+    }
+    console.log(isBoundFuns(fn)); //false
+    console.log(isBoundFuns(fn1));//true
+  </script>
+</body>
+</html>

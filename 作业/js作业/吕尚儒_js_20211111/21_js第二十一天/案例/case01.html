@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取样式</title>
+  <style>
+    p {
+      color: blue;
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    #text {
+      font-size: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="text" style="border:1px solid red;color:green;">大家好 我是海牙老师 你好吗</p>
+  <script>
+    var oText = document.querySelector('#text');
+    console.log(oText.style.fontSize);
+
+
+
+    console.log(window.getComputedStyle(oText, null)['fontSize']);
+
+    console.log(oText.currentStyle);
+
+    function getStyle(obj, attr) {
+      return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, false)[attr];
+    }
+
+    /*
+      css中多单词样式 例如 font-size margin-top
+      在js中改为驼峰写法 fontSize marginTop
+      原因 - 在js中为运算符 减法运算符
+
+      获取元素运算后的样式
+      window.getComputedStyle(oText, null);
+      返回一个CSSOM对象
+
+      IE 支持 currentStyle
+
+      IE8 以及以下
+      是不支持getComputedStyle  只支持 currentStyle
+
+      对象.属性
+      对象['属性名']
+
+    */
+  </script>
+</body>
+
+</html>

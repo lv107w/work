@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    (function (w) {
+      function Pig(param) {
+        if (!(this instanceof Pig)) {
+          return new Pig.prototype.init(param);
+        }
+      }
+
+      Pig.prototype = {
+        constructor: Pig,
+        feedConversionRatio: 2.4,
+        init: function ({ name = '佩奇', age = 3, weight = 100 } = {}) {
+          this.name = name;
+          this.age = age;
+          this.weight = weight;
+        },
+        eat: function (k = 10) {
+          this.weight += k / this.feedConversionRatio;
+          this.weight = this.weight.toFixed(2);
+        },
+        report: function () {
+          console.log(`%c我是${this.name} 我今年${this.age}岁 我当前体重为${this.weight}公斤`, "color:blue")
+        }
+      }
+
+      Pig.prototype.init.prototype = Pig.prototype;
+      w.Pig = Pig;
+    })(window);
+
+
+    let pig1 = Pig({
+      name: "佩奇",
+      age: 1,
+      weight: 120
+    })
+    console.log(pig1);
+    console.log(pig1 instanceof Pig);
+    pig1.eat(100);
+
+    pig1.report();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 20:33:19
+ * @LastEditTime: 2020-08-24 22:00:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lastIndex陷阱</title>
+</head>
+
+<body>
+  <script>
+    var arr = [
+      'a.jpg',
+      'b.jpg',
+      'c.jpg',
+      'd.jpg'
+    ];
+
+    // 你好我是123你好吗 indexof 全局检索所有的 你
+    /*     var str = '你好我是123你好吗';
+        var idx = 0;
+        while (str.indexOf('你', idx) != -1) {
+    
+          var x = str.indexOf('你', idx);
+          idx = x + 1;
+          console.log(x);
+        }
+     */
+    var regExp = /(\S+)\.jpg/g;
+    for (var key in arr) {
+      console.log(regExp.test(arr[key]), regExp.lastIndex);
+    }
+
+    /*
+      正则在 g 全局修饰下
+      当循环列表项匹配的时候 lastIndex会干扰结果
+
+      当匹配上的时候 lastIndex匹配会从字符串最后一位+1开始计数
+
+      匹配不到的时候 lastIndex 重置为 0
+
+    */
+
+  </script>
+</body>
+
+</html>

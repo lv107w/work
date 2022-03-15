@@ -1,0 +1,70 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-25 19:20:41
+ * @LastEditTime: 2020-07-25 19:21:20
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四种创建对象的方式</title>
+</head>
+
+<body>
+
+  <script>
+    var myCat = {
+      name: '橘子',
+      color: 'orange',
+      age: 1,
+      favorite: '小鱼干',
+      speak: function () {
+        console.log('喵~~喵~喵~~~');
+      }
+    }
+
+
+    var myCat = new Object();
+    myCat.name = '橘子';
+    myCat.color = 'orange';
+    myCat.age = 1;
+    myCat.favorite = '小鱼干';
+    myCat.speak = function () {
+      console.log('喵~~喵~喵~~~');
+    }
+
+
+    function createCat(name, age, color) {
+      var cat = new Object();
+      cat.name = name;
+      cat.color = color;
+      cat.age = age;
+      cat.favorite = '小鱼干';
+      cat.speak = function () {
+        console.log('喵~~喵~喵~~~');
+      }
+      return cat;
+    }
+
+    var myCat = createCat('橘子', 1, 'orange');
+
+
+    function Cat(name, age, color, favorite) {
+      this.name = name;
+      this.age = age;
+      this.color = color;
+      this.favorite = favorite;
+      this.speak = function () {
+        console.log('喵~~喵~喵~~~');
+      }
+    }
+    var myCat = new Cat('橘子', 1, 'orange', '小鱼干');
+  </script>
+</body>
+
+</html>

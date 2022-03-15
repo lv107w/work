@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>apply
+
+  </title>
+</head>
+
+<body>
+  <ul class="box">你好,我是box</ul>
+  <script>
+
+    const oBox = document.querySelector('.box');
+    /*
+      方法.call(替换对象,参数1,参数2,....参数n);
+      方法.apply(替换对象,[参数1,参数2,参数3...,参数n]);
+
+
+      共同点
+        1. 都是替换函数(方法)的调用主体对象
+        2. 都是函数(方法)主动执行的时候进行替换
+        3. 函数(方法)内部的this会指向call或apply的第一个参数(对象)
+
+      不同点 
+        1. 使用apply的时候 方法的实参 要以数组的形式传递 
+        2. 使用call的时候 方法的实参 要以正常实参的形式传递
+    */
+
+    function getMaxNum() {
+      console.log(arguments);//类数组 [参数1,参数2,.....,参数n]
+      return Math.max.apply(null, arguments);
+    }
+    console.log(getMaxNum(1, 2, 3, 45, 6, 78, 23, 12, 4, 644, 12343));
+
+
+    // const arr = [1, 2, 3];
+    // const otherArr = [3, 4, 5];
+    // arr.push.apply(arr, otherArr);
+    // arr.push(otherArr); //[1, 2, 3,[3,4,5]]
+
+    const ARRAY = [oBox,'你好', '我好', '大家好']
+
+    function appendList(ele) {
+      var args = [].slice.call(arguments, 1);
+      ele.innerHTML = format.apply(null, args);
+    }
+
+    // appendList(oBox, '你好', '我好', '大家好');
+    appendList.apply(null, ARRAY);
+
+    function format() {
+      // console.log(arguments)
+      return [].reduce.call(arguments, function (acc, curr) {
+        acc += `<li>${curr}</li>`;
+        return acc;
+      }, '');
+    }
+
+  </script>
+</body>
+
+</html>

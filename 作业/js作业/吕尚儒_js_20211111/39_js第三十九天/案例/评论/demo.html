@@ -1,0 +1,92 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-26 20:40:56
+ * @LastEditTime: 2020-08-26 21:03:19
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \作业\评论\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取input输入内容</title>
+  <style>
+    .prompt {
+      position: fixed;
+      top: -30px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 400px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, .7);
+      line-height: 30px;
+      font-size: 16px;
+      color: orangered;
+      text-align: center;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <input id="input" type="text"><span id="submit">提交</span>
+
+  <div class="prompt">提示内容</div>
+  <script src="js/common.js"></script>
+  <script>
+    var oInput = document.querySelector('#input');
+    var oSubmit = document.querySelector('#submit');
+
+    var oPrompt = $('.prompt');
+
+    oSubmit.onclick = function (e) {
+      var value = oInput.value;
+      if (value.length === 0 || /^\s+$/.test(value)) {
+        oInput.value = '';
+        showPrompt('请输入评论内容')
+        return false;
+      }
+      createCommit('img/1.jpg', value);
+      oInput.value = '';
+    }
+
+    function createCommit(imgSrc, value) {
+      var vP = document.createElement('p');
+      vP.innerHTML = `<img width='40' height='40' src=${imgSrc}><span>${value}</span>`;
+      document.body.appendChild(vP);
+
+    }
+
+    function showPrompt(str) {
+      /* 
+        先下来 等一会 再上去
+
+        1. 通过animate修改prompt的top 为 0 实现下拉
+        2. animate的回调函数中 开启一个 倒计时
+        3. animate修改top 为-30 实现回收
+      */
+      oPrompt.innerHTML = str;
+      animate(oPrompt, {
+        top: '0'
+      }, function () {
+        var time = setTimeout(function () {
+          animate(oPrompt, {
+            top: '-30px'
+          }, function () {
+            oPrompt.innerHTML = '';
+            clearTimeout(time);
+          })
+        }, 1500);
+      })
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{
+  "Print to jsNoteTitle": {
+    "prefix": "jsNoteTitle",
+    "body": [
+      "/*",
+      " *@description:",
+      " *@author: 海牙",
+      " *@date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      " *@version: V1.0.5",
+      "*/"
+    ],
+    "description": ""
+  },
+  "Print to jsfn": {
+    "prefix": "jsfn",
+    "body": [
+      "/*",
+      " *@func: ${TM_CURRENT_LINE}",
+      " *@description:",
+      " *@param: {type} param",
+      " *@return: {type} 返回值",
+      " *@author: 海牙",
+      "*/"
+    ],
+    "description": ""
+  },
+  "Print to jsModify": {
+    "prefix": "jsModify",
+    "body": [
+      "/*",
+      " *@description:",
+      " *@modifyContent:",
+      " *@author: 海牙",
+      " *@date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "*/"
+    ],
+    "description": ""
+  },
+  "Print to jsVariable": {
+    "prefix": "jsVariable",
+    "body": [
+      "/*",
+      " *@description:",
+      " *@author: 海牙",
+      " *@date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      " *@variable1: ${1:变量1}",
+      " *@variable2: ${2:变量2}",
+      " *@variable3: ${3:变量3}",
+      " *@variable4: ${4:变量4}",
+      " *@variable5: ${5:变量5}",
+      "*/"
+    ],
+    "description": ""
+  },
+  "Print to ExServer": {
+    "prefix": "exserver",
+    "body": [
+      "const http = require('http')",
+      "const fs = require('fs')",
+      "const express = require('express')",
+      "\n",
+      "const app = express()",
+      "\n",
+      "app.use('/', (req, res, next) => {})",
+      "\n",
+      "\n",
+      "http.createServer(app).listen(3000, function () {",
+      "console.log(`listen 3000 port`)",
+      "})"
+    ],
+    "description": ""
+  }
+}

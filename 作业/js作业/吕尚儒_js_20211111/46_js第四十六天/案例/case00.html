@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型 prototype __proto__ constructor</title>
+</head>
+
+<body>
+  <script>
+    /*
+      构造函数 constructor
+      本质就是函数 function 
+      人为的通过函数名首字母大写 来区分是否是构造函数
+
+      原型 prototype
+      原型是一个对象
+      原型是function属性
+
+      constructor 构造器
+      是function的原型属性中的属性
+
+      const fn = {
+        prototype: {
+          constructor: fn
+        }
+      }
+
+
+      实例对象
+       new 构造函数()
+
+      实例对象的属性 => 构造函数的属性
+
+     
+      __proto__ 属性  [[prototype]]
+      __proto__ 是一个对象
+        new实例化的时候 添加到实例对象的隐式属性
+
+      __proto__ 指向实例对象构造函数的原型
+
+      pig.__proto__ = Pig.prototype;
+
+    */
+
+    function Pig(name = 'p1', age = 1) {
+      this.name = name;
+      this.age = age
+    }
+
+    Pig.prototype.eat = function () {
+      console.log(`我是${this.name} 我${this.age}岁了 我要吃饭了`);
+    }
+
+    let pig = new Pig('佩奇', 1);
+
+
+    pig.eat();
+
+
+    console.log(Pig.prototype);
+
+    console.log(Pig.prototype.constructor === Pig);
+
+    console.log(pig);
+
+    console.log(pig instanceof Pig);
+
+    console.log(pig.__proto__ === Pig.prototype);
+
+  </script>
+</body>
+
+</html>

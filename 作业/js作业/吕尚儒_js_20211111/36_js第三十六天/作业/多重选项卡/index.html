@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重选项卡</title>
+  <style type='text/css'>
+    body,
+    ul,
+    li,
+    p,
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    #content {
+      position: relative;
+      width: 400px;
+      margin: 50px auto;
+    }
+
+    #content img {
+      display: block;
+    }
+
+    .list {
+      position: absolute;
+      top: 0;
+      left: -80px;
+    }
+
+    .list li {
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      background: #ccc;
+      text-align: center;
+    }
+
+    .list li.on {
+      background: orange;
+    }
+
+    .list li+li {
+      margin-top: 1px;
+    }
+
+    #content p {
+      display: none;
+    }
+
+    #content p.on {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      background: rgba(0, 0, 0, .5);
+      text-align: right;
+    }
+
+    #content p span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin-left: 5px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    #content p span.on {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <div id='content'>
+    <ul class='list' id='list'>
+      <li class="on">车</li>
+      <li>美食</li>
+      <li>风景</li>
+    </ul>
+    <img width='100%' src="images/1.jpg" alt="">
+    <p>
+      <span class="on">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+    </p>
+    <p>
+      <span class="on">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+    </p>
+    <p>
+      <span class="on">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+    </p>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var oSlider = $('#content');
+    var oUl = $('.list');
+    var aP = $$('p');
+    var oImg = $('img');
+    var num = 0;
+    var index = 0;
+    var arr = [
+      ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+      ['m1.jpg', 'm2.jpg', 'm3.jpg', 'm4.jpg', 'm5.jpg'],
+      ['s1.jpg', 's2.jpg', 's3.jpg', 's4.jpg', 's5.jpg'],
+    ];
+    
+    aP[num].classList.add('on');
+    //监听图片左侧分类点击事件
+    oUl.addEventListener('click', function(e) {
+      console.log(e.target);
+      
+      console.log(index);
+      if(e.target.tagName.toLowerCase() === 'li') {
+        //轮转法,控制分类按钮背景的切换 以及 下侧滑块
+        oUl.children[num].classList.remove('on');
+        aP[num].classList.remove('on');
+       
+        //每次点击分类按钮，重置index, num；
+        move(function() {
+   
+          num = getElementIdx(e.target);
+          oUl.children[num].classList.add('on');
+          aP[num].classList.add('on');
+          index = 0;
+        })
+      }
+     
+    }, false)
+  
+    //封装：根据num index的改变来切换滑块背景以及图片的切换
+    function move(callback) {
+        aP[num].children[index].classList.remove('on');
+        callback();
+        aP[num].children[index].classList.add('on');
+        oImg.src = 'images/' + arr[num][index];
+    }
+ 
+
+    oSlider.addEventListener('click', function(e) {
+      if(e.target.tagName.toLowerCase() === 'span') {
+        var target = e.target;
+        move(function() {
+          index = getElementIdx(target);
+        }); 
+      }
+    })
+    
+  
+  </script>
+</body>
+</html>

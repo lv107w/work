@@ -1,0 +1,90 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-27 20:35:30
+ * @LastEditTime: 2020-08-27 22:36:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>const</title>
+  <style>
+    body {
+      height: 10000px;
+    }
+
+    div {
+      width: 400px;
+      height: 180px;
+      margin: 10px 0;
+      background-color: #ccc;
+      color: #fff;
+      font-size: 30px;
+      line-height: 180px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <script>
+
+    /*
+      const 声明常量
+
+      常量:
+        是一个固定值 不会改变 不能改变 是客观事实提供的固定值 PI E lg(10) sin(0)
+      编程中的常量:
+        保证变量值的安全性
+
+
+        const 只读变量(客观值 固定值)
+        1. const 声明的变量值 不容许修改
+        2. 拥有let所有的特性
+          0. 变量不会提升
+          1. 不容许先调用后声明
+          2. 不容许重复声明
+          3. 能够开启块作用域
+
+        3. const声明的变量声明时必须赋值
+        4. const的值如果是引用类型 值的属性可以修改
+
+        5. 常量变量名称 建议 全大写 _链接多个单词
+    */
+    const PI = 3.1415;
+    const DATA_MAP = {
+
+    }
+
+    document.onscroll = function (e) {
+      // const scrollData = {
+      //   top: document.documentElement.scrollTop,
+      //   left: document.documentElement.scrollLeft,
+      // }
+      const X = [1, 2, 3];
+      X.length = 10;
+      X[1] = 8;
+      console.log(X)
+      X = [3, 4, 5];
+
+      //
+      // console.log(scrollData.top);
+      //
+      // scrollData.top = 10;
+      //
+
+      //
+      // console.log(scrollData.top);
+    }
+
+  </script>
+</body>
+
+</html>

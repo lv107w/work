@@ -1,0 +1,109 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-23 20:30:51
+ * @LastEditTime: 2020-07-23 21:06:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数回顾练习</title>
+</head>
+
+<body>
+  <script>
+    /*
+      函数 
+        封装一段代码 方便重复调用
+      参数 
+        形参 实参
+        通过传参可以让函数内的代码接收不同的数据源进行计算得出不同的结果
+      返回 
+        return
+        函数执行结束会返回值 默认为 undefined 我们可以通过return关键字 设置返回值
+
+        函数执行的时候 内部代码执行完成return 就不会往后执行 后面的代码就放弃了
+    
+    */
+
+    //返回 参数:数组 中的 最大值 
+    function getMax(arr) {
+      var maxNum = arr[0];
+      for (var i = 0, len = arr.length; i < len; i++) {
+        if (maxNum <= arr[i]) {
+          maxNum = arr[i];
+        }
+      }
+      return maxNum;
+    }
+
+    var maxNumber = getMax([3, 55, 2, 1, 76, 5, 1234]);
+    console.log(getMax([3, 55, 2, 1, 76, 5, 1234]));
+
+
+    //分数 100-91 A 90-81 B 80-71 C 70-61 D 60-0 E
+
+    function getLevel(num) {
+      if (num <= 100 && num > 90) {
+        return 'A';
+      }
+      if (num > 80) {
+        return 'B';
+      }
+      if (num > 70) {
+        return 'C';
+      }
+      return 'D';
+    }
+
+
+    //求传入的参数是否是 偶数 但是排除0
+    function isEven(num) {
+      if (num === 0) {
+        return '不能为0';
+      }
+
+      if (num % 2 === 0) {
+        return '偶数';
+      }
+
+    }
+
+
+    //判断一个数是不是数字
+
+    function isNumber(num) {
+      if (Number(num) !== num) {
+        return '不是数字';
+      }
+
+      return '是数字';
+
+    }
+
+    //求输入数值的 2次方
+
+    function getPow(num) {
+      if (Number(num) !== num) {
+        return 0;
+      }
+      if (num === 0) {
+        return 0;
+      }
+      return num ** 2;
+    }
+    console.log(getPow('fdsf'));
+
+
+
+
+
+  </script>
+</body>
+
+</html>

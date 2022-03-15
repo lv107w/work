@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>修饰符 </title>
+</head>
+
+<body>
+  <script>
+
+
+    /* 
+    
+    
+    var patt =  /pattern/i;         //忽略大小写匹配
+    var patt =  /pattern/g;         //全局匹配
+    var patt =  /pattern/m;         //执行多行匹配 
+  
+  */
+
+    var urlStr = 'www.baidu.com?wd=你好&q=1&type=2';
+
+    console.log(urlStr.match(/([^?&=]+)=([^?&=]*)/g));
+
+    console.log('helloWorld'.match(/helloworld/i));
+
+    console.log('helloWorld'.match(/l[^l]/g));
+  </script>
+</body>
+
+</html>

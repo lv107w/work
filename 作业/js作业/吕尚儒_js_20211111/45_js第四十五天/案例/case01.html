@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小球案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ball {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 80px;
+      height: 80px;
+      background-color: #ccc;
+      border-radius: 50%;
+      box-shadow: -8px -12px 18px #8a8989 inset;
+    }
+
+    .unit {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      box-shadow: -8px -12px 18px #e6d81d inset;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="unit"></div>
+  <div class="unit"></div>
+  <script src="js/common.js"></script>
+  <script>
+    /*
+      DOM本身
+      定时器
+      定位absolute 改变 let top
+      window.innerWidth window.innerHeight
+     */
+
+    const balls = $$('.ball');
+    const units = $$('.unit');
+    const eleArr = initBalls().concat(initUnits());
+    let time;
+
+    function Ball(ele, s = 1) {
+      this.ele = ele;
+      this.x = s;
+      this.y = s;
+      this.move = function () {
+        this.y *= isCloumn(this.ele) ? -1 : 1;
+        this.x *= isRow(this.ele) ? -1 : 1;
+        this.ele.style.top = this.ele.offsetTop + this.y + 'px';
+        this.ele.style.left = this.ele.offsetLeft + this.x + 'px';
+      }
+    }
+
+    function Unit(ele, s = 1, deg = 30) {
+      this.ele = ele;
+      this.x = s;
+      this.y = s;
+      this.deg = deg;
+      this.move = function () {
+        this.y *= isCloumn(this.ele) ? -1 : 1;
+        this.x *= isRow(this.ele) ? -1 : 1;
+        this.ele.style.top = this.ele.offsetTop + this.y + 'px';
+        this.ele.style.left = this.ele.offsetLeft + this.x + 'px';
+        this.deg += .8;
+        this.ele.style.transform = `rotate(${this.deg}deg)`;
+      }
+    }
+
+
+    function initBalls() {
+      return [].map.call(balls, item => new Ball(item, (~~(Math.random() * 3) + 1))
+      )
+    }
+
+    function initUnits() {
+      return [].map.call(units, item => new Unit(item, (~~(Math.random() * 3) + 1), ~~(Math.random() * 60))
+      );
+    }
+
+    time = setInterval(function () {
+      eleArr.forEach(item => item.move());
+    }, 1000 / 60);
+
+   /*  function move() {
+      this.y *= isCloumn(this.ele) ? -1 : 1;
+      this.x *= isRow(this.ele) ? -1 : 1;
+      this.ele.style.top = this.ele.offsetTop + this.y + 'px';
+      this.ele.style.left = this.ele.offsetLeft + this.x + 'px';
+      if (this instanceof Unit) {
+        this.deg += .8;
+        this.ele.style.transform = `rotate(${this.deg}deg)`;
+      }
+    } */
+
+    function isCloumn(ele) {
+      if (ele.offsetTop > window.innerHeight - ele.offsetHeight || ele.offsetTop <= 0) {
+        return true
+      }
+      return false;
+    }
+
+    function isRow(ele) {
+      if (ele.offsetLeft > window.innerWidth - ele.offsetHeight || ele.offsetLeft <= 0) {
+        return true
+      }
+      return false;
+    }
+
+
+  </script>
+</body>
+
+</html>

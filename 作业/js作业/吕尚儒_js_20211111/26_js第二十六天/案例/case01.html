@@ -1,0 +1,69 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-11 21:50:59
+ * @LastEditTime: 2020-08-11 22:30:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> setInterval </title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      循环定时器 setInterval
+
+      执行队列 123  132
+
+      回调函数的执行队列 等1秒钟执行一次 
+
+      异步 2 节省你的wating时间 提高效率
+      
+      同步 1  有序稳定 需要wating
+      
+      javascript是单线程异步语言 
+
+      单线程同一时间内只能做一件事 做完了才能做其他事
+
+      异步可以将任务进行挂起或者插入队列 让整个事物按照我们需要的情况进行排列执行
+    */
+
+    var time = Date.now();
+    console.log('一行代码'); //1
+
+    setInterval(function () {// 1秒钟之后将回调函数插入任务队列
+      console.log('定时器在运行', Date.now() - time); //2
+      time = Date.now();
+    }, 1000);
+
+    alert('123')
+
+    console.log('另一行代码');//3
+
+    console.log('另一行代码');//4
+
+    console.log('另一行代码');//5
+
+    console.log('另一行代码');//6
+
+
+
+
+
+    //1s
+    //定时器的回调函数执行
+    //1s
+    //定时器的回调函数执行
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-25 20:46:54
+ * @LastEditTime: 2020-08-25 21:15:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit  
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cookie</title>
+</head>
+
+<body>
+  <script>
+
+    var date = new Date();
+    date.setDate(date.getDate() - 100);
+
+
+    document.cookie = 'name=海牙;expires=9999-12-31T16:00:00.000Z';
+    document.cookie = 'age=18;expires=9999-12-31T16:00:00.000Z';
+    document.cookie = 'age=99;expires=9999-12-31T16:00:00. 000Z';
+
+
+    console.log(document.cookie);
+
+    /*
+
+      操作cookie其实就是给cookie赋值
+      cookie数据的 增删改查
+
+      增
+      document.cookie = 'key=value';
+      document.cookie = 'key1=value1';
+
+      删除
+      重写整个cookie对应项的值为null
+      设置这一项的有效期时间戳时间戳expires为当前时间
+      过期的cookie会被自动删除掉
+
+      修改
+       document.cookie = 'key1=newValue';
+
+
+      查询
+      console.log(document.cookie);
+      只能拿到整体cookie对应的字符串
+
+
+
+    */
+  </script>
+</body>
+
+</html>

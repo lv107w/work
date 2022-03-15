@@ -1,0 +1,74 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-30 21:03:13
+ * @LastEditTime: 2020-07-30 21:41:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case01.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>map</title>
+</head>
+
+<body>
+  <!-- 
+    方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+   -->
+
+  <script>
+
+    var arr = [1, 2, 3, 4, 5];
+
+    // //将数组每一位 *2
+    // for (var i = 0, len = arr.length; i < len; i++) {
+    //   arr[i] = arr[i] * 2;
+    // }
+
+    // console.log(arr);
+
+
+
+    function Brray(arr) {
+      this.arr = arr;
+      this.forEach = function (callback) {
+        for (var i = 0, len = this.arr.length; i < len; i++) {
+          callback(this.arr[i], i, this.arr);
+        }
+      },
+        this.sort = function (callback) {
+          for (var i = 0, len = this.arr.length; i < len; i++) {
+            var result = callback(arr[i], arr[i + 1]);
+            if (result > 0) {
+              //...排序
+            } else if (result === 8) {
+              //...排序
+            }
+          }
+        },
+        this.map = function (callback) {
+          var nw = [];
+          for (var i = 0; i < this.arr.length; i++) {
+            nw[i] = callback(this.arr[i], i, this.arr); // 2
+          }
+          return nw;
+        }
+    }
+
+    var newArr = arr.map(function (item, idx, arr) {
+      return item * 2;
+    });
+
+    console.log(newArr); //[1,2,3,4,5] => [2,4,6,8,10]
+    //map 返回一个新数组 新数组里每一项都是原数组对应项做 特定处理 后的结果
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file">
+  <form action="" enctype=""></form>
+  <script>
+    const fileInput = document.querySelector('input[type="file"]')
+
+    const host = 'http://127.0.0.1:3007/json'
+    let postData = JSON.stringify({ a: 1, b: 2 }) // "{a:1,b:2}"
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', host, true)
+    //设置请求头 请求内容类型  application/json 
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=utf8')
+    xhr.send("postData")
+
+    xhr.onreadystatechange = function (res) {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.response)
+        if(isJSON(xhr.response)){
+          
+        }
+      }
+    }
+
+    function isJSON(str) {
+      try {
+        JSON.parse(str)
+        return true;
+      } catch (err) {
+        return false;
+      }
+      return false;
+    }
+
+  </script>
+</body>
+
+</html>
+<!-- 
+  ajax 提交form表单(带文件)内容
+
+  ajax application/json MEMI 请求
+
+  node 处理ajax 发送的form(带文件)请求 与相应返回
+
+  node 处理ajax 发送的json 形式内容请求 与相应返回
+
+  ajax 请求服务端 文件资源 服务端 返回文件流 前端进行blob URL化处理
+
+  收到短信(游戏福利) => 点入网址A(游戏) => (登录) => (填入账号密码) => 操作 => 第二天(游戏号被盗了)
+
+   http://www.pdks.com => 107.35.77.191 => 账号密码 => 发了一份到劫持服务器 => 账号密码 通过http直接请求 http://game.pdk.com 
+
+
+   http://game.pdk.com => 107.35.77.100
+
+
+   http://www.pdks.com => http://game.pdk.com 
+   107.35.77.100 => 107.35.77.191
+
+   假网站 => 获取了你的账号密码 => 真网站
+
+
+   定了一条规则 同源策略
+
+   前端页面上发起的请求 如果想要正常访问服务 
+   必须遵守同源策略
+
+
+   
+   ftp://www.baidu.com =>  http://www.baidu.com
+   协议不同不行
+   http://127.0.0.1:5503 http://127.0.0.1:3001
+   端口不同不行
+   http://127.0.0.1:8080  http://43.122.68.139:8080
+   host主机地址不同不行
+   
+ -->

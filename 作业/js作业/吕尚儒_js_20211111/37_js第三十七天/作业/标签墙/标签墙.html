@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签墙</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Microsoft YaHei, serif;
+  }
+
+  body {
+    color: #888;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .wrap {
+    width: 100%;
+    height: 800px;
+    padding: 50px 0;
+    background: linear-gradient(180deg, #92BFD9, #EFAA8E);
+  }
+
+  #box {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid #ddd;
+  }
+
+  #box .left {
+    flex: 1;
+    padding: 30px 0 0 20px;
+    background-color: #fff;
+  }
+
+  #box .left>span {
+    color: orange;
+  }
+
+  #box .left span.area {
+    color: #888;
+    cursor: pointer;
+  }
+
+  #box .left span.area:hover {
+    color: orange;
+  }
+
+  #box .left ul {
+    margin-top: 30px;
+  }
+
+  #box .left ul li {
+    float: left;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin: 8px;
+  }
+
+  #box .left ul li span:hover {
+    color: orange;
+    cursor: pointer;
+  }
+
+  #box .right {
+    flex: 1;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  #box .right ul {
+    margin: 30px 20px;
+    color: #fff;
+  }
+
+  #box .right ul li {
+    float: left;
+    border: 1px solid #fff;
+    padding: 2px 5px;
+    margin: 0 10px 20px 0;
+    border-radius: 5px;
+  }
+</style>
+<body>
+  <div class="wrap">
+    <div id="box">
+      <div class="left">
+        <span>热门目的地：</span>
+        <span class="area">马来西亚</span>
+        <span class="area">泰国</span>
+        <span class="area">三亚</span>
+        <span class="area">新西兰</span>
+        <span class="area">云南</span>
+        <span class="area">韩国</span>
+        <ul>
+          <!--<li>马来西亚 <span>x</span> </li>-->
+        </ul>
+      </div>
+      <div class="right">
+        <ul>
+          <!--<li>韩国</li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    /* 思路:
+    1、嵌套监听
+    监听area点击事件生成左右标签 ，
+    在里面再监听一层刚生成的标签
+   （这样删除的标签跟点击area生成的标签可以一一对应，
+    不用开数组匹配下标）
+
+    2、加锁：
+    防止重复点击生成相同的标签
+     */
+    var oLeft = $('.left');
+    var aArea = $$('.area');
+    var oLUl = $('.left ul');
+    var oRUl = $('.right ul');
+
+    oLeft.addEventListener('click', function(e) {
+     //事件委托，点击对象必须是span标签，类名为area
+     if(e.target.tagName.toLowerCase() === 'span' && e.target.className === 'area') {
+      var target = e.target;
+      if(target.getAttribute('selected')) { 
+        return false;
+      }
+        //加锁
+        target.setAttribute('selected', true);
+        
+        //创建左右标签
+        var vDomL = document.createElement('li');
+        var vDomR = document.createElement('li');
+        vDomL.innerHTML = `${e.target.innerText}|<span>x</span>`;
+        vDomR.innerHTML = `${e.target.innerText}`;
+        oLUl.appendChild(vDomL);
+        oRUl.appendChild(vDomR);
+
+        //监听刚生成的vDOML，点击span删除左右标签
+        vDomL.addEventListener('click', function(e) {
+          if(e.target.tagName.toLowerCase() === 'span') {
+            oLUl.removeChild(vDomL);
+            oRUl.removeChild(vDomR);
+      
+            //删除标签记得需要清除给属性赋空值
+            target.setAttribute('selected', '');
+          }
+        })
+      
+      
+     }
+   }, false);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-11 21:50:59
+ * @LastEditTime: 2020-08-11 22:44:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> setInterval 队列进程</title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      循环定时器 setInterval
+
+      执行队列 123  132
+
+      回调函数的执行队列 等1秒钟执行一次 
+
+      异步 2 节省你的wating时间 提高效率
+      
+      同步 1  有序稳定 需要wating
+      
+      javascript是单线程异步语言 
+
+      单线程同一时间内只能做一件事 做完了才能做其他事
+
+      异步可以将任务进行挂起或者插入队列 让整个事物按照我们需要的情况进行排列执行
+
+
+      最小时间间隔 不能小于 4ms 
+
+      浏览器的FPS最大60 一般是30  1000/60
+      FPS
+      显示画面的刷新频率
+      60fps 1秒钟刷新60次 60帧
+    */
+
+    var time = Date.now(); // 0 1000
+
+    setInterval(run, 500);
+
+
+    function run() {
+      console.log(Date.now() - time);
+      time = Date.now();
+
+    }
+
+
+    /*
+
+      ---------- run (回调函数执行 ---------------) run
+
+
+    */
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>index</title>
+  <meta charset="utf-8">
+  <meta name="Author" content="潭州学院-海牙">
+  <style type='text/css'>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script>
+    var module = function () {
+      var person = [
+        {
+          'name': '海牙',
+          'age': 13,
+          'job': '前端工程师'
+        },
+        {
+          'name': 'ii',
+          'age': 30,
+          'job': '前端工程师'
+        }
+      ];
+      var searcher = {};
+      var index = 0;
+      function mySelect(item) {
+        for (var i = 0, len = person.length; i < len; i++) {
+          if (person[i]['name'] == item) {
+            searcher = person[i];
+            index = i;
+            return i;
+          }
+        }
+      }
+      function myUpdate(index, key, val) {
+        person[index][key] = val;
+      }
+      return {
+        set: function (item, key, value) {
+          myUpdate(mySelect(item), key, value);
+        },
+        get: function (cb) {
+          return person[index];
+        }
+      }
+    }
+    var newPerson = module();
+
+
+
+
+  </script>
+</body>
+
+</html>
+<!-- 
+	 in  fun  out 
+
+-->

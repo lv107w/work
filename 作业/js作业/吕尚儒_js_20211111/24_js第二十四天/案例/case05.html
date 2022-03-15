@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 基础轮播图 banner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+      width: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 0 8px #333;
+
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <img id="pic" src="images/p1.jpg" width="500" height="375" alt="pkq">
+    <div class="slider">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+    </div>
+  </div>
+  <script>
+    /*
+      丐中丐版轮播图
+      点击对应的slider 根据slider的值替换 图片的src
+    */
+
+    var oPic = document.querySelector('#pic');
+    var oSlider = document.querySelector('.slider');
+
+    oSlider.onclick = function (e) {
+      if (e.target.tagName.toLowerCase() === 'span') {
+        oPic.src = `images/p${e.target.innerText}.jpg`;
+      }
+    }
+
+  </script>
+</body>
+
+</html>

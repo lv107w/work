@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/layui/dist/css/layui.css">
+  <title>Document</title>
+ 
+  <style>
+    .container {
+      width: 460px;
+      padding: 20px;
+      margin: 50px auto;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form class="layui-form" action="javascript:;" enctype="multipart/form-data">
+      <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+          <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+          <input type="text" name="sex" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="pwd" lay-verify="required" lay-reqtext="请输入密码" placeholder="请输入密码"
+            autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">头像</label>
+        <div class="layui-input-block">
+          <input type="file" name="avator" lay-verify="required" lay-reqtext="请输入密码" placeholder="请输入密码"
+            autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button id="submit" type="submit" class="layui-btn">登录</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    const $form = $('form')
+    const $submit = $('#submit')
+
+    $submit.on('click', () => {
+      console.log($form.serializeArray());
+      let requestData = serializeJSON($form.serializeArray())
+      let form = new FormData($form[0])
+      myAjax({
+        url: 'http://127.0.0.1:3008/data',
+        data: form,
+        method: 'POST',
+        contentType: 'form',
+        success(data) {
+          console.log(data);
+        },
+        error(err) {
+          console.log(err);
+        }
+      })
+    })
+
+   
+
+    function myAjax({
+      url = '/',
+      method = 'POST',
+      data = '',
+      dataType = "json",
+      contentType = 'queryStr',
+      success = function(data) {
+        console.log(data);
+      },
+      err = function(err) {
+        console.log(err);
+      }
+    }) {
+      const contentTypeMap = {
+        'json': 'application/json',
+        'form': 'multipart/form-data',
+        'text': 'text/plain',
+        'queryStr': 'application/x-www-form-urlencoded'
+      }
+
+      let xhr = new XMLHttpRequest()
+      method = method.toUpperCase()
+      xhr.responseType = dataType
+
+
+      //r如果请求方法为GET，请求地址后面拼接请求参数
+      if(method === 'GET') {
+        url += '?' + fromatQueryString(data)
+        data = null
+      }
+
+      //如果请求类型为json， 数据转换成'{a: 1, b: 2}'
+      if(contentType === 'json') {
+        data = JSON.stringify(data)
+      }
+
+      //如果请求类型为queryStr 数据转换成a=1&b=2的形式
+      if(contentType === 'queryStr') {
+        data = fromatQueryString(data)
+      }
+
+      //第三个参数true代表是否开启异步
+      xhr.open(method, url, true)
+      let reqHeaderCt = contentTypeMap[contentType]
+
+      if(!(contentType === 'form')) {
+        //如果请求的content-type不是multopart 不设置requestHeader让浏览器自己识别
+        xhr.setRequestHeader('content-type', reqHeaderCt)
+      }
+
+      console.log(data);
+      xhr.send(data) 
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+          let responseData = xhr.response
+          console.log(xhr.response);
+      
+          // if(xhr.responseType === 'json' && isJSON(responseData)) {
+          //   responseData = JSON.parse(responseData)
+          // }
+          success(responseData)
+        }
+      }
+
+      xhr.onerror = function(err) {
+        error(err)
+      }
+    }
+
+    function serializeJSON(queryArr) {
+      return queryArr.reduce((acc, {name, value}) => {
+         acc[name] = value
+         return acc
+      }, {})
+    }
+
+    function isJSON(str) {
+        try {
+          JSON.parse(str)
+          return true;
+        } catch (err) {
+          return false;
+        }
+        return false;
+      }
+
+    function fromatQueryString(data) {
+      return Object.entries(data).map(([key, value]) => {
+        return `${key}=${value}`
+      }).join('&')
+    }
+  </script>
+</body>
+</html>

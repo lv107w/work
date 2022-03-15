@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地传参</title>
+</head>
+
+<body>
+  <div class="btn">点击跳转</div>
+  <script>
+    var param = '海牙';
+
+    var oBtn = document.querySelector('.btn');
+    oBtn.onclick = function () {
+      location.href = 'http://127.0.0.1:5503/demo%20end.html?param=' + param;
+    }
+  </script>
+</body>
+
+</html>

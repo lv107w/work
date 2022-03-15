@@ -1,0 +1,319 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-10 20:31:13
+ * @LastEditTime: 2020-08-10 21:42:39
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 轮播图 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+      overflow: hidden;
+      position: relative;
+      width: 500px;
+      box-shadow: 0 0 8px #333;
+
+    }
+
+    .pic-list {
+      width: 100%;
+    }
+
+    .pic-list li {
+      float: left;
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .btn-wrap span {
+      user-select: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 40px;
+      height: 85px;
+      line-height: 85px;
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+    }
+
+    .btn-wrap span:hover {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .slider .active {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <ul class="pic-list">
+      <li><img src="images/1.jpg" alt="" width="500" height="200"></li>
+      <li><img src="images/2.jpg" alt="" width="500" height="200"></li>
+      <li><img src="images/3.jpg" alt="" width="500" height="200"></li>
+      <li><img src="images/4.jpg" alt="" width="500" height="200"></li>
+    </ul>
+    <div class="slider">
+
+    </div>
+    <div class="btn-wrap">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /* 
+        oUl 的margin-left 改变 实现切换效果
+
+
+        index
+
+        oUl marginLeft 和 index 之间的关系是什么
+
+        0 0 
+
+
+        -index * pic.offsetWidth + 'px';  
+
+
+        无缝轮播
+
+        障眼法 
+
+        把第0张picli 复制一份 加到 最后
+        总li就是5个  
+        p0 p1 p2 p3 p0
+        0  1  2  3  4
+        
+        只需要考虑两个特殊情况
+        next
+        1. 如果当前是 p3 展示 点击next 让ul过渡到下标4的p0图 (视觉上就是从最后一张直接过渡到第一张)
+
+        2. 如果当前 p0(下标4) 展示 点击 next 让index 切换到0 位置直接修改变化到 下标0对应的 marginLeft  , 在进行index++ 慢慢过渡到 p1(1)
+
+        prev
+        3. 如果当前展示p0(0) 点击prev 瞬间切换到p0(4) ,然后 index-- 慢慢过渡到p3(3)
+
+        4. 如果当前展示的是 p0(4) 点击prev index-- 然后过渡到p3(3)
+
+
+
+        coding
+
+        1. 初始化的时候 克隆p0(0) 添加到 pic-list中
+         pic-list.appendChild(p0.cloneNode(true)) => init
+
+        2. next 点击 加判断 => 根据判断执行
+
+        3. prev 点击 加判断 => 根据判断执行
+
+        4. 处理slider的对应关系
+
+        
+
+
+        开发实现层次的优先级
+
+        1. 实现需求 实现效果
+        2. 主流浏览器 和 非主流浏览器兼容
+        3. 代码的封装 整理
+        4. 细节处理(用户交互感受 默认行为) 代码的优化 
+
+    
+    */
+    var oBanner = $('.banner');
+    var oUl = $('.pic-list');
+    var aPic = $$('.pic-list li');
+    var oBtnWrap = $('.btn-wrap');
+    var oSlider = $('.slider');
+    var aSlider = oSlider.children;
+    var picW = aPic[0].offsetWidth;
+    var picLen = aPic.length + 1;
+    var index = 0;
+    var timer;
+    init();
+    var tapMap = {
+      'prev': function (e) {
+        move(function () {
+          if (index === 0) {
+            index = aPic.length - 1;
+            oUl.style.marginLeft = -index * picW + 'px';
+          }
+          index--;
+          index = (picLen + index) % picLen;
+        });
+      },
+      'next': function (e) {
+        move(function () {
+          if (index === aPic.length - 1) {
+            console.log('我要瞬间调到0 然后慢慢走到1');
+            index = 0;
+            oUl.style.marginLeft = -index * picW + 'px';
+          }
+          index++; //4
+          index = index % picLen; // len 5 4%4
+        });
+      }
+    }
+
+    function init() {
+      var spanStr = '';
+      var firstClass = '';
+      oUl.style.width = `${picLen * 100}%`;
+      for (var i = 0; i < picLen - 1; i++) {
+        firstClass = ''
+        if (i === 0) {
+          firstClass = 'class="active"';
+        }
+        spanStr += `<span ${firstClass}>${i + 1}</span>`;
+      }
+      oSlider.innerHTML = spanStr;
+      oUl.appendChild(aPic[0].cloneNode(true));
+      aPic = $$('.pic-list li');
+      autoTranslate();
+    }
+
+    oBanner.addEventListener('mouseover', function () {
+      clearInterval(timer);
+    }, false);
+
+    oBanner.addEventListener('mouseout', function () {
+      autoTranslate();
+    }, false);
+
+    oBtnWrap.addEventListener('click', function (e) {
+      e = e || window.event;
+      if (e.target.tagName.toLowerCase() === 'span') {
+        var btn = e.target;
+        if (tapMap[btn.className] && typeof tapMap[btn.className] === 'function') {
+          tapMap[btn.className](e);
+        }
+      }
+    }, false);
+
+    oSlider.addEventListener('mouseover', function (e) {
+      e = e || window.event;
+      if (e.target.tagName.toLowerCase() === 'span') {
+        var sliderBtn = e.target;
+        move(function () {
+          index = getElementIdx(sliderBtn);
+        })
+      }
+    }, false);
+
+    function move(callback) {
+      aSlider[index % (aPic.length - 1)].classList.remove('active');
+      callback && callback(); //插入执行 index修改代码
+      //如果index 为4 我们让index 变为0  4%4 3%4 2%4
+      aSlider[index % (aPic.length - 1)].classList.add('active');
+      animate(oUl, {
+        marginLeft: -index * picW + 'px'
+      })
+    }
+
+
+    //自动切换 轮播 index++;
+    function autoTranslate() {
+      clearInterval(timer);
+      timer = setInterval(function () {
+        tapMap['next']();
+      }, 1000)
+    }
+
+    function animate(ele, json, callback) {
+      clearInterval(ele.time);//保证每一次都只有一个定时器在运行
+      var toggle = false;
+      var currLeft = parseInt(getStyle(ele, 'left'));
+      ele.time = setInterval(function () {
+        //每次定时循环都暂且认为他们都可以达到最终结果
+        toggle = true;
+        for (var key in json) {
+          var target = parseInt(json[key])
+          curr = parseInt(getStyle(ele, key));
+          speed = (target - curr) / 10;
+          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+          if (curr === target) {
+            //width 先到了指定值了 定时器结束了 
+            ele.style[key] = target + 'px';
+          }
+          ele.style[key] = curr + speed + 'px';
+          if (curr !== target) {
+            //只要有某一个属性的值不到指定结果 关闭锁
+            toggle = false;
+          }
+        }
+        if (toggle) {
+          clearInterval(ele.time);
+          callback && callback();
+        }
+      }, 1000 / 60);
+    }
+
+  </script>
+</body>
+
+</html>

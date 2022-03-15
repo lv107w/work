@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertBefore cloneNode</title>
+</head>
+<body>
+  <div id="wrap">
+    <p class="des">你好</p>
+  </div>
+
+  <script>
+    var oWrap = document.querySelector('#wrap');
+    var aDes = oWrap.querySelectorAll('.des');
+
+    var copyDes = aDes[0].cloneNode();
+    copyDes.innerText = '我拷贝的.des标签';
+    console.log(copyDes);
+
+    oWrap.insertBefore(copyDes, aDes[0]);
+  </script>
+</body>
+</html>

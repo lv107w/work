@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>jsonp 跨域</title>
+</head>
+
+<body>
+  <script>
+    function jsonpPakeage(obj) {
+      //写入url地址中的函数名称，动态创建
+      var callbackName = "fn" + Math.random().toString().split("\.")[1];
+
+      //创建一个script标签
+      var scriptObj = document.createElement("script");
+
+      obj.parames = obj.parames || '';
+      if (typeof obj.parames == 'object') {
+        var arr = new Array();
+        for (var key in obj.parames) {
+          arr.push(key + '=' + obj.parames[key])
+        }
+        obj.parames = arr.join('&');
+      }
+      //设置标签的请求路径
+      //像这样：http://localhost:3000/jsonp?callback=fn153498520409635392&id=1
+      scriptObj.src = obj.url + '?' + 'callback=' + callbackName + '&' + obj.parames;
+      //将创建好的带请求的script标签添加到html的body中
+      document.querySelector('head').appendChild(scriptObj);
+
+      //这里必须这样写window[callbackName];
+      //var one = true;
+      window[callbackName] = function (res) {
+        //if(one){
+        obj.success(res);
+        //删除的时候可以这样写
+        //由于请求一次会创建一个script标签和一个函数，所以每次获取到结果后就删除
+        delete window.callbackName;
+        document.querySelector('head').removeChild(scriptObj);
+        // one = false
+        //}
+      }
+    }
+    jsonpPakeage({
+      url: "http://127.0.0.1:3002/jsonp",
+      parames: "",
+      success: function (res) {
+        console.log(res)
+      }
+    })
+  </script>
+</body>
+
+</html>

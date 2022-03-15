@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scrollIntoView 滚动到展示区</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    .box {
+      height: 400px;
+      background-color: #368;
+      margin: 10px;
+      text-align: center;
+      line-height: 400px;
+      font-size: 80px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+
+    .slide-nav {
+      position: fixed;
+      top: 300px;
+      right: 0;
+      height: 500px;
+      width: 45px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .slide-nav li {
+      font-size: 20px;
+      line-height: 80px;
+      text-align: center;
+      border-bottom: 1px solid #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+  <div class="box">6</div>
+  <ul class="slide-nav">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /* 
+    
+      楼梯导航 设置scrollTop = 展示元素的顶端距离文档顶端距离
+
+
+        参数初始化保护 短路或||的 问题
+
+        如果参数本身就是 false 或者 '' 或者 0 就会出现问题
+        
+
+     */
+    var aBox = $$('.box');
+    var oNav = $('.slide-nav');
+    var timer;
+
+    oNav.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'li') {
+        var target = e.target;
+        var index = getElementIdx(target);
+        // console.log(document.documentElement.scrollTop)
+        moveScroll(aBox[index], getPosition(aBox[index]).top, false);
+        //aBox[index].scrollIntoView(true); //参数 `true` 与浏览器对齐，`false`元素在窗口居中显示
+      }
+    }, false);
+
+    function moveScroll(ele, targetTop, isTop) {
+
+      var isTop;
+      // (typeof isTop === 'undefined') && (isTop = true);
+
+      var isTop = isTop ?? true;
+
+      var speed = 10;
+      var scrollTop;
+      if (!isTop) {
+        targetTop -= (window.innerHeight - ele.offsetHeight) / 2;
+      }
+      clearInterval(timer);
+      timer = setInterval(function () {
+        scrollTop = document.documentElement.scrollTop;
+        console.log(scrollTop, targetTop)
+        speed = (targetTop - scrollTop) / 10;
+        if (Math.abs(scrollTop - targetTop) <= 20) {
+          clearInterval(timer);
+          document.documentElement.scrollTop = targetTop;
+          return false;
+        }
+        document.documentElement.scrollTop = scrollTop + speed;
+      }, 1000 / 30);
+    }
+
+
+
+  </script>
+</body>
+
+</html>

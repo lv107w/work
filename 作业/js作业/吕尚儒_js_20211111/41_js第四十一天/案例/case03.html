@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this 与 call</title>
+</head>
+
+<body>
+  <ul id="product">
+  </ul>
+  <script>
+
+    const oUl = document.querySelector('#product');
+    /* 
+      商品转化成字符串形式 格式化
+ 
+      商品名称:吸尘器 , 商品价格:$199, 商品库存:999
+    
+    */
+    const PRODUCT_DATA = [
+      {
+        UID: '018945389743211',
+        productName: '吸尘器',
+        productPrice: '$199',
+        productCount: 999
+      },
+      {
+        UID: '018945389743213',
+        productName: '机器人',
+        productPrice: '$1199',
+        productCount: 222
+      },
+      {
+        UID: '018945389742234',
+        productName: '鼠标',
+        productPrice: '$19',
+        productCount: 111
+      }
+    ];
+
+
+    function format(idx) {
+      return `商品序号:${idx} 商品名称:${this.productName} , 
+      商品价格:<span>${this.productPrice}</span> , 
+      商品库存:${this.productCount} `
+    }
+
+    function createTemplate() {
+      let str = ''
+      this.forEach(function (item, idx) {
+        str += `<li>${format.call(item, idx)}</li>`;
+      });
+      return str;
+    }
+
+    function drawList(str) {
+      oUl.innerHTML = str;
+    }
+
+    drawList(createTemplate.call(PRODUCT_DATA));
+
+    sortList();
+
+    function sortList() {
+      var tempArr = [].slice.call(oUl.children);
+      // console.log(oUl.children);
+      tempArr.sort(function (a, b) {
+        const aPrice = parseFloat(a.querySelector('span').innerText);
+        const bPrice = parseFloat(b.querySelector('span').innerText);
+        console.log(aPrice);
+        return aPrice - bPrice;
+      });
+      console.log(tempArr);
+    }
+
+
+    /* 
+      关于this看 函数在执行的时候 是谁调用的 如果有call绑定对象 那就指向call绑定的对象
+    
+    */
+    const PIG = {
+      name: "piqi",
+      showName: function () {
+        fn1.call(OTHER_PIG);
+      }
+    }
+
+    const OTHER_PIG = {
+      name: "meimei"
+    }
+
+    function fn1() {
+      console.log(this.name);
+    }
+
+    PIG.showName();
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

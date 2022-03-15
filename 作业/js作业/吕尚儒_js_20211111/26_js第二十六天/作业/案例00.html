@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器 setInterval setTimeou</title>
+</head>
+<body>
+<script>
+  var index = 0;
+  var time = window.setInterval(function() {
+    index++;
+    console.log(index);
+  }, 1000);
+
+  var outTime = window.setTimeout(function() {
+    console.log('我出来了');
+    clearInterval(2);
+    console.log(this);//window
+  }, 3000)
+  
+  console.log(time,outTime);//返回一个自身的序号 (手机上定闹钟 闹钟的序号) 序号用于清除的时候作为定时器的标识
+</script>
+</body>
+</html>

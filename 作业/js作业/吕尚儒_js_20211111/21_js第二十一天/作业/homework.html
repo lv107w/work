@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>以下列虚拟对象添加对应的标签到页面上</title>
+</head>
+
+<body>
+  <script>
+
+    /* 
+      将这个虚拟节点数据 具象化成实际标签 
+    */
+    var element = {
+      tagName: 'div',
+      id: 'header',
+      className: 'title fw400 c666 fz28',
+      contentText: '我是一个header标签',
+      children: [
+        {
+          tagName: 'h1',
+          id: '',
+          className: 'logo',
+          contentText: '我是logo',
+          children: []
+        },
+        {
+          tagName: 'ul',
+          id: '',
+          className: 'nav',
+          contentText: '',
+          children: [
+            {
+              tagName: 'li',
+              id: '',
+              className: 'list',
+              contentText: '导航1',
+              children: []
+            },
+            {
+              tagName: 'li',
+              id: '',
+              className: 'list',
+              contentText: '导航2',
+              children: []
+            },
+          ]
+        }
+      ]
+    }
+
+
+
+/* 
+    var oWrap = document.createElement('div');
+    oWrap.id = 'header';
+    oWrap.className = 'title';
+    oWrap.style.fontWeight = '400';
+    oWrap.style.color = '#666';
+    oWrap.style.fontSize = '28px';
+    oWrap.innerText = '我是一个header标签';
+    oWrap.innerText = '我是一个header标签';
+    document.body.appendChild(oWrap);
+
+    var oH1 = document.createElement('h1');
+    oH1.className = 'logo';
+    oH1.innerText = '我是logo';
+    oWrap.appendChild(oH1);
+
+    var oUl = document.createElement('ul');
+    oUl.className = 'nav';
+    oWrap.appendChild(oUl);
+
+    var aLi1 = document.createElement('li');
+    var aLi2 = document.createElement('li');
+
+    aLi1.className = 'list';
+    aLi1.className = 'list';
+    aLi1.innerText = '导航1';
+    aLi2.innerText = '导航2';
+
+    oUl.appendChild(aLi1);
+    oUl.appendChild(aLi2);
+
+
+ */
+    
+    //==========================封装函数，方法改进================================
+
+    function drawElement(ele, parentEle) {
+      var vDom = document.createElement(ele['tagName']);
+      ele['innerText'] = ele['contentText']; //添加innerText属性，以便写入虚拟dom
+ 
+      for (var key in element) {
+        ele[key] && (vDom[key] = ele[key]); //ele[key]存在，则完成赋值
+      }
+
+      parentEle.appendChild(vDom); //把创建好的虚拟dom添加到父节点
+
+      if (ele['children'].length > 0) {
+        for (var i = 0, len = ele['children'].length; i < len; i++) {
+          drawElement(ele['children'][i], vDom)  //递归调用创建虚拟dom并添加到父节点，直到不满足ele['children'].length > 0
+        }
+      }
+    }
+
+
+    drawElement(element, document.body)
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <!-- 为了让IE以最新的标准和模式渲染页面 强制使用edge内核  -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 360浏览器支持此 <meta> 标签。希望更多国内浏览器尽快采取行动、尽快进入高速时代！ -->
+  <meta name="renderer" content="webkit">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>Bootstrap 101 Template</title>
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+  <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+
+  <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+   <![endif]-->
+  <style>
+    /*
+      w>1200:1170
+      w:992~1200:970
+      w:768~992: 750
+      w<768:100%
+      版心容器
+    */
+    .container {
+      height: 300px;
+      background-color: #ccc;
+      color: #fff;
+    }
+
+    /*
+      w:100%
+      通栏容器
+    */
+    .container-fluid {
+      height: 300px;
+      background-color: #ccc;
+    }
+
+    .row {
+      height: 100%;
+    }
+
+    .container>.row>div {
+      box-sizing: border-box;
+      border: 1px solid red;
+      background-color: #222;
+      height: 100%;
+    }
+
+    .red {
+      box-sizing: border-box;
+      background-color: red;
+      border: 2px solid green;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+
+    <!-- 
+        w:1200 large  lg pc
+        w:992~1200 middle md 笔记本
+        w:768~992 small sm 平板
+        w:<768 extra-small xs 手机
+
+
+        /* 超小屏幕（手机，小于 768px） */
+      /* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+      /* 小屏幕（平板，大于等于 768px） */
+      @media (min-width: @screen-sm-min) { ... }
+
+      /* 中等屏幕（桌面显示器，大于等于 992px） */
+      @media (min-width: @screen-md-min) { ... }
+
+      /* 大屏幕（大桌面显示器，大于等于 1200px） */
+      @media (min-width: @screen-lg-min) { ... }
+
+
+       -->
+    <!--row一行12列 当前div在xs尺寸下占据行内12份中的3份 在sm尺寸下占据6份 在md尺寸下占据4份 在lg尺寸下占据3份-->
+    <!-- <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-push-3">1</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">2</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">3</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">4</div>
+    </div> -->
+
+    <!-- 
+      col-lg-offset-3
+        margin-left:25% 
+      当前item 在lg尺寸下 向右偏移 3列 后续item会受到影响
+
+      col-lg-pull-3
+        right:25%
+      当前item 在lg尺寸下 向前偏移 3列 后续元素不受影响
+
+      col-lg-push-3
+        left:25%
+      当前item 在lg尺寸下 向后偏移 3列 后续元素不受影响
+     -->
+    <!-- <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">1</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-offset-3">2</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">3</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">4</div>
+    </div> -->
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">1</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <!-- 嵌套行总宽度 是跟着上级列宽度来的 -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-12 red">1</div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">3</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">4</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function 扩展 es6</title>
+</head>
+
+<body>
+  <script>
+
+    //传入对象 和指定属性名称 作为参数返回对应属性的值 如果属性或者属性值不存在 返回null
+    function getValue(o, key) {
+      return o[key] || null;
+    }
+
+    function add(a, b) {
+      a = a ?? 10;
+      b = b ?? 10;
+      return a + b;
+    }
+
+    let arr = [1, 2, 3, 4, 5];
+    function forEach(arr, cb) {
+      if (!cb || !(typeof cb === 'function')) {
+        cb = function (item, idx, arr) {
+          console.log(item);
+        }
+      }
+      for (let i = 0, len = arr.length; i < len; i++) {
+        cb && cb(arr[i], i, arr);
+      }
+    }
+
+    // forEach(arr);
+
+
+
+    function add(a = 10, b = 10) {
+      return a + b;
+    }
+
+
+    function forEach(arr, cb = function (item, idx, arr) {
+      console.log(item);
+    }) {
+
+      for (let i = 0, len = arr.length; i < len; i++) {
+        cb && cb(arr[i], i, arr);
+      }
+    }
+
+    let z = 100;
+
+    function show(x = 10, y = z) {
+      console.log(x, y, z);
+    }
+
+    show(20);
+
+    z = 199;
+
+    show(20);
+
+
+    forEach(arr);
+    console.log(add(undefined, 9));
+
+
+    let w = 10;
+    function fn(x = w) {
+      w = 20;
+      return x;
+    }
+
+
+
+    /* 
+    
+    {
+      name = 'kyogre',
+      cb = function () {
+        console.log(this.name)
+      }
+    } 
+     */
+
+
+
+
+
+    console.log(fn()); // 10
+    console.log(w); // 20
+
+
+
+    function fn1(o = {
+      name: 'kyogre',
+      cb: function () {
+        console.log(this.name)
+      }
+    }) {
+      o.cb();
+    }
+
+    fn1()
+
+  </script>
+</body>
+
+</html>

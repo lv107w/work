@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品放大镜 </title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    img {
+      display: block;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1200px;
+
+    }
+
+    .product-intro {
+      position: relative;
+      width: 450px;
+      height: 450px;
+      margin: 100px 0 0 200px;
+      border: 1px solid #ccc;
+    }
+
+    .preview {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .enlargement {
+      overflow: hidden;
+      display: none;
+      position: absolute;
+      left: 450px;
+      top: -1px;
+      width: 540px;
+      height: 540px;
+      border: 1px solid #ccc;
+    }
+
+
+    .mask {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 60%;
+      background: rgba(255, 255, 0, .4);
+      cursor: move;
+    }
+
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="product-intro">
+      <div class="preview">
+        <img src="images/m30.jpg" data-enlarge="images/m30-big.jpg" width="450" alt="m30">
+        <div class="mask"></div>
+      </div>
+      <div class="enlargement">
+        <img id="enlarge-img" src="images/m30-big.jpg" width="900" alt="m30">
+      </div>
+    </div>
+    <div class="product-params">
+      <h3 class="product-title">华为手机厉害的很, 超级棒,这款是超级无敌华为手机 型号mate 30pro 支持5G哦</h3>
+      <div class="product-configure">
+        <ul>
+          <li>
+            <label>选择颜色</label>
+            <div class="product-item"><span>红色</span> <span>白色</span> <span>绿色</span></div>
+          </li>
+          <li>
+            <label>选择内存</label>
+            <div class="product-item"><span>64G</span> <span>128G</span> <span>256G</span></div>
+          </li>
+          <li>
+            <label>选择版本</label>
+            <div class="product-item"><span>4G 全网通</span> <span>5G 全网通</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="JS/common.js"></script>
+  <script>
+    var oProduct = $('.product-intro');
+    var oPreview = $('.preview');
+    var oEnlarge = $('.enlargement');
+    var oEnlargeImg = oEnlarge.querySelector('#enlarge-img');
+    var oMask = $('.mask');
+
+    var mouseEventMap = {
+      'mouseenter': function (e) {
+        oMask.classList.add('active');
+        oEnlarge.classList.add('active');
+      },
+      'mouseleave': function (e) {
+        oMask.classList.remove('active');
+        oEnlarge.classList.remove('active');
+      },
+      'mousemove': function (e) {
+        var x = e.clientX - oMask.offsetWidth / 2 - getPosition(oPreview).left;
+        var y = e.clientY - oMask.offsetHeight / 2 - getPosition(oPreview).top;
+        x = Math.max(0, x);
+        x = Math.min(x, oPreview.offsetWidth - oMask.offsetWidth);
+
+        y = Math.max(0, y);
+        y = Math.min(y, oPreview.offsetHeight - oMask.offsetHeight);
+        oMask.style.left = x + "px";
+        oMask.style.top = y + "px";
+
+
+        var maxX = oEnlargeImg.offsetWidth - oEnlarge.offsetWidth;
+        var maxY = oEnlargeImg.offsetHeight - oEnlarge.offsetHeight;
+
+        var bigImgMoveX = x * maxX / (oPreview.offsetWidth - oMask.offsetWidth);
+        var bigImgMoveY = y * maxY / (oPreview.offsetWidth - oMask.offsetWidth);
+
+        oEnlargeImg.style.marginLeft = -bigImgMoveX + 'px';
+        oEnlargeImg.style.marginTop = -bigImgMoveY + 'px';
+      }
+    }
+
+    oPreview.addEventListener('mouseenter', handle, false);
+    oPreview.addEventListener('mouseleave', handle, false);
+    oPreview.addEventListener('mousemove', handle, false);
+
+    function handle(e) {
+      if (mouseEventMap[e.type] && typeof mouseEventMap[e.type] === 'function') {
+        mouseEventMap[e.type](e);
+      }
+    }
+
+  </script>
+</body>
+
+</html>

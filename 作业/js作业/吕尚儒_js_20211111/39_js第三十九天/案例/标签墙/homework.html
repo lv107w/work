@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签墙案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: rgb(233, 233, 233);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .wrap {
+      display: flex;
+      width: 800px;
+      height: 500px;
+      margin: 50px auto;
+    }
+
+    .select-box {
+      width: 400px;
+      height: 500px;
+      padding: 30px 20px;
+      background-color: #fff;
+      color: #888;
+    }
+
+    .select-box .hot {
+      color: orange;
+    }
+
+    .select-box>span {
+      line-height: 28px;
+      cursor: pointer;
+    }
+
+    .select-box>span:hover {
+      color: orange;
+    }
+
+    .select-box .tag-box {
+      margin-top: 30px;
+    }
+
+    .tag-box span {
+      float: left;
+      padding: 5px;
+      margin: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .tag-box span i {
+      font-style: normal;
+      cursor: pointer;
+    }
+
+    .tag-box span i:hover {
+      color: red;
+    }
+
+    .show-box {
+      width: 400px;
+      height: 500px;
+      padding: 30px 20px;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .show-box ul li {
+      float: left;
+      color: #fff;
+      padding: 5px 10px;
+      margin: 8px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="select-box">
+      <span class="hot">热门目的地：</span>
+      <span class="tag">马来西亚</span>
+      <span class="tag">泰国</span>
+      <span class="tag">三亚</span>
+      <span class="tag">中国</span>
+      <span class="tag">英国</span>
+      <span class="tag">澳大利亚</span>
+      <span class="tag">新西兰</span>
+      <div class="tag-box">
+
+      </div>
+    </div>
+    <div class="show-box">
+      <ul></ul>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+    /*
+      标签墙
+
+      点击select区域的标签 如果该标签不是已选择状态 添加到tag区域 和show区域
+      tag区域的对应标签 有清除 x 按钮 点击清除按钮 会删掉tag区域对应标签以及show区域对应标签 
+      并且将select区域对应标签的状态改为未选择 
+      1. 准备材料 oSelect oTag oShow
+      2. 准备事件  oSelect的click委托 
+                  oTag的click委托
+      3. 主要行为
+        1. 创建副本 oSelect的click委托 
+          1. 创建oTag副本
+          2. 创建oShow副本
+        2. 删除副本 oTag的click委托
+          1. 删除oTag副本
+          2. 删除oShow副本
+      4. 业务难点 
+        1. 如何判定该标签是否已选中
+
+        2. 如何对应删除 
+          1. tag show 下标对应
+          2. 清除tag对应select的选中状态
+          
+       ele.classList.contains(类名字符串);
+
+       判断ele标签是否包含这个类名 返回boolean值
+    */
+
+    var oSelect = $('.select-box');
+    var oTag = $('.tag-box');
+    var oShow = $('.show-box ul');
+
+    oSelect.addEventListener('click', function (e) {
+      e = e || window.event;
+      var target = e.target;
+      if (target.classList.contains('tag')) {
+        var isSelected = target.dataset.selected;
+
+        //selected 0:未选 1:已选
+        if (isSelected === '1') {
+          return false; //已选 不能重复选择 返回
+        }
+        createTag(target.innerText, getElementIdx(target));
+        target.dataset.selected = '1';
+      }
+    }, false);
+
+
+    oTag.addEventListener('click', function (e) {
+      e = e || window.event;
+      var target = e.target;
+      if (target.tagName.toLowerCase() === 'i') {
+        removeTag(target.parentNode)
+      }
+    }, false);
+
+
+    function removeTag(target) {
+      var idx = getElementIdx(target);
+      var selectIdx = target.dataset.selectIdx;
+      target.remove();
+      oShow.children[idx].remove();
+      oSelect.children[selectIdx].dataset.selected = '0';
+    }
+
+    function createTag(str, idx) {
+      var eleMap = {
+        'tag': {
+          createTagName: 'span',
+          cleanBtn: '| <i>x</i>',
+          parent: oTag
+        },
+        'show': {
+          createTagName: 'li',
+          cleanBtn: '',
+          parent: oShow
+        }
+      }
+      for (var key in eleMap) {
+        var vDom = document.createElement(eleMap[key]['createTagName']);
+        vDom.innerHTML = `${str} ${eleMap[key]['cleanBtn']}`;
+        vDom.dataset.selectIdx = idx;
+        eleMap[key]['parent'].appendChild(vDom);
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>

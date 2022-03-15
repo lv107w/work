@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环总结</title>
+</head>
+
+<body>
+  <script>
+
+    // 一张纸的厚度是 0.01 喜马拉雅山 最高8848 纸张对折多少次厚度能达到8848
+    var p = 0.01; 
+
+    for (var i = 1; p < 8848; i++) {
+      p *= 2;
+    }
+    console.log(i);
+    
+    var index = 1, p = 0.01;
+    while (p < 8848) {
+      p *= 2;
+      index++;
+    }
+    console.log(index);
+
+  </script>
+</body>
+
+</html>

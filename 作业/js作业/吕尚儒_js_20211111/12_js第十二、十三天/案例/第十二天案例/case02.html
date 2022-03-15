@@ -1,0 +1,88 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-25 21:16:39
+ * @LastEditTime: 2020-07-25 22:49:27
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字面量</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <script>
+    /*
+      我们为什么需要对象
+      能够把一系列的值通过一个对象形成无序集合方便 调用和管理
+
+    */
+
+    var xh = {
+      name: '小花',
+      age: 19,
+      sex: '男'
+    }
+
+    var zs = {
+      name: '张三',
+      age: 12,
+      sex: '女'
+    }
+
+    console.log('我的名字' + xh.name);
+
+    console.log('我的名字' + zs.name);
+
+
+    //一个函数 需要返回 数组的每项和以及平均值
+
+    function getResult(arr) {
+      var sum = 0, avg = 0;
+      for (var i = 0, len = arr.length; i < len; i++) {
+        sum += arr[i];
+      }
+      avg = sum / len;
+
+      return {
+        "avg": avg,
+        "sum": sum
+      }
+    }
+
+    var result = getResult([1, 2, 3]);
+    console.log(result.avg)
+    console.log(getResult([1, 2, 3]).avg);
+
+
+    function showMe(name, age, sex, height, weight) {
+      console.log('大家好,我叫' + name + '我今年:' + age + '我性别:' + sex + '身高' + height + '体重' + weight);
+    }
+    showMe('张三', 13, '男', 180);
+
+    function showMe(param) {
+      console.log('大家好,我叫' + param.name + '我今年:' + param.age + '我性别:' + param.sex + '身高' + param.height + '体重' + param.weight);
+    }
+
+    showMe({
+      name: '张三',
+      age: 13,
+      sex: '男',
+      weight: '180'
+    });
+
+
+
+
+  </script>
+</body>
+
+</html>

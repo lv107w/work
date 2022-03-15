@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>preventExtensions 不可扩展</title>
+</head>
+<body>
+  <script>
+    let o = {
+      a: 1,
+      b: 2
+    }
+
+    Object.preventExtensions(o);//不可扩展
+
+    o.c = 3;  //不可扩展 不能新增属性 只能对已有属性进行操作
+    delete o.a; //可删除
+    o.b = 10; //不可扩展 但可修改
+    console.log(o);
+
+
+    console.log(Object.isExtensible(o)); //false
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>javascript 函数</title>
+</head>
+
+<body>
+  <script>
+    //求1-100所有数的和
+
+
+
+    //在来一次
+    function sum() {
+      var count = 0;
+      for (var i = 1; i <= endNum; i++) {
+        count += i;
+      }
+
+      console.log(count);
+    }
+
+    sum();
+   
+
+
+    //我希望求1-200的和
+
+
+    // sum();
+    //我还希望保留1-100的和的结果 就是上面三次调用结果要5050
+
+    function sum(endNum) {
+
+      var count = 0;
+      for (var i = 1; i <= endNum; i++) {
+        count += i;
+      }
+
+      console.log(count);
+    }
+
+    sum(5); //
+    sum(100);
+    sum(80);
+
+    //需求改变 我需要一个函数他们 告诉我 从x 到 y的累加和
+
+
+    function sum(startNum, endNum) {
+      startNum = 100;
+      var count = 0;
+      for (var i = startNum; i <= endNum; i++) {
+        count += i;
+      }
+      console.log(count);
+    }
+
+    sum(3, 5); // startNum => 3   end => 5
+    sum(1, 5); //实参顺序需要与形参顺序对应
+
+    var start = 1;
+    var end = 10;
+
+    sum(start, end);
+
+    console.log(start, end);
+
+  </script>
+</body>
+
+</html>

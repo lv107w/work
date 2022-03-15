@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重继承</title>
+</head>
+<body>
+  <script>
+    function Parent1(name) {
+      this.name = name;
+    }
+
+    Parent1.prototype.showName = function() {
+      console.log(this.name);
+    }
+
+
+    function Parent2(age) {
+      this.age = age;
+    }
+
+    Parent2.prototype.showSomething = function() {
+      console.log('something');
+    }
+
+    function Child(name, age, address) {
+      Parent1.call(this, name);
+      Parent2.call(this, age);
+      this.address = address;
+    }
+
+    mixProto(Child, Parent1, Parent2);
+    Child.prototype.constructor = Child;
+    //多重继承
+    function mixProto(targetClass, parentClass, otherParentClass) {
+      targetClass.prototype = Object.create(parentClass.prototype);
+      // Object.assign(targetClass.prototype, parentClass.prototype); 两个Parent都用Object.assign也可以， 修改子级prototype也不会影响父级prototype
+      Object.assign(targetClass.prototype, otherParentClass.prototype);
+    }
+
+    let child = new Child('piqi', 2, 'earth');
+    console.log(child);
+    child.showName();
+    child.showSomething();
+    Child.prototype.x = 1;
+    console.log(Parent1.prototype);
+    console.log(Child.prototype);
+  </script>
+</body>
+</html>

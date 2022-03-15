@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>defineProperty</title>
+</head>
+<body>
+  <script>
+    let O = {
+      name: 'o'
+    }
+
+    function defineReactive(obj, key, value) {
+      Object.defineProperty(obj, key, {
+        set(newValue) {
+          if(newValue === '大笨蛋') {
+            value = '你才是大笨蛋';
+            console.log(`${key}的值修改为${newValue}`);
+            return;
+          }
+          console.log(`${key}的值修改为${newValue}`);
+          value = newValue;
+        },
+        get() {
+          console.log(`${key}的值为${value}`);
+          return '不告诉你内容';
+        }
+      })
+    }
+
+    defineReactive(O, 'name', 'o');
+  </script>
+</body>
+</html>

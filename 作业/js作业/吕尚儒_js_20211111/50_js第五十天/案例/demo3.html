@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const O = {
+      name: 'joker',
+      age: 13
+    }
+
+    Object.defineProperty(O, 'name', {
+      value: 'kyogre',
+      enumerable: true,
+      writable: false,
+      configurable: true
+    })
+    console.log(O);
+    O.name = 'haha';
+    console.log(O);
+
+    for (let key in O) {
+      console.log(`${key}:${O[key]}`)
+    }
+
+    Object.defineProperty(O, 'name', {
+      value: 'kyogre',
+      enumerable: false,
+      writable: true,
+      configurable: true
+    });
+
+    for (let key in O) {
+      console.log(`this is ${key}:${O[key]}`)
+    }
+
+
+
+    let arr = [1, 2, 3, 4, 5];
+
+
+    for (let i in arr) {
+      console.log(arr[i])
+    }
+
+  </script>
+</body>
+
+</html>

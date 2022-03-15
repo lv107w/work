@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #368;
+    }
+
+    input {
+      position: absolute;
+      top: 200px;
+      left: 200px;
+      width: 180px;
+      height: 90px;
+      border: 0;
+      background-color: #222;
+      color: #fff;
+      font-size: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- 点击input 让div 展示或隐藏-->
+
+  <div id="box">我出来了</div>
+  <input id="btn" type="button" value="隐藏">
+  <script>
+    /* 
+      点击input切换box的显示状态 显示/隐藏
+
+      开关 => boolean => true false
+    
+     */
+    var oDiv = document.querySelector('#box');
+    var oBtn = document.querySelector('#btn');
+    var toggle = true; //开关 默认为true 显示
+
+    // oBtn.onclick = function () {
+    //   if (toggle === true) { //点击btn的时候判断开关是 true的时候 
+    //     oDiv.style.display = 'none'; //把div隐藏
+    //     toggle = false; //把开关改为false 为下一次点击做好准备
+    //     this.value = '显示'; //开关的显示状态 提示语也要变化 再点就是要显示
+    //   } else {
+    //     oDiv.style.display = 'block'; //把div显示
+    //     toggle = true;//把开关置为 true
+    //     this.value = '隐藏';
+    //   }
+    //   console.log(toggle)
+    // }
+
+    /* 
+      1. 提取不变的行为 属性赋值操作 DOM api操作
+      2. 辨别真正需要改变的是 值 还是 操作 本身\
+      3. 思考如何将值剥离 => 变量
+      4. 值是否可以进行预设 尤其是两个值切换的这种情况下 
+    
+    
+     */
+    // oBtn.onclick = function () {
+
+    //   var val = '隐藏', dis = 'block';
+
+    //   if (toggle) {
+    //     val = '显示';
+    //     dis = 'none';
+    //   }
+
+    //   toggle = !toggle;
+    //   oDiv.style.display = dis;
+    //   this.value = val;
+    // }
+
+    oBtn.onclick = function () {
+      oDiv.style.display = toggle ? 'none' : 'block';
+      this.value = toggle ? '显示' : '隐藏';
+      toggle = !toggle;
+    }
+
+  </script>
+</body>
+
+</html>

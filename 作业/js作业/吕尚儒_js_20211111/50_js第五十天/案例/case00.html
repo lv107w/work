@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>defineProperty</title>
+  <style>
+    .ball {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ball"></div>
+  <script>
+
+
+    let O = {
+      name: 'o'
+    }
+
+    defineReactive(O, 'name', 'o');
+
+
+    function defineReactive(obj, key, value) {
+      Object.defineProperty(obj, key, {
+        set(newValue) {
+          if (newValue === '大笨蛋') {
+            value = '你才是大笨蛋';
+            console.log(`${key} 的值修改为${newValue}`);
+            return;
+          }
+          console.log(`${key} 的值修改为${newValue}`)
+          value = newValue;
+        },
+        get() {
+          console.log(`${key} 的值为${value}`)
+          return '不告诉你我的内容'; //name属性进行右查询 调用 value设置给name作为值
+        }
+      });
+    }
+
+
+    O.name = '大笨蛋';
+
+
+    // function defineReactive(obj, key, val, setBack, getBack) {
+    //   Object.defineProperty(obj, key, {
+    //     get: function () {
+    //       return val
+    //     },
+    //     set: function (newVal) {
+    //       if (newVal === val) return
+    //       val = newVal;
+    //       setBack && setBack(newVal);
+    //     }
+    //   });
+    // }
+
+  </script>
+</body>
+
+</html>

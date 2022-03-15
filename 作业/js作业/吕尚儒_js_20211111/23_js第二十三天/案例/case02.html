@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>onload事件</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      float: left;
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 2px solid red;
+      background-color: #368;
+      /*隐士切换span的display展示模式为block*/
+    }
+
+    input {
+      width: 500px;
+      height: 90px;
+      font-size: 30px;
+      padding: 10px;
+    }
+  </style>
+  <script>
+    window.onload = function () { //网页加载完成
+      var oInput = document.querySelector('#input');
+      console.log(oInput); //执行选择器获取的时候 浏览器还没有读到 body标签没有渲染input标签呢
+      oInput.onkeydown = function () {//在input上敲下键盘按键的时候触发
+        console.log(this.value);
+      }
+
+      oInput.onfocus = function () {//在input上敲下键盘按键的时候触发
+        console.log('你聚焦在了input上');
+      }
+
+      oInput.onblur = function () {//在input上敲下键盘按键的时候触发
+        console.log('input失去了焦点');
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div>点我 我就告诉你</div>
+  <input type="text" id="input" value=''>
+  <img src="images/bird.png" alt="">
+
+  <script>
+    var oImg = document.querySelector('img');
+    oImg.onload = function (e) { //加载完成
+      console.log(this.src, e.type);
+    }
+    oImg.onabort = function (e) {//加载中断
+      console.log(this.src, e.type);
+    }
+    oImg.onerror = function (e) {//加载报错
+      console.log(this.src, e.type);
+    }
+  </script>
+</body>
+
+</html>

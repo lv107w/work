@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取相关元素对象</title>
+</head>
+<body>
+  <div class="item">
+    <h3 class="title">龙牌洗发水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <div class="item">
+    <h3 class="title">龙牌洗发水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <script>
+    var oItem = document.querySelector('.item');
+    var oTitle = document.querySelector('h3');
+
+    var itemChild = oItem.children;
+
+    console.log(itemChild);
+    console.log(oItem.childNodes);
+
+    console.log(oItem.firstChild);
+    console.log(oItem.firstElementChild);
+
+    console.log(oItem.lastChild);
+    console.log(oItem.lastElementChild);
+
+    console.log(oTitle.parentElement);
+    console.log(oTitle.parentNode);
+
+    console.log(oTitle.nextElementSibling);
+    console.log(oTitle.nextSibling);
+
+    console.log(oTitle.previousElementSibling);
+    console.log(oTitle.previousSibling);
+
+    console.log(oTitle.nextElementSibling.nextElementSibling);
+    console.log(oTitle.parentElement.lastElementChild);
+  </script>
+</body>
+</html>

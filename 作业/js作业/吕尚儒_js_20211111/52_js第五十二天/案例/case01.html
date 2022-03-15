@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol</title>
+</head>
+
+<body>
+  <script>
+
+    let Obj = {};
+    let s = Symbol('name');
+
+    Obj.s = 10;
+    Obj[s] = 20;
+    Obj['name'] = 30;
+
+    console.log(Obj[s], Obj.s, Obj['name']);
+
+    //Symbol作为属性名的属性 不会被for in遍历出来
+    for (let key in Obj) {
+      console.log(key, Obj[key])
+    }
+
+    console.log(Object.keys(Obj))
+  </script>
+</body>
+
+</html>

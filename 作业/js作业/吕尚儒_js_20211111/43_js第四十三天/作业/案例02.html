@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 变量交换</title>
+</head>
+<body>
+  <script>
+    // let a = 10,
+    // b = 20,
+    // c = 30,
+    // d = 40;
+
+    // // [a, b] = [b, a];
+    // // console.log(a, b); //20 10
+
+    // [a, b, c, d] = [d, c, b, a];
+    // console.log(a, b, c, d); //40 30 20 10
+
+
+
+    /*
+      ['a','b','c','d','e']
+      ['d','e','a','b','c']
+      ['b','c','d','e','a']
+
+      1. 下标顺位位进2
+      2. 下标回环  (index+2)%5
+    */
+
+    let arr = ['a','b','c','d','e'];
+    
+    function sort(arr, n) {   //n表示顺位几次
+      [a, b, c, d, e] = arr;
+      for(let i = 0; i < n; i++) {
+        [a, b, c, d, e] = [d, e, a, b, c];
+      }
+      return [].concat([a, b, c, d, e]);
+    }
+    console.log(sort(arr, 2)); //['b','c','d','e','a']
+  </script>
+</body>
+</html>

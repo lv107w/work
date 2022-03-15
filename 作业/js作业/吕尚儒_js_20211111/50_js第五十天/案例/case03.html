@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象的解构</title>
+</head>
+
+<body>
+  <script>
+    let z = { a: [1, 2, 3], b: 4 };
+
+
+    let o = { b: 6, d: 0 }
+
+    let n = { ...z, ...o };
+    //Object.assign({},z,o);
+    console.log(n);
+
+  </script>
+</body>
+
+</html>

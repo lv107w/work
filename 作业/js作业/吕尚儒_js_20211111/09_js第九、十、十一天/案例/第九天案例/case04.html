@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>javascript 函数 返回值</title>
+</head>
+
+<body>
+  <script>
+
+
+    //我需要拿到结果count 赋值给其他变量 我不想在里面直接打印
+
+    function sum(x, y) {
+      return x < y; //返回 把count变量的值 通过return返回出函数
+    }
+
+    var result = sum(1, 2); //函数会有返回结果 默认为undefined 通过return关键字可以修改返回结果
+    // console.log(result);
+
+    function fn(a, b) {
+      var x = a + b;
+      return x; //函数内部代码执行到return这一行 就结束了 后面的 不管了不运行了
+      console.log('我算出来了,哈哈哈哈');
+      x += 1000;
+      console.log(x);
+    }
+
+    console.log(x)//3
+    var res = fn(1, 2);
+
+    /*
+      1. 返回指定的值 默认为undefined
+      2. 终止函数后续代码的执行
+
+    */
+
+  </script>
+</body>
+
+</html>

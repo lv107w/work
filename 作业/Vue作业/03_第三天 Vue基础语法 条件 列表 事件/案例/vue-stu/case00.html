@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue 条件渲染</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <p v-if="age <= 13">幼儿</p>
+    <span v-else-if=" age > 13 && age <= 45 ">少年</span>
+    <div v-else>中年</div>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          username: 'kyogre',
+          isLogin: true,
+          age: 13
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

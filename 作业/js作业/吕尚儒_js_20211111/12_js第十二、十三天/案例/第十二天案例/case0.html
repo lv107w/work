@@ -1,0 +1,105 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-25 21:16:39
+ * @LastEditTime: 2020-07-25 21:41:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      回顾 函数 作用域
+
+      函数
+       函数体
+        function 函数名(形参){
+          //函数内部代码
+          return 值; //返回关键字
+        }
+
+        函数名(实参);
+
+       作用
+          封装代码 方便重复调用
+
+       参数
+          能够让我们的函数处理不同的原始数据 从而得出不同的结果
+
+         形参
+           自定义命名 个数随意 和实参对应位置
+           默认值 undefined
+           形参会在 函数内隐式声明为局部变量
+         实参
+           函数调用执行的时候传入的实际参数
+
+          不定参 arguments
+          实参列表的集合 多个子项形成的集合 很像数组
+          类数组 有length属性 能够通过下标取值 但是不是数组 不能使用数组的方法
+
+
+       return
+          函数执行到return的时候 返回一个值
+          默认返回为undefined 只写return 后面 ; 也是返回undefined
+          return 后指定一个值 (字面量 变量名) 返回变量内存储的值
+
+          函数内代码执行到明确的return语句就结束了 return语句之后的语句不会再执行了
+
+
+        纯函数 非纯函数 匿名函数 自调用IIFE 基础柯理化
+
+
+
+        作用域
+
+          作用域
+            表示变量可以发挥作用的域 能够对某个变量寻址(调用 赋值)正常访问的 域
+            1. 作用域内可以访问上级作用域的(变量 函数)
+            2. 上级作用域区域不可以调用下级作用域内的 (变量 函数)
+            3. 一个函数 就是一个作用域 if() for() 这些控制流程语句 不构成作用域
+
+
+            预解析
+              1. 先寻找当前域的所有 声明 (变量 函数) 并且提升
+                1. 变量和函数重名的时候 先提升变量 然后提升函数 => 函数覆盖变量
+              2. 按照书写顺序执行当前作用域下所有的执行代码
+                1. 变量没有在当前作用域声明, 会向上一级作用域查询 依次查询到全局作用域
+                如果全局作用域也没有对应变量的声明 => 隐式声明该变量在全局作用域并提升到最顶端
+              3. 对应局部作用域解析需要 执行到 对应函数执行的那一行 再解析
+
+
+          作用域链
+            1. 作用域嵌套为函数嵌套关系
+            2. 当前作用域内变量调用优先调用自身局部变量 如果自身局部作用域没有声明 向上一级查询
+
+
+
+  */
+
+    function f1() {
+      var xf1 = 0;
+      function f2() {
+        console.log(xf1);
+        console.log(xf3);
+        function f3() {
+          var xf3;
+        }
+      }
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

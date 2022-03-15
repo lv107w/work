@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视窗 位置与尺寸</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+
+      position: relative;
+      background: #000 url('images/bird.png');
+    }
+
+    .mask {
+
+      width: 400px;
+      height: 30000px;
+      padding: 20px;
+      background-color: #690;
+      box-shadow: 0 0 8px #222;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div class="mask">
+  </div>
+
+  <script>
+    console.log(
+      window.innerWidth,
+      window.innerHeight,
+      window.outerWidth,
+      window.outerHeight
+    );
+
+    console.log(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取相关元素对象</title>
+</head>
+
+<body>
+  <div class="item">
+    <h3 class="title">龙牌洗发水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <div class="item">
+    <h3 class="title">龙牌洗发水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+
+  <script>
+    var oItem = document.querySelector('.item');
+    var oTitle = oItem.querySelector('h3');
+
+    var itemChild = oItem.children;
+
+
+    //获取子元素/节点
+    console.log(oItem.children); //元素
+    console.log(oItem.childNodes); //获取元素内的节点列表 不常用
+
+    //获取第一个子元素/节点
+    console.log(oItem.firstChild); //获取元素第一个子(节点:标签 文本)
+    console.log(oItem.firstElementChild); //获取元素第一个子元素(只指代标签 不包括文本节点)
+
+    //获取最后一个子元素/节点
+    console.log(oItem.lastChild); //获取元素最后一个子(节点:标签 文本)
+    console.log(oItem.lastElementChild); //获取元素最后一个子元素(只指代标签 不包括文本节点)
+
+    //获取父元素 Node节点 Element元素
+    console.log(oTitle.parentElement); //获取父元素
+    console.log(oTitle.parentNode); //获取父元素
+
+    //sibilings 兄弟
+    console.log(oTitle.nextElementSibling);//下一个兄弟元素
+    console.log(oTitle.nextSibling);//下一个兄弟节点(包含文本节点)
+
+
+    console.log(oTitle.previousElementSibling);//上一个兄弟元素
+    console.log(oTitle.previousSibling);//上一个兄弟节点(包含文本节点)
+
+
+    console.log(oTitle.nextElementSibling.nextElementSibling);
+    console.log(oTitle.parentNode.lastElementChild);
+  </script>
+</body>
+
+</html>

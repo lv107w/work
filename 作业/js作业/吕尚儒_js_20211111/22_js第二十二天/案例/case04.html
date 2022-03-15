@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>has 检测系列</title>
+</head>
+
+<body>
+
+  <p>12312</p>
+  <ul>
+    <li>321</li>
+    <li class="">123</li>
+    <li>321</li>
+  </ul>
+  <script>
+    /*
+     element.hasFocus(); //返回布尔值，检测文档或元素是否获取焦点
+     element.hasChildNodes(); //返回布尔值,检测节点对象是否包含任何子元素
+     element.isEqualNode(element2); //返回布尔值,判断element与element2是否是同一个节点
+     element.hasAttributes(); //返回布尔值,判断当前节点对象是否包含属性
+     element.hasAttribute(property); //返回布尔值, 判断该节点是否拥有指定的 property 属性
+    
+ 
+     在chrome控制台中 可以直接使用 
+     $() 替代 document.querySelector()
+     $$() 替代  document.querySelectorAll()
+ 
+    */
+
+    var oP = $('p');
+    var oUl = $('ul');
+    var tarLi = $('ul>li:nth-of-type(2)');
+
+    console.log(tarLi.hasAttribute('class'));
+
+
+    for (var i = 0, len = oUl.children.length; i < len; i++) {
+
+      if (oUl.children[i].isEqualNode(tarLi)) {
+        console.log(i)
+      }
+    }
+
+
+
+
+    function $(ele) {
+      return document.querySelector(ele);
+    }
+
+    function $$(ele) {
+      return document.querySelectorAll(ele);
+    }
+  </script>
+</body>
+
+</html>

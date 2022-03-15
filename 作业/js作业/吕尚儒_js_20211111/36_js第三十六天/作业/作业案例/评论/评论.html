@@ -1,0 +1,184 @@
+<!doctype html>
+<!--文档头信息-->
+<html lang="en">
+<!--根标签-->
+
+<head>
+  <!--网页头部-->
+  <meta charset="UTF-8">
+  <!--字符编码-->
+  <meta name="Generator" content="EditPlus®">
+  <!--使用的编辑器-->
+  <meta name="Author" content="">
+  <!--作者-->
+  <meta name="Keywords" content="">
+  <!--关键字-->
+  <meta name="Description" content="">
+  <!--网页描述-->
+  <title>评论</title>
+  <style type='text/css'>
+    body {
+      background-color: #eee;
+    }
+
+    body,
+    ul,
+    input {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    #box {
+      width: 500px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+    }
+
+    #box div.b-top {
+      position: relative;
+      height: 40px;
+      background: #ddd;
+    }
+
+    #box div.b-top div.message {
+      position: relative;
+      display: none;
+      font-size: 14px;
+      height: 40px;
+    }
+
+    #box div.b-top span {
+      z-index: 5;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      font-size: 26px;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    #box .b-top img {
+      z-index: 1;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 30px;
+      border-radius: 50%;
+    }
+
+    #box .message input.text {
+      position: absolute;
+      left: 50px;
+      top: 5px;
+      width: 300px;
+      height: 30px;
+      text-indent: 5px;
+      border: none;
+      outline: none;
+    }
+
+    #box .message button {
+      position: absolute;
+      top: 5px;
+      left: 350px;
+      width: 50px;
+      height: 30px;
+      background: orange;
+      border: none;
+      color: #fff;
+    }
+
+    .content {
+      background-color: #fff;
+    }
+
+    .content li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      margin-top: 2px;
+    }
+
+    .content li:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .content li img {
+      float: left;
+      width: 40px;
+      height: 40px;
+      margin-left: 5px;
+      border-radius: 50%;
+    }
+
+    .content li p {
+      float: right;
+      width: 450px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div class='b-top'>
+      <img src="images/1.jpg" alt="">
+      <div class="message">
+        <input type='input' class='text' id='text'>
+        <button>发表</button>
+      </div>
+      <span id='add'>+</span>
+    </div>
+    <ul class="content">
+      <!-- <li><img src="images/1.jpg" alt=""><p>hello</p> </li>	 -->
+    </ul>
+  </div>
+</body>
+<script type="text/javascript">
+  var oPic = document.getElementsByTagName('img')[0],
+    oMessage = document.getElementsByClassName('message')[0],
+    oInp = document.getElementsByTagName('input')[0],
+    oBtn = document.getElementsByTagName('button')[0],
+    aSpan = document.getElementById('add'),
+    oUl = document.getElementsByTagName('ul')[0];
+  var onOff = true;
+  oPic.onclick = function () {//图片点击切换
+    if (onOff) {
+      oPic.src = 'images/2.jpg';
+    } else {
+      oPic.src = 'images/1.jpg';
+    }
+    onOff = !onOff;//图片开关取反，只适合两个图图片的切换
+  }
+  var onNone = true;
+  aSpan.onclick = function () {//加号点击
+    if (onNone) {
+      oMessage.style.display = 'block';
+      aSpan.innerHTML = '-';
+    } else {
+      oMessage.style.display = 'none';
+      aSpan.innerHTML = '+';
+    }
+    onNone = !onNone;
+  }
+  oBtn.onclick = function () {//发表
+    var text = oInp.value;
+    if (text.replace(/\s+/g, "").replace(/&nbsp;/ig, "").length == 0) {//数据为空或者空格
+      return false;
+    }
+    oUl.innerHTML += '<li><img src="' + oPic.src + '" alt=""><p>' + text + '</p> </li> ';
+    oInp.value = '';
+  }
+</script>
+
+</html>

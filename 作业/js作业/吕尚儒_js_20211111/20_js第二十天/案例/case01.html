@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取元素2</title>
+</head>
+
+<body>
+
+  <div id="wrap">
+    <p> INSERT Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias </p>
+  </div>
+  <p>OUT Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias </p>
+  <p> OUT Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias </p>
+  <script>
+    /*
+      可以通过前置节点对象调用查询方法来缩小查询范围
+      #wrap p => oWrap.getElementsByTagName
+    
+    */
+    // var oWrap = document.getElementById('wrap');
+    // var aP = document.getElementsByTagName('p');
+    // var oWrapP = oWrap.getElementsByTagName('p');
+
+
+    var oWrap = document.querySelector('#wrap');
+    var aP = document.querySelectorAll('p');
+    var oWrapP = oWrap.querySelectorAll('p');
+
+    console.log(aP); //获取document文档中所有的p
+    console.log(oWrapP); //获取oWrap标签内部的p
+
+    console.log(document.body, document.head, document.title);
+
+    //直接通过id名称拿到对应的节点对象 不推荐 变量冲突 和变量污染的问题
+    console.log(wrap);
+    console.log(window.wrap);
+
+  </script>
+</body>
+
+</html>

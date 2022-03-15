@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue class</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      margin: 40px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #f1f1f1;
+    }
+
+    .blog-desc--active,
+    .active {
+      color: red;
+    }
+
+    .on {
+      background-color: orange;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .yellow {
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="changeDesc">点击切换 状态</button>
+    <!-- <p class='desc' :class="{ 
+      'blog-desc--active': isActive,
+       on: !isActive,
+    }">{{ message }}</p> -->
+    <p class='desc' :class="colors">{{ message }}</p>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    /*
+      oP.classList.add()
+
+      oP.className = 'xxxx'
+
+      oP.style.xxx = xxx
+
+      oP.classList.toggle('active')
+
+         DOM操作 行为   dom.classList.add()/toggle() 
+
+      改变的值  数据  class的值
+
+      业务  逻辑   修改 class的值 在数组中 回环
+    
+    */
+
+    // let a = 1
+    // let obj = {
+    //   'user_name': a
+    // }
+    // //  obj['user_name'] ==> 1
+    let red = 'zhangsan'
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: '你好 我好 大家好才是真的好',
+          isActive: false,
+          activeClass: 'active',
+          colors: {
+            [red]: true,
+            'blue': false,
+            'yellow': false
+          },
+          colorIdx: 0
+        }
+      },
+      methods: {
+        changeDesc() {
+          this.colorIdx++
+          this.colors = Object.fromEntries(Object.entries(this.colors).map(([key, value], idx) => {
+            value = false
+            if (idx === this.colorIdx) {
+              value = true
+            }
+            return [key, value]
+          }))
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

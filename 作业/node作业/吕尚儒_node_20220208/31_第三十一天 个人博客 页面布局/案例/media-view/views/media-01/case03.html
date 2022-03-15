@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体查询 @media</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 
+      当判断最小值的时候(min-width) 从小到大写
+      当判断最大值的时候(max-width) 从大到小写
+
+     */
+
+    /* 1000 red*/
+    body {
+      background-color: red;
+    }
+
+
+    /* 媒体查询 条件符合 显示设备 与 规定最小宽度为768px(宽度大于等于768px的时候) 是生效
+
+      min-width|max-width 针对viewport宽度的
+
+      min-device-width|max-device-width 针对设备(手机屏幕 显示器屏幕)宽度
+    */
+  </style>
+  <link rel="stylesheet" media="screen and (min-width:768px)" href="../public/css/index@sm.css">
+  <link rel="stylesheet" media="screen and (min-width:1200px)" href="../public/css/index@lg.css">
+
+</head>
+
+<body>
+
+</body>
+
+</html>

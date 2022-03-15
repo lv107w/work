@@ -1,0 +1,49 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 18:34:01
+ * @LastEditTime: 2020-08-24 20:16:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      outline: none;
+    }
+
+    input.error {
+      border: 1px solid red;
+    }
+
+    input.accurately {
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input id="phone" type="text" data-reg='^1[3456789]\d{9}$'>
+  <script>
+    var oPhoneInput = document.querySelector('#phone');
+    var verifyResult;
+    oPhoneInput.oninput = function (e) {
+      verifyResult = 'error';
+      var dataReg = this.dataset.reg;
+      var regExp = new RegExp(dataReg);
+      if (regExp.test(this.value)) {
+        verifyResult = 'accurately';
+      }
+      this.className = verifyResult;
+    }
+  </script>
+</body>
+
+</html>

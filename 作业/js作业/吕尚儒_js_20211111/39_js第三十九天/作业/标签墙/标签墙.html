@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签墙</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: rgb(233, 233, 233);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .wrap {
+      display: flex;
+      width: 800px;
+      height: 500px;
+      margin: 50px auto;
+    }
+
+    .select-box {
+      width: 400px;
+      height: 500px;
+      padding: 30px 20px;
+      background-color: #fff;
+      color: #888;
+    }
+
+    .select-box .hot {
+      color: orange;
+    }
+
+    .select-box>span {
+      line-height: 28px;
+      cursor: pointer;
+    }
+
+    .select-box>span:hover {
+      color: orange;
+    }
+
+    .select-box .tag-box {
+      margin-top: 30px;
+    }
+
+    .tag-box span {
+      float: left;
+      padding: 5px;
+      margin: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .tag-box span i {
+      font-style: normal;
+      cursor: pointer;
+    }
+
+    .tag-box span i:hover {
+      color: red;
+    }
+
+    .show-box {
+      width: 400px;
+      height: 500px;
+      padding: 30px 20px;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .show-box ul li {
+      float: left;
+      color: #fff;
+      padding: 5px 10px;
+      margin: 8px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="select-box">
+      <span class="hot">热门目的地：</span>
+      <span class="tag">马来西亚</span>
+      <span class="tag">泰国</span>
+      <span class="tag">三亚</span>
+      <span class="tag">中国</span>
+      <span class="tag">英国</span>
+      <span class="tag">澳大利亚</span>
+      <span class="tag">新西兰</span>
+
+      <div class="tag-box">
+         <!-- <span>中国 | <i>x</i></span> -->
+      </div>
+    </div>
+    <div class="show-box">
+      <ul>
+        <!-- <li>中国</li> -->
+      </ul>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var oSelect = $('.select-box');
+    var oTag = $('.tag-box');
+    var oShow = $('.show-box ul');
+
+    oSelect.addEventListener('click', function(e) {
+      e = e || window.event;
+      var target = e.target;
+      if(e.target.tagName.toLowerCase() === 'span' && e.target.classList.contains('tag')) {
+        /* 难点二:怎么让select的标签不能重复点击生成
+          解决:给select的标签加锁，点击生成过一次上锁为1，在删除的时候把锁解掉
+         */
+        var isSelected = target.dataset.selected;
+        if(isSelected === '1') {
+          return false;
+        }
+        var idx = getElementIdx(target);
+        createTag(target.innerText, idx);
+        target.dataset.selected = '1';
+      }
+    }, false)
+
+    oTag.addEventListener('click', function(e) {
+      if(e.target.tagName.toLowerCase() === 'i') {
+        removeTag(e.target.parentElement);
+      }
+    })
+
+    function removeTag(target) {
+      /* 难点一：怎么让tag和show的表签联系起来一起删除
+         解决：tag和show里面的标签在父级下标相同，获取要删除tag的下标，通过下标删除show            
+      */
+
+      
+      var idx = getElementIdx(target);
+      var selectedIdx = target.getAttribute('data-selecte-idx');
+      console.log(selectedIdx);
+      oSelect.children[selectedIdx].dataset.selected = '0';
+      target.remove();
+      oShow.children[idx].remove();
+    }
+
+    function createTag(str, idx) {
+      var tagMap = {
+        tag: {
+          tagName: 'span',
+          cleanBtn: '| <i>x</i>',
+          parent: oTag
+        },
+        show: {
+          tagName: 'li',
+          cleanBtn: '',
+          parent: oShow
+        }
+      } 
+
+      for(var key in tagMap) {
+        var vDom = document.createElement(tagMap[key]['tagName']);
+        vDom.innerHTML = `${str}${tagMap[key]['cleanBtn']}`;
+        /* 难点三：删除的时候把锁解掉，怎么把删除tag的标签和select标签联系到一起
+         解决：在创建tag标签的时候，给tag标签上属性selecteIdx，表示selec标签的下标
+               在删除的时候只需读取该属性获取下标，根据下标把对应的锁解掉
+      */
+        vDom.dataset.selecteIdx = idx;
+        tagMap[key]['parent'].appendChild(vDom);
+      }
+    } 
+  </script>
+</body>
+</html>

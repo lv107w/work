@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .header .logo-wrap .pic .left .icon p {
+      width: 80px;
+      height: 40px;
+      background-color: #222;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    有一些属性是开关类型的属性 如果标签上设置了这个属性 就激活属性对应功能 没有这个属性 就不激活
+
+    checked
+    readOnly
+    disabled
+
+
+    if(xxx.id === 'hum'){
+      setText('男');
+    }else{
+      setText('女');
+    }
+
+    可扩展 可维护
+
+    {
+      'hum':'男',
+      'wom':'女'
+    }
+
+    还要自己整理一份映射表
+
+    DOM操作的时候 就地取材
+    
+   
+    label[`for="${e.target.id}"`].innerText
+
+   -->
+
+
+  <input id="hum" name='sex' type="radio">
+  <label for="hum">男</label>
+
+  <input id="wom" name='sex' type="radio">
+  <label for="wom">女</label>
+
+
+
+
+  <p class="show-box">你选中了</p>
+  <script src="js/common.js"></script>
+  <script>
+    var aInput = document.querySelectorAll('input');
+    var oShow = $('.show-box');
+    var oBtn = $('.btn');
+
+    //oBtn.addEventListener('click', function (e) {
+    //设置标签开关属性的时候 值应为布尔值 虽然"true"可以生效 "false" 和 "true" 都是隐式转换为 true
+
+    //setAttribute设置属性的值 所有值都设置为字符串类型
+    // $('#hum').checked = false;
+    // $('#hum').setAttribute('checked', false);
+    // }, false);
+
+    document.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'input') {
+        // e.preventDefault();//阻止默认行为会影响单选框 多选框等需要默认行为生效的标签
+        //阻止默认行为之后 点击radio 虽然效果上不生效 但是DOM对象会辨识属性为 true
+        // console.log(e.target.checked);//true
+        // e.stopPropagation(); //阻止冒泡传递
+
+        // e.target.checked = false;
+        // e.target.setAttribute('checked', false)
+        // e.target.removeAttribute('checked')
+        console.log($(`[for=${e.target.id}]`).innerText)
+        oShow.innerText = '你选中了 ' + $(`[for=${e.target.id}]`).innerText;
+      }
+    }, false);
+
+    /*
+      document.querySelector()
+
+      选择器
+
+      DOM 独立的  选择器 接口方法
+
+      DOM如何获取到对应元素节点的
+
+      类比 length
+
+      for(var i=0;i<arr.length;i++) O(n^2 + 1)
+      for(var i=0,len=arr.length;i<len;i++)O(n + 2)
+
+    */
+
+
+
+  </script>
+</body>
+
+</html>

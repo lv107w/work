@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组排序 插入</title>
+</head>
+
+<body>
+  <script>
+
+    //插入
+    var arr = [3, 4, 6, 2, 7, 9, 11, 1];
+    var length = arr.length;
+    for (var i = 1; i < length; i++) {
+      var key = arr[i], j = i - 1; //i 2 j 2-1 1  key = 3
+      while (arr[j] > key) { // 4 > 3
+        arr[j + 1] = arr[j]; // arr[2] = 6
+        j--; //0 -1
+      }
+      arr[j + 1] = key; //arr[0] = 3
+    }
+  </script>
+</body>
+
+</html>

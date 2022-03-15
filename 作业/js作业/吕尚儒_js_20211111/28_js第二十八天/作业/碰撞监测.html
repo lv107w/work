@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>碰撞监测</title>
+  <style>
+    * {
+      user-select: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      pointer-events: none;
+      /*禁止鼠标事件默认行为*/
+    }
+
+    html,
+    body {
+      height: 100%;
+
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-around;
+      position: relative;
+      width: 940px;
+      height: 468px;
+      padding: 10px;
+      box-shadow: 0 0 8px #222;
+      border-radius: 6px;
+    }
+
+    .wrap .child {
+      overflow: hidden;
+      box-shadow: 0 0 2px #ccc;
+      border-radius: 3px;
+    }
+
+    .wrap .child.active {
+      z-index: 999;
+      box-shadow: 0 0 8px #222;
+      transition: none;
+    }
+
+    .wrap .child.collision {
+      transform: scale(1.05);
+      box-shadow: 0 0 8px red;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="child"><img src="images/re1.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re2.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re3.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re4.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re5.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re6.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re7.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re8.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re9.jpg" alt="" width="290" height="137"></span>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    /*
+      案例基本思路：
+      一、初始化让每个child都变成绝对定位 并且自动设置好对应的 top left
+      二、封装两个功能小函数：
+         1.碰撞监测函数
+         2.获取碰撞距离最短的元素函数
+      三、封装全局变量和监听函数到一个对象（把全局变量封装成对象，结构好清晰）
+      四、监听事件，封装自动调用对应监听事件对象方法的函数
+     */
+    var oWrap = $('.wrap');
+    var aChild = oWrap.children;
+    var childLen = aChild.length;
+    var tempArr = [];
+
+    initPos();
+
+    //初始化让每个child都变成绝对定位 并且自动设置好对应的 top left
+    function initPos() {
+      for(var i = 0; i < childLen; i++) {
+        (function(i){
+          tempArr.push([aChild[i].offsetLeft, aChild[i].offsetTop]);
+          //用setTimeout是利用他的异步性质
+          setTimeout(function() {
+            aChild[i].style.position = 'absolute';
+            aChild[i].style.left = tempArr[i][0] + 'px';
+            aChild[i].style.top = tempArr[i][1] + 'px';
+          }, 0)
+        })(i)
+      }
+    }
+
+    //全局变量写成对象，防止变量污染
+    var eventTypeMap = {
+      isDown: false,
+      targetEle: null,
+      collisionEle: null,
+      startPos: {
+        x: 0,
+        y: 0,
+        left: 0,
+        top: 0
+      },
+      'mousedown': function(e) {
+        if(e.target.tagName.toLowerCase() === 'span') {
+          this.isDown = true;
+          //记录初始鼠标点击的位置
+          this.startPos.x = e.clientX;
+          this.startPos.y = e.clientY;
+          //记录初始选中图片的位置
+          this.startPos.left = e.target.offsetLeft;
+          this.startPos.top = e.target.offsetTop;
+          //记录选中的图片
+          this.targetEle = e.target;
+          this.targetEle.classList.add('active');
+        }
+      },
+      'mousemove': function(e) {
+        if(this.isDown) {
+          var collisionArr = [];
+          //计算鼠标移动的距离
+          var _x = e.clientX - this.startPos.x;
+          var _y = e.clientY - this.startPos.y;
+          //计算选中元素的位置
+          this.targetEle.style.left = this.startPos.left + _x + 'px';
+          this.targetEle.style.top = this.startPos.top + _y + 'px';
+
+          //判断鼠标移动的时候时候与其他元素发生碰撞
+          for(var i = 0; i < childLen; i++) {
+            aChild[i].classList.remove('collision');
+            if(aChild[i] !== this.targetEle) {
+              if(isCollision(this.targetEle, aChild[i])) {
+                collisionArr.push(aChild[i]);
+              }
+            }
+          }
+  
+          if(collisionArr.length > 0) {
+            this.collisionEle = getShortDistance(collisionArr, this.targetEle);
+            this.collisionEle.classList.add('collision');
+          }
+        }
+      },
+      'mouseup': function(e) {
+        //鼠标松开清除对应的图片活跃样式和元素
+        this.isDown = false;
+        this.targetEle.classList.remove('active');
+        this.targetEle = null;
+      }
+    }
+
+
+    oWrap.addEventListener('mousedown', drag, false);
+    document.addEventListener('mousemove', drag, false);
+    document.addEventListener('mouseup', drag, false);
+
+    //自动调用对应监听事件对象方法
+    function drag(e) {
+      if (eventTypeMap[e.type] &&
+        typeof eventTypeMap[e.type] === 'function') {
+        eventTypeMap[e.type](e);
+      }
+    }
+
+    //碰撞监测函数
+    function isCollision(ele1, ele2) {
+      var L1 = ele1.offsetLeft;
+      var R1 = L1 + ele1.offsetWidth;
+      var T1 = ele1.offsetTop;
+      var B1 = T1 + ele1.offsetHeight;
+
+      var L2 = ele2.offsetLeft;
+      var R2 = L2 + ele2.offsetWidth;
+      var T2 = ele2.offsetTop;
+      var B2 = T2 + ele2.offsetHeight;
+
+      if (R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2) {
+        //不想交 
+        return false;
+      } else {
+        //相交
+        return true;
+      }
+    }
+
+    //求碰撞距离最短的元素函数
+    function getShortDistance(arr, ele) {
+      var resultArr = []; //储存所有碰撞元素和距离
+      arr.forEach(item => {
+        var a = item.offsetLeft - ele.offsetLeft;
+        var b = item.offsetTop - ele.offsetTop;
+        var c = Math.sqrt(a*a + b*b);
+
+        resultArr.push({
+          element: item,
+          distance: c
+        })
+      });
+
+      //归并 迭代数组中最小的距离值  这个排序方法赞
+      return resultArr.reduce(function(acc, curr, idx, arr) {
+        if(acc.distance > curr.distance) {
+          acc = curr;
+        }
+        return acc;
+      }).element;
+    }
+  </script>
+</body>
+</html>

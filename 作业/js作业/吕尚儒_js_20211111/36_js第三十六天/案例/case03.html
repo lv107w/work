@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则表达式 量词</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      量词 指定数量进行匹配
+
+
+
+      n{X}——————————匹配包含`X个n`的序列的字符串
+      n{X,Y}————————–匹配包含`至少X或至多Y个`n的序列的字符串
+      n{x,}—————————-匹配`至少X个`n的序列字符串
+
+
+
+      ? 0个或者1个 中间性 模糊匹配
+     */
+
+
+
+    console.log(/a{3,}/.test('aaaaaadcea'));
+
+    console.log(/\d?/.test('joker'));
+
+
+    // n? 模糊匹配 0个或者1个  color colour  ? {0,1}
+    console.log(/color|colour/.test('hjkfdsjk colour')); //true
+
+    console.log(/colou?r/.test('hjkfdsjk colour'));//true
+
+    console.log(/colou?r/.test('hjkfdsjk colouur')); //false
+
+    // n* 任意个 0-任意数量 {0,} shift+8
+    console.log(/colou*r/.test('hjkfdsjk colouuuuur')); //true
+
+    //n+ 至少存在一个 至少存在一个 n  {1,}
+    console.log(/colou+r/.test('hjkfdsjk colouuuuuuur')); //true
+
+
+    // ^n 以n开头的 shift+6
+    console.log(/^\d/.test('f1dasfas')); //匹配项必须以数字开头
+
+
+    // n$ 以n结尾 shift+4
+    //以数字开头并且数字结尾的字符串
+    console.log(/^\d\S*\d$/.test('1jf232hkjsdhfjksd1'));
+
+
+    //验证 是否符合 www.xxx.com  的格式 xxx 只能是数字或者字母 字符簇
+    console.log(/^w{3}\.[A-Za-z0-9]+\.com$/);
+
+
+
+
+
+  </script>
+</body>
+
+</html>

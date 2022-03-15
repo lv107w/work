@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垃圾回收GC 与 闭包</title>
+</head>
+<body>
+  <script>
+    function fn() {
+      let w = 20;
+      return function fn2() {
+        w++;
+        console.log(w);
+      }
+    }
+
+    var x = fn();
+    var y = fn();
+    //x,y只是fn2的复制体，他们引用的不是同一个w
+    x();//21
+    x();//22
+    y();//21
+    y();//22
+  </script>
+</body>
+</html>

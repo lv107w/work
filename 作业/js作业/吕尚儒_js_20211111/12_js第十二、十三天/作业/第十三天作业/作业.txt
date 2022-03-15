@@ -1,0 +1,4 @@
+练习 3+1种 对象创建(生产) 方式
+练习 this 3种情况指向
+实践 instanceof 判断 Number String Boolean Array Function Object 的结果
+练习下 课前小案例 (数组切割+拼接)的那个案例

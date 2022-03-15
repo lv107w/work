@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String charCodeAt replace</title>
+</head>
+
+<body>
+  <script>
+    var str = '321';
+    var u16 = str.charCodeAt(0);
+    console.log(u16); //22914
+
+    /*
+     replace 替换 将字符串中指定字符替换成其他字符
+
+     参数 
+        需要替换的字符  替换的字符
+
+      返回值 
+      替换对应字符后的字符串
+    */
+
+    var str = '好海好牙好好';
+    // var n = str.replace('好', '坏');
+    // console.log(n);
+
+    /*  while (str.indexOf('好') !== -1) {
+       str = str.replace('好', '坏');
+     }
+     console.log(str); */
+    var str = '1234567';
+
+
+    console.log(str);
+  </script>
+</body>
+
+</html>

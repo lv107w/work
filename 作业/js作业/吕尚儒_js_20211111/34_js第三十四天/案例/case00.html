@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品放大镜</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    .product-intro {
+      position: relative;
+      width: 450px;
+      margin: 100px 0 0 200px;
+      border: 1px solid #ccc;
+    }
+
+    .preview {
+      position: relative;
+    }
+
+    .enlargement {
+      display: none;
+      overflow: hidden;
+      position: absolute;
+      top: -1px;
+      left: 450px;
+      width: 540px;
+      height: 540px;
+      border: 1px solid #ccc;
+    }
+
+    .mask {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 60%;
+      background-color: rgba(228, 228, 11, 0.3);
+      border: 1px solid rgba(122, 122, 122, .4);
+      cursor: move;
+    }
+
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="product-intro">
+    <div class="preview">
+      <img src="images/m30.jpg" width="450" height="450" alt="m30">
+      <div class="mask"></div>
+    </div>
+    <div class="enlargement">
+      <img src="images/m30-big.jpg" alt="m30">
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /*
+      商品放大镜
+
+
+      1. 结构(布局样式)
+
+        布局
+           商品区域 > (预览区>图片 + 蒙版层) + 展示区 > (图片)
+
+        样式
+          商品区域 :相对定位
+          预览区图片: img 尺寸 == 预览区
+          蒙版层: 绝对定位 相对定位父级为 预览区
+          展示区 : 绝对定位 > 商品区 overflow:hidden
+          展示区图片 img 尺寸 > 展示区
+
+        图片
+          img标签 or 背景图片
+            商品图片是网页上的实际信息 实际内容 不是修饰性的图 用img更好
+            方便替换
+
+      2. 交互行为(移入 移出 点击)
+      3. 交互表现(根据交互行为所做出的的表现)
+
+      所有的特效其实都是 修改元素 样式实现的
+
+
+      1. 需要用到的DOM元素对象 获取到
+      2. 事件结构搭起来
+        mouseenter mouseleave
+        mouseover mouseout
+
+      3. 逻辑和表现
+        计算未展示区域的比例
+
+     展示比例   (展示区图片宽度 - 展示区宽度) / (预览区宽度 - 遮罩层宽度)
+     展示比例 * 鼠标位置
+
+    */
+
+    var oPreview = $('.preview');
+    var oMask = $('.mask');
+    var oEnlarge = $('.enlargement');
+    var oEnlargeImg = $('.enlargement>img');
+
+
+    var mouseEventMap = {
+      mouseenter: function (e) {
+        oMask.classList.add('active');
+        oEnlarge.classList.add('active');
+      },
+      mouseleave: function (e) {
+        oMask.classList.remove('active');
+        oEnlarge.classList.remove('active');
+      },
+      mousemove: function (e) {
+        var x = e.clientX - oMask.offsetWidth / 2 - getPosition(oPreview).left;
+        var y = e.clientY - oMask.offsetHeight / 2 - getPosition(oPreview).top;
+
+        x = Math.min(x, oPreview.offsetWidth - oMask.offsetWidth);
+        x = Math.max(x, 0);
+
+        y = Math.min(y, oPreview.offsetHeight - oMask.offsetHeight);
+        y = Math.max(y, 0);
+
+        oMask.style.left = x + 'px';
+        oMask.style.top = y + 'px';
+
+        // 展示比例   (展示区图片宽度 - 展示区宽度) / (预览区宽度 - 遮罩层宽度)
+
+        var moveX = (oEnlargeImg.offsetWidth - oEnlarge.offsetWidth) / (oPreview.offsetWidth - oMask.offsetWidth);
+        var moveY = (oEnlargeImg.offsetHeight - oEnlarge.offsetHeight) / (oPreview.offsetHeight - oMask.offsetHeight);
+
+        oEnlargeImg.style.marginLeft = -x * moveX + 'px';
+        oEnlargeImg.style.marginTop = -y * moveX + 'px';
+      }
+    }
+
+
+    oPreview.addEventListener('mouseenter', handle, false);
+    oPreview.addEventListener('mouseleave', handle, false);
+    oPreview.addEventListener('mousemove', handle, false);
+
+
+    function handle(e) {
+      if (mouseEventMap[e.type] && typeof mouseEventMap[e.type] === 'function') {
+        mouseEventMap[e.type](e);
+      }
+    }
+
+  </script>
+</body>
+
+</html>

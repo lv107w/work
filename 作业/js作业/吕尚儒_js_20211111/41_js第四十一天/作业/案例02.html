@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call语法</title>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <script>
+    const aLi = document.querySelectorAll('ul>li');
+
+    //aLi是类数组，可以用forEach，但不能用map，filter等数组方法，
+    //但可以call来改变this内部指向调用
+    const liArr = [].map.call(aLi, function(item) {
+      return Number(item.innerText) + 10;
+    })
+    console.log(liArr);
+
+
+    //arguments也是类数组
+    function add() {
+      return [].reduce.call(arguments, function(acc, curr) {
+        return acc + curr;
+      })
+    }
+
+    console.log(add(1, 2, 3, 5, 4));
+  </script>
+</body>
+</html>

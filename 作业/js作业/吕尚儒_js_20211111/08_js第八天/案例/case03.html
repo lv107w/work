@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组方法3</title>
+</head>
+
+<body>
+  <script>
+    //concat
+
+    var plants = ['西红柿', '黄瓜', '芹菜', '豆角', '土豆'];
+    var otherPlants = ['冬瓜', '韭菜'];
+    var otherPArr = ['香蕉', '娃娃菜'];
+    var newPlants = plants.concat(otherPlants, otherPArr);
+
+    // console.log(newPlants);
+    //['西红柿', '黄瓜', '芹菜', '豆角', '土豆', '冬瓜', '韭菜']
+
+    var arr = [1, 2, 3];
+    var newArr = arr.concat(); //返回拼接后的新数组 [1, 2, 3]
+    newArr[2] = 5;
+    // console.log(newArr, arr);
+
+    //indexOf
+
+    var plants = ['西红柿', '黄瓜', '芹菜', '豆角', '土豆', '黄瓜'];
+
+
+
+    console.log(plants.indexOf('黄瓜'));
+    //1
+
+    console.log(plants.indexOf('黄瓜', 3));
+    //5
+
+    console.log(plants.indexOf('大象'));
+    //-1
+
+
+  </script>
+</body>
+
+</html>

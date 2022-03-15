@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>选项卡切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrap {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      height: 320px;
+      box-shadow: 0 0 4px #333;
+
+    }
+
+    .tab {
+      display: flex;
+      background-color: #666;
+    }
+
+    .tab li {
+      width: 80px;
+      height: 45px;
+      line-height: 45px;
+      font-size: 20px;
+      text-align: center;
+      color: #fff;
+      background-color: #666;
+      border-right: 2px solid orange;
+      cursor: pointer;
+    }
+
+    .tab li:hover {
+      opacity: .8;
+    }
+
+    .content {
+      position: relative;
+    }
+
+    .content li {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 220px;
+      background-color: #368;
+      color: #fff;
+      font-size: 30px;
+    }
+
+    .tab li.on {
+      background-color: #fff;
+      color: orange;
+      font-weight: 700;
+    }
+
+    .content li.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <ul class="tab">
+      <li class="on">图片</li>
+      <li>专栏</li>
+      <li>热点</li>
+    </ul>
+    <ul class="content">
+      <li class="active">我是图片的内容</li>
+      <li>我是专栏的内容</li>
+      <li>我是热点的内容</li>
+    </ul>
+  </div>
+  <script>
+    /*
+      选项卡切换
+
+      tabbar  content 两部分的内容一一对应
+      我们点击某一个tab的时候
+       该tab的类名设置为on 其他的tab要清除on类名
+       对应的content的类名要设置为 active 其他的content清除active类名
+
+      1. 素材获取  tab>li content>li
+      2. 点击 (onclick)tab>li 设置类名 on 清除其他tab>li的类名 on
+         获取点击的 tab>li的下标
+         根据下标 设置 content>li[idx] 的 类名为 active 其他的 删除类名active
+
+    */
+
+    var aTab = document.querySelectorAll('.tab li');
+    var aCon = document.querySelectorAll('.content li');
+
+
+
+    function switchTab() {
+      var index = 0;
+      for (var i = 0, len = aTab.length; i < len; i++) {
+        (function (i) {
+          aTab[i].onclick = function () {
+            aTab[index].className = '';
+            aCon[index].className = '';
+            index = i;
+            aTab[index].className = 'on';
+            aCon[index].className = 'active';
+          }
+        })(i);
+      }
+    }
+
+
+
+    /*
+
+
+        function switchTab() {
+      for (var i = 0, len = aTab.length; i < len; i++) {
+        (function (i) {
+          aTab[i].onclick = function () {
+            aTab[index].className = '';
+            aCon[index].className = '';
+            index = i;
+            aTab[index].className = 'on';
+            aCon[index].className = 'active';
+          }
+        })(i);
+      }
+    }
+
+       //排他法 先把所有的都重置 然后单独设置某一个
+          for (var j = 0; j < len; j++) {
+            aTab[j].className = '';
+          }
+
+      //轮转法
+          aTab[index].className = ''; //aTab[1].className = '';
+          index = i; //index => 2
+          aTab[index].className = 'on';//aTab[2].className = '';
+
+
+     */
+
+  </script>
+</body>
+
+</html>

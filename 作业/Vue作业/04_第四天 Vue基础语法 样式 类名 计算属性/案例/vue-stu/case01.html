@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue style</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      margin: 40px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #f1f1f1;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="changeDesc">点击切换 状态</button>
+
+    <div :style="{ width:'100px' }" class="box">{{message}}</div>
+
+    <div :style="[boxStyle,{ width:boxWidth }]" class="box">{{message}}</div>
+
+    <div :style="{ display: [ '-ms-flexbox','-webkit-box'] }" class="box">{{message}}</div>
+
+
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    /*
+        $box.css({
+          width: vW + 'px'
+        })
+
+        { display: ['-webkit-box', '-ms-flexbox', 'flex'] }
+        
+        渲染数组中最后一个被浏览器支持的值   
+    */
+    let red = 'zhangsan'
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: '你好 我好 大家好才是真的好',
+          boxStyle: {
+            'display': ['grid', '-webkit-grid', '-ms-grid']
+          },
+          wrapStyle: {
+            color: 'red'
+          },
+          boxWidth: '300px',
+          styl: 'width'
+
+        }
+      },
+      methods: {
+        changeDesc() {
+          this.colorIdx++
+          this.colors = Object.fromEntries(Object.entries(this.colors).map(([key, value], idx) => {
+            value = false
+            if (idx === this.colorIdx) {
+              value = true
+            }
+            return [key, value]
+          }))
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

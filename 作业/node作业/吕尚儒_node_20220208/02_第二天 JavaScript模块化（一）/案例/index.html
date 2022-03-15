@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script src="app/a.js"></script>
+  <script src="app/c.js"></script>
+  <script src="app/b.js"></script>
+  <script src="app/index.js"></script>
+  <script>
+
+    dv.index = 10;
+
+    /*
+      多js文件协同的时候
+        1. 加载顺序 和 依赖顺序必须一致
+        2. 很容易出现命名冲突的情况 变量冲突
+
+    */
+    // const fn = function () {
+    //   return month + date;
+    // }
+    // let month = 10;
+    // let date = 10;
+    // console.log(fn())
+  </script>
+</body>
+
+</html>

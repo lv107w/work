@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 变量交换</title>
+</head>
+
+<body>
+  <script>
+    let a = 10,
+      b = 20,
+      c = 30,
+      d = 40;
+
+    console.log(a, b);
+
+    let temp = a;
+    a = b;
+    b = temp;
+
+    console.log(a, b);
+
+
+    [a, b] = [b, a];
+    console.log(a, b);
+
+
+    [c, b, d, a] = [a, b, c, d];
+    console.log(a, b, c, d);
+
+    /*
+      ['a','b','c','d','e']
+      ['d','e','a','b','c']
+      ['b','c','d','e','a']
+
+      1. 下标顺位位进2
+      2. 下标回环  (index+2)%5
+    */
+
+
+
+
+  </script>
+</body>
+
+</html>

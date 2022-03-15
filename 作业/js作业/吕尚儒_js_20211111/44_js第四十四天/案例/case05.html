@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数 的 this => </title>
+</head>
+
+<body>
+  <script>
+    /* 
+    
+        箭头函数内部的this 走的静态 指向自己所在作用域的this
+
+        setInterval的回调箭头函数 在clock内声明 
+        回调箭头函数内部this指向 clock作用域内部this
+
+
+        箭头函数内部this 不会随着call apply bind 的绑定(偏转)而改变 只认所在作用域的 this
+
+      优先级
+        call apply: 选择器
+        bind: 行内元素
+        箭头函数: !important
+     */
+    const S = {
+      num: 10
+    }
+
+    const U = {
+      showNum: function () {
+        console.log(this.num); //this? S
+      }
+    }
+
+    const O = {
+      num: 0,
+      timer: 0,
+      clock: function () {
+        let that = this; // O that = O
+        clearInterval(this.timer);
+        this.timer = setInterval(() => {
+          that.num++;
+          console.log(this); //this=> clock作用域下的this  that
+        }, 100);
+      }
+    }
+
+    // O.clock();
+
+
+    let P = {
+      name: 'kyogre',
+      show: function () {
+        // (() => { //IIFE 自调用 this=> window
+        //   console.log(this.name); //kyogre?
+        // }).bind(O)();
+        let fn = () => {
+          console.log(this.name);
+        }
+        // let fn1 = fn.bind(O);
+        // fn1();
+        fn.apply(S);
+      }
+    }
+
+    P.show();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>location</title>
+</head>
+
+<body>
+  <script>
+    /*
+      地址栏 地址  URL  网址
+      http://127.0.0.1:5503/case00.html
+http 协议头 https / http
+
+访问网站地址
+本质上是你在和另一个计算机通信
+
+request请求
+response响应
+
+服务器
+
+协议 请求-响应协议 TCP/IP UDP
+127.0.0.1 host主机地址 IP地址
+:5503 port 端口号
+/xxx 资源路径
+
+
+在浏览器地址栏输入网址
+
+www.baidu.com 域名(网址) 不是真正的地址(别名)
+
+公网上每一台服务器都有自己的公网地址(唯一的) IPV4 =>
+
+浏览器进行HTTP协议请求 => TCP/IP请求 => DNS服务器 (兑换域名 查询IP地址) www.baidu.com  => 39.156.69.79 => TCP/IP => HTTP => server(apache IIS Nginx) => 解析你的请求 => 根据你的请求(后端逻辑) => 返回请求对应的响应信息 => .... =>接收response => 浏览器端进行渲染 || js获取
+
+NDS 黄页 (电话号码查询簿 or 网址查询簿) [名字:号码]
+
+
+URL地址 4部分
+
+1. 协议头  http https(http的安全加强版) http://
+
+      file 本机资源
+      ftp 网络开放仓库 文件传输协议 下载上传文件
+      http https
+      mailto 邮件协议 SMTP
+      news NNTP
+
+2. 主机地址 域名/IP  www.badu.com / 39.156.69.79
+3. 端口 4432 不同的端口用来接收不同的业务请求 80(http请求的默认端口) 8080
+4. 路径/资源地址
+
+https://baike.baidu.com/item/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F/2251573?fromtitle=DNS&fromid=427444&fr=aladdin
+
+完整URL格式
+
+协议://主机名(hostName):端口(port)/path(路径)/path(路径)?parameters(参数[key=value])&parameters(参数[key=value])
+
+
+
+
+
+
+DNS 服务器  144.144.144.144 8.8.8.8
+*/
+  </script>
+</body>
+
+</html>

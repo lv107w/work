@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array 方法 flat</title>
+</head>
+
+<body>
+  <script>
+    /*
+
+      flat 数组扁平化处理 数组降维
+      参数 降维深度 number
+      返回值 降维后的数组 不改变元素组
+
+    */
+
+    var arr = [1, 2, 3, [4, [5, 0], 6], 5, 65]; //[1, 2, 3, 4, 5, 0, 6, 5, 65]
+    // console.log(arr.flat(2));
+    // console.log(arr);
+
+
+    var arr = [1, 2, [3, 4]];
+
+    var flatArr = arr.reduce(function (acc, curr) {
+      //acc 初始累计值 在这里是空数组 curr是迭代项
+      return acc.concat(curr); //[1,2].concat([3,4])
+    }, []);
+
+    /* 81 9
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+      1,1,2,3,4,5,6,7,8
+    */
+    var arr = [
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8],
+      [1, 1, 2, 3, 4, 5, 6, 7, 8]
+    ]
+
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < arr[i].length; j++) {
+        // console.log(arr[i][j]);
+      }
+    }
+
+    var newArr = arr.flat();
+
+    console.log(newArr);
+    //作业思考 如何把一个 规律 9*9二维降维扁平化的数组 重组为二维 两天时间
+
+  </script>
+</body>
+
+</html>

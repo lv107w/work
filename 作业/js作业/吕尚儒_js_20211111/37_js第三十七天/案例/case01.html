@@ -1,0 +1,32 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 20:33:19
+ * @LastEditTime: 2020-08-24 20:56:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>regExp中的 $1 $n ()分组</title>
+</head>
+
+<body>
+  <script>
+
+    // var regExp = /([a-z]*)(\d*)/;
+    // console.log(regExp.test());
+
+    console.log('abc 123'.replace(/([a-z]*).(\d*)/, '($1)\$2'));
+    console.log(RegExp.$1, RegExp.$2);
+
+
+
+  </script>
+</body>
+
+</html>

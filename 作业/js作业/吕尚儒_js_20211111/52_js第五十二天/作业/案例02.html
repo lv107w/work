@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol</title>
+</head>
+<body>
+  <script>
+    //Symbol.for()`与`Symbol()`这两种写法，都会生成新的 Symbol。
+    //它们的区别是，前者会被登记在全局环境中供搜索，后者不会
+    //Symbol 值的属性名依然可以从类的外部拿到
+    function a() {
+      let o = {
+        [Symbol.for('name')]: 'joker'
+      }
+      return o;
+    }
+
+    console.log(a()[Symbol.for('name')]);
+
+    //Symbol.keyFor()方法返回一个已登记的 Symbol 类型值的`key。
+    let x = Symbol.for('kkk')
+    console.log(Symbol.keyFor(x)); //'kkk'
+
+
+    //对象的`Symbol.hasInstance`属性，指向一个内部方法。当其他对象使用`instanceof`运算符，判断是否为该对象的实例时，会调用这个方法。
+    //比如，`foo instanceof Foo`在语言内部，实际调用的是`Foo[Symbol.hasInstance](foo)`。
+    class A {
+      [Symbol.hasInstance](value) {
+        return value instanceof Array;
+      }
+    }
+
+    console.log([2, 3] instanceof new A);
+  </script>
+</body>
+</html>

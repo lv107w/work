@@ -1,0 +1,282 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-13 17:38:09
+ * @LastEditTime: 2020-08-14 11:41:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖拽流动导航</title>
+  <style>
+    * {
+      user-select: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      pointer-events: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+    }
+
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      width: 940px;
+      height: 468px;
+      padding: 10px;
+      box-shadow: 0 0 8px #222;
+      border-radius: 6px;
+    }
+
+    .container ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-around;
+      height: 100%;
+    }
+
+    .container li {
+      overflow: hidden;
+      box-shadow: 0 0 2px #ccc;
+      border-radius: 3px;
+      transition: .2s linear;
+    }
+
+    .container li.active {
+      z-index: 999;
+      box-shadow: 0 0 8px #222;
+      transition: none;
+    }
+
+    .container li.collision {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <ul>
+      <li><img src="images/re1.jpg" alt="!!" width="290" height="137"></li>
+      <li><img src="images/re2.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re3.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re4.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re5.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re6.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re7.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re8.jpg" alt="!" width="290" height="137"></li>
+      <li><img src="images/re9.jpg" alt="!" width="290" height="137"></li>
+    </ul>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var picList = $('.container ul');
+    var aLi = picList.children;
+    var len = aLi.length;
+    var startPos = {
+      x: 0,
+      y: 0,
+      left: 0,
+      top: 0
+    }
+    var posArr = [];
+    var isDown = false;
+    var isMoving = false;
+
+    var dragEventMap = {
+      targetEle: null,
+      collisionEle: null,
+      tempNodeList: [],
+      'mousedown': function (e) {
+        if (e.target.tagName.toLowerCase() === 'li') {
+          isDown = true;
+          this.targetEle = e.target;
+          startPos.x = e.clientX;
+          startPos.y = e.clientY;
+          startPos.left = this.targetEle.offsetLeft;
+          startPos.top = this.targetEle.offsetTop;
+          this.targetEle.classList.add('active');
+          this.tempNodeList = getNodeListArr(aLi);
+        }
+
+      },
+      'mousemove': function (e) {
+        if (isDown) {
+          var collisionEleArr = [];
+          var _x = e.clientX - startPos.x;
+          var _y = e.clientY - startPos.y;
+          this.targetEle.style.left = startPos.left + _x + 'px';
+          this.targetEle.style.top = startPos.top + _y + 'px';
+          this.targetEle.pointer = {
+            x: e.clientX,
+            y: e.clientY
+          }
+          if (!isMoving) {
+            for (var i = 0; i < this.tempNodeList.length; i++) {
+              this.tempNodeList[i].classList.remove('collision');
+              if (this.tempNodeList[i] != this.targetEle && isInvolved(this.targetEle.pointer, this.tempNodeList[i])) {
+                collisionEleArr.push(this.tempNodeList[i]);
+              }
+            }
+
+            if (collisionEleArr.length !== 0) {
+              this.collisionEle = getShortDistance(collisionEleArr, this.targetEle);
+              this.collisionEle.classList.add('collision');
+              if (this.collisionEle) {
+                var targetIdx = this.tempNodeList.indexOf(this.targetEle);
+                var collisionIdx = this.tempNodeList.indexOf(this.collisionEle);
+                this.tempNodeList.splice(targetIdx, 1);
+                this.tempNodeList.splice(collisionIdx, 0, this.targetEle);
+                serializeEle(this.tempNodeList.slice(), this.targetEle);
+              }
+            }
+          }
+
+        }
+      },
+      'mouseup': function (e) {
+        if (isDown) {
+          isDown = false;
+          this.targetEle.classList.remove('active');
+          serializeEle(this.tempNodeList.slice(), null);
+        }
+
+      }
+    }
+    initPos();
+    function initPos() {
+      for (var i = 0; i < len; i++) {
+        (function (i) {
+          posArr.push([aLi[i].offsetLeft, aLi[i].offsetTop]);
+          setTimeout(function () {
+            aLi[i].style.position = 'absolute';
+            aLi[i].style.left = posArr[i][0] + 'px';
+            aLi[i].style.top = posArr[i][1] + 'px';
+          }, 0);
+        })(i);
+      }
+    }
+
+
+
+
+
+    picList.addEventListener('mousedown', drag, false);
+
+    document.addEventListener('mousemove', drag, false);
+
+    document.addEventListener('mouseup', drag, false);
+
+
+    function drag(e) {
+      dragEventMap[e.type] && dragEventMap[e.type](e);
+    }
+
+
+    //指针介入型碰撞检测
+    function isInvolved(pos, ele) {
+      var L1 = getPosition(ele).left;
+      var T1 = getPosition(ele).top;
+      var R1 = L1 + ele.offsetWidth;
+      var B1 = T1 + ele.offsetHeight;
+
+      if (pos.x > L1 && pos.x < R1 && pos.y > T1 && pos.y < B1) {
+        return true;
+      }
+      return false;
+    }
+
+    function isCollision(ele, target) {
+      var L1 = ele.offsetLeft;
+      var T1 = ele.offsetTop;
+      var R1 = L1 + ele.offsetWidth;
+      var B1 = T1 + ele.offsetHeight;
+
+      var L2 = target.offsetLeft;
+      var T2 = target.offsetTop;
+      var R2 = L2 + target.offsetWidth;
+      var B2 = T2 + target.offsetHeight;
+
+      if (L1 > R2 || R1 < L2 || T1 > B2 || B1 < T2) {//满足其中任和一个 都不可能碰撞
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+
+
+    function getShortDistance(arr, ele) {
+      if (arr.length === 0) {
+        return ele;
+      }
+      var resultArr = [];
+      arr.forEach(function (item, idx, arr) {
+        var _a = item.offsetLeft - ele.offsetLeft;
+        var _b = item.offsetTop - ele.offsetTop;
+        resultArr.push({
+          element: item,
+          distance: Math.sqrt(_a * _a + _b * _b)
+        })
+      });
+
+      return resultArr.reduce(function (acc, curr, idx, arr) {
+        if (acc.distance >= curr.distance) {
+          acc = curr;
+        }
+        return acc
+      }).element;
+    }
+
+
+    function serializeEle(tempList, target) {
+      isMoving = true;
+      posArr.forEach(function (item, idx) {
+        if (target !== tempList[idx]) {
+          setTimeout(function () {
+            tempList[idx].style.left = item[0] + 'px';
+            tempList[idx].style.top = item[1] + 'px';
+          }, 0);
+        }
+      });
+      setTimeout(function () {
+        isMoving = false;
+      }, 200);
+    }
+
+    function getNodeListArr(nodeList) {
+      var resultArr = [];
+      for (var i = 0; i < nodeList.length; i++) {
+        resultArr[i] = nodeList[i]
+      }
+      return resultArr;
+    }
+
+  </script>
+</body>
+
+</html>

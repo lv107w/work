@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泡泡龙</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      width: 655px;
+      height: 640px;
+      box-shadow: 0 0 0 4px #ccc;
+    }
+
+    .game-area {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      width: 440px;
+      height: 100%;
+      border-right: 2px solid #ccc;
+    }
+
+    .ball-area {
+      z-index: 1;
+      position: relative;
+      flex: 1;
+    }
+
+    .arrow-area {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 80px;
+      border-top: 2px solid #ccc;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 60px;
+      height: 86px;
+      background: url(images/arrow.png) no-repeat top/cover;
+      transform-origin: 30px 56px;
+    }
+
+    .score-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      user-select: none;
+    }
+
+    .score-area .start {
+      width: 120px;
+      height: 45px;
+      line-height: 42px;
+      text-align: center;
+      color: white;
+      background-color: #6698cb;
+      border: 1px solid rgba(0, 0, 0, .21);
+      border-bottom: 4px solid rgba(0, 0, 0, .21);
+      border-radius: 4px;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+    }
+
+    .score-area .start:active {
+      background-color: #608FBF;
+    }
+
+    .score-area p {
+      padding: 60px 0 8px;
+      color: #608FBF;
+    }
+
+    .score-area .score {
+      font-size: 32px;
+      color: #72B08E;
+    }
+
+
+    .ball {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #f0d264;
+      text-align: center;
+      line-height: 44px;
+      color: #fff;
+      box-shadow: -2px -2px 12px rgba(100, 100, 100, .7) inset;
+    }
+
+    .ball.active {
+      color: orange;
+      font-weight: 900;
+      background-color: #222 !important;
+    }
+
+    .ball.lose {
+      color: #222;
+      font-weight: 900;
+      background-color: rgb(34, 34, 34) !important;
+    }
+
+    .bullet {
+      display: none;
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #f0d264;
+      box-shadow: -2px -2px 12px rgba(100, 100, 100, .7) inset;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="game-area">
+      <div class="ball-area">
+        <div class="arrow"></div>
+        <div class="bullet"></div>
+      </div>
+      <div class="arrow-area"></div>
+    </div>
+    <div class="score-area">
+      <div class="start">开始游戏</div>
+      <p>当前分数</p>
+      <span class="score">0</span>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    
+    /* 
+    思路：搭建有限环境
+    满屏环境：{
+      创建小球
+      排列球: {
+        行: {
+          r = h / s
+        },
+        列: {
+          n = w / s
+        }
+      },
+      球初始位置: {
+        left,
+        top
+      }
+    }
+
+    游戏初始分析:
+      #相连#: {
+        一个球有6个方向相连的球
+      },
+      同色消除: {
+        子弹击中相同颜色的球 如果#相连#同颜色球>=3个掉落
+      }
+    */
+
+    const oCon = $('.container'),
+    oGameArea = $('.game-area'),
+    oBallArea = $('.ball-area'),
+    oArrow = $('.arrow'),
+    oBullet = $('.bullet');
+
+    const ballsData = [],
+    size = 44, 
+    maxH = oBallArea.offsetHeight,
+    maxW = oBallArea.offsetWidth,
+    maxColumns = ~~(maxW / size),
+    maxRows = ~~(maxH / size);
+
+    let idx = 0;
+    let bullet = {
+      color: ''
+    }
+
+    init();
+
+    function init() {
+      initArrow();
+      initBullte();
+      let fragment = document.createDocumentFragment(); //创建fragment避免频繁操作dom
+      for(let i = 0; i < maxRows; i++) {
+        let isOdd = !(i % 2 === 0);
+        for(let j = 0; j < maxColumns - Number(isOdd); j++) {
+          let ele = document.createElement('div');
+          ele.classList.add('ball');
+          ele.innerText = idx;
+          idx++;
+          let left = size * (j + ((i % 2) /2));
+          let top = i * (size - (i && 6));
+          let color = randomColor();
+          //创建虚拟节点,频繁操作dom影响性能
+          let ball = new Proxy({
+            left, top, color, ele, idx, row: i, connect: false
+          }, {
+            set(target, key, value) { 
+              //代理: 每当ball.connect被赋值false, 就会加载消除动画
+              if(key === 'connect' && value === false) {
+                dropOff(ballsData[target.idx].ele);
+              }
+              target[key] = value;
+            }
+          })
+          //初始化所有小球的位置
+       /*    setStyle(ele, {
+            left: left + 'px',
+            top: top + 'px',
+            background: color
+          }) */
+          fragment.appendChild(ele);
+          ballsData.push(ball);
+        }
+      }
+      oBallArea.appendChild(fragment);
+    }
+
+
+
+    /*
+     *@func:     initArrow
+     *@description: 初始化炮台位置
+     *@author: lv
+    */
+    function initArrow() {
+      setStyle(oArrow, {
+        left: (oBallArea.offsetWidth / 2) - (oArrow.offsetWidth / 2) + 'px',
+        top: oBallArea.offsetHeight - 30 + 'px'
+      })
+    }
+
+
+    /*
+     *@func:     initBullte
+     *@description: 初始化子弹的位置
+     *@author: lv
+    */
+    function initBullte() {
+      let color = randomColor();
+      
+      oBullet.style.cssText = ''; //初始化之前把oBullet的样式置空
+      console.log(oBullet);
+      bullet.color = color;
+      setStyle(oBullet, {
+        display: 'block',
+        backgroundColor: color,
+        left: (oBallArea.offsetWidth / 2) - (size / 2) + 'px',
+        top: oBallArea.offsetHeight + 5 + 'px'
+      })
+    }
+
+
+    /*
+     *@func:     collisionBall
+     *@description:  球的碰撞检测: 两个球圆心的直线距离 是否小于 两个球的半径和 size
+     *@param: {Object} {x,y} 子弹坐标位置
+     *@return: {Array} 如果如果子弹没有撞到任何球,且到达顶边,返回子弹到达顶部的小标,否则返回相撞小球的下标
+     *@author: lv
+    */
+    function collisionBall({ x = 0, y = 0 } = {}) {
+      let balls = ballsData.filter(item => item.connect); //筛选连接着的球
+      balls = getCollisionDistance(balls, x, y); //返回子弹相撞小球的数组[{idx, distance}, ...]
+
+      if(balls.length === 0 && y < size / 2) {
+        //如果子弹没有撞到任何球,且到达顶边
+        let topBall = ballsData.slice(0, 10).reduce((acc, curr) => {
+          if(Math.abs(acc.left - x) >= Math.abs(curr.left - x)) {
+            //如果第一个球与子弹的距离 大于 下一个球与子弹的距离, 让acc = curr(获取与子弹最小距离的球)
+            acc = curr;
+          }
+          return acc;
+        });
+        balls[0] = {
+          idx: topBall.idx,
+          distance: 0
+        }
+      }
+      console.log(balls);
+      return balls; //如果如果子弹没有撞到任何球,且到达顶边,返回子弹到达顶部的小标,否则返回相撞小球的下标
+    }
+
+
+    /*
+     *@func:     getCollisionDistance
+     *@description:
+     *@param: {Array} balls   ball.connect为true的balls
+     *@param: {Number} x 子弹的横坐标
+     *@param: {Number} y 子弹的竖坐标
+     *@return: {Array} 返回子弹相撞小球的数组[{idx, distance}, ...]
+     *@author: lv
+    */
+    function getCollisionDistance(balls, x, y) {
+      return balls.map(item => {
+        let _x = item.left - x;
+        let _y = item.top - y;
+        let distance = Math.sqrt(_x * _x + _y * _y);
+        if(distance < size) { //距离小于直径代表相撞, 如果相撞,返回该球下标
+          return {
+            idx: item.idx,
+            distance
+          }
+        }
+        return null;
+      }).filter(item => (!!item))  //返回子弹相撞小球的数组[{idx, distance}, ...]
+    }
+
+
+
+    /*
+     *@func:     getShortDistance
+     *@description:  获取与子弹相撞最小距离的小球
+     *@param: {Array} arr 与子弹相撞小球的数组
+     *@return: {Number} 返回与子弹碰撞最小距离小球的下标
+     *@author: lv
+    */
+    function getShortDistance(arr = []) {
+      if(arr.length === 0) {
+        return arr;
+      }
+      if(arr.length === 1) {
+        return arr[0].idx;
+      }
+      return arr.reduce((acc, curr) => {
+        if(acc.distance >= curr.distance) {
+          acc = curr;
+        }
+        return acc;
+      }).idx;
+    }
+  
+
+
+
+
+
+    /*
+     *@func:     getFreeSpace
+     *@description:
+     *@param: {Number} idx  与子弹相撞距离最小的小球下标 
+     *@param: {Object} {x,y}  子弹位置坐标 
+     *@return: {type} 返回值
+     *@author: lv
+    */
+    function getFreeSpace(idx, { x = 0, y = 0 } = {}) {
+      if(ballsData[idx].connect === false) {
+        return idx; //如果与子弹相撞的小球没有连接子弹直接填补到空位
+      }
+      let balls = Object.entries(findSiblings(idx)).map(([key, value]) => value).filter(item => {
+        return ballsData[item]?.connect === false;
+      }).map(item => ballsData[item]);//返回相撞距离最小小球的兄弟球没有连接的兄弟
+
+      return getShortDistance(getCollisionDistance(balls, x, y)); //返回这些兄弟球与子弹相撞且距离最小的球的下标
+    }
+
+
+    //炮台追踪鼠标旋转
+    oGameArea.addEventListener('mousemove', function(e) {
+      let ex = e.clientX, ey = e.clientY;
+      //(ox, oy)获取炮台旋转中心坐标
+      let { left: ox, top: oy } = getPosition(oArrow);
+      ox += oArrow.offsetWidth / 2;
+      oy += 56;
+      //计算炮台旋转中心与鼠标点的夹角
+      let iAngle = Math.abs(Math.atan2(ey - oy, ex - ox) * 180 / Math.PI);
+      iAngle = Math.min(170, Math.max(10, iAngle));
+      iAngle = -iAngle * Math.PI / 180;
+      iAngle += Math.PI / 2;
+      oArrow.style.transform = `rotate(${iAngle * 180 / Math.PI}deg)`;
+    }, false)
+
+    oBallArea.addEventListener('mousedown', function(e) {
+      let timer, speed = 18, oX = oBullet.offsetLeft, oY = oBullet.offsetTop;
+      let _speedX = speed;
+      //子弹发射角度
+      let iAngle = Number(oArrow.style.transform.match(/rotate\((.+)deg\)/)?.[1]);
+      clearInterval(timer);
+
+      timer = setInterval(() => {
+        let x = oBullet.offsetLeft, y = oBullet.offsetTop;
+
+        ////判断是否发生碰撞 (与顶边碰撞 与球碰撞)
+        let collisionBalls = collisionBall({x, y});
+        if(collisionBalls.length > 0) {
+          //找到碰撞到的距离最小的球
+          let collisionIdx = getShortDistance(collisionBalls); 
+          //找到碰撞球的兄弟球最近非连接的下标
+          let targetIdx = getFreeSpace(collisionIdx, {x, y});
+          //命中处理
+          hitTarget(targetIdx);
+          clearInterval(timer);
+          return false;
+        }
+
+        //子弹碰到墙壁反弹
+        if(x < 0 || x > (oBallArea.offsetWidth - size)) {
+          _speedX *= -1;
+        }
+        //小球运动轨迹
+        x += _speedX * Math.cos((iAngle - 90) * Math.PI / 180);
+        y += speed * Math.sin((iAngle - 90) * Math.PI / 180);
+
+        oBullet.style.left = x + 'px';
+        oBullet.style.top = y + 'px';
+      }, 1000 / 60)
+    }, false)
+
+
+    /*
+     *@func:  hitTarget
+     *@description: 命中目标后处理置换球 三色消除 失根消除 重置子弹
+     *@param: {number} 命中目标的下标
+     *@author: lv
+    */
+    function hitTarget(idx) {
+      let sorce = 0;
+      let target = ballsData[idx];
+      //唤醒命中的球,并把颜色改为子弹的颜色
+      placeBall(target, bullet.color);
+
+      let colorBalls = findSeriesNode([idx], true); //找到同色球
+      if(colorBalls.length >= 3) {
+        //数量大于等于3的同色球消除
+        colorBalls.forEach(item => ballsData[item].connect =false);
+        //全局迭代数去根节点的球消除
+        traceConnect().forEach(item => {
+          ballsData[item].connect = false;
+        });
+        //得分(消除球的数量)
+        sorce = colorBalls.length + transform().length;
+      }
+      
+      //重置子弹
+      initBullte();
+
+      //得分
+
+    }
+
+
+    /*
+     *@func:     placeBall
+     *@description:  唤醒命中的球
+     *@param: {Object} ball 被唤醒的球
+     *@param: {String} color 子弹的颜色, 被唤醒球的颜色需要跟子弹的颜色一致
+     *@author: lv
+    */
+    function placeBall(ball, color = '') {
+      ball.connect = true;
+      ball.color = color || randomColor();
+      ball.ele.style.cssText = '';
+      setStyle(ball.ele, {
+        display: 'block',
+        top: ball.top + 'px',
+        left: ball.left + 'px',
+        backgroundColor: ball.color
+      }) 
+    }
+
+    function animate({ ele, styleJson = {}, time = 300, speed = 'linear', callback } = {}) {
+      ele.style.transition = `${time}ms ${speed}`;
+      setStyle(ele, styleJson);
+      ele.addEventListener('transitionend', end, false);
+      function end() {
+        callback && callback();
+        ele.removeEventListener('transitionend', end);
+        ele.style.transition = '';
+      }
+    }
+
+
+    /*
+     *@func:     dropOff
+     *@description:  让对应dom 过渡样式( top增加 opacity减少 scale减少 ) 过渡结束之后 display:none
+     *@param: {Element} ele
+     *@author: lv
+    */
+    function dropOff(ele) {
+      animate({
+        ele,
+        styleJson: {
+          top: ele.offsetTop + 40 + 'px',
+          opacity: 0,
+          transform: 'scale(.5)'
+        },
+        callback() {
+          ele.style.cssText = '';
+          setStyle(ele, {
+            display: 'none'
+          })
+        }
+      })
+    }
+
+
+
+    /*
+     *@func:     traceConnect
+     *@description:  获取失去根节点的球下标数
+     *@return: {Array} loseConnectBalls  所有失去根连接的ball下标集合
+     *@author: lv
+    */
+    function traceConnect() {
+      let loseConnectBalls = [];
+      for(let i = 0, len = ballsData.length; i < len; i++) {
+        if(ballsData[i].connect === true) {
+          let tempArr = findSeriesNode([i], false); //仅需找相连的小球
+          let result = tempArr.some(item => item < 10);//相连小球中是否有顶部的球(下标小于10的球)
+          if(!result) { //如果没有,把这些小球加到失去根节点的数组中
+            loseConnectBalls.push(i);
+          }
+        }
+        return loseConnectBalls;
+      }
+    }
+
+
+    //监听小球点击
+ /*    oBallArea.addEventListener('click', function(e) {
+      if(e.target.className === 'ball') {
+        let idx =Number(e.target.innerText); //转换成数字,在findSeriesNode返回值中避免出现字符串
+        //寻找同色球并变色
+        let colors = findSeriesNode([idx]);
+        // console.log(colors);
+        if(colors.length) {
+          colors.forEach(item => {
+            // console.log(item);
+            ballsData[item].ele.style.backgroundColor = 'black';
+          })
+        }
+      }
+    }, false) */
+
+
+    /*
+     *@func:   findSeriesNode
+     *@description: 递归追踪与中心ball坐标相连通的所有复合条件的兄弟节点
+     *@param: {Array} sameColorSiblings [idx]
+     *@return: {Array} 返回所有符合条件的连通节点下标
+     *@author: lv
+    */
+    function findSeriesNode(sameColorSiblings = [], color) {
+      //slice不传参,复制数组
+      let collectArr = sameColorSiblings.slice();
+      // console.log(sameColorSiblings);
+      recu(collectArr)
+      function recu(arr) {
+        for(let i = 0; i < arr.length; i++) {
+          let siblings = getSameTypeSibilings(arr[i], color);
+          // console.log(siblings);
+          //筛选出collectArr不存在的值
+          siblings = siblings.filter(item => !(collectArr.includes(item)));
+          collectArr.push(...siblings);
+          // console.log(collectArr);
+          if(siblings.length > 0) {
+            recu(siblings);
+          }
+        }
+      }
+      return collectArr;
+    }
+
+
+    /*
+     *@func: getColorSibilings
+     *@description: 传参color则寻找与中心求相连的同色球下标,不传color则只寻找与中心球相连的球
+     *@param: {number} idx 中心ball下标
+     *@param: {Boolean} color 是否寻找同色球
+     *@return: {Array} 返回值 [idx1,idx2]
+     *@author: lv
+    */
+    function getSameTypeSibilings(idx, color = false) {
+      return Object.entries(findSiblings(idx)).map(([key, value]) => value).filter(item => {
+        if(!ballsData[item]) {
+          return false;
+        }
+        let flag = ballsData[item].connect === true;
+        if(color) {
+          return flag && ballsData[item].color === ballsData[idx].color
+        }
+        return flag;
+      });
+    }
+
+    /*
+     *@func: findSiblings
+     *@description: 传入下标 返回符合标准的6角方向的兄弟们
+     *@param: {Number} idx 中心球下标
+     *@return: {Object} 返回值
+     *@author: lv
+    */
+    function findSiblings(idx = 0) {
+      let { tens, units } = getDigit(idx);
+      return getRightSlot(idx, {
+        tl: (tens - 1) * 10 + (units - 0),
+        tr: (tens - 1) * 10 + (units + 1),
+        ml: (tens - 0) * 10 + (units - 1),
+        mr: (tens - 0) * 10 + (units + 1),
+        bl: (tens + 1) * 10 + (units - 1),
+        br: (tens + 1) * 10 + (units - 0)
+      });
+    }
+
+    /*
+     *@func: getDigit
+     *@description: 拆分一个数的十位与各位
+     *@param: {Number} num
+     *@return: {Object} {tens,units}
+     *@author: lv
+    */
+    function getDigit(num) {
+      return {
+        tens: ~~(num / 10),
+        units: ~~(num % 10)
+      }
+    }
+
+    /*
+     *@func:   getRightSlot
+     *@description: 重置六个兄弟ball中错误行或不存在的项下标为null
+     *@param: {Number} idx 中心ball下标
+     *@param: {Object} 六角兄弟下标  { tl, tr, ml, mr, bl, br } 
+     *@return: {Object} 重置后的兄弟下标对象 { tl, tr, ml, mr, bl, br }
+     *@author: lv
+    */
+    function getRightSlot(idx, { tl, tr, ml, mr, bl, br } = {}) {
+      const diffRow = {
+        t: -1,
+        m: 0,
+        b: 1
+      }
+      let row = ballsData[idx].row;
+      //把不存在和错位的球下标重置为null
+      return Object.entries({ tl, tr, ml, mr, bl, br }).reduce((acc, [key, value]) => {
+        acc[key] = (ballsData[value] && isRightSlot(ballsData[value].row, row, diffRow[key[0]])) ? value : null;
+        return acc;
+      }, {})
+    }
+
+
+
+    /*
+     *@func:   isRightSlot
+     *@description: 判断某个兄弟球的行号是否正确 边界球会错行
+     *@param: {Number} sRow 兄弟球的行号
+     *@param: {Number} row   中心球行号
+     *@param: {Number} padNum 兄弟球与中心球行号差值
+     *@return: {Boolean} 返回值
+     *@author: lv
+    */
+    function isRightSlot(sRow, row, padNum) {
+      return sRow === (row + padNum);
+    }
+
+
+    /*
+     *@func: randomColor
+     *@description: 随机获取颜色
+     *@return: {String} eg:'#fa5a5a'
+     *@author: lv
+    */
+    function randomColor() {
+      const COLORS = ['#fa5a5a', '#f0d264', '#82c8a0', '#7fccde', '#6698cb', '#cb99c5'];
+      return COLORS[~~(Math.random() * COLORS.length)]
+    }
+  </script>
+</body>
+</html>
+
+<!-- 知识点查漏补缺:
+   1. element.style.cssText => 可读可写,cssText 属性用于设置或者返回元素声明的内联样式。
+   2. 正则表达式
+-->
+

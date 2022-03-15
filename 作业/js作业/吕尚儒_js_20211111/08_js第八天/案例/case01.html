@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组方法1</title>
+</head>
+
+<body>
+  <script>
+    //join
+    var arr = ['你', '好', '啊',1, false, null, undefined];
+    var str = arr.join('-');
+    // console.log(str);
+
+
+    //push  往数组最后添加N项 N取决于参数数量
+
+    var arr = [];
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[arr.length] = 3; //往数组最后添加一位1
+    arr.push('哈哈哈');
+    var len = arr.push(1, 2); //添加之后数组长度改变 并且返回新的长度
+    // console.log(arr, len);
+
+    //unshift
+    var arr = [];
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[0] = 3; //往数组最后添加一位1
+    var len = arr.unshift('从前', '添加');
+
+
+
+    //pop() 从后删
+    var plants = [1, 2, 3, 4, 5];
+
+    console.log(plants.pop());
+
+    console.log(plants);
+
+    plants.pop();
+    plants.pop(); plants.pop(); plants.pop(); plants.pop();
+    console.log(plants.pop());
+
+
+
+    //shift() 从前删
+
+    var array = [1, 2, 3];
+
+    var firstElement = array.shift();
+
+    console.log(array);
+    //  Array [2, 3]
+
+    console.log(firstElement);
+//  1
+  </script>
+</body>
+
+</html>

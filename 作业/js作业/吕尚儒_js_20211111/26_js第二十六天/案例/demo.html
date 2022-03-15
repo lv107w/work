@@ -1,0 +1,253 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-10 20:31:13
+ * @LastEditTime: 2020-08-11 21:50:08
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 轮播图sliderShow 基础班</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 500px;
+      height: 290px;
+      margin-top: 100px;
+      box-shadow: 0 0 12px #333;
+    }
+
+    .pic li {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .pic li.on {
+      display: block;
+    }
+
+    .pic li img {
+      width: 500px;
+      height: 290px;
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slider span.active {
+      background-color: pink;
+    }
+
+    .btn-wrap span {
+      user-select: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 40px;
+      height: 85px;
+      line-height: 85px;
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+    }
+
+    .btn-wrap span:hover {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <ul class="pic">
+      <li class="on bg333 c368"><img src="images/p1.jpg" alt=""></li>
+      <li class="bg333 c368"><img src="images/p2.jpg" alt=""></li>
+      <li class="bg333 c368"><img src="images/p3.jpg" alt=""></li>
+      <li class="bg333 c368"><img src="images/p4.jpg" alt=""></li>
+    </ul>
+    <div class="slider">
+
+    </div>
+    <div class="btn-wrap">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+  <script src='js/common.js'></script>
+  <script>
+    /*
+      基础版本轮播图
+
+      1. pic 下面不是直接通过修改一个img的src来进行切换 而是通过直接列入多个轮播项(pic>li)
+
+      2. slider 指示器需要根据 li的数量 动态生成
+
+      3. 轮播的主要思想就是进行切换 通过公共下标 确定展示哪个picLi 其他的 li 隐藏 指示器同理
+
+
+      -------------------------------
+
+      1. 配菜 思考那些元素是需要用到的 .pic>li .slider .prev .next
+
+      2. 需要的功能函数 getElementIdx  createSlider switchTab
+
+      2. 思考事件交互 onclick:[.prev,.next] onmouseenter:[sliders]
+
+      3. 主要行为有哪些 
+        1. 根据 index 切换 aPicList的 类名(.on) 以及 sliders的 active类名 
+        当前index所对应的 picList 需要设置类名为 on 其他的picList类名设置为 '' sliders当前index对应的设置类名为 active 其他的设置类名为 ''
+
+        2. 根据用户的交互事件 修改index
+
+      4. 主要的操作API 或者 技巧
+        1. 修改index  index++  限制 index-- 限制 getElementIdx
+        2. .className 操作 (classList)
+        3. 回调函数
+
+
+
+
+    console.log(aPicList[0].classList) //指定DOM对象的类名列表
+
+    aPicList[0].classList.add('w1000'); //添加 如果不存在添加上
+    aPicList[0].classList.add('c368'); //添加 如果存在 就忽略
+
+    aPicList[0].classList.remove('c368');//删除 如果类名列表 上存在 c368 就删掉
+
+    aPicList[0].classList.toggle('w1000'); //开关 如果有就删 如果没有就添 
+
+    aPicList[0].classList.replace('bg333', 'bg222'); //repace(A,B) 把列表中的类名A替换成 B
+
+
+    */
+
+    var aPicList = $$('.pic>li'),
+      oSlider = $('.slider'),
+      oBtnWrap = $('.btn-wrap'),
+      sliderIdx = 0, sliderLen = aPicList.length;
+
+
+
+    //映射地图 
+    var btnTypeMap = {
+      prev: function () {
+        sliderIdx--;
+        sliderIdx = (sliderLen + sliderIdx) % sliderLen;
+      },
+      next: function () {
+        sliderIdx++;
+        sliderIdx = sliderIdx % sliderLen;
+      }
+    }
+
+
+    oBtnWrap.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'span') {
+        var btnType = e.target.className; //next prev
+        btnTypeMap[btnType] && switchSlider(function () {
+          btnTypeMap[btnType]();
+        });
+      }
+    }, false);
+
+
+    //监听sliders > span的 mouseover 鼠标移入事件 
+    oSlider.addEventListener('mouseover', function (e) {
+      if (e.target.tagName.toLowerCase() === 'span') {
+        //事件委托 可以作用于还未创建出来的DOM节点
+        switchSlider(function () {
+          sliderIdx = getElementIdx(e.target);
+        })
+      }
+    }, false);
+
+
+    function switchSlider(callback) {
+      /*
+        1. 让上一次index对应的picList 和 sliderSpan 都隐藏 类名= ''
+        2. 设置index = 当前用户选中的index
+        3. 让当前index对应的picList 和sliderSPan 的类名分别设置为 on active
+      */
+      aPicList[sliderIdx].classList.remove('on');
+      oSlider.children[sliderIdx].classList.remove('active');
+      callback && callback();
+      aPicList[sliderIdx].classList.add('on');
+      oSlider.children[sliderIdx].classList.add('active');
+    }
+
+    /**
+     * @description:  根据 picList的数量 创建span添加到 oSlider 中 功能性函数 fragment节点片段
+     * @Date: 2020-08-11 20:52:36
+     */
+    function createSlider() {
+      var fragment = document.createDocumentFragment();
+      var vDom;
+      for (var i = 0; i < sliderLen; i++) {
+        vDom = document.createElement('span');
+        vDom.innerText = i + 1;
+        fragment.appendChild(vDom);
+      }
+      fragment.children[0].classList.add('active');
+      oSlider.appendChild(fragment);
+    }
+
+    createSlider();
+
+  </script>
+</body>
+
+</html>

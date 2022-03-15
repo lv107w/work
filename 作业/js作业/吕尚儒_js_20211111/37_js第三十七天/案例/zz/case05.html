@@ -1,0 +1,49 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 17:21:11
+ * @LastEditTime: 2020-08-24 20:30:03
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\zz\case05.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>转义</title>
+</head>
+
+<body>
+  进口量放大数据/库里讽德诵功森岛帆高时空来电金坷垃\刻录机惹他往来款噶
+  <script>
+
+
+    /* 
+      转义 
+
+    +  \+
+    . \.
+    \ \\
+    /  \/
+    [] \[\]
+    {} \{\}
+    -  \-
+    ?  \?
+    *  \*
+    ^  \^
+    $  \$
+    !  \!
+
+    
+     */
+    var str = document.body.innerText;
+    console.log(str)
+    console.log(/\\/.test(str));
+    console.log(/\^/.test(str));
+    console.log(/\//.test(str));
+  </script>
+</body>
+
+</html>

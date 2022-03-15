@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //状态管理  记录并提供number、color的值
+    var moudle_status = (function() {
+      var state = {
+        number: 0,
+        color: null
+      }
+      return {
+        set(prop, value) {
+          state[prop] = value;
+        },
+        get(prop) {
+          return state[prop]
+        }
+      }
+    })()
+
+    //根据number 页面渲染输出
+    var moudle_context = (function() {
+      var state = moudle_status;
+      function renderContext() {
+        document.body.innerHTML = `当前颜色下标值为:${state.get('number')}`;
+      }
+      return {
+        renderContext
+      }
+    })()
+
+    //根据number 渲染页面背景颜色
+    var moudle_color = (function() {
+      var state = moudle_status;
+      var colors = ['#368', 'red', 'pink'];
+      function renderColor() {
+        document.body.style.backgroundColor = colors[state.get('number') % 3];
+        console.log(colors[state.get('number') % 3])
+      }
+      return {
+        renderColor
+      }
+    })()
+    
+    //主模块 整合三个模块
+    var moudle_main = (function() {
+      var state = moudle_status;
+      var color = moudle_color;
+      var content = moudle_context;
+      setInterval(function() {
+        state.set('number', (state.get('number') + 1));
+        console.log(state.get('number'));
+        color.renderColor();
+        content.renderContext();
+      }, 1000)
+    })()
+  </script>
+</body>
+</html>

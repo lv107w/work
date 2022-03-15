@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      width: 400px;
+      height: auto;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- 点击img切换图片 随机换 p1 - p4 -->
+
+  <img id='pic' src="images/p1.jpg" alt="">
+
+  <script>
+
+    /*
+      es6 字符串模板 `` ${变量~~``}
+    
+    */
+    var oPic = document.querySelector('#pic');
+
+    oPic.onclick = function () {
+      //随机 1 2 3 4 Math.random()
+      var randomIdx = ~~(Math.random() * 4) + 1;
+      console.log(randomIdx);
+      this.src = `images/p${randomIdx}.jpg`;
+      // 'images/p'+ randomIdx +'.jpg'
+    }
+
+  </script>
+</body>
+
+</html>

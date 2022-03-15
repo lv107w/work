@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通道函数 pipeline</title>
+</head>
+<body>
+  <script>
+    const double = x => x + x;
+
+    const triple = x => 3 * x;
+
+    const quarter = x => x / 4;
+
+
+    /* function pipe(...funs) {
+      return function(input) {
+        return funs.reduce(function(acc, curr) {
+          return curr(acc);
+        }, input)
+      }
+    } */
+
+    let pipe = (...funs) => (input) => funs.reduce((acc, curr) => curr(acc), input)
+    let result = pipe(double, triple);
+    console.log(result(8));
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/layui-src/dist/css/layui.css">
+  <title>cookie</title>
+  <style>
+    .container {
+      width: 460px;
+      padding: 20px;
+      margin: 50px auto;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form class="layui-form" action="http://127.0.0.1:3008/login" method="POST"
+      enctype="application/x-www-form-urlencoded">
+      <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+          <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="pwd" lay-verify="required" lay-reqtext="请输入密码" placeholder="请输入密码"
+            autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button id="submit" type="submit" class="layui-btn">登录</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./js/myAjax.js"></script>
+  <!-- <script>
+    const $form = $('form')
+    const $submit = $('#submit')
+    const host = 'http://127.0.0.1:3008/login'
+
+    $submit.on('click', function () {
+      let requestData = getFormJson($form);
+      console.log(requestData)
+      ajax({
+        url: host,
+        method: 'POST',
+        contentType: 'json',
+        // withCredentials: true,
+        data: requestData,
+        dataType: 'json',
+        success(data) {
+          console.log(data, 'success')
+        },
+        error(err) {
+          console.log(err, 'err')
+        }
+      })
+    })
+
+    function getFormJson(form) {
+      return $(form).serializeArray().reduce((acc, { name, value }) => {
+        acc[name] = value
+        return acc
+      }, {})
+    }
+
+
+
+
+
+  </script> -->
+</body>
+<!-- 
+
+    cookie 浏览器分配的 片段数据 存储空间 
+    cookie是 服务端和 客户端都可以设置 修改的存储
+
+    localStorage sessionStorage cookie
+
+    cookie 登录验证
+
+    第一次登录 输入账号密码 服务器接收请求验证通过后 设置cookie给发起请求的客户端
+    之后的请求 如果客户端的请求有cookie对应信息 就直接免验证账号密码登录
+
+    请求一个服务器地址 
+    服务端判断是否有已登录的cookie token 如果存在 就直接返回内容页面 
+    如果没有token 的 cookie返回登录页面
+    登录提交登录表单 服务端根据登录信息 返回响应内容的同时 设置响应头Set-Cookie 给客户端浏览器设置专属的cookie值 
+
+
+    1. 客户端向服务端发起请求服务端可以获取客户端的cookie
+    2. 发起请求的来源 不局限于ajax get post ajax form link sciprt img a
+    3. 服务器B页面B 里面有一个 恶意的 img不可见标签 src 请求服务器A
+     服务器A就可以获取 客户端B 在访问服务器B的时候的cookie
+   -->
+
+</html>

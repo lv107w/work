@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/layui-src/dist/css/layui.css">
+  <title>ajax 封装</title>
+  <style>
+    .container {
+      width: 460px;
+      padding: 20px;
+      margin: 50px auto;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form class="layui-form" action="javascript:;" enctype="multipart/form-data">
+      <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+          <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+          <input type="text" name="sex" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="pwd" lay-verify="required" lay-reqtext="请输入密码" placeholder="请输入密码"
+            autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">头像</label>
+        <div class="layui-input-block">
+          <input type="file" name="avator" lay-verify="required" lay-reqtext="请输入密码" placeholder="请输入密码"
+            autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button id="submit" type="submit" class="layui-btn">登录</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+
+    const $form = $('form')
+    const $submit = $('#submit')
+
+    $submit.on('click', function () {
+      //serialize 方法会将调用方法的主体$form对象内的 拥有name属性的 表单 内容拼接成  queryString
+      let requestData = serializeJSON($form.serializeArray())
+      let form = new FormData($form[0])
+
+
+      myAjax({
+        url: 'http://127.0.0.1:3008/data',
+        data: form,
+        method: 'POST',
+        contentType: 'form',
+        success(data) {
+          console.log(data)
+        },
+        error(err) {
+          console.error(err)
+        }
+      })
+
+
+    })
+
+    function serializeJSON(queryArr) {
+      return queryArr.reduce((acc, { name, value }) => {
+        acc[name] = value
+        return acc
+      }, {})
+    }
+
+    function myAjax({ url = "/", method = "GET", data = {}, dataType = "json", contentType = "queryStr", success = function (data) { console.log(data) }, error = function (err) { console.error(err) } }) {
+
+
+      const contentTypeMap = {
+        'json': 'application/json',
+        'form': 'multipart/form-data',
+        'text': 'text/plain',
+        'queryStr': 'application/x-www-form-urlencoded'
+      }
+
+      let xhr = new XMLHttpRequest()
+
+      method = method.toUpperCase()
+      xhr.responseType = dataType// text json blob buffer
+
+      //区别 GET POST
+      if (method === 'GET') {
+        //请求数据需要以queryString的形式拼接到URL上 send 方法传参 null
+        url = '?' + fromatQueryString(data)
+        data = null
+      }
+
+      if (contentType === 'json') {
+        //如果设置  content-type 为 application/json 发送的数据需要是 字符串化的 json对象
+        data = JSON.stringify(data)
+      }
+
+      if (contentType === 'queryStr') {
+        data = fromatQueryString(data)
+      }
+
+      xhr.open(method, url, true)
+      let reqHeaderCt = contentTypeMap[contentType];
+      if (!(contentType === 'form')) {
+        //如果请求的content-type 是multipart 不设置requestHeader 浏览器根据请求内容自动识别
+        xhr.setRequestHeader('content-type', reqHeaderCt)
+      }
+      xhr.send(data)
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status <= 299)) {
+          let responseData = xhr.response // "{a:1,b:2}"
+          if (xhr.responseType === 'json' && isJSON(responseData)) {
+            responseData = JSON.parse(responseData)
+          }
+          success(responseData)
+        }
+      }
+      xhr.onerror = function (err) {
+        error(err)
+      }
+
+      function isJSON(str) {
+        try {
+          JSON.parse(str)
+          return true;
+        } catch (err) {
+          return false;
+        }
+        return false;
+      }
+
+      function fromatQueryString(data) {
+        return Object.entries(data).map(([key, value]) => {
+          return `${key}=${value}`
+        }).join('&')
+      }
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

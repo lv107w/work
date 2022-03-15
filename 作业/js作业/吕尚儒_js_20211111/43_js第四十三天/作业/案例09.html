@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 函数</title>
+</head>
+<body>
+  <script>
+    const product = {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }
+
+    const products = [{
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }, {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 99,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }]
+
+    function format({
+      productName: name = '扫地机器人'
+    } = {}) {
+      return name;
+    }
+    
+    console.log(format(product)); //扫地机器人,只有prodect.productName = undefined才会显示默认值
+
+    
+
+    //柯理化函数：
+    function currying(fn) {
+      let args = [].slice.call(arguments, 1);
+      let inlay = function() {
+        if(arguments.length === 0) {
+          console.log(args);
+          return fn(args);
+        }
+        // args.push.apply(args, arguments);
+        args.push(...arguments); //参数可以直接解构
+        return inlay;
+      }
+      return inlay;
+    }
+
+  /*   let fn = function() {
+      return [].reduce.call(arguments, function(acc, curr) {
+        return acc + curr;
+      })
+    } */
+    fn = (args) => args.reduce((acc, curr) => acc + curr)  //箭头函数没有arguments，搞忘了
+    let result = currying(fn, 1, 2, 3);
+    result(4, 5, 6)
+    console.log(result());
+
+
+
+    
+    let res = [[1, 2, 3, 4, 5], [1, 2, 3]].map(function(item) {
+      return add(...item);
+    });
+
+    console.log(res); //[15, 6]
+
+    function add() {
+      return [].reduce.call(arguments, function(acc, curr) {
+        return acc + curr;
+      })
+    }
+
+
+
+    //返回值解构
+    function fn1() {
+      let reg = new RegExp('\\d', 'g');
+      let arr = [1, 2, 3, 4, 5, 6];
+
+      return {
+        reg,
+        arr
+      }
+    }
+
+    let { reg, arr } = fn1();
+    console.log(reg, arr);    ///\d/g   [1, 2, 3, 4, 5, 6] 
+  </script>
+</body>
+</html>

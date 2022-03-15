@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组遍历</title>
+</head>
+
+<body>
+  <script>
+    //犯罪现场有4个嫌疑人 让证人一一辨认  嫌疑人名字叫王五
+
+    var suspects = ['张三', '李四', '王五', '赵六']; //4 
+
+    for (var i = 0; i < suspects.length; i++) {// 0 - 3 
+      if (suspects[i] === '王五') {
+        console.log('就是他:' + i + '号嫌疑人');
+      }
+    }
+
+    // for in 有可能乱序
+    for (var idx in suspects) {
+      console.log(idx, suspects[idx]);
+    }
+
+    // for of
+    for (var item of suspects) {
+      console.log(item);
+    }
+
+
+
+
+
+    // var a = '张三', b = '李四', c = '王五', d = '赵六';
+    // if (a === '张三') {
+
+    // }
+
+    // if (b === '张三') {
+
+    // }
+
+    // if (c === '张三') {
+
+    // }
+
+    // if (d === '张三') {
+
+    // }
+
+
+
+  </script>
+</body>
+
+</html>

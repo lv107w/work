@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 对象</title>
+</head>
+<body>
+  <script>
+    const product = {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }
+
+    const products = [{
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }, {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 99,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }]
+
+    let { colors: [, color] } = product;
+    console.log(color); //yellow
+
+    let [, {productCount: count}] = products;
+    console.log(count); //99
+
+
+    //数组也可以当对象解构
+    let arr = [1, 2, 3, 4, 5];
+    let { 0: first, [arr.length - 1]: last } = arr;
+    console.log(first, last); //1 5
+  </script>
+</body>
+</html>

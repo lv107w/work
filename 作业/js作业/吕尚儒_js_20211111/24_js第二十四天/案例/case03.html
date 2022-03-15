@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阻止默认行为</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      display: flex;
+      width: 200px;
+      background-color: #222;
+      transition: .5s;
+      color: #fff;
+    }
+
+    #child {
+      background-color: #999;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="child">
+      <img src="images/p1.jpg" alt="">
+    </div>
+    <a href="https://www.baidu.com/">聊天信息内容</a>
+  </div>
+
+  <script>
+
+    /*
+    很多标签拥有默认的事件行为 比如 a标签拥有href属性的时候 我们点击a标签会发生默认跳转行为
+
+
+    e.preventDefault(); 阻止默认行为
+    针对a标签href的值设置为javascript:; 由js接管href行为
+
+    
+    事件函数最后 我们可以return false 
+    阻止冒泡传递 阻止默认行为 返回false
+
+    新版本chrome 
+    return false不在执行 stopPropagation() 职能
+    
+    */
+
+    var oBox = document.querySelector('#box');
+    var oChild = document.querySelector('#child');
+    var oLink = document.querySelector('a');
+
+    oBox.onclick = function () {
+      console.log(this);
+      // return false;
+    }
+    oChild.onclick = function (e) {
+      e.stopPropagation();
+    }
+    oLink.onclick = function (e) {
+      // e.preventDefault();
+      console.log(e.target);
+      return false;
+    }
+
+  </script>
+</body>
+
+</html>

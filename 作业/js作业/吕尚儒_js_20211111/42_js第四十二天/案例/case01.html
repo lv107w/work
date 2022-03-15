@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>柯理化函数(currying) </title>
+</head>
+
+<body>
+  <script>
+    /*
+     柯里化是将一个多参数函数转换成多个单参数函数，也就是将一个 n 元函数转换成 n 个一元函数。
+    */
+
+    /*   function fn(arg1, arg2, arg3, arg4, arg5) {
+        return arg1 + arg2 + arg3 + arg4 + arg5;
+      }
+  
+      function double(x) {
+        return 2 * x;
+      }
+  
+      function triple(x) {
+        return 3 * x;
+      }
+  
+      function quarter(x) {
+        return x / 4;
+      }
+  
+      function add(x, y) {
+        return x + y;
+      }
+  
+      console.log(fn(1, quarter(double(2)), triple(3), add(triple(quarter(4)), 5)), 7);
+  
+      fn(1);
+      fn(quarter(double(2)));
+      fn(triple(3));
+      fn(add(triple(quarter(4)), 5));
+      fn(7);
+  
+  
+  
+      var result = fn();
+      console.log(result);
+  
+  
+      function fn() {
+        return [].reduce.call(arguments, function (acc, curr) {
+          return acc + curr;
+        })
+      }
+  
+      console.log(fn(1, 2, 3, 4, 5, 6));
+  
+  
+      fn(1, 2);
+  
+      fn(3, 4, 5);
+  
+      fn(3)(4)(7);
+  
+      fn(); //(1 + 2) + (3+4+5) + (3) + (4) + (5) */
+
+
+    function fnx(x, y, z) {
+      return x + y + z;
+    }
+
+    function fn(x) {
+      return function fn1(y) {
+        x = x + y;
+        return function fn2(z) {
+          return x + z;
+        }
+      }
+    }
+    console.log(fn(3)(4)(5));
+
+    let result = fn(3);
+    // let result1 = result(4);
+    console.log(result(5)(4));
+
+    function a(z) {
+      let x = 10;
+      return function b(w) {
+        return w + x + z;
+      }
+    }
+
+   
+  </script>
+</body>
+
+</html>

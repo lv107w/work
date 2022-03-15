@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建节点</title>
+</head>
+
+<body>
+  <div class="item">
+    <h3 class="title">龙牌洗发3水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <div class="item">
+    <h3 class="title">龙牌洗发2水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <script>
+    var oWrap = document.createElement('div'); //tagName 标签名称
+    oWrap.className = 'wrap';
+    oWrap.innerText = '我是wrap标签 我是通过appendChild方法添加到body中的';
+    oWrap.style.fontSize = '30px';
+    oWrap.style.color = 'red';
+    document.body.appendChild(oWrap);
+
+    var oP = document.createElement('p');
+    oP.innerText = '我是p标签 我会被添加到 oWrap中去';
+
+    oWrap.appendChild(oP);
+
+
+
+
+  </script>
+</body>
+
+</html>

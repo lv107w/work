@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function realizeInheritance(parent) {
+      // 临时函数
+      function tempFunc() { }
+      tempFunc.prototype = parent
+      return new tempFunc();
+      //{ ,__proto__:{name: "爸爸", likeFoods: ["水果", "鸡", "烤肉"]}}
+    }
+
+    var baba = {
+      name: "爸爸",
+      likeFoods: ["水果", "鸡", "烤肉"]
+    }
+    /*
+        var newChild = {} <==> baba  这两个对象建立关系就是这种继承的核心了。
+    */
+
+    var child1 = realizeInheritance(baba)
+    var child2 = realizeInheritance(baba)
+    child1.likeFoods.push('花椒');
+
+
+    console.log(child1.likeFoods) //    ["水果", "鸡", "烤肉", "花椒"]
+    console.log(child2.likeFoods) //    ["水果", "鸡", "烤肉", "花椒"]
+  </script>
+</body>
+
+</html>

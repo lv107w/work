@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      width: 800px;
+      height: 400px;
+      padding: 20px;
+      background-color: #ccc;
+      box-shadow: 0 0 8px #222;
+      font-size: 82px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    0
+  </div>
+
+  <script src="js/common.js"></script>
+  <script>
+    var oCon = $('.container');
+    var num = 0;
+    var time = 0;
+    function count() {
+      oCon.innerText = num++;
+    }
+    //时间戳版
+    time = Date.now();
+    var fn1 = function() {
+      if(Date.now() - time < 600) {
+        return false;
+      }
+      time = Date.now();
+      count();
+    }
+    
+    //定时器版
+    var valid = true;
+    var fn2 = function() {
+      if(!valid) {
+        return false;
+      }
+      valid = false;
+      setTimeout(function() {
+        count();
+        valid = true;
+      }, 500);
+    }
+
+    //束流版
+    time = 0;
+    var fn3 = function() {
+      time++;
+      if(time % 20 === 0) {
+        count();
+      }
+    }
+
+    oCon.addEventListener('mousemove', fn3)
+  </script>
+</body>
+</html>

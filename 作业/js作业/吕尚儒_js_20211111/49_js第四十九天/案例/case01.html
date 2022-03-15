@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象Object 可修改</title>
+</head>
+
+<body>
+  <script>
+    /*
+       只读属性
+
+        属性不可修改 但是可以获取(调用|右查询|寻址)
+        
+
+     */
+
+    Object.prototype = null;
+    Array.prototype = 1; //没有生效  Array.prototype是不可修改
+    console.log(Array.prototype);//
+    console.log(Object.prototype);
+
+    console.dir(Function.prototype);
+
+
+  </script>
+</body>
+
+</html>

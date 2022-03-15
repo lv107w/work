@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串基础方法练习</title>
+</head>
+
+<body>
+  <script>
+    var str = '假如给我三天光明,我会干什么? 假如给我帅气面孔,我会干什么? 假如给我一个大西瓜,我会干什么? 假如给我一瓶冰阔落,我会干什么?';
+
+    //'[假如]给我三天光明,我会干什么? [假如]给我帅气面孔,我会干什么? [假如]给我一个大西瓜,我会干什么? [假如]给我一瓶冰阔落,我会干什么?';
+
+    //找到这句话中 所有的 "假如" 的位置
+
+    /*
+      indexOf (目标,起始下标)
+      indexOf 找不到的时候 返回 -1
+      循环
+        for
+    */
+    var idx = 0;
+    var targetIdx = 0;
+    while (str.indexOf('假如', idx) !== -1) {
+      targetIdx = str.indexOf('假如', idx);
+      console.log(targetIdx);
+      idx = targetIdx + 2;
+    }
+  </script>
+</body>
+
+</html>

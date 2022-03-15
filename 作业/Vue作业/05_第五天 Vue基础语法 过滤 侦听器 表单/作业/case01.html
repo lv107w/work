@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form action="javascript:;">
+      <input type="text" name="letter" v-model="obj.val">
+      <button @click="translate(letter)">翻译</button>
+      <p>{{letterTrans}}</p>
+    </form>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          letter: '',
+          letterTrans: '',
+          obj: {
+            val: '123',
+            title: '456'
+          }
+        }
+      },
+      methods: {
+        translate(val) {
+           axios.get(`http://127.0.0.1:3000/translate?q=${val}`).then(res => {
+            this.letterTrans = res.data
+          }).catch(err => {
+            console.log(err);
+          })
+        }
+      },
+      watch: {
+        // 'obj.val': {
+        //   handler(newVal, oldVal) {
+        //     this.letterTrans = newVal
+        //   },
+        //   deep: true
+        // }
+        async letter(newVal, oldval) {
+          let res = await axios.get(`http://127.0.0.1:3000/translate?q=${newVal}`)
+          this.letterTrans = res.data
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSA 加密登录</title>
+</head>
+
+<body>
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <script src="./node_modules/jsencrypt/bin/jsencrypt.min.js"></script>
+  <script>
+    const storage = {
+      set(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      },
+      get(key) {
+        return localStorage.getItem(key);
+      },
+      remove(key) {
+        localStorage.removeItem(key);
+      }
+    }
+
+
+    let publicKey = '';
+
+    async function getPublicKey() {
+      let key = storage.get('ua_publicKay')
+      if (!key || key === 'undefined') {
+        let result = await axios.post('http://127.0.0.1:3000/getPublicKey', {})
+
+
+        key = result.data.publicKey
+        key = key.replace(/\. +/g, '')
+        key = key.replace(/[\r\n]/g, '')
+        publicKey = key
+        storage.set('ua_publicKay', key)
+      }
+      return key
+    }
+
+    function getKey() {
+      return storage.get('ua_publicKay')
+    }
+
+    // 添加请求拦截器
+    axios.interceptors.request.use(function (config) {
+      // 在发送请求之前做些什么
+      console.log(config)
+      return config;
+    }, function (error) {
+      // 对请求错误做些什么
+      return Promise.reject(error);
+    });
+
+
+    getPublicKey().then(key => {
+      axios.post('http://127.0.0.1:3000/login', {
+        username: "kyogre123",
+        pwd: encrypt(key, '123456')
+      }).then(data => {
+        console.log(data)
+      })
+    })
+
+    function encrypt(publicKey, value) {
+      let encrypt = new JSEncrypt();
+      encrypt.setPublicKey(publicKey);
+      return encrypt.encrypt(value)
+    }
+
+
+
+  </script>
+</body>
+
+</html>

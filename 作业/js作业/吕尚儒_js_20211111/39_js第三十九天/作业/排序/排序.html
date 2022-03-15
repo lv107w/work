@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排序</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      width: 180px;
+      height: 180px;
+    }
+
+    .wrap {
+      width: 1060px;
+      margin: 50px auto;
+      padding: 10px;
+      border: 1px solid #999;
+    }
+
+    .con ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .con li {
+      box-sizing: border-box;
+      width: 200px;
+      height: 240px;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      border: 1px solid #999;
+    }
+
+    .con li .price {
+      text-align: right;
+      color: red;
+      font-weight: 700;
+    }
+
+    .btn {
+      text-align: right;
+      cursor: pointer;
+    }
+
+    .btn span {
+      display: inline-block;
+      width: 120px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 18px;
+      border: 1px solid #999;
+      background-color: rgb(223, 223, 223);
+    }
+
+    .btn span:hover {
+      background-color: rgba(223, 223, 223, .8);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="con">
+      <ul>
+        <li>
+          <img src="img/1.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">6.5$</p>
+        </li>
+        <li>
+          <img src="img/2.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">8.5$</p>
+        </li>
+        <li>
+          <img src="img/3.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">5$</p>
+        </li>
+        <li>
+          <img src="img/4.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">12$</p>
+        </li>
+        <li>
+          <img src="img/5.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">10$</p>
+        </li>
+        <li>
+          <img src="img/6.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">9$</p>
+        </li>
+        <li>
+          <img src="img/7.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">16$</p>
+        </li>
+        <li>
+          <img src="img/8.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">8.9$</p>
+        </li>
+        <li>
+          <img src="img/9.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">7$</p>
+        </li>
+        <li>
+          <img src="img/10.jpg" alt="花" width="1200" height="900">
+          <p class="desc">粉色玫瑰浪漫系列</p>
+          <p class="price">14$</p>
+        </li>
+      </ul>
+    </div>
+    <div class="btn">
+      <span class="random">随机</span>
+      <span class="ascending">价格从小到大</span>
+      <span class="descending">价格从大到小</span>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var oUl = $('ul');
+    var oBtn = $('.btn');
+    var arr = [];
+    for(var i = 0, len = oUl.children.length; i < len; i++) {
+      arr.push({
+        price: parseFloat(oUl.children[i].lastElementChild.innerText),
+        vDom: oUl.children[i].innerHTML
+      })
+    }
+
+    oBtn.children[0].addEventListener('click', function() {
+      arr.sort(function(a, b) {
+        return Math.random() - Math.random();
+      })
+      reload();
+    })
+    oBtn.children[1].addEventListener('click', function() {
+      arr.sort(function(a, b) {
+        return a['price'] - b['price'];
+      })
+      reload();
+    })
+    oBtn.children[2].addEventListener('click', function() {
+      arr.sort(function(a, b) {
+        return b['price'] - a['price'];
+      })
+      reload();
+    })
+    
+    function reload() {
+      var str = '';
+      for(var i = 0, len = arr.length; i < len; i++) {
+        console.log();
+        str = arr[i]['vDom'];
+        console.log(str);
+        oUl.children[i].innerHTML = str;
+      } 
+    }
+  </script>
+</body>
+</html>

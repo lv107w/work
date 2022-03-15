@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String substr substring</title>
+</head>
+
+<body>
+  <script>
+    /*
+      截取字符串 substr  substring
+
+
+    */
+
+    console.log('海牙哈哈哈哈哈'.substr(1, 1));
+
+    /*
+      补0函数  0 => 00 9=>09
+
+    */
+
+    // if ([]) { //true       0 '' NaN undefined null
+    //   console.log('打印');
+    // }
+
+    function padLeft(num) {
+      //参数保护
+      num = num || 0;
+      return String(num)[1] && String(num) || '0' + num;
+    }
+
+    function padLeft(num) {
+      //参数保护
+      num = num || 0;
+      return ('00' + num).substr(1, 2);
+    }
+
+
+    console.log(' fdsafasd gasdgas '.trim())
+
+  </script>
+</body>
+
+</html>

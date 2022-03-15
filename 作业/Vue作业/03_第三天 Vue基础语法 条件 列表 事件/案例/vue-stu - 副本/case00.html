@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>这是我的第一个Vue实例</p>
+    <p>{{ message }}</p>
+    <p>{{ showMsg() }}</p>
+  </div>
+
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: 'hello Vue'
+        }
+      },
+      methods: {
+        showMsg() {
+          return this.message + ' show msg'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

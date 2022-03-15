@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      background-color: rgb(230, 230, 230);
+    }
+
+    .wrap {
+      width: 500px;
+      margin: 50px auto;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 30px;
+      padding: 5px;
+      background-color: rgb(201, 201, 201);
+    }
+
+    .title img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .title .search {
+      display: none;
+    }
+
+    .title .search input {
+      width: 300px;
+      height: 30px;
+      outline: none;
+      text-indent: 2em;
+      border: 0;
+    }
+
+    .title .search button {
+      width: 50px;
+      height: 30px;
+      margin-left: -5px;
+      border: 0;
+      background-color: orange;
+      color: #fff;
+    }
+
+    .title .spread {
+      display: block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .content li {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      height: 40px;
+      padding: 10px 5px;
+      background-color: #fff;
+      border: 1px solid rgb(190, 187, 187);
+    }
+
+    .content li img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .content li p {
+      text-indent: 1em;
+      line-height: 40px;
+    }
+
+    .prompt {
+      position: fixed;
+      top: -30px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 400px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, .7);
+      line-height: 30px;
+      font-size: 16px;
+      color: orangered;
+      text-align: center;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">
+      <img class="img" src="img/1.jpg" alt="头像" width="480" height="480">
+      <div class="search">
+        <input type="text">
+        <button>发表</button>
+      </div>
+      <span class="spread">+</span>
+    </div>
+    <div class="content">
+      <ul></ul>
+    </div>
+  </div>
+  <div class="prompt"></div>
+  <script src="js/common.js"></script>
+  <script>
+    var oSpread = $('.spread');
+    var oImg = $('.img');
+    var oSearch = $('.search');
+    var oInput = $('input');
+    var oBtn = $('button');
+    var oPrompt = $('.prompt');
+    var oUl = $('.content ul');
+
+    var toggle0 = true; //给头像切换加开关
+    var toggle1 = true; //给加号按钮加开关
+
+    oImg.addEventListener('click', function(e) {
+      // toggle ? oImg.setAttribute('src', 'img/1.jpg') : oImg.setAttribute('src', 'img/2.jpg');
+      toggle0 ? oImg.src = 'img/2.jpg' : oImg.src = 'img/1.jpg';
+      toggle0 = !toggle0;
+    })
+
+    oSpread.addEventListener('click',function(e) {
+      console.log(e.target);
+      oSearch.style.display = toggle1 ? 'block' : 'none';
+      oSpread.innerText = toggle1 ? '-' : '+';
+      toggle1 = !toggle1;
+    })
+
+    oBtn.addEventListener('click', function(e) {
+      if(oInput.value.length === 0 || /^\s+$/.test(oInput.value)) {
+        showPrompt('请输入评论内容'); 
+        return false;
+      }
+      var str = `<li><img src=${oImg.src}><p>${oInput.value}</p></li>`
+      oUl.innerHTML += str;
+      oInput.value = '';
+    })
+
+    function showPrompt(str) {
+      oPrompt.innerText = str;
+      animate(oPrompt, {
+        top: 0
+      }, function() {
+        var timer = setTimeout(function() {
+          animate(oPrompt, {
+            top: '-30px'
+          }, function() {
+            clearTimeout(timer);
+          })
+        }, 2000)
+      })
+    }
+  </script>
+</body>
+</html>

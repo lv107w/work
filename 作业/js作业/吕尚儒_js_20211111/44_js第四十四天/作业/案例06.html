@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数 的 this => 不建议使用的情况</title>
+</head>
+<body>
+  <div class="btn">点我</div>
+  <script>
+    let oBtn = document.querySelector('.btn');
+
+    const PERSON = {
+      name: 'kyogre',
+      showName: () => {
+        //this指向上一级函数作用域 指向showName所在作用域的this window
+        return this.name; 
+      }
+    }
+
+    console.log(PERSON.showName()); //''空字符串， this指向window
+
+    //addEventListener回调函数内部this指向oBtn 如果使用了箭头函数 this指向就错了
+    oBtn.addEventListener('click', () => {
+      console.log(this); //window
+    })
+  </script>
+</body>
+</html>

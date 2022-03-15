@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    jsonpPakeage({
+      url: "http://127.0.0.1:3001/jsonp",
+      data: {
+        name: 'xiaohua',
+        age: 18
+      },
+      success: function(res) {
+        console.log('回调函数执行成功');
+        console.log(res)
+      }
+    })
+  
+
+    function jsonpPakeage({url, data, success}) {
+      let callbackName = `fn${Date.now()}`
+      let script = document.createElement('script')
+      let requestQuery = '?' + Object.entries(data).map(([key, value]) => {
+        return `${key}=${value}`
+      }).join('&') + `&callback=${callbackName}`
+
+      script.src = url + requestQuery
+      console.log(script.src)
+      document.querySelector('head').appendChild(script)
+      window[callbackName] = function(data) {
+        success(data)
+        // delete window[callbackName]
+        // document.querySelector('head').removeChild(script)
+      }
+    }
+  </script>
+</body>
+</html>

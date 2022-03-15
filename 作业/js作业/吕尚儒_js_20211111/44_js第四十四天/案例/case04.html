@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数 => </title>
+</head>
+
+<body>
+  <script>
+
+    // const S = {
+    //   num: 10
+    // }
+
+    // const U = {
+    //   showNum: function () {
+    //     console.log(this.num); //this? S
+    //   }
+    // }
+
+    // const O = {
+    //   num: 0,
+    //   timer: 0,
+    //   clock: function () {
+    //     let that = this; // O that = O
+    //     clearInterval(this.timer);
+    //     this.timer = setInterval(function () {
+    //       that.num++; //非严 指向 window
+    //       U.showNum.call(that);//that => O  tthis=> S? bind(S)
+    //     }.bind(S), 100);
+    //   }
+    // }
+
+    // O.clock();
+
+    // const result = 'fasdfjkljasklfjgaskldjgklajkldgas'.split('').reduce(function (acc, curr) {
+    //   if (acc[curr]) {
+    //     acc[curr]++;
+    //   } else {
+    //     acc[curr] = 1;
+    //   }
+    acc[curr]++ || (acc[curr] = 1)
+      (x < 10) && (y = 10);
+    //   return acc;
+    // }, {});
+    // console.log(result);
+
+    const result = [].reduce.call('fjdklajgkljfdaslkg', (acc, curr) => (acc[curr]++ || (acc[curr] = 1), acc), {});
+
+
+
+    console.log(result);
+
+    /* 
+      1. 参数
+        单个参数 参数 => 函数体
+
+        多个参数 (参数1,参数2) => 函数体
+      2. 返回值
+
+        多条语句 {}
+          参数 => { 
+            语句1;
+            语句2;
+            ....
+            return 返回值
+          }
+
+        短语 单条语句  表达式 (表达式)
+          参数 => 表达式   //返回值为 表达式本身的值
+          参数 => (表达式1,表达式2,表达式3) //return 表达式3的值
+
+
+
+      () 与 ,
+
+
+      (语句) 会当成独立语句进行执行
+
+    
+    */
+    let fn = function (arg1, arg2) {
+      return arg1 + arg2;
+    }
+
+    fn(1, 2); // 3;
+
+    let fn1 = (arg1, arg2) => {
+      return arg1 + arg2;
+    }
+
+    console.log(fn1(1, 2));
+
+    let fn2 = a => console.log(a);
+
+    // function fn2(a) {
+    //   return console.log(a);
+    // }
+
+    let fn3 = a => a + '1'; // 函数体代码最后一段 会作为返回值
+
+    // function fn3(a) {
+    //   return a + '1';
+    // }
+
+
+    let fn4 = a => (console.log(a), (a += 10), a);
+
+    // function fn4(a) {
+    //   console.log(a);
+    //   a += 10;
+    //   return a;
+    // }
+
+    console.log(fn4(33));
+
+
+    console.log(fn1(2, 3))
+
+    fn2('海牙');
+
+    console.log(fn3('海牙'));
+
+    /*
+        let x = 0;
+        let y = 0;
+
+        //y要么是0 要么是10
+
+        y = (x < 10) && (10); //y 在x>10的情况下 y的值会变为false
+        (x < 10) && (y = 10); // 不论x的情况 y的值要么是 0 要么是10
+
+        console.log(y); */
+
+
+    //()中 最后一段表达式 会作为返回值 最后一个 "," 后面的值作为返回值
+    let x = 10;
+    let y = 0;
+    console.log((y = x + 1, y, x));
+
+    // for (let i = 0, j = 1, k = 2; i < 10, j < 5, k < 6; i++, j++, k++) {
+    //   console.log(i, j, k);
+    // }
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

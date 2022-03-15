@@ -1,0 +1,1716 @@
+2020-11-17 21:18:16: Tue, 17 Nov 2020 13:18:16 GMT express deprecated res.send(status, body): Use res.status(status).send(body) instead at app.js:11:7
+2020-11-17 21:31:48: Tue, 17 Nov 2020 13:31:48 GMT express deprecated res.send(status, body): Use res.status(status).send(body) instead at app.js:11:7
+2020-11-17 22:10:57: Tue, 17 Nov 2020 14:10:57 GMT express deprecated res.send(status, body): Use res.status(status).send(body) instead at app.js:23:7
+2020-11-17 22:12:31: Tue, 17 Nov 2020 14:12:31 GMT express deprecated res.send(status, body): Use res.status(status).send(body) instead at app.js:24:7
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${}`)
+                                                    ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+  console.log(`::000 ${req.method} ${req.baseUrl} ${req.httpVersion} ${}`)
+                                                                       ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+2020-11-17 22:17:35: Tue, 17 Nov 2020 14:17:35 GMT express deprecated res.send(status, body): Use res.status(status).send(body) instead at app.js:27:7
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:14
+app.use(morgan('combined'))
+^
+
+SyntaxError: Identifier 'app' has already been declared
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openReadFs (internal/fs/streams.js:142:15)
+    at new ReadStream (internal/fs/streams.js:119:5)
+    at Object.createReadStream (fs.js:2003:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openReadFs (internal/fs/streams.js:142:15)
+    at new ReadStream (internal/fs/streams.js:119:5)
+    at Object.createReadStream (fs.js:2003:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openReadFs (internal/fs/streams.js:142:15)
+    at new ReadStream (internal/fs/streams.js:119:5)
+    at Object.createReadStream (fs.js:2003:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openReadFs (internal/fs/streams.js:142:15)
+    at new ReadStream (internal/fs/streams.js:119:5)
+    at Object.createReadStream (fs.js:2003:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openReadFs (internal/fs/streams.js:142:15)
+    at new ReadStream (internal/fs/streams.js:119:5)
+    at Object.createReadStream (fs.js:2003:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: fs.creatcreateeReadStream is not a function
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError: fs.creatcreateeReadStream is not a function
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError: fs.creatcreateeReadStream is not a function
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError: fs.creatcreateeReadStream is not a function
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError: fs.creatcreateeReadStream is not a function
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+    at Object.open (fs.js:443:10)
+    at _openWriteFs (internal/fs/streams.js:370:15)
+    at new WriteStream (internal/fs/streams.js:343:5)
+    at Object.createWriteStream (fs.js:2008:10)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:21)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+ReferenceError: po is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: po is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: poc is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:11:49)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+Error: EISDIR: illegal operation on a directory, open 'D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express'
+TypeError: app.use() requires a middleware function
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:210:11)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:13:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+TypeError: app.use() requires a middleware function
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:210:11)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:13:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+ReferenceError: strea is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: strea is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: strea is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: strea is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: strea is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: strea is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: stream is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: stream is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: stream is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: stream is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+ReferenceError: stream is not defined
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:29)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15
+app.use(morgan('combined'),{stream:})
+                                   ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15
+app.use(morgan('combined'),{stream:})
+                                   ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15
+app.use(morgan('combined'),{stream:})
+                                   ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15
+app.use(morgan('combined'),{stream:})
+                                   ^
+
+SyntaxError: Unexpected token '}'
+    at wrapSafe (internal/modules/cjs/loader.js:979:16)
+    at Module._compile (internal/modules/cjs/loader.js:1027:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+    at wrapper (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (D:\Program Files\nodejs\node_global\node_modules\pm2\lib\Utility.js:186:13)
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\router\index.js:458:13)
+    at Function.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\node_modules\express\lib\application.js:217:7)
+    at Object.<anonymous> (D:\预科班6.2\Node服务班\Node第二十四天 node  express第三方中间件\案例\test-express\app.js:15:5)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at D:\Program Files\nodejs\node_global\node_modules\pm2\lib\ProcessContainer.js:303:25

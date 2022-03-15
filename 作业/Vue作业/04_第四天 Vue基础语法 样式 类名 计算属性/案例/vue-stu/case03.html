@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue computed</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <!-- <input type="text" v-model="lastName">
+    <input type="text" v-model="firstName"> -->
+    <p>{{lastName}}</p>
+    <p>{{firstName}}</p>
+    <input type="text" v-model="fullName">
+    <p>{{padLeft(sec)}}</p>
+    <p>{{padLeft(sec)}}</p>
+    <p>{{padLeft(sec)}}</p>
+    <P>{{ timeSec }}</P>
+    <P>{{ timeSec }}</P>
+    <P>{{ timeSec }}</P>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    /*
+      数据处理 
+      原始数据 => 数据处理(转义 格式化 筛选) => 展示给用户
+
+      errCode 4018 => '密码错误'
+
+      DOM BOM
+
+      defineproperty proxy
+      es6 promise async await 解构 对象 
+      数组 JSON 方法
+      this class prototype 
+      函数式开发 回调 递归 柯里化 通道 高级
+
+      Node部分 blog-server 
+
+      H5 移动端适配
+
+      Vue 结合基础语法 转变DOM开发思维 => 数据驱动思维
+    
+    */
+
+
+    const app = new Vue({
+      el: '#container',
+      data() {
+        return {
+          firstName: '三',
+          lastName: '张',
+          sec: 8,
+          letter:'my name is haiya'
+        }
+      },
+      methods: {
+        padLeft(val) {
+          return String(val)[1] && String(val) || '0' + val
+        }
+      },
+      computed: {
+        fullName:{
+         get(){
+            return this.lastName + ' ' + this.firstName
+         },
+         set(newVal){
+           let fullName = val
+         }
+        },
+        fullName(){
+          return this.lastName + ' ' + this.firstName
+        },
+        timeSec() {
+          return String(this.sec)[1] && String(this.sec) || '0' + this.sec
+        },
+        /* 不能异步处理/获取 计算属性*/
+        // async translateLetter(){
+        //   return await axios.get('xxxx',{
+        //     letter:this.letter
+        //   })
+        // }
+
+      }
+
+    })
+
+    /*
+      app.timeSec
+      是 
+      computed timeSec方法 给 app 挂载一个 同名的属性 值为 timeSec方法的返回值
+    
+    */
+  </script>
+</body>
+
+</html>

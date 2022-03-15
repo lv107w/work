@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eval</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      eval 性能黑洞 
+    */
+    eval("console.log('我是eval')");
+
+    var str = function () {
+      var b = 10;
+      console.log(b);
+    }
+
+    eval("str();");
+  </script>
+</body>
+
+</html>

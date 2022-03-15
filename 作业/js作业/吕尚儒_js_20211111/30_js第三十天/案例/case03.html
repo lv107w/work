@@ -1,0 +1,79 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-14 13:42:18
+ * @LastEditTime: 2020-08-15 21:35:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器运动 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .red {
+      top: 100px;
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="red"></div>
+  <div class="blue"></div>
+  <script src="js/common.js"></script>
+  <script>
+
+    /* 
+    
+     束流
+
+     同一个定时器中 红色小球运动两次 蓝色小球运动一次
+
+    */
+
+    var oRed = $('.red');
+    var oBlue = $('.blue');
+    var speed = 0;
+    var counter = 0;
+    var time;
+
+    time = setInterval(function () {
+      speed += .1;
+      counter++;
+      oRed.style.left = oRed.offsetLeft + speed
+        + 'px';
+      if (counter % 2 === 0) {
+        oBlue.style.left = oBlue.offsetLeft + speed
+          + 'px';
+      }
+    }, 1000 / 30);
+
+  </script>
+</body>
+
+</html>

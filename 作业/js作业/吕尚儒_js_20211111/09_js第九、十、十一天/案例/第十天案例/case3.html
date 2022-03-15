@@ -1,0 +1,90 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-23 20:30:51
+ * @LastEditTime: 2020-07-23 22:19:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数分类</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      纯函数
+      有参数 有对应参数的返回值
+      该函数不会产生任何可观察的副作用
+
+      拿到参数 对参数加工 返回加工后的结果 其他一律不作
+    
+    */
+    function pure(a, b) {
+      return a + b;
+    }
+
+
+    function noPure(a, b) {
+      return 3;
+    }
+
+
+
+    var x = 10;
+    function noPure() {
+      x = 20;
+      console.log(x + '哈哈哈');
+    }
+
+    noPure();
+
+
+    //匿名函数
+
+    var x = function () {
+      console.log('我是谁?');
+    }
+
+    x();
+
+
+    //IIFE 匿名函数自调用  (匿名函数)(); (匿名函数());
+
+    (function () {
+      console.log('我是IIFE自调用函数');
+    })();
+
+
+    (function () {
+      console.log('我是IIFE自调用函数');
+    }());
+
+
+    //柯理化
+
+    function pure(a, b) {
+      return a + b;
+    }
+
+    var result = currying(1, 2); //3
+
+    function currying(a) {
+      return function (b) {
+        return a + b;
+      }
+    }
+
+    var result = currying(9)(3); //
+    console.log(result);
+
+  </script>
+</body>
+
+</html>

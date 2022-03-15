@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型 prototype </title>
+</head>
+
+<body>
+  <script>
+    /*
+      构造函数 constructor
+      本质就是函数 function 
+      人为的通过函数名首字母大写 来区分是否是构造函数
+
+      原型 prototype
+      原型是一个对象
+      原型是function属性
+
+      constructor 构造器
+      是function的原型属性中的属性
+
+      const fn = {
+        prototype: {
+          constructor: fn
+        }
+      }
+
+
+      实例对象
+       new 构造函数()
+
+      实例对象的属性 => 构造函数的属性
+
+     
+      __proto__ 属性  [[prototype]]
+      __proto__ 是一个对象
+        new实例化的时候 添加到实例对象的隐式属性
+
+      __proto__ 指向实例对象构造函数的原型
+
+      pig.__proto__ = Pig.prototype;
+
+
+
+      实例对象访问属性
+
+        优先访问自身属性 如果自身不存在这个属性
+         向实例对象对应的构造函数的原型上查询这个属性
+
+         向自身的__proto__上查询这个属性 *如果没有 就向再上一级的原型上查询这个属性*
+
+         prototype原型上的属性 
+          1. 方法 函数 公用性最高
+          2. 非引用类型的值 固定参数
+          3. 公共集合 引用类型
+
+
+        constructor prototype中的this指向谁? 实例对象
+
+        this就是实例对象
+
+
+        火腿肠工厂
+        1. 肉(R09981) => 把他洗一下 => 把他切一下 => 把他包装一下 出厂
+        2. 肉(R09982) => 把他洗一下 => 把他切一下 => 把他包装一下 出厂
+
+
+    */
+
+    let pigArr = [];
+
+    function Pig(name = 'p1', age = 1, weight = 100) {
+      this.name = name;
+      this.age = age;
+      this.weight = weight;
+      this.init();
+    }
+
+    Pig.prototype.siblings = [];//Array 引用类型
+
+    Pig.prototype.init = function () {
+      this.siblings.push(this);
+    }
+
+    Pig.prototype.eat = function () {
+      console.log(`我是${this.name} 我${this.age}岁了 我要吃饭了`);
+    }
+
+    Pig.prototype.bloodReturn = function (len) {
+      //根据一共实例化了多少头猪来确定回多少血
+      console.log(`回血 ${len * 100}`);
+    }
+
+
+    //料肉比 饲料/增肉量  
+    Pig.prototype.feedConversionRatio = 2.4;
+
+
+
+
+
+    let pig = new Pig('佩奇', 1, 99);
+
+
+    let pig2 = new Pig('阿克', 1, 200);
+
+    console.log(pig, pig2);
+
+    console.log(Pig.prototype.feedConversionRatio);
+
+    console.log(pig.feedConversionRatio, pig2.feedConversionRatio);
+
+    pig.name = '阿伞';
+
+    console.log(pig2.name); //阿克 实例属性是独立的 new的时候是完全独立拷贝的属性
+
+    pig.feedConversionRatio = 3; //赋值
+    console.log(pig.feedConversionRatio, pig.__proto__.feedConversionRatio);
+    console.log(pig2.feedConversionRatio); //为什么不是3 pig设置了一个自身属性名字叫做feedConversionRatio 值为3 跟pig的原型指向__proto__上的feedConversionRatio没关系
+
+
+
+
+    /* 
+      pig{
+        name:...,
+        age:..,
+        weight:...,
+        __proto__:{
+          constructor:Pig
+          feedConversionRatio :2.4
+        }
+      }
+
+      pig.feedConversionRatio =>
+      pig.__proto__.feedConversionRatio 
+
+
+      pig.feedConversionRatio = 10;
+
+      pig{
+        name:...,
+        age:..,
+        weight:...,
+        feedConversionRatio: 10
+        __proto__:{
+          constructor:Pig
+          feedConversionRatio :2.4
+        }
+      }
+    
+     pig.feedConversionRatio => 10
+     
+    
+     */
+
+    console.log(pig2, pig);
+
+
+    // console.log(pig.children === pig2.children);
+    //pig.__proto__.children pig2.__proto__children
+
+    //pig.__proto__ => Pig.prototype
+    //pig2.__proto__ => Pig.prototype
+
+    //pig.children === pig2.children === Pig.prototype.children
+
+    // pig.children[0] = '小黑';
+
+    // console.log(pig.children, pig2.children, Pig.prototype.children);
+
+
+
+    /*   let arr = [1, 2, 3];
+      const o = {
+        children: arr //arr对应栈内存中的地址赋值给了children
+      }
+
+      const p = {
+        children: arr//arr对应栈内存中的地址赋值给了children
+      }
+
+      console.log(o.children === p.children); */
+
+
+    // pig.eat();
+
+
+    // console.log(Pig.prototype);
+
+    // console.log(Pig.prototype.constructor === Pig);
+
+    // console.log(pig);
+
+    // console.log(pig instanceof Pig);
+
+    // console.log(pig.__proto__ === Pig.prototype);
+
+
+    let pig3 = new Pig('阿牛', 1, 999);
+    pigArr.push(pig, pig2, pig3);
+    pig3.bloodReturn(pigArr.length);
+    console.log(pig.siblings);
+  </script>
+</body>
+
+</html>

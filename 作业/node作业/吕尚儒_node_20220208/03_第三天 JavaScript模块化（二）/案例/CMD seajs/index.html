@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sea CMD</title>
+  <style>
+    .wrap {
+      width: 100px;
+      height: 100px;
+      margin: 100px auto;
+      background-color: #368;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap"></div>
+  <script src="modules/sea.js"></script>
+  <script>
+    seajs.config({
+      //all alias path base on this//所有别名基于本路径  
+      base: "./modules/",
+      //define each alias name here  
+      alias: { //auto add suffix .js  
+        "jquery": "jquery-1.12.1"
+      }
+    });
+    //加载入口模块，加载完成后调用模块的方法  
+    seajs.use(['jquery', './app/demo'], function ($, de) {
+      console.log(de.add(1, 2))
+
+      $('.wrap').css({ backgroundColor: 'red' })
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吸顶导航</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/header.css">
+  <style>
+    .cq-header {
+      background-color: #222;
+    }
+
+    .cq-header.fixed {
+      background-color: #fff;
+      position: fixed;
+    }
+
+    .cq-header.fixed .cq-head-nav a {
+      color: #222;
+    }
+
+    .fill-wrap {
+      height: 490px;
+      margin: 10px 0;
+    }
+
+    .bg222 {
+      background-color: pink;
+    }
+
+    .bg960 {
+      background-color: #960;
+    }
+
+    .bg0f5 {
+      background-color: #0f5;
+    }
+
+    .bg368 {
+      background-color: #368;
+    }
+
+    .fill-wrap.h80 {
+      height: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fill-wrap bg222 h80"></div>
+  <div id="head" class="cq-header">
+    <div class="cq-head-wrap w1160 flex flex-between">
+      <div class="cq-head-logo">
+        <h1>
+          <span class="visib-hid">橙子</span>
+          <a href="#">
+            <img id="logo" src="images/logo-rev.png" width="92" height="36" alt="logo">
+          </a>
+        </h1>
+      </div>
+      <div class="cq-head-nav flex ">
+        <ul class="flex ">
+          <li><a href="#" class="pr10">首页</a></li>
+          <li class="pull-list ">
+            <a href="#" class="icon pr10 icon-arrow-down flex flex-center">橙品牌</a>
+            <ul class="pull-list-item">
+              <li><a href="#">橙金融</a></li>
+              <li><a href="#">橙积分</a></li>
+              <li><a href="#">橙营销</a></li>
+              <li><a href="#">橙福利</a></li>
+            </ul>
+          </li>
+          <li><a href="#">橙权益</a></li>
+          <li><a href="#">行业案例</a></li>
+          <li><a href="#">新闻动态</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="fill-wrap bg222"></div>
+  <div class="fill-wrap bg960"></div>
+  <div class="fill-wrap bg0f5"></div>
+  <div class="fill-wrap bg368"></div>
+
+  <script src='js/common.js'></script>
+  <script>
+
+    /*
+      吸顶导航
+
+      通过判断页面滚动高度 修改导航条的 定位样式
+
+      position:fixed; 这里咱们用 .fixed类名来处理
+
+      滚动条滚动到一定高度触发吸顶的时候 给header添加 fixed类名
+
+      滚动条滚动高度不到触发吸顶效果高度的时候 移出fixed类名
+
+
+      触发高度 = 导航的 getPosition()
+
+      事件 scroll
+
+
+      金蝉脱壳 > 导航条触发吸顶的时候 给一个临时节点来占位 
+
+      一个空标签 高度 = hedader的高度 
+
+    */
+
+    var oHeader = $('#head');
+    var triggerTop = getPosition(oHeader).top;
+    var oLog = $('#logo');
+    var temp;
+
+    document.addEventListener('scroll', function (e) {
+      if (getDocumentScroll().top > triggerTop) {
+        if (!$('#temp')) {
+          temp = createTempDom();
+        }
+        oHeader.classList.add('fixed');
+        oLog.src = 'images/logo.png';
+      } else {
+        if (temp) {
+          temp.remove();
+        }
+        oHeader.classList.remove('fixed');
+        oLog.src = 'images/logo-rev.png';
+      }
+    }, false);
+
+
+    function getDocumentScroll() {
+      return {
+        top: document.body.scrollTop || document.documentElement.scrollTop,
+        left: document.body.scrollLeft || document.documentElement.scrollLeft
+      }
+    }
+
+    function createTempDom() {
+      var vDom = document.createElement('div');
+      vDom.id = 'temp';
+      vDom.style.height = oHeader.offsetHeight + 'px';
+      document.body.insertBefore(vDom, oHeader)
+      return {
+        'remove': function () {
+          vDom.remove();
+        }
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

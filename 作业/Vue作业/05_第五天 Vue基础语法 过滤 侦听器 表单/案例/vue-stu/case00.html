@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue v-model</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      margin: 40px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #f1f1f1;
+    }
+
+    .blog-desc--active,
+    .active {
+      color: red;
+    }
+
+    .on {
+      background-color: orange;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .yellow {
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <form action="javascript:;">
+      <label for="">用户名</label>
+      <!-- <input type="text" name="username" placeholder="请输入用户名" :value="username" @input="changeUsername('哈哈哈',$event)"> -->
+
+      <!-- ===  -->
+
+      <!-- .lazy v-model 由默认的input事件触发 改为了 change事件触发 -->
+      <!-- <input type="text" name="username" placeholder="请输入用户名" v-model.lazy="username"> -->
+
+      <!-- .number 修饰符 将输入值转换为数字 如果转换不了返回原始值-->
+      <!-- <input type="text" name="username" placeholder="请输入用户名" v-model.number="username"> -->
+
+      <!-- trim 清除输入内容的首尾空白字符串 -->
+      <input type="text" name="username" placeholder="请输入用户名" v-model="username">
+      <p>{{username}}</p>
+      <br>
+      <br>
+      <br>
+      <textarea v-model="comment"></textarea>
+
+      <br>
+      <label for="">性别</label>
+      男<input type="radio" name="sex" :value="man" v-model="sex">
+      女<input type="radio" name="sex" :value="women" v-model="sex">
+
+      <br>
+      <label for="">兴趣</label>
+      篮球<input type="checkbox" name="hobbies" value="篮球" v-model="hobbies">
+      足球<input type="checkbox" name="hobbies" value="足球" v-model="hobbies">
+      游泳<input type="checkbox" name="hobbies" value="游泳" v-model="hobbies">
+      <br>
+      <br>
+      <br>
+      <select name="books" v-model="books" id="">
+        <option v-for="option in options" :value="{id : option.value,value:option.txt}">{{option.txt}}</option>
+      </select>
+      <br>
+      <p> {{books}}</p>
+      <br>
+      <br>
+      <br>
+      <input type="checkbox" name="agree" true-value="yes" false-value="no" v-model="isAgree"> 我已经仔细阅读并同意条款内容
+      <br>
+      {{isAgree}}
+      <!-- <button :disabled="!isAgree">注册</button> -->
+    </form>
+
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    /*
+      oInput.onInput = function(e){
+        console.log(this.value)
+        console.log(e.target.value)
+      }
+      oInput.onInput = change.bind(oInput,'哈哈哈') => change
+
+      function change(){}
+
+      $event
+    
+    */
+
+
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: '你好 我好 大家好才是真的好',
+          username: '张三',
+          comment: '评论内容',
+          man: '男',
+          women: '女',
+          sex: '',
+          hobbies: [],
+          books: [],
+          isAgree: false,
+          options: [
+            {
+              value: '00021221',
+              txt: 'javascript 编程精解'
+            },
+            {
+              value: '00021222',
+              txt: 'javascript DOM 编程艺术'
+            },
+            {
+              value: '00021223',
+              txt: 'javascript 高级程序设计'
+            }
+          ]
+        }
+      },
+      methods: {
+        changeUsername(v, e) {
+          this.username = e.target.value
+        }
+      },
+      computed: {
+        agreeValue() {
+          return this.isAgree ? 'yes' : 'no'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

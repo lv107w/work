@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calss</title>
+</head>
+<body>
+  <script>
+  /*   function Pig(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    Pig.staticShowMe = function() {
+      console.log('我是Pig的静态方法');
+    }
+
+    Pig.prototype.showName = function() {
+      console.log(this.name);
+    }
+
+    function Spig(name, age, sex) {
+      Pig.call(this, name, age);
+      this.sex = sex;
+    }
+
+    Spig.prototype = Object.create(Pig.prototype);
+
+    let pig = new Spig('xiaohua', 1, 'mu');
+    console.log(pig);
+    pig.showName();
+    Pig.staticShowMe(); */
+
+    class Pig {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      static showMe() {
+        console.log(this); //静态方法的this指向类本身，并不指向实例
+      }
+
+      showName() {
+        console.log(this.name);
+      }
+
+      get name() {
+        return '哈哈哈哈 : name';
+      }
+      set name(value) {
+        console.log('name:' + value);
+      }
+    }
+
+    class Spig extends Pig {
+      constructor(name, age, sex) {
+        super(name, age);
+        this.sex = sex;
+      }
+    }
+
+    let pig = new Pig('xxx', 1);
+    let pig1 = new Spig('kkk', 3, 'mu');
+    console.log(pig);
+    console.log(pig1);
+
+    pig.showName();
+    pig1.showName();
+
+    Pig.showMe();
+  </script>
+</body>
+</html>

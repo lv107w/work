@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>innerHTML</title>
+  <style>
+    p {
+      font-size: 28px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <p>你猜猜<span>我</span>是谁</p>
+  </div>
+  <script>
+    //a 前缀 all p p标签的指代名称 前缀和名称我们需要区分 前缀名字 驼峰 前缀首字母小写 名字的首字母大写
+    var oWrap = document.querySelector('.wrap');
+    var oP = oWrap.querySelector('p'); //把标签实例化为元素对象 oP (魂)
+
+    oP.style.color = 'red';
+
+    // console.log(oP.innerHTML)
+    // oP.innerHTML = oP.innerHTML + ',海牙';
+    // oP.innerHTML += ',海牙';
+    console.log(oWrap.innerHTML);//拿到的是标签内部标签 文本的 字符串表现 (皮)
+    oWrap.innerHTML = oWrap.innerHTML + '';
+    //oWrap里面 "<p>你猜猜<span>我</span>是谁</p> + ''"
+
+    //oP = oWrap.querySelector('p'); 对新的p标签获取他的元素对象赋值给oP
+    oP.style.color = 'blue'; //oP对应的原先的标签已经消失了
+
+  </script>
+</body>
+
+</html>

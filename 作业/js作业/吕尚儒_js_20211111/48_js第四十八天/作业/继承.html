@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>继承</title>
+</head>
+<body>
+  <script>
+    function Animal(name = 'xiaozhu', age = 1, sex = 'mu') {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      this.children = [1, 2, 3, 4, 5];
+    }
+
+    Animal.prototype.eat = function() {
+      console.log(`${this.constructor.name} ${this.name}正在吃饭`);
+    }
+
+    Animal.prototype.sayHi = function() {
+      console.log(`我是${this.name}， 我今年${this.age}岁了，我属于${this.constructor.name}类目 `);
+    }
+
+    function Cat(name, age, sex, color = 'orange') {
+      Animal.call(this, name, age, sex);
+      this.color = color;
+    }
+
+    // Cat.prototype = new Animal(); //创建一个没有必要的Animal实例
+    Cat.prototype = Object.create(Animal.prototype)
+    Cat.prototype.constructor = Cat;  //Cat.prototype赋值会把Cat的构造函数覆盖，需要重新引用
+
+    let cat = new Cat();
+    console.log(cat);
+    cat.eat();
+  </script>
+</body>
+</html>

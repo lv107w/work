@@ -1,0 +1,95 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-15 16:06:47
+ * @LastEditTime: 2020-08-15 20:54:24
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>getBoundingClientRect</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 10000px;
+    }
+
+    .page {
+      position: relative;
+      margin: 200px;
+      width: 400px;
+      height: 400px;
+      box-shadow: 0 0 4px #222;
+    }
+
+    .wrap {
+      position: absolute;
+      overflow: auto;
+      width: 200px;
+      height: 300px;
+      padding: 10px;
+      margin: 100px auto;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="wrap">
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+      你好 我是海牙老师 巴拉啦小魔仙 变身
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script>
+
+    /*
+      getBoundingClientRect
+      不管元素的当前层级 定位层级 
+      top left bottom right x y 都是距离浏览器的左上角
+
+    {
+      bottom: 底边距离浏览器顶部
+      height: 元素总高度(height+padding+border)
+      left: 左边距离浏览器左边
+      right: 右边距离浏览器左边 right -
+      left
+      = width
+      top: 顶部距离浏览器顶部
+      width:  元素总宽度(width+padding+border)
+      x: 元素左上角顶点距离浏览器左上角顶点的坐标X
+      y: 元素左上角顶点距离浏览器左上角顶点的坐标Y
+    }
+     */
+
+    var oWrap = $('.wrap');
+
+    console.log(oWrap.getBoundingClientRect());
+
+
+  </script>
+</body>
+
+</html>

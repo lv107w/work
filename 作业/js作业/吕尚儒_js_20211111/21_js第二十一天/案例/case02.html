@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于值与类型</title>
+</head>
+
+<body>
+  <p></p>
+  <script>
+    var oP = document.querySelector('p');
+    console.log(!!oP.textContent); //
+    console.log(setInnerText(oP, '你好'))
+
+
+    function setInnerText(element, text) {
+      var key = typeof element.textContent == 'undefined' ? 'innerText' : 'textContent';
+      element[key] = text;
+      // //判断浏览器是否支持这个属性
+      // if (typeof element.textContent == "undefined") {//不支持
+      //   element.innerText = text;
+      // } else {//支持这个属性
+      //   element.textContent = text;
+      // }
+    }
+  </script>
+</body>
+
+</html>

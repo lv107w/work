@@ -1,0 +1,104 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-23 20:30:51
+ * @LastEditTime: 2020-07-23 21:22:39
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数回顾练习 参数</title>
+</head>
+
+<body>
+  <script>
+    /*
+      函数
+        封装一段代码 方便重复调用
+      参数
+        形参 实参
+        通过传参可以让函数内的代码接收不同的数据源进行计算得出不同的结果
+        参数位数不限制 形参和实参顺序要一一对应 如果形参没有对应实参 默认值是 undefined
+        参数可以是任意类型
+      返回
+        return
+        函数执行结束会返回值 默认为 undefined 我们可以通过return关键字 设置返回值
+
+        函数执行的时候 内部代码执行完成return 就不会往后执行 后面的代码就放弃了
+
+    */
+
+
+    //返回数组中最小值 的平方
+
+    function getMinPow(arr, l) {
+      var len = arr.length;
+      var minNum = arr[0];
+      for (var i = 0; i < len; i++) {
+        if (minNum > arr[i]) {
+          minNum = arr[i];
+        }
+      }
+      minNum = minNum ** l;
+      return minNum;
+    }
+
+
+    //返回数组中最小值 的3次方
+    getMinPow([2, 3, 45, 2, 67], 2);
+
+    //返回数组中最大值 /2 的结果 一个函数只做一件事
+
+    function getPow(num, l) {
+      return num ** l;
+    }
+
+    function getHaf(num, l) {
+      return num / l;
+    }
+
+    function getSum(num, l) {
+      return num + l;
+    }
+
+    function getMin(arr, l) {
+      var len = arr.length;
+      var minNum = arr[0];
+      for (var i = 0; i < len; i++) {
+        if (minNum > arr[i]) {
+          minNum = arr[i];
+        }
+      }
+      return minNum;
+    }
+
+
+    function getMax(arr, l) {
+      var len = arr.length;
+      var minNum = arr[0];
+      for (var i = 0; i < len; i++) {
+        if (minNum < arr[i]) {
+          minNum = arr[i];
+        }
+      }
+      return minNum;
+    }
+
+    //获取数组中 最大值的 /2  + 10的结果
+
+    var result = getSum(getHaf(getMax([2, 3, 45, 2, 67]), 2), 10);
+
+    console.log(result);
+
+
+
+
+  </script>
+</body>
+
+</html>

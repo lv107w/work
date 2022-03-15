@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象操作方法</title>
+</head>
+
+<body>
+  <script>
+    let o = {
+      t: 1,
+      b: 2,
+      l: 3,
+      r: 4
+    }
+
+
+    /* 
+    
+        Object.entries();
+    
+    
+     */
+
+    // [1,2,3,4] [['t',1],['b',2]...]
+
+    function entries(obj) {
+      let tempArr = [];
+      for (let key in obj) {
+        tempArr.push(obj[key]);
+      }
+      return tempArr;
+    }
+
+    let arr = Object.entries(o).map(([key, value]) => ([key, value * 3]));
+    console.log(Object.fromEntries(arr));
+
+    /*
+      JSON.stringify Object.entries
+      JSON.parse  Object.fromEntries
+     */
+  </script>
+</body>
+
+</html>

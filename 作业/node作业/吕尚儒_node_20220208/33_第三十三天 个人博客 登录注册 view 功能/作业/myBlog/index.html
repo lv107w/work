@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <!-- 为了让IE以最新的标准和模式渲染页面 强制使用edge内核  -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 360浏览器支持此 <meta> 标签。希望更多国内浏览器尽快采取行动、尽快进入高速时代！ -->
+  <meta name="renderer" content="webkit">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>index</title>
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./public/css/index.css">
+
+
+
+  <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+  <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+
+  <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+   <![endif]-->
+  <style>
+
+  </style>
+</head>
+
+<body>
+  
+  <div hidden class="blog-modal"></div>
+  <header class="blog-head">
+    <h1 class="blog-head--logo">
+      <a href="#">
+        <img src="./public/img/logo.jpg" alt="logo">
+      </a>
+    </h1>
+    <nav class="blog-head--nav hidden-sm hidden-xs">
+      <ul class="blog-nav--list">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">文章</a></li>
+        <li><a href="#">心得</a></li>
+        <li><a href="#">资源</a></li>
+        <li><a href="#">相册</a></li>
+        <li><a href="#">案例</a></li>
+      </ul>
+    </nav>
+    <div class="blog-head--search hidden-sm hidden-xs">
+      <input class="blog-input--search" placeholder="文章检索" type="text">
+      <i class="glyphicon glyphicon-search"></i>
+    </div>
+    <div class="blog-head--login hidden-sm hidden-xs">
+      <a href="javascript:;" class="blog-btn--login" data-modal=""login>登录</a> / <a href="javascript:;" class="blog-btn--register" data-modal="register">注册</a>
+    </div>
+    <i class="blog-head-menu glyphicon glyphicon-list visible-xs visible-sm"></i>
+  </header>
+
+
+
+
+  <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+  <script src="./views/modal.template.js"></script>
+  <script type="module" src="./modules/main.js"></script>
+  <script>
+
+    /*
+      运行 compile-styl 自动监听编译styl文件夹下的第一级styl文件 生成css文件到css文件夹下
+
+      styl 内引入其他styl 跟css导入一样 @import 路径
+    
+    */
+
+    /*
+      ES6模块化引入和使用
+      
+      模块导出 export [default a | {a,b,c}]
+
+      模块导入 import 承接变量名 | {变量名} from 模块路径
+
+      html引入模块 
+
+      <script type="module" src="模块路径">
+    
+    */
+    /*
+      运行execHbs脚本 
+      把template文件夹内的 hbs文件 生成 渲染js文件到 views文件夹
+
+      需要用到对应模板的页面引入 handlebars.runtime.js 编译好的js文件
+
+      Handlebars.templates['编译前的hbs文件名.hbs'] => return 编译函数
+      编译函数({数据}) => return 数据插入编译生成html代码
+    // var template = Handlebars.templates['test.hbs'];
+    // console.log(template({ name: 'hahahha' }))
+    */
+
+  </script>
+</body>
+
+</html>

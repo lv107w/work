@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重选项卡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+    }
+
+    .wrap {
+      position: relative;
+      width: 326px;
+      margin: 100px auto;
+    }
+
+    .pic,
+    .pic li {
+      display: none;
+    }
+
+    .pic.on,
+    .pic li.on {
+      display: block;
+    }
+
+    .pic-tit {
+      position: absolute;
+      top: 0;
+      left: -80px;
+      cursor: pointer;
+    }
+
+    .pic-tit li {
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      margin-bottom: 2px;
+      background-color: #999;
+    }
+
+    .pic-tit li.active,
+    .pic li.active,
+    .slider>span.active {
+      background-color: orange;
+    }
+
+    .slider {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+      background-color: rgba(0, 0, 0, .3);
+    }
+
+    .slider>span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin-left: 4px;
+      text-align: center;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <ul class="pic pic-car on">
+        <li class="on"><img src="img/1.jpg" alt="汽车" width="326" height="204"></li>
+        <li><img src="img/2.jpg" alt="汽车" width="326" height="204"></li>
+        <li><img src="img/3.jpg" alt="汽车" width="326" height="204"></li>
+        <li><img src="img/4.jpg" alt="汽车" width="326" height="204"></li>
+      </ul>
+      <ul class="pic pic-food">
+        <li class="on"><img src="img/m1.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m2.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m3.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m4.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m5.jpg" alt="食物" width="326" height="204"></li>
+      </ul>
+      <ul class="pic pic-scenery">
+        <li class="on"><img src="img/s1.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s2.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s3.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s4.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s5.jpg" alt="风景" width="326" height="204"></li>
+      </ul>
+    </div>
+    <ul class="pic-tit">
+      <li class="active">汽车</li>
+      <li>美食</li>
+      <li>风景</li>
+    </ul>
+    <div class="slider">
+      <!-- <span class="active">1</span> -->
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var aPic = $$('.pic');
+    var oTit = $('.pic-tit');
+    var oSlider = $('.slider');
+    var aLi = $$('.pic li');
+    var titIdx = 0;
+    var sliderInx = 0;
+
+    init();
+
+    /*点击大选项卡： 
+      1、切换大选项卡的样式
+      2、切换图片组
+      3、根据图片组的图片的数量动态生成slider 
+      4、每次切换大选项卡的时候需要移除图片on属性，并默认显示每组第一张图片
+    */
+    oTit.addEventListener('click', function(e) {
+      e = e || window.event;
+      var target = e.target;
+      if(target.tagName.toLowerCase() === 'li') {
+        changeTit(function(){
+          titIdx = getElementIdx(target);
+        });
+        reset();
+        var len = aPic[titIdx].children.length;
+        createSlider(len);
+      }
+    })
+
+    /* 点击小滑块：
+       1、切换小滑块样式
+       2、切换图片
+    */
+    oSlider.addEventListener('click', function(e) {
+      e = e || window.event;
+      var target = e.target;
+
+      if(target.tagName.toLowerCase() === 'span') {
+        changeSlider(function() {
+          sliderInx = getElementIdx(target);
+        });
+      }
+    })
+
+    function reset() {
+      for(var i = 0; i < aLi.length; i++) {
+        aLi[i].classList.remove('on')
+      }
+      aPic[titIdx].children[0].classList.add('on');
+      sliderInx = 0;
+    }
+
+    function changeSlider(callback) {
+      oSlider.children[sliderInx].classList.remove('active');
+      aPic[titIdx].children[sliderInx].classList.remove('on');
+      callback && callback();
+      oSlider.children[sliderInx].classList.add('active');
+      aPic[titIdx].children[sliderInx].classList.add('on');
+    }
+
+    //没有大选项卡点击事件的时候，第一组小滑块应该一开始就被创建
+    function init() {
+      createSlider(aPic[0].children.length);
+    }
+
+    function changeTit(callback) {
+      oTit.children[titIdx].classList.remove('active');
+      aPic[titIdx].classList.remove('on');
+      callback && callback();
+      oTit.children[titIdx].classList.add('active')
+      aPic[titIdx].classList.add('on');
+    }
+
+    function createSlider(len) {
+      var str = '';
+      var firt;
+      for(var i = 1; i <= len; i++) {
+         first = '';
+        if(i === 1) {
+          first = 'class="active"';
+        }
+        str += `<span ${first}>${i}</span>`
+      }
+      oSlider.innerHTML = str;
+    }
+  </script>
+</body>
+</html>

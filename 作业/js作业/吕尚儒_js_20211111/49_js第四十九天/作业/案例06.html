@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象操作方法</title>
+</head>
+<body>
+  <script>
+    let O = {
+      a: 1,
+      b: 2,
+      c: 3,
+      d: 4
+    }
+
+    function entries(obj) {
+      let tempArr = [];
+      for(let key in obj) {
+        tempArr.push(obj[key]);
+      }
+      return tempArr;
+    }
+
+    console.log(Object.entries(O));
+    let arr = Object.entries(O).map(([key, value]) => [key, value * 3]);
+    console.log(Object.fromEntries(arr));
+  </script>
+</body>
+</html>

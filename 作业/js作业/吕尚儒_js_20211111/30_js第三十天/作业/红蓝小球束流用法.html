@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .red {
+      top: 100px;
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="red"></div>
+  <div class="blue"></div>
+  <script src="js/common.js"></script>
+  <script>
+    var oRed = $('.red');
+    var oBlue = $('.blue');
+    var speed = 0;
+    var counter = 0;
+    var time;
+
+    time = setInterval(function () {
+      speed += .1;
+      counter++;
+      oRed.style.left = oRed.offsetLeft + speed + 'px';
+      if (counter % 2 === 0) {
+        oBlue.style.left = oBlue.offsetLeft + speed + 'px';
+      }
+    }, 1000 / 30);
+  </script>
+</body>
+</html>

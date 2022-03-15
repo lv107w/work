@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 栅格化 grid</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      position: absolute;
+      /* display: grid; */
+      /* grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+      grid-gap: 100px; */
+      /* grid-template-areas:  */
+      margin: 50px auto;
+      background-color: #ccc;
+
+    }
+
+    .container div {
+      box-sizing: border-box;
+      box-shadow: 0 0 2px red;
+    }
+  </style>
+
+
+</head>
+<!-- 
+
+  Grid布局和Flex布局有一定程度的相似
+  指定内部容器多个item的位置 
+
+  flex 布局是根据 轴线 (主轴 辅轴) 只能规划item针对轴线的位置进行布局 
+
+  Grid 可以直接划分"行" "列"  产生单元格 指定item所在的 单元格 
+
+
+  1.容器(wrap)与项目(item)
+
+    wrap
+      display: grid (item=>block)| inline-grid(item=>inline-block)
+    
+    item子元素 (float display:inline-block vertical-align  cloumn-* ) 样式失效
+
+    grid-template-columns 指定容器每一列的宽度 参数数量决定列数量
+    grid-template-rows 指定容器每一行的高度 参数数量决定行数量
+      repeat(3,33%) 重复几次 (次数,...参数)  
+      auto-fill 列数自动 根据设置宽度 自动填满行
+      fr (fraction 片段)
+      minmax(min,max)返回一个长度范围 接收两个参数
+      auto 由浏览器自动决定长度
+      [c1]
+
+  间距
+    grid-row-gap 行间距
+    gird-column-gap 列间距
+    grid-gap:  <grid-row-gap>  <gird-column-gap>
+
+
+  grid-template-areas 
+      
+
+
+
+   
+
+
+
+    
+    
+
+  2.行(row)与列(column)
+
+  3. 单元格(cell) 
+  
+  4. 网格线(grid line)
+
+
+  
+
+
+  
+
+ -->
+
+<body>
+  <div class="container">
+    <div>item1</div>
+    <div>item2</div>
+    <div>item3</div>
+    <div>item4</div>
+    <div>item5</div>
+    <div>item6</div>
+    <div>item7</div>
+    <div>item8</div>
+    <div>item9</div>
+  </div>
+</body>
+
+</html>

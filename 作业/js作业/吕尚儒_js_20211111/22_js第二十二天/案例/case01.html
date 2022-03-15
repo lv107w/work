@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertBefore cloneNode</title>
+</head>
+
+<body>
+
+  <div id="wrap">
+    <ul class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ul class="list">
+      <li>1</li>
+
+      <li>3</li>
+    </ul>
+  </div>
+  <script>
+    /*
+     cloneNode 参数 布尔值 true 拷贝元素本身以及所有的后代元素 
+     false或者不传 只拷贝元素本不包括后代元素
+    */
+
+    var oWrap = document.querySelector('#wrap');
+    var aUl = oWrap.querySelectorAll('.list');
+
+    var copyLi = aUl[0].children[1].cloneNode(true);
+    aUl[1].insertBefore(copyLi, aUl[1].children[1]);
+
+  </script>
+</body>
+
+</html>

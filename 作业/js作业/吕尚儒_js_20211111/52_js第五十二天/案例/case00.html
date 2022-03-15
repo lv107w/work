@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>symbol</title>
+</head>
+
+<body>
+  <script>
+
+    let person = {
+      name: 'person'
+    };
+
+    //......
+    //多重选项卡切换 outerIndex innerIndex 
+
+    //任何值都不会与类型为symbol的值相等
+    let idx = Symbol('index');
+    let idx2 = Symbol('index');
+    let name = 'Name';
+    let p = {
+      [name]: 'haha',
+      [idx]: 10,
+      [idx2]: 20
+    }
+
+    console.log(p);
+
+    let O = {
+      name: 'kyogre',
+      age: 3,
+      sex: 1,
+      showName() {
+        this.age++;
+        console.log(`我的名字是${this.name}`);
+      },
+      double() {
+        this.age += this.age;
+      }
+    }
+
+    let I = {
+      name: 'IIIII',
+      age: 13,
+      showName() {
+        console.log('我就不告诉你我是谁')
+      }
+    }
+
+    let J = {
+      name: 'JJJJJ',
+      age: 99,
+      showName() {
+        console.log('我就不告诉你我是JJJJJ')
+      }
+    }
+
+    function assign(o1, o2) {
+      for (let key in o2) {
+        if (o1[key]) {
+          o1[Symbol(key)] = o1[key]
+        }
+        o1[key] = o2[key];
+      }
+      return o1;
+    }
+
+    I = assign(I, O);
+    I = assign(I, J);
+
+    console.log(I);
+
+
+    function createFuns(o, ...funs) {
+      funs.reduce((acc, curr) => {
+        acc[Symbol(curr['name'])] = curr;
+        return acc;
+      }, o);
+    }
+
+    createFuns(I, add, double);
+    createFuns(I, O.showName, O.double);
+
+    function add(a, b) {
+      return a + b;
+    }
+
+    function double(a) {
+      return a + a;
+    }
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

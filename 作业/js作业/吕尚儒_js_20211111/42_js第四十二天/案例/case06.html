@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> bind 偏函数雏形</title>
+</head>
+
+<body>
+  <script>
+    function fn(a, b, c, d) {
+      console.log(a, b, c, d)
+      return [].reduce.call(arguments, function (acc, curr) {
+        return acc + curr;
+      })
+    }
+    //偏函数
+
+    let partial = fn.bind(null, 5);
+    console.log(partial(10));
+
+
+    let partial1 = fn.bind(null, 10);
+    console.log(partial1(20));
+
+    let partial1 = fn.bind(null, 20);
+    console.log(partial1(70));
+
+    function fn1() {
+      var normalArg = 10;
+      return [].reduce.call(arguments, function (acc, curr) {
+        return acc + curr;
+      }, normalArg);
+    }
+
+    /*
+      行为 数据 逻辑(业务) 分离
+
+
+    */
+
+    function changeColor(ele, color) {
+      setStyle(ele, {
+        backgroundColor: color
+      })
+      ele.style.backgroundColor = color;
+    }
+  </script>
+</body>
+
+</html>

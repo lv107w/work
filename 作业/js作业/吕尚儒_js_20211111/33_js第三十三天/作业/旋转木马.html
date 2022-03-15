@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旋转木马</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pic-list {
+      position: relative;
+      width: 1200px;
+      height: 600px;
+    }
+
+    .pic-list li {
+      position: absolute;
+      box-shadow: 0 0 4px #222;
+    }
+
+    .pic-list li img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn-wrap span {
+      position: absolute;
+      top: -150px;
+      bottom: 0;
+      margin: auto;
+      z-index: 2;
+      width: 120px;
+      height: 240px;
+      line-height: 240px;
+      text-align: center;
+      font-size: 80px;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .btn-wrap span.prev {
+      left: -120px;
+    }
+
+    .btn-wrap span.next {
+      right: -120px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-wrap">
+    <ul class="pic-list">
+      <li><img src="images/re1.jpg" alt=""></li>
+      <li><img src="images/re2.jpg" alt=""></li>
+      <li><img src="images/re3.jpg" alt=""></li>
+      <li><img src="images/re4.jpg" alt=""></li>
+      <li><img src="images/re5.jpg" alt=""></li>
+    </ul>
+    <div class="btn-wrap">
+      <span class="prev"> &lt; </span>
+      <span class="next"> &gt; </span>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    /*
+     基本思路：
+     通过改变dom元素对应位置数组来达到效果
+     p2=>p1  p1=>p0 p0=>p4 p4=>p3 p3=>p2
+     var eArr = ['e0', 'e1', 'e2', 'e3', 'e4']; //dom数节点列表
+              
+     var pArr = ['p4', 'p0', 'p1', 'p2', 'p3'];
+     */
+    var posData = [
+      {
+
+        zIndex: 0,
+        top: -120,
+        left: 80,
+        width: 400,
+        height: 250,
+      },
+      {
+
+        zIndex: 1,
+        top: 0,
+        left: 0,
+        width: 600,
+        height: 375,
+      },
+      {
+
+        zIndex: 2,
+        top: 80,
+        left: 200,
+        width: 800,
+        height: 500,
+      },
+      {
+
+        zIndex: 1,
+        top: 0,
+        left: 600,
+        width: 600,
+        height: 375,
+      },
+      {
+
+        zIndex: 0,
+        top: -120,
+        left: 720,
+        width: 400,
+        height: 250,
+      }
+    ];
+
+    var aLi = $$('.pic-list li');
+    var oBtnWrap = $('.btn-wrap');
+
+    posData = format(posData);
+    translate();
+
+
+    //中间件：数据处理适用于接口函数
+    function format(arr) {
+      return arr.map(function(item) {
+        console.log(curr);
+        console.log(item);
+        var temp = {}
+        for (var key in item) {
+          if (key !== 'zIndex') {
+            item[key] += 'px';
+          }
+          temp[key] = item[key]
+        }
+        return temp;
+      })
+    }
+   
+    //达到指定位置
+    function translate() {
+      posData.forEach(function (item, idx, arr) {
+        animate(aLi[idx], item);
+      })
+    }
+
+    //左右按钮点击事件映射
+    var tapMap = {
+      'prev': function (e) {
+        posData.unshift(posData.pop()); //把最后一位元素放在第一位
+      },
+      'next': function (e) {
+        posData.push(posData.shift());  //把第一位元素放在最后一位
+      }
+    }
+
+    //监听点击事件
+    oBtnWrap.addEventListener('click', function (e) {
+      e = e || window.event;
+      if (e.target.tagName.toLowerCase() === 'span') {
+        var btn = e.target;
+        if (tapMap[btn.className] && typeof tapMap[btn.className] === 'function') {
+          tapMap[btn.className](e);
+          translate();
+        }
+      }
+    }, false);
+
+  </script>
+</body>
+</html>

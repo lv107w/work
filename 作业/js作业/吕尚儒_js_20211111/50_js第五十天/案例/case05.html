@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 关键字</title>
+</head>
+
+<body>
+  <script>
+
+    /*   
+      function Pig(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+  
+      Pig.rotate = 10;
+  
+      Pig.staticShowMe = function () {
+        console.log('我是Pig的静态方法 ')
+      }
+  
+      Pig.prototype.showName = function () {
+        console.log(this.name)
+      }
+  
+      function Spig(name, age, sex) {
+        Pig.call(this, name, age);
+        this.sex = sex;
+      }
+  
+      Spig.prototype = Object.create(Pig.prototype);
+  
+  
+      let pig = new Spig('xxxxx', 1, 0);
+      pig.showName(); */
+
+    class Pig {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      static xxx = 10;
+
+      static showMe() {
+        console.log(this); //指向类本身 不是指向实例化对象
+      }
+
+      get name() {
+        return '哈哈哈哈 : name';
+      }
+
+      set name(value) {
+        console.log('name: ' + value);
+      }
+
+      ['showName']() {
+        console.log(this.name);
+      }
+
+      showAge() {
+        console.log(this.age);
+      }
+    }
+
+
+    class Spig extends Pig {
+      constructor(name, age, sex) {
+        super(name, age);// Pig.call(this,name,age);
+        this.sex = sex
+      }
+    }
+
+    let pig = new Pig('xxx', 1);
+    let pig1 = new Spig('kkkk', 3, 0);
+    console.log(pig.constructor === Pig);
+    console.log(pig, pig1);
+    console.log(Pig.xxx);
+    pig.showAge();
+    pig1.showName();
+    pig.showName();
+
+
+    Pig.showMe();
+    pig.showMe?.();
+
+  </script>
+</body>
+
+</html>

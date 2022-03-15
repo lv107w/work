@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>defineProperty</title>
+</head>
+
+<body>
+  <script>
+
+    let o = {
+      name: 'kyogre',
+      age: 13
+    }
+
+    //defineProperties 
+    let ageO = 0;
+    Object.defineProperties(o, {
+      "name": {
+        configurable: true, //可配置
+        enumerable: true, //可枚举
+        // value: 19, //属性值
+        // writable: true,//可写入
+      },
+      "age": {
+        configurable: true, //可配置
+        enumerable: true, //可枚举
+        // value: 19, //属性值
+        // writable: true,//可写入
+      }
+    })
+    Object.defineProperty(o, 'age', {
+      configurable: true, //可配置
+      enumerable: true, //可枚举
+      // value: 19, //属性值
+      // writable: true,//可写入
+      set(value) {
+        //属性的值被写入的时候(左查询的时候 赋值操作) 触发set方法 (拦截器 拦截写入操作)
+        console.log(`age 的值是 ${this.value} 想要被修改为了 ${value}`);
+        ageO = value;
+      },
+      get() {
+        return '啊哈哈哈';//
+      }
+    });
+    //proXy
+
+    o.age = 100;
+    // console.log(`age 的值是 ${this.value} 想要被修改为了 ${value}`);
+    //ageO = value;
+    console.log(o.age);
+    // return ageO;
+
+
+
+
+
+    //钩子  在某个时刻触发的行为(回调函数)
+    /*
+        o.age = 0;
+        delete o.age;
+
+           console.log(o);
+
+        for (let key in o) {
+          console.log(`${key}: ${o[key]}`)
+        }
+     */
+
+
+
+  </script>
+</body>
+
+</html>

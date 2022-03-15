@@ -1,0 +1,84 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-15 16:06:47
+ * @LastEditTime: 2020-08-15 20:47:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面滚动位置</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 10000px;
+    }
+
+    .wrap {
+      overflow: auto;
+      width: 200px;
+      height: 300px;
+      padding: 10px;
+      margin: 100px auto;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+    你好 我是海牙老师 巴拉啦小魔仙 变身
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+    /*
+      滚动高度
+        scrollHeight = height + 溢出内容的高度 + padding
+
+
+        document.body.scrollHeight body的高度+不可见内容高度 +padding
+
+
+        document.documentElement.scrollHeight 
+        整个文档 根节点 :root html
+
+
+      clientWidth(不包括边框的元素宽度) clientHeight(不包括边框的元素高度) 
+      clientLeft(左边框的宽度) clientTop (上边框宽度)
+
+     */
+
+    var oWrap = $('.wrap');
+
+    console.log(oWrap.clientTop, oWrap.offsetHeight);
+
+    console.log(document.body.scrollHeight, document.documentElement.scrollHeight);
+
+    console.log(document.body.scrollTop || document.documentElement.scrollTop);
+  </script>
+</body>
+
+</html>

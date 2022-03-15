@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form action="javascript:;">
+      <label for="">用户名</label>
+      <input type="text" name="username" placeholder="请输入用户名" :value="username" @input="changeUsername('hahah', $event)" >
+      <p>{{username}}</p>
+      <br>
+      <br>
+      <input type="text" name="username" placeholder="请输入用户名" v-model.lazy="username">
+      <p>{{username}}</p>
+      <br>
+      <br>
+      <br>
+      <textarea name="comment" id="" cols="30" rows="10" v-model="content" placeholder='请输入评论内容'></textarea>
+      <p>{{content}}</p>
+      <br>
+      <br>
+      <label for="">性别</label>
+      男<input type="radio" name="sex" :value="man" v-model="sex">
+      女<input type="radio" name="sex" :value="women" v-model="sex">
+      <br>
+      <br>
+
+      <!-- hobbies一定得是数组，选中任一字符串获取的值为true 相当于去全选 -->
+      <label for="">兴趣</label>
+      篮球<input type="checkbox" name="hobbies" value='篮球' v-model="hobbies">
+      足球<input type="checkbox" name="hobbies" value='足球' v-model="hobbies">
+      游泳<input type="checkbox" name="hobbies" value='游泳' v-model="hobbies">
+      <br>
+      <br>
+      <select multiple name="books" id="" v-model="books">
+        <option v-for="option in options" :value="{id: option.value, value: option.txt}" >{{option.txt}}</option>
+      </select>
+      <p>{{books}}</p>
+      <br>
+      <br>
+      <input type="checkbox"  v-model="isAgree">我已经仔细阅读并同意条款内容
+      <p>{{isAgree}}</p>
+    </form>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          message: 'hello Vue',
+          username: 'lv',
+          content: '评论内容',
+          man: '男',
+          women: '女',
+          sex: '',
+          hobbies: [],
+          books: [],
+          isAgree: false,
+          options: [
+            {
+              value: '180503101',
+              txt: 'javascript 高级程序设计'
+            }, 
+            {
+              value: '180503102',
+              txt: 'javascript DOM 编程艺术'
+            }, 
+            {
+              value: '180503103',
+              txt: 'javascript 编程精解'
+            }
+          ]
+        }
+      },
+      methods: {
+        changeUsername(v, e) {
+          this.username = e.target.value
+        }
+      }
+    })
+  </script>
+</body>
+</html>

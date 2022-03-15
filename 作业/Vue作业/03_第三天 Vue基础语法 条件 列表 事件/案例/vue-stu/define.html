@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      list: [{ a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }]
+    }
+
+    let obj2 = {
+
+    }
+
+    defineReactive(obj2, 'list', obj['list'])
+
+    function defineReactive(obj, key, val) {
+      Object.defineProperty(obj, key, {
+        get() {
+          console.log(`${key} 触发 getter`)
+          return val
+        },
+        set(newVal) {
+          console.log(`${key} 触发 setter`)
+          val = newVal
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

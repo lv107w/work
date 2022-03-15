@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      mar
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button>点击切换状态</button>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          message: 'hello vue',
+          boxStyle: {
+            'display': ['grid', '-webkit-grid', '-ms-grid']
+          },
+          wrapStyle: {
+            color: 'red'
+          },
+          boxWidth: '300px',
+          styl: 'width'
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+</html>

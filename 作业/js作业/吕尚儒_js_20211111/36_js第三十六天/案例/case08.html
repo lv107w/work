@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>string 正则相关方法 </title>
+</head>
+
+<body>
+  <script>
+
+    /*
+    String
+      replace方法
+
+      match方法
+
+      search方法
+
+      split方法
+
+    RegExp
+
+    exec
+    在字符串中执行匹配搜索，返回首次匹配结果`数组`
+    对同一个regExp对象的exec匹配是有记忆的
+    多次调用会迭代返回下一项符合匹配规则的项目
+
+    test
+    字符串中是否存在符合正则规则的项目 如果存在就返回true 不存在就返回false
+
+      
+
+     */
+
+    console.log('你好,我好,大家好'.replace(/好/g, function (item, idx) {
+      console.log(item, idx);
+      var str = '开心'
+      return str;
+    }));
+
+    console.log('你好,我好,大家好'.replace(/好/, '$1,$2'));
+
+    // console.log('你好,我好,大家好'.match(/(好)/));
+
+    // console.log('你3好,我2好,大1家2好'.split(/[\d,]/));
+
+
+    // console.log('你3好,我2好,大1家2好'.search(/[\d,]/g));
+
+    var regExp = /[\d,]/g;
+
+    // // var result = regExp.exec('你3好,我2好,大1家2好');
+    // console.log(regExp.exec('你3好,我2好,大1家2好'));
+    // console.log(regExp.exec('你3好,我2好,大1家2好'));
+    // console.log(regExp.exec('你3好,我2好,大1家2好'));
+    // console.log(regExp.exec('你3好,我2好,大1家2好'));
+  </script>
+</body>
+
+</html>

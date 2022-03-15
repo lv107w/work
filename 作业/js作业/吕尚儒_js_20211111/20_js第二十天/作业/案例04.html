@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签属性:attribute</title>
+</head>
+<body>
+  <img id="pic" style="outline:1px;" class="photo red" src="images/bird.png" width="1000px" height="100" alt="bird"
+    title="你猜猜我是什么鸟" joker='你好'>
+    
+  <script>
+    var oImg = document.querySelector('#pic');
+    console.log(oImg.getAttribute('src'));
+    console.log(oImg.src);
+
+    oImg.width = '100';
+    oImg.setAttribute('width', '100px');
+    console.log(oImg.getAttribute('width'));
+    console.log(oImg.width);
+
+    console.log(oImg.getAttribute('joker'))
+    console.log(oImg.joker);
+    console.log(oImg.hasAttribute('joker'));
+  </script>
+</body>
+</html>

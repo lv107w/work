@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初见解构赋值</title>
+</head>
+
+<body>
+  <script>
+
+    // let a = 10;
+    // let b = 20;
+
+    // let arr = [1, 2, 3, 4, 5];
+    // a = arr[0];
+    // b = arr[1];
+    // let arr1 = arr.slice(2);
+
+    // console.log(a, b, arr1);
+
+    let [a, b, ...arr1] = [1, 2, 3, 4, 5];
+    console.log(a, b);
+    console.log(arr1);
+
+    const array = [1, 2, 3, 4, 5];
+    let [, , , num,] = array;
+    console.log(num);
+
+
+  </script>
+</body>
+
+</html>

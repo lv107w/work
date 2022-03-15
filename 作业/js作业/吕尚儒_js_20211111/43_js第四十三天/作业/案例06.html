@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 对象</title>
+</head>
+<body>
+  <script>
+    let x = { y: 22, z: true };
+
+    // 对象x中的属性y 和 z的值 分别赋予 变量 y和z
+    let { y, z } = x;
+    console.log(y, z); //22 true
+
+    // x对象中的y属性转移给变量 w z转移给o
+    let { y: w, z: o } = x;
+    console.log(w, o); //22 true
+
+    const product = {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }
+
+    function formatData(product) {
+      let {
+        productName: name = '未知价格',   //默认值
+        productPrice: price = "未知价格"
+      } = product;
+
+      console.log(`商品名称 ${name} 商品价格 ${price}`);
+    }
+
+    formatData(product);
+  </script>
+</body>
+</html>

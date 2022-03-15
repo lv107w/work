@@ -1,0 +1,31 @@
+<h1>{{title}}</h1>
+{{{html}}}
+<p>Welcome to {{msg}}</p>
+
+<ul>
+  {{#each list}}
+  <li>{{this}} {{@key}} {{@index}}</li>
+  {{/each }}
+
+  {{#each obc}}
+  <li>{{@key}} :{{this}} </li>
+  {{/each }}
+
+  {{#each orderList}}
+  <li>
+    <h3>{{../msg}} {{name}} </h3>
+    <p>{{price}}</p>
+
+    <p class="{{#if @first}}product-item__hot{{/if}} {{#if @last}}last{{/if}}"
+      style="{{#if hot}}background:red;{{/if}}"> 热卖 </p>
+    {{!-- {{#if hot}}
+    <p> 热卖 </p>
+    {{/if}} --}}
+
+
+
+  </li>
+  {{/each }}
+
+
+</ul>

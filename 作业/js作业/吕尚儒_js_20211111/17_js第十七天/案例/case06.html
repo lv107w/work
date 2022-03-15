@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array 方法 some every</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      判断一个数组是不是纯数字数组
+
+      some 数组中至少有一项符合return的测试 如果有 返回true 如果没有 返回false ||
+
+      every 每一项都通过return的条件 返回true 有一项不通过就返回false  &&
+    */
+
+
+    var arr = [1, 2, 3, '4', 5];
+    var x = arr.some(function (current, idx, arr) {
+      return typeof current === 'number';
+    });
+    console.log(x);
+
+
+    var arr = [1, 2, 3, '4', 5];
+    var x = arr.every(function (current, idx, arr) {
+      return typeof current === 'number';
+    });
+    console.log(x);
+
+
+  </script>
+</body>
+
+</html>

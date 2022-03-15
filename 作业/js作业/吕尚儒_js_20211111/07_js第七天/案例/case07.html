@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组类型转换</title>
+</head>
+
+<body>
+  <script>
+    var arr = [1, 2, 3];
+
+    console.log(typeof arr); //object
+
+    console.log(Array.isArray(123)); //验证方法
+
+    [] == []; //对象和对象永远不相等，地址不同
+
+    [1, 2, 3] == [1, 2, 3]//false
+
+    var arr1 = [1, 2, 3];
+    var arr2 = [1, 2, 3];
+
+    console.log(arr1 === arr2);
+
+    // !-[-1,] 判断浏览器
+  </script>
+</body>
+
+</html>

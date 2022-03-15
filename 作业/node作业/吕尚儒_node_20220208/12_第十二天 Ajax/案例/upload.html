@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/layui-src/dist/css/layui.css">
+  <link rel="stylesheet" href="node_modules/layui-src/dist/css/modules/laydate/default/laydate.css">
+  <script src="node_modules/layui-src/dist/layui.all.js"></script>
+  <title>Document</title>
+  <style>
+    form {
+      padding: 30px 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="http://127.0.0.1/user">我是一个a标签 超链接</a>
+  <form class="layui-form" action="http://127.0.0.1:8080/data" method="POST" enctype="multipart/form-data"
+    target="_blank">
+    <div class="layui-form-item">
+      <label class="layui-form-label">用户名</label>
+      <div class="layui-input-block">
+        <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">密码</label>
+      <div class="layui-input-block">
+        <input type="text" name="pwd" placeholder="请输入" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-upload">
+      <input type="file" name="avatar">
+
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <input type="submit" id="test9" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+  <script>
+
+  </script>
+</body>
+
+</html>
+
+<!-- 
+  1. 挑选合适项目的UI库 
+  2. 找到引入文件 css js
+  3. 直奔案例 拔代码
+
+
+ -->

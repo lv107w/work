@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器窗口方法</title>
+</head>
+
+<body>
+  <div class="btn">点我关闭网页</div>
+  <script>
+    var oBtn = document.querySelector('.btn');
+    oBtn.onclick = function () {
+      // window.close(); //关闭当前页面 ctrl+w
+      // window.print(); //调用浏览器打印功能 ctrl+p  
+      // window.blur();
+      window.moveTo(10, 10)
+
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p>{{message}}</p>
+    <!-- v-noce只渲染一次， 数据改变不再渲染 -->
+    <p v-once>{{msg}}</p> 
+    <p v-text="msg"></p>
+    <p v-html="msg"></p>
+    <p v-cloak>{{info}}</p>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "hello Vue",
+          msg: "<span style='color: red'>你好</span>",
+          list: ['星际海航', '侏罗纪', '加勒比'],
+          info: {
+            name: 'keyra'
+          }
+        }
+      },
+      methods: {
+        showMsg() {
+          return this.message + 'show name'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

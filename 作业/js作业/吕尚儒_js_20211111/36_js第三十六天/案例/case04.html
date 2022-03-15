@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符簇 [] -</title>
+</head>
+
+<body>
+  <script>
+    /*
+      字符簇 [] 以及 -
+
+      [abc]———————————–匹配abc之中的`任何一个`字符
+**非**
+      [^abc]———————————匹配`非`a`非`b`非`c字符的值
+
+
+
+    - 已知序列中代表 "到" a-z 0-9 b-h
+     */
+
+    console.log(/[海牙]/.test('是个人'));
+
+
+    //字符串中是否存在不是 海 也不是 牙的字符
+    console.log(/[^海牙]/.test('海牙'));
+
+    console.log(/[7-9]/.test('432423'));
+
+    //匹配是否存在中文 unicode 字码表中 从'一' 到 '龥' 代表了所有汉字
+    console.log(/[\u4e00-\u9fa5]/.test('肥嘟嘟'));
+  </script>
+</body>
+
+</html>

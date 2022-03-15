@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象标签属性3</title>
+</head>
+<body>
+  <div id="wrap">
+    1235165
+  </div>
+  <ul id="list">
+    <li>1 ddddd</li>
+    <li>2 ddddd</li>
+    <li>3 ddddd</li>
+    <li id="active">4 dddddd</li>
+    <li>5 ddddd</li>
+  </ul>
+
+  <script>
+    var oWrap = document.querySelector('#wrap');
+    var aLi = document.querySelectorAll('#list li');
+    var oActive = document.querySelector('#active')
+
+    console.log(aLi);
+    console.log(getElementIdx(aLi, oActive));
+
+    function getElementIdx(elements, item) {
+      for (var i = 0, len = elements.length; i < len; i++) {
+        if (item === elements[i]) {
+          return i;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 返回值</title>
+</head>
+
+<body>
+  <script>
+
+    /* 
+      ...省略汇总
+
+      ...变量 作为左查询(赋值)的时候 会将一系列省略项汇总为一个集合(数组)赋值给变量
+
+      ...数组变量 作为右查询(调用)的时候 会将数组变量的值解构成多个单一变量
+    
+    
+     */
+
+    let [a, b, ...c] = [1, 2, 3, 4, 5];
+    //... 剩余值省略表示
+    console.log(c); //c为剩余值的集合(数组)
+
+    console.log(...c);
+    console.log(c[0], c[1], c[2]);
+
+    //Math.max() 返回参数中最大的那一项
+
+    function getMaxOfArray(arr) {
+      return Math.max.apply(null, arr);
+    }
+
+    console.log(Math.max(...[1, 2, 3, 4, 5, 6, 99]));
+
+
+    //...rest 必须在最后一项 ...rest后面不可以有其他的解构变量
+    let [x, ...y, z,] = [1, 2, 3, 4, 5];
+
+  </script>
+</body>
+
+</html>

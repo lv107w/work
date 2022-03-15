@@ -1,0 +1,90 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-12 20:32:33
+ * @LastEditTime: 2020-08-12 22:26:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视窗 位置与尺寸</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+
+      position: relative;
+      background: #000 url('images/bird.png');
+    }
+
+    .mask {
+
+      width: 400px;
+      height: 300px;
+      padding: 20px;
+      background-color: #690;
+      box-shadow: 0 0 8px #222;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mask">
+
+  </div>
+  <script src='js/common.js'></script>
+  <script>
+    /*
+     window.innerWidth
+
+     window.innerHeight
+
+     浏览器可视区域窗口的 width + padding + border + 滚动条
+
+     outerWidth outerHeight
+
+     浏览器整体宽度和高度 (包括工具栏 控制台 地址栏)
+
+
+
+     页面滚动位置
+     window.pageYOffset
+
+     获取滚动的高度
+
+
+     document.documentElement.scrollTop || document.body.scrollTop
+
+
+     documentElement是整个页面文档 html
+     body 是body标签范围
+
+窗口在显示器的位置
+     window.screenLeft || window.screenX
+      window.screenTop || window.screenY
+
+     */
+
+    console.log(window.innerWidth, window.innerHeight, window.outerWidth, window.outerHeight);
+
+
+    console.log(document.documentElement.scrollTop, document.body.scrollTop);
+
+
+
+
+
+  </script>
+</body>
+
+</html>

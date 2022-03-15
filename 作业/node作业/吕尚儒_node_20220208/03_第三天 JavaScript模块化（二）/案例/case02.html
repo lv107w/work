@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+  <style>
+    html {
+      font-size: 50px;
+      color: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    //状态管理  记录number 和 color 并且能够提供 number和color的值
+    var module_status = (function () {
+      var status = {
+        number: 0,
+        color: null
+      }
+      return {
+        set(prop, value) {
+          status[prop] = value;
+        },
+        get(prop) {
+          return status[prop];
+        }
+      }
+    })();
+
+
+    //根据记录的number 在页面上渲染输出
+    var module_context = (function () {
+      var state = module_status;
+      function renderCount() {
+        document.body.innerHTML = `当前的颜色下标为 ${state.get('number')}`
+      }
+      return {
+        renderCount
+      }
+    })();
+
+    //循环渲染私有变量colors中的颜色到页面背景 调用state模块记录number的变化
+    var module_color = (function () {
+      var state = module_status;
+      var colors = ['yellow', '#368', 'pink'];
+      function render() {
+        var color = colors[state.get('number') % 3];
+        document.body.style.backgroundColor = color
+      }
+      return {
+        render
+      }
+    })();
+
+
+    //主模块 整合三个模块 
+    var module_main = (function () {
+      var context = module_context;
+      var state = module_status;
+      var color = module_color;
+
+
+      setInterval(function () {
+        var index = state.get('number') + 1;
+        state.set('number', index);
+        color.render();
+        context.renderCount();
+      }, 500);
+
+    })();
+
+
+
+  </script>
+</body>
+
+</html>

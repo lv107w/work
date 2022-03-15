@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Super() {
+      this.name = 'sup';
+      this.children = [1, 2, 3, 4, 5];
+    }
+    Super.prototype.add = function () {
+      console.log('add');
+    }
+
+    function Sub() {
+      this.age = 111;
+    }
+
+    Sub.prototype = new Super();
+
+    Sub.prototype.constructor = Sub;
+
+    Sub.prototype.change = function () {
+      console.log('change');
+    }
+
+    function Sup() {
+      this.age = 111;
+    }
+
+    Sup.prototype = new Super();
+
+
+    let ins1 = new Sub();
+    let sup1 = new Sup();
+    ins1.children.push(1);
+    let ins2 = new Sub();
+    console.log(ins1.children, ins2.children);
+    sup1.add();
+    ins1.change();
+    ins1.add();
+  </script>
+</body>
+
+</html>

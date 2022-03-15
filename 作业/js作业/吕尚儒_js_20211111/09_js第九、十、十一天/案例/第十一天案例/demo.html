@@ -1,0 +1,104 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 17:07:08
+ * @LastEditTime: 2020-07-24 19:42:16
+ * @LastEditors: Please set LastEditors
+ /**
+  * @description: 
+  * @param {type} 
+  * @return: 
+  * @Date: 2020-07-24 17:18:45
+  */
+ * @Description: In User Settings Edit
+ * @FilePath: \星橘_js_200724\homework00.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求一组数中的所有数的和和平均值</title>
+</head>
+
+<body>
+  <script>
+    /*求和函数*/
+    // function count() {
+    //   var count = 0, len = arguments.length;
+    //   for (var i = 0; i < len; i++) {
+    //     if (typeof (arr[i]) == 'number') {
+    //       count += arr[i];
+    //     }
+    //   }
+    //   return count;
+    // }
+    // /*求平均值函数*/
+    // function average() {
+    //   var num = 0;
+    //   var len = arguments.length;
+    //   for (var i = 0; i < len; i++) {
+    //     if (typeof (arr[i]) == 'number') {
+    //       num++;
+    //     }
+    //   }
+    //   return num;
+    // }
+
+    // var arr = ['1', 1, false, 3, 5.6];
+    // /*这一步的求平均值好麻烦,想在average()里调用count(),但执行后不对,错误代码在下面*/
+    // document.write('数组里的数的和' + count('1', 1, false, 3, 5.6) + '<br>' + '数组里的数的平均值' + count('1', 1, false, 3, 5.6) / average('1', 1, false, 3, 5.6));
+    /*========= 错误代码===========*/
+    function count() {
+
+      var count = 0, len = arguments.length;
+      for (var i = 0; i < len; i++) {
+        if (typeof (arguments[i]) == 'number') {
+          count += arguments[i];
+        }
+      }
+      return count;
+    }
+
+
+    function average() {
+      var num = 0;
+      var len = arguments.length;
+      for (var i = 0; i < len; i++) {
+        if (typeof (arr[i]) == 'number') {
+          num++;
+        }
+      }
+      return count(arguments) / num; /*函数里不能调用其他函数吗?*/
+    }
+
+    var arr = ['1', 1, false, 3, 5.6];
+
+    document.write('数组里的数的和' + count('1', 1, false, 3, 5.6) + '<br>' + '数组里的数的平均值' + average('1', 1, false, 3, 5.6));
+
+    /* 
+      var x = 10;
+      function fn() {
+        var x = 20;
+        console.log(x);
+      }
+      console.log(x);
+      fn();
+      console.log(x); 
+    */
+
+    function f1() {
+      var a;
+      function f2() {
+        a = 5;
+        b = 6;
+      }
+      f2();
+    }
+    f1();
+    console.log(a);
+    console.log(b);
+  </script>
+</body>
+
+</html>

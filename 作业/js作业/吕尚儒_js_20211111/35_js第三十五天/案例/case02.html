@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>navigator</title>
+</head>
+
+<body>
+  <script>
+
+    console.log(navigator); //浏览器与操作系统信息
+    console.log(navigator.appVersion);//版本信息(操作系统/浏览器内核/浏览器)
+
+    console.log(navigator.appCodeName);//Mozilla
+
+    console.log(navigator.connection.effectiveType);//用户网络状态
+
+    console.log(navigator.userAgent); //替代appVersion
+
+    console.log(navigator.cookieEnabled);//判断浏览器是否开启了cookie
+
+    console.log(navigator.taintEnabled); //计算机平台号 判断windows linux unix
+
+    console.log(navigator.product); //实际内核
+
+    console.log(navigator.language);//浏览器语言
+
+    //cookie 记住密码
+
+
+    /*
+      5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+
+
+       5.0 (Windows NT 10.0; Win64; x64)
+       操作系统版本
+
+       AppleWebKit/537.36 (KHTML, like Gecko)
+       浏览器内核版本
+
+       Chrome/84.0.4147.135 Safari/537.36
+       浏览器版本
+
+        Mozilla 马赛克+哥斯拉 杀死+哥斯拉
+
+        网景
+
+
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36
+    */
+  </script>
+</body>
+
+</html>

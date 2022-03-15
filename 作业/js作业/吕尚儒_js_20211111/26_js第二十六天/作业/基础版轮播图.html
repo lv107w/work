@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基础版轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 500px;
+      height: 290px;
+      margin-top: 100px;
+      box-shadow: 0 0 12px #333;
+    }
+
+    .pic li {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .pic li.on {
+      display: block;
+    }
+
+    .pic li img {
+      width: 500px;
+      height: 290px;
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slider span.active {
+      background-color: pink;
+    }
+
+    .btn-wrap span {
+      user-select: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 40px;
+      height: 85px;
+      line-height: 85px;
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+    }
+
+    .btn-wrap span:hover {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <ul class="pic">
+      <li class="on bg333 c368"><img src="images/p1.jpg" alt=""></li>
+      <li class="bg333 c368"><img src="images/p2.jpg" alt=""></li>
+      <li class="bg333 c368"><img src="images/p3.jpg" alt=""></li>
+      <li class="bg333 c368"><img src="images/p4.jpg" alt=""></li>
+    </ul>
+    <div class="slider">
+
+    </div>
+    <div class="btn-wrap">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+  <script src='js/common.js'></script>
+  <script>
+    /* 
+    基础版本轮播图思路：
+      1. pic 下面不是直接通过修改一个img的src来进行切换 而是通过直接列入多个轮播项(pic>li)
+
+      2. slider 指示器需要根据 li的数量 动态生成
+
+      3. 轮播的主要思想就是进行切换 通过公共下标 确定展示哪个picLi 其他的 li 隐藏 指示器同
+
+    具体实现：
+      1. 配菜 思考那些元素是需要用到的 .pic>li .slider .prev .next
+
+      2. 需要的功能函数 getElementIdx  createSlider switchTab
+
+      2. 思考事件交互 onclick:[.prev,.next] onmouseenter:[sliders]
+
+      3. 主要行为有哪些 
+        1. 根据 index 切换 aPicList的 类名(.on) 以及 sliders的 active类名 
+        当前index所对应的 picList 需要设置类名为 on 其他的picList类名设置为 '' sliders当前index对应的设置类名为 active 其他的设置类名为 ''
+
+        2. 根据用户的交互事件 修改index
+
+      4. 主要的操作API 或者 技巧
+        1. 修改index  index++  限制 index-- 限制 getElementIdx
+        2. .className 操作 (classList)
+        3. 回调函数
+    */
+
+    var aPicList = $$('.pic>li'),
+      oSlider = $('.slider'),
+      oBtnWrap = $('.btn-wrap'),
+      sliderIdx = 0, sliderLen = aPicList.length;
+
+
+    //左右点击btn映射map
+    var btnTypeMap = {
+      prev() {
+        sliderIdx --;
+        sliderIdx = (sliderIdx + sliderLen) % sliderLen;
+      },
+      next() {
+        sliderIdx++;
+        sliderIdx = sliderIdx % sliderLen;
+      }
+    }
+  
+    //监听左右btn点击
+    oBtnWrap.addEventListener('click', function(e) {
+      if (e.target.tagName.toLowerCase() === 'span') {
+        var btnType = e.target.className;
+        btnTypeMap[btnType] && switchSlider(function() {
+          btnTypeMap[btnType]();
+        });
+      }
+    })
+
+    //监听小圆点鼠标 mouseover 移入事件
+    oSlider.addEventListener('mouseover', function(e) {
+      if(e.target.tagName.toLowerCase() === 'span') {
+        switchSlider(function() {
+          sliderIdx = getElementIdx(e.target);
+        })
+      }
+    },false)
+
+
+    //根据sliderIdx的改变来展示图片和小圆点的切换, 轮转法
+    function switchSlider(callback) {
+      aPicList[sliderIdx].classList.remove('on');
+      oSlider.children[sliderIdx].classList.remove('active');
+      callback && callback();
+      aPicList[sliderIdx].classList.add('on');
+      oSlider.children[sliderIdx].classList.add('active');
+    }
+
+    //根据图片的数量创建span添加到OSlider中
+    function createSlider() {
+      var fragment = document.createDocumentFragment();
+      var vDom;
+      for (var i = 0; i < sliderLen; i++) {
+        vDom = document.createElement('span');
+        vDom.innerText = i + 1;
+        fragment.appendChild(vDom);
+      }
+      fragment.children[0].classList.add('active');
+      oSlider.appendChild(fragment);
+    }
+
+    createSlider();
+  </script>
+</body>
+</html>

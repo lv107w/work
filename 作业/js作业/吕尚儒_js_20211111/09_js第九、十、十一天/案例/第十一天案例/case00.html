@@ -1,0 +1,95 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 20:59:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数练习</title>
+</head>
+
+<body>
+  <script>
+
+    // 有个number数组 我要判断数组里有没有小于0的数  如果有 返回"存在负值" 如果没有 返回"不存在赋值" 
+    //如果全都是 >= 0 if不会执行 for执行完成也没有触发if 我们可以认定不存在负数
+
+
+
+    /**
+     * @description: 判断 number数组中是否存在负数
+     * @param {Array} arr 需要判断的数组
+     * @return {String} 判断结果文本
+     * @Date: 2020-07-24 20:33:57
+     */
+    function isOnlyPositiveNumber(arr) {
+      for (var i = 0, len = arr.length; i < len; i++) {
+        if (arr[i] < 0) {
+          return '存在负值';
+        }
+      }
+      return '不存在负值';
+    }
+
+
+    //我有一个函数fn1 里面是打印加工(在名字前面添加 14班·)后的名字  
+
+
+    //同时做了两件事情 并且前置加工参数 是写死的
+    function showName(name) {
+      console.log('13班·' + name);
+    }
+
+    // showName('张晓华');
+
+    //加工函数
+    function padName(name, padStr) {
+      return padStr + name;
+    }
+
+    function padLeft(padStr, name) {
+      return padStr + '·' + name;
+    }
+
+    function padRight(padStr, name) {
+      return name + '·' + padStr;
+    }
+
+
+    function showName(name) {
+      console.log(name);
+    }
+
+    //showName(padRight('13班', '小明'))
+
+
+
+    //
+    function padLeft(padStr, name) {
+      return padStr + '·' + name;
+    }
+
+    function padRight(padStr, name) {
+      return name + '·' + padStr;
+    }
+
+
+    function showName(padStr, name, fn) {
+      console.log(fn(padStr, name));
+    }
+
+
+    showName('13班', '小明', padLeft);
+
+
+  </script>
+</body>
+
+</html>

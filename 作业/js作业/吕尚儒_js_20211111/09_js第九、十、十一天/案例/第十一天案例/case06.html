@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 22:45:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域链 练习</title>
+</head>
+
+<body>
+  <script>
+
+    var x = 30;
+    function fn() {
+      x = 10;
+      function fn1() {
+        console.log(x + 'fn1'); //10
+        x = 20;
+      }
+      fn1();
+      console.log(x + 'fn'); //20
+    }
+
+    fn();
+
+
+    console.log(x + 'script');//10
+
+    /* =======================全局================ */
+    var x;
+    function fn() { }
+
+
+    x = 30;  //30
+    fn();
+    /* =======================fn=================== */
+    function fn1() { }
+
+    x = 10; //10
+    fn1();
+    /* =======================fn1=================== */
+    console.log(x + 'fn1'); //10
+    x = 20; //20
+
+    /* =======================fn=================== */
+    console.log(x + 'fn'); //20
+
+    /* =======================全局================ */
+    console.log(x + 'script');//20
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

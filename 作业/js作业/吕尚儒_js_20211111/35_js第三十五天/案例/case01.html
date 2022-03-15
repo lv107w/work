@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>location</title>
+</head>
+
+<body>
+  <div class="btn">点我 带你去 小米</div>
+  <script>
+
+    /* 
+      loaction 
+
+        属性
+
+        方法
+
+
+      缓存
+
+      访问一个网页 浏览器会自动的缓存当前页面的静态资源(js css img video ) 方便后续的快速访问
+
+      location.reload(true | false); 
+      为false时从浏览器缓存中重载，为true时从服务器端重载 ctrl+ f5，默认为false f5
+
+
+    
+    */
+    console.log(window.location);
+
+    console.log(window.location.host); //127.0.0.1:5503 hostName+port = host
+    console.log(window.location.hostname);// 地址 | 域名
+    console.log(location.port); //端口
+    console.log(location.origin); // http://127.0.0.1:5503 协议头 + host + port
+    console.log(location.href); //完整URL路径
+    console.log(location.pathname); //路径
+    console.log(location.protocol); //协议
+
+    // location.assign("home"); //在host后面拼接 路径
+
+    // location.replace("http:www.baidu.com");
+
+
+    var oBtn = document.querySelector('.btn');
+    oBtn.onclick = function () {
+      location.href = 'https://www.mi.com/'; //替换当前地址栏文本进行跳转
+    }
+
+  </script>
+</body>
+
+</html>

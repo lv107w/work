@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值</title>
+</head>
+
+<body>
+  <script>
+    /*
+      解构
+
+        数组
+          [x,y] = [1,2]
+          [x,y,...z]  = [1,2,3,4,5]
+          [x,y = 10] = [1] // x => 1 y => 10
+          [x,y = 10] = [1,undefined]
+          // x => 1 y => 10 只有值为undefined的时候默认值生效
+        对象
+
+          let | ({变量[a],变量[b]} = {a:1,b:2})
+          ({变量[a] : 变量[A],变量[b]:变量[B]} = {a:1,b:2})
+          A //1
+          B //2
+          let {a = 10, b = 20} = {a:1} // a=>1 b=>20
+          let {a:A = 10, b:B = 20} = {a:1} // A=>1 B=>20
+          let {0:first,[arr.length-1]:last} = [1,2,3,4,5]; //first=>1 last:5
+
+
+        函数
+          形参
+          function fn({productName:name = '默认名称'} = {})
+
+          function fn([a,b,...c])
+
+          返回值
+            fn(){
+              let a = 10;
+              let b = 20;
+              return {a,b}
+            }
+            let {a,b} = fn()
+
+     */
+
+  </script>
+</body>
+
+</html>

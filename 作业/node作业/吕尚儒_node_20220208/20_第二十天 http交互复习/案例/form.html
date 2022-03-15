@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    form 表单提交 enctype 决定提交的实体首部的 content-type
+    非文件提交  application/x-www-form-urlencoded
+    带文件提交  multipart/form-data
+
+   -->
+
+  <!-- <a href="http://127.0.0.1:8080/user?user=321"></a>
+  <img src="http://127.0.0.1:8080/user?user=321" alt=""> -->
+  <form action="http://127.0.0.1:8080/user" method="GET" enctype="multipart/form-data">
+    用户名 <input type="text" name="user">
+    <input type="submit">
+  </form>
+
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <script>
+    axios.post('http://127.0.0.1:8080/user', { name: 'kyogre' }, {
+      withCredentials: true
+    }).then(data => console.log(data)).catch(err => console.log(err))
+  </script>
+</body>
+
+</html>

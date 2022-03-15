@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回流与重绘</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      float: left;
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 2px solid red;
+      background-color: #368;
+      /*隐士切换span的display展示模式为block*/
+    }
+  </style>
+</head>
+<body>
+  <script>
+    //动态渲染3个div到页面上
+    // drawDom(3, 'div');
+    drawHtml(4, 'div');
+
+    function drawDom(num, tagName) {
+      var vDom;
+      var fragment = document.createDocumentFragment();
+
+      console.log(fragment);
+      for(var i = 0; i < num; i++) {
+        vDom = document.createElement(tagName);
+        fragment.appendChild(vDom);  // 相当于做了个缓冲，先把表签都存进fragment，然后一次性添加到dom里
+      }
+      document.body.appendChild(fragment);
+    }
+
+    function drawHtml(num, tagName) {
+      var eleStr = '';
+      for(var i = 0; i < num; i++) {
+        eleStr += '<' + tagName + '></' + tagName + '>';
+      }
+      document.body.innerHTML = eleStr;
+    }
+  </script>
+</body>
+</html>

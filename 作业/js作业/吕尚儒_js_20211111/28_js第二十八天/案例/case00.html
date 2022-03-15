@@ -1,0 +1,337 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-13 20:33:37
+ * @LastEditTime: 2020-08-13 22:51:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>碰撞监测</title>
+  <style>
+    * {
+      user-select: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      pointer-events: none;
+      /*禁止鼠标事件默认行为*/
+    }
+
+    html,
+    body {
+      height: 100%;
+
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-around;
+      position: relative;
+      width: 940px;
+      height: 468px;
+      padding: 10px;
+      box-shadow: 0 0 8px #222;
+      border-radius: 6px;
+    }
+
+    .wrap .child {
+      overflow: hidden;
+      box-shadow: 0 0 2px #ccc;
+      border-radius: 3px;
+    }
+
+    .wrap .child.active {
+      z-index: 999;
+      box-shadow: 0 0 8px #222;
+      transition: none;
+    }
+
+    .wrap .child.collision {
+      transform: scale(1.05);
+      box-shadow: 0 0 8px red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <span class="child"><img src="images/re1.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re2.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re3.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re4.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re5.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re6.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re7.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re8.jpg" alt="" width="290" height="137"></span>
+    <span class="child"><img src="images/re9.jpg" alt="" width="290" height="137"></span>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /* 
+      碰撞检测  
+
+      当一个DOM元素和另一个DOM 重叠的时候 我们认为他们碰撞了
+
+      碰撞监测就是用于监测DOM是否发生碰撞的方法
+
+
+      事件分流 e.type
+
+      全局变量的安全性最低 所有内部作用域都可以修改它
+      如果你的全局变量只是为了服务某一个功能 请尽量不要让他成为全局变量
+
+      碰撞检测方案
+
+        1. 何时不会发生碰撞
+
+          1. box1.right < box2.left
+          2. box1.bottom < box2.top
+          3. box1.left > box.right
+          4. box1.top > box2.bottom
+
+          这四种情况只要满足一种 盒子就不可能发生碰撞(相交)
+
+          反过来说 只要不满足这四种情况 盒子就是发生碰撞(相交)
+        
+        2. target 当前元素和多个元素进行循环碰撞检测
+
+          如果target是也其他待检测元素的兄弟 那检测时要先排除掉 target自身
+
+          和某一个元素发生碰撞时 isCollision(this.targetEle, aChild[i])
+
+
+
+        3. 初始化让每个child都变成绝对定位 并且自动设置好对应的 top left
+
+          DOM异步问题 js 操作DOM API 通过DOM API 提供的属性和方法来对页面上的实际标签进行增删改查处理 修改样式 修改元素的style属性的值 
+
+          异步过程
+
+          js => DOM
+
+          js 循环中发出指令 让DOM根据我们js代码的操作指示 去页面上修改对应的标签渲染
+
+          循环是非常快的 js不停的快速的发出指令 但是 DOM修改页面是需要时间的 什么时候修改完成 需要看你的内存执行速度
+
+
+          异步 任务交给别人来做 自己不管
+
+          DOM工厂处理事务的时候 修改left 修改top 修改position是并行处理
+
+          复杂度越低的越容易优先处理完成
+          修改left 和 top都需要先通过获取offet系列属性 
+          修改position直接有现成的字符串 
+          修改position先完成 然后完成了修改left和top
+
+          导致效果和js代码对不上
+
+
+          解决方案 
+            1. 把可能会冲突的DOM操作 分不同循环来处理
+            2. 让任务滞后处理的方式 setTimeout 任务队列异步插入的能力 
+            定时器任务是讲子任务插入到主线程队列最后 等主线程任务都完成之后会执行子线程任务
+
+              不让修改style的代码在循环的时候直接去做 而是缓一缓
+
+              不要再赋值的时候去获取
+
+
+          4. 密集型元素矩阵中 碰撞可能发生在多个元素上 和多个元素同时发生碰撞的时候 如何处理
+
+          需求 只要一个发生碰撞的 距离target最近的这个
+
+          如何辨别多个碰撞元素中距离最近的那一个
+
+          判断其他被碰撞元素中 谁的左上角距离target的左上角直线距离最短
+
+          直线距离怎么求 勾股定理 勾三股四玄五
+
+           a=40 b=30 求c长  a,b < 90°
+
+           c = Math.sqrt(a*a + b*b)
+
+
+           a = coll.offsetLeft - target.offsetLeft
+           b = coll.offsetTop - target.offsetTop
+
+           c = 
+          
+     */
+
+    var oWrap = $('.wrap');
+    var aChild = oWrap.children;
+    var childLen = aChild.length;
+    var tempArr = [];// [[10,200],[20,300],[..],..]
+
+    initPos();
+
+    function initPos() {
+      for (var i = 0; i < childLen; i++) {//1`等倒计时任务开始执行的时候 循环已经结束了 i已经变为 childLen 16
+        (function (idx) {
+          tempArr.push([aChild[idx].offsetLeft, aChild[idx].offsetTop])
+          setTimeout(function () {
+            aChild[idx].style.position = 'absolute'; //设置绝对定位
+            aChild[idx].style.left = tempArr[idx][0] + 'px';
+            aChild[idx].style.top = tempArr[idx][1] + 'px';
+          }, 0);
+        })(i);
+      }
+    }
+
+
+    var eventTypeMap = {
+      isDown: false,
+      targetEle: null,
+      collisionEle: null,
+      startPos: {
+        x: 0,
+        y: 0,
+        left: 0,
+        top: 0
+      },
+      'mousedown': function (e) {
+        if (e.target.tagName.toLowerCase() === 'span') {
+          this.isDown = true;
+          this.startPos.x = e.clientX;
+          this.startPos.y = e.clientY;
+          this.startPos.left = e.target.offsetLeft;
+          this.startPos.top = e.target.offsetTop;
+          this.targetEle = e.target;
+          this.targetEle.classList.add('active');
+        }
+      },
+      'mousemove': function (e) {
+        if (this.isDown) {
+          var collisionArr = [];
+          var _x = e.clientX - this.startPos.x;
+          var _y = e.clientY - this.startPos.y;
+          this.targetEle.style.left = this.startPos.left + _x + 'px';
+          this.targetEle.style.top = this.startPos.top + _y + 'px';
+
+          //鼠标移动的时候判断是否发生碰撞
+          for (var i = 0; i < childLen; i++) {
+            aChild[i].classList.remove('collision');
+            if (aChild[i] !== this.targetEle) {
+              if (isCollision(this.targetEle, aChild[i])) {
+                collisionArr.push(aChild[i]);
+              }
+            }
+          }
+          if (collisionArr.length > 0) {
+            this.collisionEle = getShortDistance(collisionArr, this.targetEle);
+            this.collisionEle.classList.add('collision');
+          }
+        }
+      },
+      'mouseup': function (e) {
+        this.isDown = false;
+        this.targetEle.classList.remove('active');
+        this.targetEle = null;
+      }
+    }
+
+    oWrap.addEventListener('mousedown', drag, false);
+
+    document.addEventListener('mousemove', drag, false);
+
+    document.addEventListener('mouseup', drag, false);
+
+    function drag(e) {
+      if (eventTypeMap[e.type] &&
+        typeof eventTypeMap[e.type] === 'function') {
+        eventTypeMap[e.type](e);
+      }
+    }
+
+    //碰撞检测函数
+    function isCollision(ele1, ele2) {
+      var L1 = ele1.offsetLeft;
+      var R1 = L1 + ele1.offsetWidth;
+      var T1 = ele1.offsetTop;
+      var B1 = T1 + ele1.offsetHeight;
+
+      var L2 = ele2.offsetLeft;
+      var R2 = L2 + ele2.offsetWidth;
+      var T2 = ele2.offsetTop;
+      var B2 = T2 + ele2.offsetHeight;
+
+      if (R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2) {
+        //不想交 
+        return false;
+      } else {
+        //相交
+        return true;
+      }
+    }
+
+
+    //求与target左上角距离最短的元素
+    function getShortDistance(arr, ele) {
+
+
+      /* 
+
+      返回直线距离 c 最短的对应的 arr[i]
+      arr是所有被碰撞元素的集合数组
+      ele 是targetEle
+
+
+      result [{
+          element: DOM arr[i],
+          distance:100
+        },{
+          element: DOM arr[i],
+          distance:120
+        },{
+          element: DOM arr[i],
+          distance:90
+        }
+      ]
+
+    
+      */
+      var resultArr = [];
+      arr.forEach(function (item) {
+        var a = item.offsetLeft - ele.offsetLeft;
+        var b = item.offsetTop - ele.offsetTop;
+        var c = Math.sqrt(a * a + b * b);
+
+        resultArr.push({
+          element: item,
+          distance: c
+        });
+      });
+      //归并 内部遍历数组 迭代最终返回一个迭代终值
+      return resultArr.reduce(function (acc, curr, idx, arr) {
+        if (acc.distance > curr.distance) {
+          acc = curr;
+        }
+        return acc;
+      }).element;
+    }
+
+
+  </script>
+
+</body>
+
+</html>

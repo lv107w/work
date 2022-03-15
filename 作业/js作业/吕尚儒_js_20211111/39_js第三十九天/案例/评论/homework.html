@@ -1,0 +1,217 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 15:31:56
+ * @LastEditTime: 2020-08-26 21:03:03
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Web前端作业\大名_js_20200822\评论\homework.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评论案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      background-color: rgb(230, 230, 230);
+    }
+
+    .wrap {
+      width: 500px;
+      margin: 50px auto;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 30px;
+      padding: 5px;
+      background-color: rgb(201, 201, 201);
+    }
+
+    .title img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .title .search {
+      display: none;
+    }
+
+    .title .search input {
+      width: 300px;
+      height: 30px;
+      outline: none;
+      text-indent: 2em;
+      border: 0;
+    }
+
+    .title .search button {
+      width: 50px;
+      height: 30px;
+      margin-left: -5px;
+      border: 0;
+      background-color: orange;
+      color: #fff;
+    }
+
+    .title .spread {
+      display: block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .content li {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      height: 40px;
+      padding: 10px 5px;
+      background-color: #fff;
+      border: 1px solid rgb(190, 187, 187);
+    }
+
+    .content li img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .content li p {
+      text-indent: 1em;
+      line-height: 40px;
+    }
+
+    .prompt {
+      position: fixed;
+      top: -30px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 400px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, .7);
+      line-height: 30px;
+      font-size: 16px;
+      color: orangered;
+      text-align: center;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="title">
+      <img class="img" src="img/1.jpg" alt="头像" width="480" height="480">
+      <div class="search">
+        <input type="text">
+        <button>发表</button>
+      </div>
+      <span class="spread">+</span>
+    </div>
+    <div class="content">
+      <ul></ul>
+    </div>
+
+  </div>
+  <div class="prompt"></div>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /* 
+    
+      1. 点击开关切换search的显示状态 
+        1. 给一个开关变量 toggle flag
+        2. 点击按钮.点击事件 
+          根据toggle?block:none 反向切换search的 display 
+            修改toggle
+        3. input输入框中的内容 清空|不清空
+      2. 点击提交生成评论添加到评论区ul中
+        1. submit.onclick 
+        2. 获取input中的内容
+            input.value 
+        3. 判断value的值 是否合法
+            if(value.length === 0|| /^\s+$/.test(value)){
+              input.value = '';
+              return false;
+            }
+
+        4. prompt 提示框
+        5. 添加评论内容到 commit
+            1. create innerHTML
+
+        6. 收尾 清空input.value
+    
+    
+     */
+    var oImg = $('.img');
+    var oSpread = $('.spread');
+    var oSearch = $('.search');
+    var oInput = $('.search input');
+    var oCon = $('.content ul');
+    var oPrompt = $('.prompt');
+    var toggle = true;
+    oImg.onclick = function () {
+      oImg.src = toggle ? 'img/2.jpg' : 'img/1.jpg';
+      toggle = !toggle;
+    }
+    oSpread.onclick = function () {
+      oSearch.style.display = toggle ? 'block' : 'none';
+      oSpread.innerHTML = toggle ? '-' : '+';
+      toggle = !toggle;
+    }
+    oSearch.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'button') {
+        var inputText = oInput.value;
+        var reg = /^\s+$/;
+        if (inputText.length === 0 || reg.test(inputText)) {
+          showPrompt('请输入评论内容');
+          return false;
+        }
+
+        oCon.innerHTML += `<li><img src = ${oImg.src} alt = ""><p>${inputText}</p></li>`;
+        oInput.value = '';
+      }
+    }, false);
+
+    function showPrompt(str) {
+      oPrompt.innerHTML = str;
+      animate(oPrompt, {
+        top: 0
+      }, function () {
+        var time = setTimeout(function () {
+          animate(oPrompt, {
+            top: '-30px'
+          }, function () {
+            oPrompt.innerHTML = '';
+          })
+          clearTimeout(time);
+        }, 1000);
+      })
+    }
+  </script>
+</body>
+
+</html>

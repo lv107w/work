@@ -1,0 +1,89 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-14 13:31:50
+ * @LastEditTime: 2020-08-14 14:29:33
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      width: 800px;
+      height: 400px;
+      padding: 20px;
+      box-shadow: 0 0 8px #222;
+    }
+
+    .container div {
+      width: 350px;
+      height: 380px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+      line-height: 20px;
+      word-break: break-all;
+    }
+
+    .input-box {
+      color: #368;
+      outline: none;
+    }
+
+    .show-box {
+      color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-box" contenteditable></div>
+    <div class="show-box"></div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var oInput = $('.input-box');
+    var oShow = $('.show-box');
+    var timeOut;
+    oInput.addEventListener('input', function () {
+      timeOut && clearTimeout(timeOut);
+      timeOut = setTimeout(function () {
+        oShow.innerText = translate(oInput.innerText);
+      }, 500);
+    }, false);
+
+    function translate(str) {
+      return str.split("").reverse().join("");
+    }
+
+
+
+  </script>
+</body>
+
+</html>

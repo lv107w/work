@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{add()}}</p>
+    <li v-for="(item, index) in list">{{item}} ===== {{item.id}} == {{item.content + 1}} === {{index}}</li>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    /* 
+    当for循环property属性的值为数组或者对象时
+    修改整个Property的值，会直接覆盖， view会响应
+    修改数组的某一项或者删除增加对象的某个属性 view无法响应（修改对象已存在的某个属性值view会响应）
+    那么修改数组该如何响应 Vue提供了经过包装的数组方法
+          push()
+          pop()
+          shift()
+          unshift()
+          splice()
+          sort()
+          reverse()
+    上面这些方法都会修改原数组
+    filter， map等方法直接获取新数组赋值到原数组也会view响应
+    */
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          list: [
+          {
+              id: 1,
+              content: '回锅肉'
+            },
+            {
+              id: 2,
+              content: '炒土豆'
+            },
+            {
+              id: 3,
+              content: '佛跳墙'
+            }
+          ]
+        }
+      },
+      methods: {
+        add() {
+          this.list[3] = {id: 3, content: 'dad'}
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>require AMD</title>
+  <style>
+    .wrap {
+      width: 100px;
+      height: 100px;
+      margin: 100px auto;
+      background-color: #368;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap"></div>
+
+  <script src="modules/require.js"></script>
+  <script>
+    //require配置
+    require.config({
+      baseUrl: '/AMD%20require/', //默认路径 以它作为路径根目录 path里面的路径值 都会加上baseUrl路径值
+      paths: { //模块文件路径
+        "jquery": "modules/jquery-1.12.1", //模块别名:模块路径
+        "underscore": "modules/underscore",
+      },
+      shim: {
+        'underscore': {
+          exports: '_' //不符合requireAMD规范的类库的暴露标识符
+        },
+        'jquery': {
+          exports: 'jQuery'
+        }
+      }
+    });
+
+
+    require(['under'], function (under) {
+      console.log(under)
+    })
+
+
+  </script>
+</body>
+
+</html>

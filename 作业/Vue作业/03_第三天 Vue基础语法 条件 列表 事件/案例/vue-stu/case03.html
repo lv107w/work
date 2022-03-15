@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue 列表渲染 v-for</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="(item, idx) in list">{{ item.id }} : {{ item.content + 1 }} </li>
+    </ul>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    /*
+      for 渲染的property属性 值为 数组/对象
+
+      1. 修改整个property的值 view层可以响应
+      2. 直接修改property的数组/对象值的某一项 view无法响应 
+          app.list[3] = {id,content}
+          app.product.b = 'hahah'
+      3. 通过vue 提供的 侦听包装方法 对property数组进行操作 view可以响应
+          push()
+          pop()
+          shift()
+          unshift()
+          splice()
+          sort()
+          reverse()
+            
+    
+    
+    
+    */
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          title: '123123',
+          list: [
+            {
+              id: 1,
+              content: '回锅肉'
+            },
+            {
+              id: 2,
+              content: '炒土豆'
+            },
+            {
+              id: 3,
+              content: '佛跳墙'
+            }
+          ]
+        }
+      },
+      methods: {
+      }
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>

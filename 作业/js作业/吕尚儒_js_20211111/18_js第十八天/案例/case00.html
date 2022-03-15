@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>引用类型值数组去重</title>
+</head>
+
+<body>
+  <script>
+    /*
+ 数组去重 (包含引用类型)
+  [1,2,3,4,[1,2,3],[1,2,3],23,4,5,{a:1,b:2},false,{a:1,b:2},{a:1,b:2}]
+  [1, 2, 3, 4, Array(3), 23, 5, {…}, false] 
+
+  JSON.parse  内容为对象结构的字符串 = > 对象
+  JSON.stringify 对象=>内容为对象结构的字符串
+*/
+
+    var arr = [1, 2, 3, 4, [1, 2, 3], [1, 2, 3], 23, 4, 5, { a: 1, b: 2 }, false, { a: 1, b: 2 }, null, { a: 1, b: 2 }];
+
+
+    /*
+      1. 原基础类型去重方法上 思考 如何判断这一项是不是对象 Array Object
+            typeof 弱判断 不大行
+            instanceof Array  instanceof Object
+            Array.isArray() 
+          a instanceof Array || a instanceof Object
+      2. 如何判断 对象和对象是否相等
+        Object.is() 无法判断
+        循环对比属性  递归
+    */
+
+
+
+
+
+
+    function unique(arr) {
+      var newArr = [];
+      arr.forEach(function (item, idx) {
+        if (newArr.indexOf(item) === -1) {
+          if (item instanceof Array || item instanceof Object) {
+            //怎么办
+          }
+          newArr.push(item);
+        }
+      });
+      return newArr;
+    }
+
+
+
+
+    function uniqueObj(arr) {
+      var newArr = [];
+      var tempArr = [];
+      arr.forEach(function (item, idx) {
+        if (newArr.indexOf(item) === -1) {//拦不住对象
+          if (tempArr.indexOf(JSON.stringify(item)) === -1) { //拦住
+            tempArr.push(JSON.stringify(item)); //过滤
+            newArr.push(item);
+          }
+        }
+      });
+      console.log(tempArr);
+      return newArr;
+    }
+
+    var result = uniqueObj([1, 2, 3, 4, [1, 2, 3], [1, 2, 3], 23, 4, 5, { a: 1, b: 2 }, false, { a: 1, b: 2 }, { a: 1, b: 2 }]);
+
+
+
+    console.log(result);
+
+
+    /*
+      在函数内部调用函数本身 称之为 递归
+    
+    */
+    var x = 1;
+
+    function fn() {
+      console.log(x); //2
+      x++;
+      //3
+      if (x >= 10) { //false
+        return x; //
+      }
+      return fn(); //fn()2 <= fn()3 => fn()4 => fn()5 ... fn9() => 10
+    }
+
+
+
+    //<= fn()1 <= fn()2 <= fn()3
+
+    console.log(fn());
+    //假如递归了10次 这10次 执行完毕的顺序是什么 执行栈顺序是什么
+
+    // function uniqueObj(arr) {
+    //   var newArr = [];
+    //   var tempArr = [];
+    //   arr.forEach(function (item, idx) {
+    //     if (newArr.indexOf(item) === -1) {
+    //       if (tempArr.indexOf(JSON.stringify(item)) === -1) {
+    //         tempArr.push(JSON.stringify(item));
+    //         newArr.push(item);
+    //       }
+    //     }
+    //   });
+    //   return newArr;
+    // }
+
+
+    // function diffPer(obj1, obj2) {
+    //   if (typeof obj1 === 'object' && typeof obj2 === 'object' && obj1 !== null && obj2 !== null) {
+    //     for (var key in obj1) {
+    //       if (obj1.length !== obj2.length || Object.keys(obj1).length !== Object.keys(obj2).length) {
+    //         return false;
+    //       }
+    //       if (obj1[key] instanceof Array || obj1[key] instanceof Object || obj2[key] instanceof Array || obj2[key] instanceof Object) {
+    //         return diffPer(obj1[key], obj2[key]);
+    //       }
+    //       if (obj1[key] !== obj2[key] || !obj2[key] || !obj1[key]) {
+    //         return false;
+    //       }
+    //     }
+    //   } else {
+    //     return obj1 === obj2;
+    //   }
+    //   return true;
+    // }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 解绑</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    input {
+      width: 80px;
+      height: 35px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .mask {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      padding: 20px;
+      box-shadow: 0 0 8px #222;
+      transform: translate(-50%, -50%);
+    }
+
+    span {
+      width: 80px;
+      height: 30px;
+      padding: 20px;
+      background-color: orange;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <input id="btn" type="button" value='弹出弹窗'>
+  <div class="mask">
+    我是弹窗
+    <span id='close'>点我关闭</span>
+    <span id="show">点我打印你的银行余额</span>
+  </div>
+  <script>
+    var oBtn = document.querySelector('#btn');
+    var oMask = document.querySelector('.mask');
+    var oShow = document.querySelector('#show');
+    var oClose = document.querySelector('#close');
+
+    oBtn.onclick = function () {
+      oMask.style.display = 'block';
+      oShow.onclick = function () {
+        console.log(`余额为10000000000`);
+      }
+      oClose.onclick = function () {
+        oMask.style.display = 'none';
+        oShow.onclick = null; //事件注销
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

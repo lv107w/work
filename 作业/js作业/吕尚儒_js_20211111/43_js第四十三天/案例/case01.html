@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>结构赋值 数组 默认值</title>
+</head>
+
+<body>
+  <script>
+
+    //let [a, b]; //Missing initializer in destructuring declaration
+
+    let a, b;
+
+    let arr = [1];
+
+    [a = 10, b = 20] = arr; //a的默认值设置为10 b默认值20 b  arr[1] undefined
+
+
+    //默认值只对实际值是 undefined的时候生效
+    console.log(a, b);
+
+    
+
+
+
+  </script>
+</body>
+
+</html>

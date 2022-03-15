@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue filter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 600px;
+      margin: 100px auto;
+    }
+
+    .desc {
+      margin: 40px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #f1f1f1;
+    }
+
+    .blog-desc--active,
+    .active {
+      color: red;
+    }
+
+    .on {
+      background-color: orange;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .yellow {
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <form action="javascript:;">
+      <input type="text" name="letter" v-model.number="letter">
+      <!-- <button @click="translate(letter)">翻译</button> -->
+      <br>
+      <!-- <p>{{translate(letter)}} ----- methods</p>  -->
+      <!-- <p>{{letterTrans}} ---- watch</p> -->
+      <p>{{padLeft(letter)}} ---- method</p>
+      <p>{{padLeftLetter}} ---- computed</p>
+      <p>{{letterWatch}} ---- watch</p>
+      <p>{{letter | filterPadLeft('arg1',message) | filterTrans}} ---- filter</p>
+    </form>
+
+    {{productPriceCount}}
+
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: '你好 我好 大家好才是真的好',
+          products:[
+            {name:'手机',price:1133},
+            {name:'路由器',price:133},
+            {name:'鼠标',price:233}
+          ],
+          letter: '',
+          letterTrans: '',
+          letterWatch:''
+        }
+      },
+      methods: {
+        padLeft(val){
+          return String(val)[1] && String(val) || '0' + val
+        }
+      },
+      computed: {
+        productPriceCount(){
+          return this.products.reduce((acc,curr)=>{
+            return acc + curr.price
+          },0)
+        },
+        padLeftLetter(){
+          return String(this.letter)[1] && String(this.letter) || '0' + this.letter
+        }
+      },
+      watch: {
+        letter(newVal,oldVal){
+          this.letterWatch = String(newVal)[1] && String(newVal) || '0' + newVal
+        }
+      },
+      filters:{
+        //  <p>{{letter | filterPadLeft}} ---- filter</p>
+        filterPadLeft(val,arg1,arg2){
+          console.log(arguments)
+
+          return String(val)[1] && String(val) || '0' + val
+        },
+        filterTrans(val){
+          return val + " trans 改变"
+        }
+      }
+    })
+
+    /*
+      methods: 无 单纯的方法  可以访问this(Vue实例) (事件 业务函数) 功能函数 可异步
+
+      computed: 属性 属性计算 (原始数据的处理 返回新数据) 可以访问 this (Vue实例) 不可异步
+
+      watch: 属性 触发器 注重响应 属性值变化的时候 进行附加行为 this(Vue实例) 可异步
+
+      filters: 数据 针对数据工具方法  this(window|undefined) 不指向实例 纯函数工具 不推荐异步
+
+      数据 | filter1 | filter2
+
+      结果 filter2(filter1(数据))的返回值
+
+      filter参数
+        参数0  |左边的值
+        参数1 ... 参数n filter(arg1,arg2) 实际写入参数
+
+
+        {{letter | filterPadLeft('arg1',message) | filterTrans()}}
+        结果 filter2(filter1(数据,'arg1',message))的返回值
+
+      this
+       指向 window
+    
+    */
+  </script>
+</body>
+
+</html>

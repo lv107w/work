@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>javascript 函数</title>
+</head>
+
+<body>
+  <script>
+
+    arr = [0, 2, 3, 1, 54, 56, 1, 0, 6, 2];
+    newArr = [];
+    for (var i = 0, len = arr.length; i < len; i++) {
+      if (arr[i] === 1) {
+        newArr.push(i);
+      }
+    }
+
+    console.log(newArr);
+
+
+    var arr2 = [0, 2, 3, 2, 54, 2, 1, 0, 6, 2];
+    var newArr2 = [];
+    for (var i = 0, len = arr.length; i < len; i++) {
+      if (arr[i] === 2) {
+        newArr2.push(i);
+      }
+    }
+    console.log(newArr2);
+
+
+    function getIdx(arr, target) {
+      var newArr = [];
+      var len = arr.length;
+      for (var i = 0; i < len; i++) {
+        if (arr[i] === target) {
+          newArr.push(i);
+        }
+      }
+      return newArr;
+    }
+
+
+    function padLeft(num) {
+      return String(num)[1] && String(num) || '0' + num;
+    }
+
+
+    function padLeft(num) {
+      console.log(num + 1);
+      return num + 10;
+    }
+
+    padLeft(1);
+    padLeft(2);
+
+    var count = padLeft(20);
+    console.log(count);
+
+    function fn() { }
+    console.log(typeof fn);
+
+    //函数声明
+    function fn() {
+      console.log('123456789');
+    }
+
+    //函数表达式
+    var fn1 = function () {
+      console.log('123456789');
+    }
+
+    fn(); //执行函数名称为fn的函数 (执行函数内部的代码)
+
+
+  </script>
+</body>
+
+</html>

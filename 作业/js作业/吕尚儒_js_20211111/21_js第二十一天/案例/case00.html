@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      color: blue;
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="text" style="border:1px solid red;color:green;">大家好 我是海牙老师 你好吗</p>
+  <img id="pic" src="" width='200' height="200" alt="">
+  <script>
+    //给p标签加padding样式
+    var oText = document.querySelector('#text');
+    oText.setAttribute('padding', '10px');//设置标签属性
+
+    oText.style.padding = '10px';
+
+    console.log(oText.style.padding);
+
+
+
+    /*
+      attribute系列 是针对标签属性的操作
+
+      1. 标签有padding属性吗? 没有 但是可以自定义添加padding属性
+      2. padding自定义属性和标签样式有关系吗? 没有
+      3. 你想给标签加padding是设置标签的样式还是属性? 给样式
+      4. 如何正确的给标签设置样式padding =>
+          1. 我们js给标签设置样式一般都是通过直接修改 style属性 来设置行内样式
+
+
+          setAttribute是针对标签属性的 和样式没关系 设置样式直接通过
+          元素对象.style.样式名称 = 样式值;\
+    */
+
+
+
+
+    var oImg = document.querySelector('#pic');
+    console.log(oImg.height); //元素.属性 获取的是计算后(处理后)的值
+    console.log(oImg.getAttribute('width'));
+
+
+
+  </script>
+</body>
+
+</html>

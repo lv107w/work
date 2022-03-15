@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签对象属性2</title>
+  <style>
+    img {
+      transform: scale(3);
+      border: 3px solid red;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- -->
+  <img id="pic" style="outline:1px;" class="photo red" src="images/bird.png" width="100" height="100" alt="bird"
+    title="你猜猜我是什么鸟">
+
+  <p>你好 我是p</p>
+
+  <div id="wrap">
+    <h3>我是标题</h3>
+    我是wrap内容
+  </div>
+  <script>
+    var oImg = document.querySelector('#pic');
+
+    //标签属性 通过元素直接 .操作可以读取 也可以 修改
+    console.log(oImg.id);
+    console.log(oImg.className);
+    console.log(oImg.src);
+    console.log(oImg.height);
+    console.log(oImg.width);
+    console.log(oImg.alt);
+    console.log(oImg.title);
+
+
+
+    oImg.title = 'ooo';
+
+
+    //CSSOM 
+    console.log(oImg.style.padding);
+    oImg.style.padding = '90px';
+
+
+    var oP = document.querySelector('p');
+
+    console.log(oP.textContent);
+    console.log(oP.innerText);
+
+
+    var oWrap = document.querySelector('#wrap');
+    //获取元素内的文本内容 (过滤掉标签)
+    console.log(oWrap.textContent);
+    console.log(oWrap.innerText);
+
+    //获取元素内的所有内容(包含标签)
+    console.log(oWrap.innerHTML);
+  </script>
+</body>
+
+</html>

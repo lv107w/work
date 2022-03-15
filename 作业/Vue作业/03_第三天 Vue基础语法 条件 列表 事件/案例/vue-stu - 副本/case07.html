@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue events</title>
+</head>
+
+<body>
+  <div id="app">
+    <p @click="show(item)" v-for="(item,idx) in list">
+      {{item}}
+    </p>
+    <button @click="push">添加</button>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  // 创建 Vue 实例，得到 ViewModel
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      list: ['张三', '李四']
+    },
+    methods: {
+      show(val) {
+        console.log(val)
+      },
+      push() {
+        this.list[this.list.length] = '新增'
+        console.log(this.list.length)
+        this.$set(this.list)
+      }
+    }
+  });
+</script>
+
+</html>

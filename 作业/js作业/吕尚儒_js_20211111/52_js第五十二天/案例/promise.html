@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    Promise: Promise有三个状态:pending(等待)、fulfilled=>resolve(完成)、 rejected=>reject(拒绝)
+    两种状态改变方式:pending => resolve, pending => reject
+    在构建Promise实例调用resolve或reject就是状态改变的时候。当状态改变的时候,其方法then就会执行对应状态的回调函数。
+
+    resolve: then方法的第一个参数,通常作为事件成功的回调函数
+
+    reject: then方法的第二个参数,通常作为事件失败的回调函数,也可以作为catch的参数出现
+    
+     */
+
+    function findTargetOfArray(arr, target, success, failed) {
+      let result = arr.includes(target);
+      if (result) {
+        success(target, arr.indexOf(target));
+      } else {
+        failed('nothing');
+      }
+    }
+    //  findTargetOfArray([1, 2, 3], 9, function (target, idx) { console.log(`${target}的下标为${idx}`) }, function (err) { console.log(err) });
+
+
+    function findTarget(arr, target) {
+      return new Promise(function (resolve, reject) {
+        let result = arr.includes(target);
+        if (result) {
+          resolve({ target, idx: arr.indexOf(target) });
+        } else {
+          reject('nothing');
+        }
+      })
+    }
+    let p = findTarget([1, 2, 3, 4], 3);
+    p.then(function ({ target, idx }) {
+      console.log(console.log(`${target}的下标为${idx}`))
+    }, function (err) {
+      console.log(err)
+    })
+  </script>
+</body>
+
+</html>

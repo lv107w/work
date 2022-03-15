@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无意识创建闭包 </title>
+  <style>
+    div {
+      width: 90px;
+      height: 40px;
+      margin: 10px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="btn">按钮</div>
+  <div class="btn1">按钮1</div>
+  <script>
+
+    let oBtn = document.querySelector('.btn');
+    let oBtn1 = document.querySelector('.btn1');
+
+    /* 
+      点击btn之后 开放btn1的点击行为 
+      点击btn1 使num 递增 点一次 增一下
+    
+    */
+    oBtn.addEventListener('click', function () {
+      let num = 0;
+      oBtn1.addEventListener('click', function () {
+        num++;
+        console.log(num);
+      }, false);
+    }, false);
+
+
+  </script>
+</body>
+
+</html>

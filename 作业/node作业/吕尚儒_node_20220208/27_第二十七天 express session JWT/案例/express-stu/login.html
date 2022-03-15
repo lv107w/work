@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+</head>
+
+<body>
+  <script src="node_modules/axios/dist/axios.min.js"></script>
+  <script>
+    const tokenKey = 'UA_tks'
+
+
+
+
+    async function getToken() {
+      let token = localStorage.getItem(tokenKey)
+      if (!token || token === 'undefined') {
+        try {
+          let result = await axios.post('http://127.0.0.1:3000/getToken', { username: "xiaobao", pwd: '9900871' }, {
+            withCredentials: true
+          })
+          localStorage.setItem(tokenKey, result.data.data.token) //异步
+          token = result.data.data.token
+        } catch (err) {
+          console.error(err)
+        }
+      }
+      return token
+    }
+
+    getToken().then(async token => {
+      let result = await axios.get('http://127.0.0.1:3000/getAvatar', {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+      })
+      console.log(result.data)
+    })
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

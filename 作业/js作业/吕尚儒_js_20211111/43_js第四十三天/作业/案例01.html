@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>结构赋值 数组 默认值</title>
+</head>
+<body>
+  <script>
+    let arr = [1];
+    [a = 10, b = 20] = arr;
+    console.log(a, b); //1 20
+
+    //默认值只对实际值是 undefined的时候生效
+    let array0 = [1, undefined];
+    let array1 = [1, null];
+    let array2 = [1, ''];
+    let array3 = [1, false];
+
+    [x = 10,y = 20] = array0;
+    console.log(x, y);   //1 20
+    [x1 = 10,y1 = 20] = array1;
+    console.log(x1, y1); //1 null
+    [x2 = 10,y2 = 20] = array2;
+    console.log(x2, y2); //1 ''
+    [x3 = 10,y3 = 20] = array3;
+    console.log(x3, y3); //1 false
+  </script>
+</body>
+</html>

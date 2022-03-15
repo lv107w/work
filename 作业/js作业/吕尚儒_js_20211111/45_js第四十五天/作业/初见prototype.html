@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型 prototype</title>
+</head>
+<body>
+  <script>
+    /*
+      prototype 原型 NDA
+
+      原型就是用来承载DNA中的行为的载体
+
+      原型是一个对象
+
+      1. 解决了行为方法作为属性 在实例化的时候会被拷贝而导致内存紧张
+      2. 解决了命名空间的冲突和方法与对象的从属关系
+     */
+    function Ball(ele, s = 1) {
+      this.ele = ele;
+      this.x = s;
+      this.y = s;
+    }
+
+    function Unit(ele, s = 1) {
+      this.ele = ele;
+      this.x = s;
+      this.y = s;
+      this.reg = 30;
+    }
+
+    //直接给Unit.prototype赋值会覆盖constructor构造函数，需要重新导入
+    Unit.prototype = {
+      constructor: Unit,
+      map: function() {
+        console.log(this.x);
+      },
+      move: function() {
+        console.log('move unit');
+      }
+    }
+    console.log(Unit.prototype);
+
+
+
+    //一般推荐分开赋值，不覆盖constructor
+    Ball.prototype.map = function () {
+      //原型方法中 通过this访问实例对象
+      console.log(this.x);
+    }
+
+    Ball.prototype.move = function () {
+      console.log('move ball')
+    }
+ 
+    let ball = new Ball();
+    console.log(ball); //Ball {ele: undefined, x: 1, y: 1}
+    ball.move(); // move ball
+    ball.map(); //1
+
+  </script>
+</body>
+</html>

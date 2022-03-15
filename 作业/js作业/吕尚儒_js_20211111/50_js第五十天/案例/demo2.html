@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>deepCopy</title>
+</head>
+
+<body>
+  <script>
+    // function deepCopy(p, c) {
+    //   c = c || {};
+    //   for (let i in p) {
+    //     if (typeof i === 'object') { //typeof arr && typeof object => object
+    //       c[i] = (p[i].constructor === Array) ? [] : {}
+    //       deepCopy(p[i], c[i])
+    //     } else {
+    //       c[i] = p[i]
+    //     }
+    //   }
+    //   return c;
+    // }
+
+
+
+    const o = {
+      arr: [1, 2, " % E4 % BD % A0 % E5 % A5 % BD", { x: 1, y: [1, 2, 3] }],
+      json: {
+        key: [1, 2, 3, 4],
+        value: {
+          a: null,
+          b: undefined,
+          c: function () {
+            console.log('c');
+          }
+        }
+      },
+      name: 'oooo'
+    }
+
+    let i = deepCopy(o);
+
+    const arr = [1, 2, " % E4 % BD % A0 % E5 % A5 % BD", { x: 1, y: [1, 2, 3] }];
+
+    function deepCopy(original) {
+      if (Array.isArray(original)) {
+        return original.map(ele => deepCopy(ele));
+      }
+      if (typeof original === 'object' || original !== null) {
+        /* 
+          arr: deepCopy([ deepCopy(1)=>1,  deepCopy(2)=>2,  deepCopy(" % E4 % BD % A0 % E5 % A5 % BD") => '',  deepCopy({ x: deepCopy(1) => 1, y:  deepCopy([deepCopy(1)=>1,  deepCopy(2)=>2,  deepCopy(3)=>3]) })])
+          json: deepCopy({
+            key:  deepCopy([1, 2, 3, 4]),
+            value:  deepCopy({
+              a:  deepCopy(null),
+              b:  deepCopy(undefined),
+              c:  deepCopy(function () {
+                console.log('c');
+              }))
+            }
+          })
+          name: deepCopy('ooooo')
+        
+        */
+        return Object.fromEntries(Object.entries(original).map(([key, value]) => [key, deepCopy(value)]));
+      }
+      return original;
+    }
+
+
+
+
+
+    // function deepCopy(original) {
+    //   if (Array.isArray(original)) {
+    //     return original.map(elem => deepCopy(elem));
+    //   } else if (typeof original === 'object' && original !== null) {
+    //     return Object.fromEntries(
+    //       Object.entries(original)
+    //         .map(([k, v]) => [k, deepCopy(v)]));
+    //   } else {
+    //     // 原始类型值无需拷贝
+    //     return original;
+    //   }
+    // }
+
+
+
+
+    function deepCopy(original) {
+      if (Array.isArray(original)) {
+        const copy = [];
+        for (const [index, value] of original.entries()) {
+          copy[index] = deepCopy(value);
+        }
+        return copy;
+      }
+      if (typeof original === 'object' && original !== null) {
+        const copy = {};
+        for (const [key, value] of Object.entries(original)) {
+          copy[key] = deepCopy(value);
+        }
+        return copy;
+      }
+      // 基础类型无需拷贝
+      return original;
+    }
+
+
+
+  </script>
+</body>
+
+</html>

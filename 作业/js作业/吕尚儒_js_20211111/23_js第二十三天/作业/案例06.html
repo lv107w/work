@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      user-select: none;
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+      width: 960px;
+    }
+
+    li {
+      width: 234px;
+      height: 300px;
+      margin-left: 20px;
+      padding: 10px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .red {
+      color: #ff0084;
+    }
+
+    .pic {
+      width: 160px;
+      height: 160px;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 42px;
+    }
+
+    .desc {
+      width: 180px;
+      height: 18px;
+      font-size: 12px;
+      color: #b0b0b0;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+    }
+
+    .price {
+      font-size: 12px;
+      color: #444;
+      line-height: 28px;
+    }
+  </style>
+</head>
+<body>
+  <ul id="list"></ul>
+
+  <script>
+    var responseData = [
+      {
+        title: '腾讯黑鲨3S',
+        des: '骁龙865处理器，120Hz刷新率',
+        price: '3999',
+        picSrc: '//cdn.cnbj1.fds.api.mi-img.com/mi-mall/237942bfcaf2bbe82fbe966c2f584d69.jpg?thumb=1&w=200&h=200&f=webp&q=90'
+      },
+      {
+        title: '小米10 青春版 5G',
+        des: '50倍潜望式变焦 / 轻薄5G手机',
+        price: '1899',
+        picSrc: '//cdn.cnbj1.fds.api.mi-img.com/mi-mall/8729282b199b3ec51e31c1b6b15f3f93.jpg?thumb=1&w=200&h=200&f=webp&q=90'
+      },
+      {
+        title: '小米10',
+        des: '骁龙865/1亿像素相机',
+        price: '3699',
+        picSrc: '//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90'
+      },
+      {
+        title: 'Redmi 9A',
+        des: '5000mAh长循环大电量，6.53"超大护眼屏幕',
+        price: '499',
+        picSrc: '//cdn.cnbj1.fds.api.mi-img.com/mi-mall/c892a7640f58032489cbff8a948b50f9.jpg?thumb=1&w=200&h=200&f=webp&q=90'
+      }
+    ];
+
+    var oUl = document.querySelector('#list');
+    
+    drawHtml(oUl, formattingData(responseData));
+
+    aLi = oUl.querySelectorAll('li');
+
+    for (var i = 0, len = aLi.length; i < len; i++) {
+      (function (idx) {
+        aLi[idx].onclick = function () {
+          console.log(idx);
+        }
+      })(i);
+    }
+    //生成模板字符串
+    function formattingData(data) {
+      return data.reduce(function (acc, curr, idx, arr) {
+        acc += `<li> 
+                <img class="pic"
+                  src="${curr['picSrc']}"
+                  alt="${curr['title']}" width="200" height="200">
+                <h3 class="title">${curr['title']}</h3>
+                <p class="desc">${curr['des']}</p>
+                <p class="price"><span class="red">${curr['price']}</span>元起</p>
+              </li>`;
+        return acc;
+      }, '');
+    }
+    //将字符串模板写入dom
+    function drawHtml(parent, htmlStr) {
+      parent.innerHTML = htmlStr;
+    }
+  </script>
+</body>
+</html>

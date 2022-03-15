@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>block scope 块级作用域</title>
+  <style>
+    div {
+      width: 400px;
+      height: 180px;
+      margin: 10px 0;
+      background-color: #ccc;
+      color: #fff;
+      font-size: 30px;
+      line-height: 180px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+  </div>
+  <div class="other-slider">
+  </div>
+</body>
+<script>
+
+  //不同块级作用域命名相同标识符互不影响
+  {
+    let oSlider = document.querySelector('.slider');
+    let index = 0;
+    oSlider.onmouseover = function () {
+      this.innerHTML = index++;
+    }
+  }
+
+  {
+    let oSlider = document.querySelector('.other-slider');
+    let index = 0;
+    oSlider.onmouseover = function () {
+      this.innerHTML = index++;
+    }
+  }
+
+
+  /* 
+    目前规则 
+    ES6希望 所有的function函数声明在{}就跟let一样的局部私有声明
+  */
+  var a; //undefined
+    if (false) {
+      a = function () {
+        console.log('我是函数a');
+      }
+    }
+    a();//报错：a is not a function
+</script>
+</html>

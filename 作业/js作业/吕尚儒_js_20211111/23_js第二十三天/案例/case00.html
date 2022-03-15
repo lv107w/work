@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回流与重绘</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      float: left;
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 2px solid red;
+      background-color: #368;
+      /*隐士切换span的display展示模式为block*/
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    /*
+      我要动态渲染3个div到页面上
+
+      append appendChild replaceChild remove removeChild insertBefore
+
+      createDocumentFragment 文档片段 文档气泡 感冒药胶囊 临时容器 可以往里面放任何的节点元素 元素列表 等等
+
+    */
+
+    drawHtml(3, 'div');
+    function drawDom(num, tagName) {
+      var vDom;
+      var fragment = document.createDocumentFragment();//文档片段
+      console.log(fragment);
+      for (var i = 0; i < num; i++) {
+        vDom = document.createElement(tagName); //
+        fragment.appendChild(vDom); //放到临时容器fragment里
+        // document.body.appendChild(vDom); //重复N次 每次渲染一个标签
+      }
+      document.body.appendChild(fragment);  //一次渲染渲染N个
+    }
+
+    /*
+      innerHTML  可读可写
+    */
+
+
+    function drawHtml(num, tagName) {
+      var eleStr = '';
+      for (var i = 0; i < num; i++) {
+        eleStr += '<' + tagName + '></' + tagName + '>';
+      }
+      document.body.innerHTML = eleStr;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 22:12:19
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域 结合 解析 声明提升</title>
+</head>
+
+<body>
+  <script>
+    /*
+
+    
+      1. 在javascript中 有全局作用域(script) 有局部作用域 (函数{})
+      2. 作用域是单向可访问 内部作用域可以访问外部作用域的变量 外部作用域不可以访问内部作用域的私有变量
+      3. 私有变量 指的是 在当前局部作用域下*声明*的变量 , 如果没有声明符就不是当前作用域的私有变量
+      4. 在调用没有声明的变量的时候 会向上一级作用域寻找 声明 一直找到 全局作用域为止.
+      5. 变量的访问 优先访问自己作用域内的局部变量 自己作用域找不到 向上寻找调用
+      6. 如果一个变量 在局部作用域中直接使用 但是没有声明, 并且向上一直寻找到 全局作用域 也没有 var 声明 ,js引擎会在全局作用域进行隐式声明
+
+     
+
+
+
+    javascript引擎会对代码进行预解析
+    1. 寻找所有的声明 并提升
+    2. 按照顺序 执行所有的 执行语句
+
+    3. 一层一层作用域解析先解析全局作用域 然后解析局部作用域
+    4. 声明有两种 1 变量声明  2 函数声明
+    提升到 当前作用域最顶端
+
+
+    代码执行分两个阶段
+    1. 寻找变量声明 并且提升
+    2. 按照顺序执行所有的执行语句;
+
+     */
+
+    var x = 10;
+    function fn() {
+      console.log(x);
+      var x = 20;
+    }
+    fn();
+
+
+    /* =====================================  */
+    //1. 全局域分析
+    var x; //先提升变量声明
+    function fn() { //再提升函数声明
+      console.log(x);
+      var x = 20;
+    }
+
+    x = 10;// 执行代码
+    fn(); //执行代码
+
+
+    /* =====================================  */
+
+    function fn() {
+      var x; //声明提升
+
+      console.log(x); //执行语句
+      x = 20;
+    }
+
+
+    /*===========================*/
+    var x; //先提升变量声明
+    function fn() { //再提升函数声明
+      var x;
+      console.log(x);
+      x = 20;
+    }
+
+    x = 10;// 执行代码
+    fn(); //执行代码
+
+  </script>
+</body>
+
+</html>

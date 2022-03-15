@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>柯理化函数(currying)</title>
+</head>
+<body>
+  <script>
+  // 柯里化是将一个多参数函数转换成多个单参数函数，也就是将一个 n 元函数转换成 n 个一元函数。
+  function fnX(x, y, z) {
+    return x + y + z;
+  }
+
+  function fn(x) {
+    return function fn1(y) {
+      x = x + y;
+      return function fn2(z) {
+        return x + z;
+      }
+    }
+  }
+
+  console.log(fn(1)(2)(3)); //6
+
+  let result = fn(1);
+  console.log(result(2)(3)); //6
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-27 22:30:20
+ * @LastEditTime: 2020-07-27 22:44:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this 初窥</title>
+</head>
+
+<body>
+  <script>
+    function f1() {
+      console.log(this);
+    }
+
+    window.f1(); //window调用的f1
+
+    // window.alert(this);
+
+    var x = 10; //全局变量x 都是window的属性
+
+    window.x = 10;
+    console.log(window.x);
+
+
+    var x = 10;
+    function f1() {
+      //静态作用域 函数内变量的指向 在函数声明的时候就确定了
+      console.log(x); // 10
+    }
+    function fn2() {
+      var x = 20;
+      f1();
+    }
+    fn2();
+
+
+    var obj = {
+      name: '哈哈哈',
+      showName: function () {
+        console.log(this.name);
+      }
+    }
+
+    obj.showName();//obj对象调用了showName方法(函数) showName函数里面的this指向obj  this.name === obj.name
+
+
+
+    function Student(name, age, sex) {
+      //虚拟对象 => this
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      this.speak = function () { //
+        console.log('我要学习,学习使我快乐,学习让我成长!' + '我叫' + this.name);
+      }
+      // return this;
+    }
+
+
+
+    var x = 18;
+
+    var stu3 = new Student('张三', 18, 1); //this指向实例化的 stu3
+
+  </script>
+
+</body>
+
+</html>

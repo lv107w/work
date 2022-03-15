@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>递归案例</title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+    1 编写一个函数实现n^k (n的k次方)，使用递归实现。
+  2 角谷定理。输入一个自然数，若为偶数，则把它除以2，若为奇数，则把它乘以3加1。经过如此有限次运算后，总可以得到自然数值1。求经过多少次可得到自然数1。
+  3 一个人赶着鸭子去每个村庄卖，每经过一个村子卖去所赶鸭子的一半又一只。这样他经过了7个村子后还剩2鸭子，问他出发时共赶多少只鸭子？经过每个村子卖出多少只鸭子？
+  4 数列1,1,2,4,7,13,24,44,...求数列的第 n项 (找规律) 递归实现
+
+  
+
+
+     */
+
+    function getPow(n, k) {
+      k--;
+      if (k === 0) {
+        //出口条件
+        return n;
+      }
+      //前进条件
+      return n * getPow(n, k);
+    }
+    console.log(getPow(3, 5));
+    // console.log(testGetPow(3, 5));
+
+    // let c = 0;
+
+    function fn1(n, c = 0) {
+      c++;
+      if (n === 2) {
+        //倒数第二次
+        return c;
+      }
+      return fn1(((n % 2 === 0) ? n / 2 : n * 3 + 1), c);
+    }
+
+    console.log(fn1(5));
+
+
+    // 5 => 16 => 8 => 4=> 2
+
+    function fn2(n, t, arr = []) { //2 ,7
+
+      if (t === 0) {
+        //终止
+        return {
+          first: n,
+          arr: arr
+        };
+      }
+      arr.unshift(n + 2);
+      t--; // 6
+      //前进
+      return fn2(2 * (n + 1), t, arr);
+    }
+
+    console.log(fn2(2, 7));;
+
+    //数列 0,1,1,2,4,7,13,24,44,...求数列的第 n项 (找规律) 4= 1 + 1 +2  7 = 1+2+4
+    function fn3(n) {
+      if (n === 0 || n === 1) {
+        return 1;
+      }
+      if (n === 2) {
+        return 2;
+      }
+      return fn3(n - 3) + fn3(n - 2) + fn3(n - 1);
+    }
+    console.log(fn3(2))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-12 20:32:33
+ * @LastEditTime: 2020-08-12 23:04:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event偏移量 鼠标拖拽 移动蒙版层案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      position: relative;
+    }
+
+    .container {
+      position: relative;
+      top: 10px;
+      left: 10px;
+      width: 800px;
+      height: 800px;
+      background-color: #368;
+    }
+
+    .mask {
+      position: absolute;
+      width: 400px;
+      height: 280px;
+      padding: 20px;
+      background-color: #690;
+      box-shadow: 0 0 8px #222;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="mask">
+
+    </div>
+  </div>
+
+  <script src='js/common.js'></script>
+  <script>
+    /*
+      拖拽模组的实现
+
+      1. 被拖拽的元素需要为定位起来的 , 通过改变元素的 top值 和left值实现元素的位移
+
+      2. 如何拖拽 事件组合 鼠标按下 鼠标移动 鼠标抬起
+        事件嵌套关系 事件触发顺序必须是 按下 移动 抬起
+          按下鼠标的时候 才开始监听鼠标移动
+
+      3. 元素移动量 = 鼠标的移动量
+
+      4. 元素的移动量如何设置? 改变 left top
+
+      5. 如何计算移动量
+        1. 鼠标当前位置的x y  - 鼠标按下时的x y = 移动量
+
+      6. mask位置如何计算
+          x = mask原x的位置(left) + 偏移量X
+          y = mask原y位置(top) + 偏移量Y
+
+      7. 失焦问题
+          1 如果mousemove是监听mask的话 鼠标快速移动 会导致运算速度跟不上而引发的 鼠标脱离mask 失焦
+
+          解决办法 监听document 上的鼠标移动就可以了
+
+          2. 如果鼠标移动出了浏览器页面范围再松开鼠标的话 dom无法正确监听到 鼠标的mouseup事件 在移动中判断 clientX 和 clientY 是否为 负值 如果为 负值 直接手动锁死isDown = false
+
+      8. 如何限制盒子的可移动范围 在视窗内 不会出现部分位置超出窗口
+
+        1. 横向
+          _left 最小不能小于 0
+          _left 最大不能大于 浏览器窗口宽度 - 元素自身宽度
+    window.innerWidth - dom.offsetWidth
+        2. 纵向
+          _top 最小不能小于 0
+          _top 最大不能大于 浏览器窗口高度 - 元素自身高度
+              
+
+          浏览器窗口宽度/高度如何获取
+          window.innerWidth
+           浏览器window view宽度 包括浏览器滚动条
+          window.innerHeight
+           浏览器window view高度 包括浏览器滚动条
+
+          元素自身宽度/高度如何获取
+
+            元素自身实际宽度 
+            dom.offsetWidth 
+            width + padding + border + 滚动条
+
+            元素自身实际高度
+            dom.offsetHeight
+            height + padding + border + 滚动条
+
+
+            为什么不直接通过getStyle获取元素的width样式值
+            因为元素的实际宽度 = width + padding + border
+
+
+    */
+
+    var oMask = $('.mask');
+    var startPos = {
+      x: 0,
+      y: 0,
+      left: 0,
+      top: 0
+    };
+    var isDown = false; //鼠标是否按下状态开关
+    var initLeft = getPosition(oMask).left;
+    var initTop = getPosition(oMask).top;
+
+
+    oMask.addEventListener('mousedown', function (e) {
+      //按下鼠标时记录鼠标的初始clientX 和clientY
+      startPos.x = e.clientX;
+      startPos.y = e.clientY;
+      startPos.left = getPosition(oMask).left;
+      startPos.top = getPosition(oMask).top;
+      isDown = true;
+    }, false);
+
+
+    //mousemove在目标对象上移动的时候会持续触发 触发的频率是跟时间相关 同样的移动长度 速度越快触发越少 速度越慢触发越多 例如 1s固定触发10次
+    document.addEventListener('mousemove', function (e) {
+      if (isDown) {
+        //计算移动量
+        var diffX, diffY;
+        diffX = e.clientX - startPos.x;
+        diffY = e.clientY - startPos.y;
+        var _top = diffY + startPos.top;
+        var _left = diffX + startPos.left;
+        var maxTop = window.innerHeight - oMask.offsetHeight - initTop;
+        var maxLeft = window.innerWidth - oMask.offsetWidth - initLeft;
+
+        console.log(window.innerWidth, oMask.offsetWidth)
+        //限制 _top 和 _left
+        //限制_top 最小值不能小于 0
+        _top = Math.max(0, _top);
+        _top = Math.min(maxTop, _top);
+
+        _left = Math.max(0, _left);
+        _left = Math.min(maxLeft, _left);
+
+        oMask.style.top = _top + 'px';
+        oMask.style.left = _left + 'px';
+
+        if (e.clientX < 0 || e.clientY < 0) {
+          //如果鼠标位置离开了文档窗口 clientX 或者 Y 会变为负值 这时我们要锁死isDown
+          isDown = false;
+        }
+      }
+    }, false);
+
+    document.addEventListener('mouseup', function (e) {
+      //抬起鼠标按键的时候 锁定isDown的状态为false 让move行为不再触发
+      isDown = false;
+    }, false);
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    #active {
+      color: pink;
+    }
+
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    DOM开发
+    
+    DOM树
+      增 新增DOM
+      删 删除DOM
+      改 修改DOM结构 层级 内容 属性 
+      查 获取dom 获取DOM内容 获取innerHTML innerText 获取children
+
+    标签属性 
+      class
+      id
+      style 
+      自定义属性
+  
+    events
+      click
+      keyup
+      input
+      mousemove
+
+      oP.hidden = false
+   -->
+  <div id="app">
+    <p :hidden="isHide">{{ message }}</p>
+    <p :[attr]="cls">{{ message }}</p>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // 0 '' NaN       (undefined null false)
+    // ??     || 0 ''
+    /*
+      v-bind
+      数据属性值 如果是 true false 直接决定 标签属性 是否渲染
+      *数据属性值 如果是 null undefined 直接决定 标签属性 不渲染 等价于 false
+      *数据属性值 如果是 0 NaN '' 直接决定标签属性渲染 但是 标签属性无值
+      数据属性值 如果是 非布尔值 非null undefined 非0 NaN ''的正常值 都会作为 标签属性值渲染上
+
+    
+    */
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: 'hello Vue',
+          isHide: Boolean(0),
+          cls: 'active',
+          attr: ''
+        }
+      },
+      methods: {
+        showMsg() {
+          return this.message + ' show msg'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

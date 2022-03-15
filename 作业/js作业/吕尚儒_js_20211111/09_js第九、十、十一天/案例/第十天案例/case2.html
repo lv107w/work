@@ -1,0 +1,81 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-23 20:30:51
+ * @LastEditTime: 2020-07-23 22:00:08
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数回顾练习 arguments 不定参列表</title>
+</head>
+
+<body>
+  <script>
+    /*
+      arguments 是函数的实参列表 集合
+      函数在调用的时候传入的实参 形成的arguments
+      类数组 
+      长得像数组 有length 可遍历 
+      不能用 数组的方法
+    
+    
+    */
+    //求两个数之和
+    function getSum(n1, n2) {
+      return n1 + n2;
+    }
+    // console.log(getSum(2, 3));
+
+
+    //求5个数之和
+    function getSum(n1, n2, n3, n4, n5) {
+      return n1 + n2 + n3 + n4 + n5;
+    }
+    // console.log(getSum(2, 3, 3, 4, 5));
+
+
+    //求N个数之和
+    // function getSum() {
+    //   var count = 0;
+    //   for (var i = 0, len = arguments.length; i < len; i++) {
+    //     count += arguments[i];
+    //   }
+    //   return count;
+    // }
+
+
+    function getSum() {
+      arguments[0] = 100;
+      return arguments[0] + arguments[1];
+    }
+
+    // console.log(getSum(1, 2, 3, 4, 5, 65, 6, 78, 4));
+    var arr = [1, 2, 3];
+    function push() {
+      var arr = Array.isArray(arguments[0]) && arguments[0] || [];
+      var argLen = arguments.length;
+      for (var i = 1; i < argLen; i++) {
+        arr[arr.length] = arguments[i];
+      }
+      return arr;
+    }
+
+    // console.log(push(arr, 9, 8, 7, 8));
+
+    function fn() {
+      console.log(arguments[1]);
+      console.log(arguments); //实参会形成类数组集合 arguments
+      // 有length 可以遍历 可以通过下标 取值 赋值 但是不是数组 不能使用数组方法
+    }
+    fn(1, 2, 3);
+
+  </script>
+</body>
+
+</html>

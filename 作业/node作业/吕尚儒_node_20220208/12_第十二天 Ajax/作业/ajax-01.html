@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  用户名<input type="text" id="user">
+  密码<input type="text" id="pwd">
+  <input type="file" name="avator" id="avator">
+  <p hidden class="show-msg"></p>
+
+  
+  <button>提交请求</button>
+
+  <script>
+    let oSubmit = document.querySelector('button')
+    let oUserInput = document.querySelector('#user')
+    let oImgInput = document.querySelector('#avator')
+    let oShow = document.querySelector('.show-msg')
+
+    oSubmit.addEventListener('click', () => {
+      let file = oImgInput.files[0]
+      let form = new FormData()
+      form.append('avator', file, '头像')
+      request(form)
+    })
+
+    function request(data) {
+      let xhr = new XMLHttpRequest()
+
+      //设置xhr 请求信息 method URL isAsync
+      xhr.open('POST', 'http://127.0.0.1:8088/upload', true)
+
+      //UnsupportedMediaTypeError: unsupported content-type不用自己设置Content-Type
+      // xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf8')
+     
+      xhr.send(data)
+
+      xhr.onreadystatechange = function(res) {
+        if(xhr.readyState === 4) {
+          console.log('数据加载完成', xhr.response, xhr.status);
+          oShow.innerHTML = `欢迎用户${JSON.parse(xhr.responseText)['token']}`
+          oShow.removeAttribute('hidden')
+        }
+      }
+    }
+  </script>
+</body>
+</html>

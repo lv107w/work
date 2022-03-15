@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document in Window</title>
+</head>
+
+<body>
+  <a href="#work"></a>
+
+  <div id="work">fdsf </div>
+  <script>
+    console.log(document.lastModified); //文档最后一次修改时间
+
+    console.log(document.referrer); //追踪 何处跳转到当前页面 何处跳转到当前页面 从哪个页面跳转过来的
+
+    console.log(document.title); //title标签值 网页标题
+
+    console.log(document.URL); //当前页面的URL地址
+
+    console.log(document.anchors["anchName"])
+  </script>
+</body>
+
+</html>

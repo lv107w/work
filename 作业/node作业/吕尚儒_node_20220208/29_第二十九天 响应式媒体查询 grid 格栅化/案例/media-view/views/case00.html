@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体查询 @media</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: rgb(149, 33, 33);
+    }
+
+    /* 媒体查询 条件符合 显示设备 与 规定最小宽度为768px(宽度大于等于768px的时候) 是生效*/
+    /* w 768 ~ 992  移动m */
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+      body {
+        background-color: green;
+      }
+    }
+
+    /* w 992 ~ 1200  平板p*/
+    @media screen and (min-width: 992px) and (max-width: 1200px) {
+      body {
+        background-color: blue;
+      }
+    }
+
+    /* w >=1200 pc设备*/
+    @media screen and (min-width: 1200px) {
+      body {
+        background-color: pink;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

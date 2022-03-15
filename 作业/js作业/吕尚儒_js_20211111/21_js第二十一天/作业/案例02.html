@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于值与类型</title>
+</head>
+<body>
+  <p></p>
+
+  <script>
+    var oP = document.querySelector('p');
+    console.log(oP.textContent); //false
+    console.log(setInnerText(oP, '你好'));
+    console.log(oP.textContent); //false
+
+    function setInnerText(element, text) {
+      var key = typeof element.textContent == 'undefined' ? 'innerText' : 'textContent';
+      console.log(key);
+      element[key] = text;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回顾call apply</title>
+</head>
+<body>
+  <script>
+    const DATA = {
+      num: 1,
+      show() {
+        console.log(this.num);
+      },
+      count() {
+        return function() {
+          console.log(this);
+          console.log(9 + this.num);
+        }
+      }
+    }
+
+    const OTHER = {
+      num: 5
+    }
+
+    DATA.show.call(OTHER); //5
+
+
+
+    function fn() {
+      let args = [].slice.call(arguments); //类数组转换成数组
+      console.log(args);
+    }
+    fn(1, 2, 3, 4); //[1, 2, 3, 4]
+
+
+    function fn1(cb) {
+      let args = [].slice.call(arguments, 1);
+      return cb.apply(null, args); //传参，除了第一个参数其余的传进回调函数
+    }
+
+    let result = fn1(function() {
+      return [].reduce.call(arguments, function(acc, curr) {  //arguments就是回调函数传的实参args
+        return acc + curr;
+      });
+    }, 1, 2, 3, 4, 5);
+    console.log(result); //15
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重继承 </title>
+</head>
+
+<body>
+  <script>
+    /*
+      多重继承
+
+      一个类别 可能不只继承了一个爸爸的特性
+      可能有多个父类
+
+     */
+
+    function Parent1(name) {
+      this.name = name;
+    }
+    Parent1.prototype.showName = function () {
+      console.log(this.name)
+    }
+    Parent1.prototype.showAge = function () {
+      console.log(this.age)
+    }
+
+    function Parent2(age) {
+      this.age = age;
+    }
+    Parent2.prototype.showSomething = function () {
+      console.log('something')
+    }
+
+    function Child(name, age, address) {
+      Parent1.call(this, name);
+      Parent2.call(this, age);
+      this.address = address;
+    }
+
+    mixProto(Child, Parent1, Parent2);
+    function mixProto(targetClass, parentClass, otherParent) {
+      targetClass.prototype = Object.create(parentClass.prototype);
+      Object.assign(targetClass.prototype, otherParent.prototype);
+    }
+
+
+    var child = new Child('佩奇', 3, '火星');
+    console.log(child); //Child {name: "佩奇", age: 3, address: "火星"}
+    child.showName();//佩奇
+    child.showAge();//3
+    child.showSomething(); //something
+
+  </script>
+</body>
+
+</html>

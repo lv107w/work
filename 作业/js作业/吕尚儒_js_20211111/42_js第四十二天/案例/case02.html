@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垃圾GC 与闭包 </title>
+</head>
+
+<body>
+  <script>
+    // n执行结束之后(n出栈) 局部变量 i的内存地址会被回收 垃圾GC回收机制 
+
+    /* 
+
+ function n() {
+      let i = 10;
+      console.log(i);
+    }
+    n();
+
+       1. GC回收
+       2. 作用域链 下级作用域能够访问上级作用域变量
+       上级无法访问下级
+       3. 如何能够在函数外部访问内部变量呢?
+       4. 通过直接return内部变量在外部访问 只是访问当次函数执行的结果(值) 没有办法对变量进行修改和存储
+
+       5. 不会被回收的持有状态 局部变量不在被需要的时候在当前栈中
+    
+    */
+    /* 
+        function fn() {
+          let w = 10;
+          console.log(w);
+        } */
+
+    function fn() {
+      let w = 20;
+      return function fn2() {
+        w++;
+        console.log(w);
+      }
+    }
+
+
+    var x = fn();
+    var y = fn();
+
+    x();
+    x();
+    y(); //22 or 21
+
+
+
+
+
+  </script>
+</body>
+
+</html>

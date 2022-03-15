@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>节点操作</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Microsoft YaHei, serif;
+    }
+
+    body {
+      color: #888;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 800px;
+      padding: 50px 0;
+      background: linear-gradient(180deg, #92BFD9, #EFAA8E);
+    }
+
+    #box {
+      display: flex;
+      width: 800px;
+      height: 500px;
+      margin: auto;
+      border: 1px solid #ddd;
+    }
+
+    #box .left {
+      flex: 1;
+      padding: 30px 0 0 20px;
+      background-color: #fff;
+    }
+
+    #box .left>span {
+      color: orange;
+    }
+
+    #box .left span.area {
+      color: #888;
+      cursor: pointer;
+    }
+
+    #box .left span.area:hover {
+      color: orange;
+    }
+
+    #box .left ul {
+      margin-top: 30px;
+    }
+
+    #box .left ul li {
+      float: left;
+      border: 1px solid #ddd;
+      padding: 5px;
+      margin: 8px;
+    }
+
+    #box .left ul li span:hover {
+      color: orange;
+      cursor: pointer;
+    }
+
+    #box .right {
+      flex: 1;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    #box .right ul {
+      margin: 30px 20px;
+      color: #fff;
+    }
+
+    #box .right ul li {
+      float: left;
+      border: 1px solid #fff;
+      padding: 2px 5px;
+      margin: 0 10px 20px 0;
+      border-radius: 5px;
+    }
+  </style>
+  <!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>-->
+</head>
+
+<body>
+  <div class="wrap">
+    <div id="box">
+      <div class="left">
+        <span>热门目的地：</span>
+        <span class="area">马来西亚</span>
+        <span class="area">泰国</span>
+        <span class="area">三亚</span>
+        <span class="area">新西兰</span>
+        <span class="area">云南</span>
+        <span class="area">韩国</span>
+        <ul>
+          <!--<li>马来西亚 <span>x</span> </li>-->
+        </ul>
+      </div>
+      <div class="right">
+        <ul>
+          <!--<li>你好</li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    var box = document.getElementById("box"),
+      area = box.getElementsByClassName("area"),
+      Ull = box.getElementsByTagName("ul")[0],
+      Ulr = box.getElementsByTagName("ul")[1];
+    for (var i = 0; i < area.length; i++) {
+      area[i].onOff = 1;
+      area[i].onclick = function () {
+        var that = this;
+        if (this.onOff) {//T添加
+          var Li1 = document.createElement("li"),
+            Li2 = Li1.cloneNode(),
+            Txt = this.innerHTML,
+            span = document.createElement("span");
+          span.innerHTML = "x";
+          Li1.innerHTML = Txt + " | ";
+          Li2.innerHTML = Txt;
+          Li1.appendChild(span);
+          Ull.appendChild(Li1);
+          Ulr.appendChild(Li2);
+          span.onclick = function () {
+            Ull.removeChild(Li1);
+            Ulr.removeChild(Li2);
+            that.onOff = 1;
+          }
+        }
+        this.onOff = 0;
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子组</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      把匹配项分成多个组 子组 ()
+
+      match String方法 根据正则规则 返回对应匹配项
+     */
+
+    var str = 'abcdefg';
+    console.log(str.match(/(abc)d/));
+
+    //匹配参数 www.baidu.com?wd=你好&q=1&type=2
+
+    /*
+      wd:你好
+      q:1,
+      type:2
+
+      把参数用match匹配获取到 
+      match返回的类数组中 下标0是完整正则表达式匹配值
+      (key)=(value)
+
+      x=y
+
+      www.baidu.com?wd  你好&q=1&type=2  false
+      ([^?&=]+)
+
+      wd   =  你好&q=1&type=2
+    ([^?&=]+) = ([^?&=]*)
+
+      wd   =  你好
+
+
+    [^?&=] 非?&=的字符
+    [^?&=]+ 非?&=的字符最少1个(连贯)
+    ([^?&=]+) = ([^?&=]*)
+
+
+    www.baidu.com wd 你好 q  1 type 2
+
+    按照 = 
+
+    wd = 你好
+
+    www.baidu.com?wd=你好&q = 1&type=2
+
+    www.baidu.com?wd=你好&q=1&type = 2
+
+    */
+
+    var urlStr = 'www.baidu.com?wd=你好&q=1&type=2';
+
+    console.log(urlStr.match(/([^?&=]+)=([^?&=]*)/g));
+
+  </script>
+</body>
+
+</html>

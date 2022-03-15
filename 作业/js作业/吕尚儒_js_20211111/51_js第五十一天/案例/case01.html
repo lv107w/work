@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proxy 代理</title>
+</head>
+
+<body>
+  <script>
+    let arr = [1, 2, 3, 4];
+
+    //不建议对 内置对象的原型 添加或者修改方法 除非用于老浏览器兼容新方法
+    Array.prototype.forEach = function () {
+      for (let i = 0; i < this.length; i++) {
+        console.log(this[i])
+      }
+    };
+    (function () {
+      if (Array.prototype.filter) {
+        return false;
+      }
+      Array.prototype.filter = function (cb) {
+        console.log('my filter')
+        let newArr = [];
+        for (let i = 0; i < this.length; i++) {
+
+          if (cb(this[i], i, this)) {
+            newArr.push(this[i])
+          }
+        }
+        return newArr;
+      }
+      let arr1 = [1, 2, 3, 4];
+      console.log(arr1.filter(function (item) {
+        return item > 3;
+      }));
+    })();
+
+
+    /*
+      es3 Array的filter自己添加到原型上
+
+      .
+      .
+      .
+
+      es6 Array原型有了官方的filter方法
+
+
+
+
+     */
+
+
+
+  </script>
+</body>
+
+</html>

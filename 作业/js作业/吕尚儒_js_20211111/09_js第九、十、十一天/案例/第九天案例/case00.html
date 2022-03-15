@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串基础方法</title>
+</head>
+
+<body>
+  <script>
+    var plants = '西红柿,黄瓜,芹菜,豆角,土豆,黄瓜'; //length 18
+
+
+
+    console.log(plants.indexOf('黄瓜'));
+    //4
+
+    console.log(plants.indexOf('黄瓜', 5));
+    //16
+
+    console.log(plants.indexOf('黄'));
+    //4
+
+    console.log(plants.indexOf('黄瓶'));
+    //-1 没找到
+
+    console.log(plants.indexOf('大象'));
+    //-1
+
+    console.log(plants.indexOf(''));
+    //0
+
+
+    console.log(plants.indexOf('', 5));
+    //5
+
+    console.log(plants.indexOf('', 19));
+
+
+
+    var str = '你好,我是吕';
+    var arr = str.split(',');
+
+    console.log(arr);
+
+
+    var str = '你好,我是吕';
+    var arr = str.split('');
+
+    console.log(arr);
+
+
+    var str = '你好,我是吕';
+    var arr = str.split();
+
+    console.log(arr);
+
+
+
+
+    var str = '你好,我,是,吕,尚,儒';
+    var arr = str.split(',', 3);
+
+    console.log(arr);
+
+  </script>
+</body>
+
+</html>

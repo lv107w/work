@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" name="letter" v-model="letter">
+    <br>
+    <p>{{padLeft(letter)}} --- methids</p>
+    <p>{{padLeftLetter}} --- computed</p>
+    <p>{{letterWatch}} --- letterWatch</p>
+    <p>{{letter | filterPadLeft | filterCream}} --- filter</p>
+    <p>{{productPriceCount}}</p>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          letter: '',
+          letterTrans: '',
+          letterWatch: 0,
+          products: [
+            {name: '手机', price: 1999},
+            {name: '鼠标', price: 199},
+            {name: '键盘', price: 399}
+          ]
+        }
+      },
+      methods: {
+        padLeft(val) {
+          return String(val)[1] && String(val) || '0' + String(val)
+        }
+      },
+      computed: {
+        padLeftLetter() {
+          return String(this.letter)[1] && String(this.letter) || '0' + String(this.letter)
+        },
+        productPriceCount() {
+          return this.products.reduce((acc, curr) => {
+            return acc + curr.price
+          }, 0)
+        }
+      },
+      watch: {
+        letter(newVal, oldVal) {
+          this.letterWatch = String(newVal)[1] && String(newVal) || '0' + String(newVal)
+        }
+      },
+      filters: {
+        filterPadLeft(val) {
+          return String(val)[1] && String(val) || '0' + String(val)
+        },
+        filterCream(val) {
+          return val + '999'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

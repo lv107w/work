@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泡泡龙</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      width: 655px;
+      height: 640px;
+      box-shadow: 0 0 0 4px #ccc;
+    }
+
+    .game-area {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      width: 440px;
+      height: 100%;
+      border-right: 2px solid #ccc;
+    }
+
+    .ball-area {
+      z-index: 1;
+      position: relative;
+      flex: 1;
+    }
+
+    .arrow-area {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 80px;
+      border-top: 2px solid #ccc;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 60px;
+      height: 86px;
+      background: url(images/arrow.png) no-repeat top/cover;
+      transform-origin: 30px 56px;
+    }
+
+    .score-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      user-select: none;
+    }
+
+    .score-area .start {
+      width: 120px;
+      height: 45px;
+      line-height: 42px;
+      text-align: center;
+      color: white;
+      background-color: #6698cb;
+      border: 1px solid rgba(0, 0, 0, .21);
+      border-bottom: 4px solid rgba(0, 0, 0, .21);
+      border-radius: 4px;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+    }
+
+    .score-area .start:active {
+      background-color: #608FBF;
+    }
+
+    .score-area p {
+      padding: 60px 0 8px;
+      color: #608FBF;
+    }
+
+    .score-area .score {
+      font-size: 32px;
+      color: #72B08E;
+    }
+
+
+    .ball {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #f0d264;
+      text-align: center;
+      line-height: 44px;
+      color: #fff;
+      box-shadow: -2px -2px 12px rgba(100, 100, 100, .7) inset;
+    }
+
+    .ball.active {
+      color: orange;
+      font-weight: 900;
+      background-color: #222 !important;
+    }
+
+    .ball.lose {
+      color: #222;
+      font-weight: 900;
+      background-color: rgb(34, 34, 34) !important;
+    }
+
+    .bullet {
+      display: none;
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #f0d264;
+      box-shadow: -2px -2px 12px rgba(100, 100, 100, .7) inset;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="game-area">
+      <div class="ball-area"></div>
+      <div class="arrow-area"></div>
+    </div>
+    <div class="score-area">
+      <div class="start">开始游戏</div>
+      <p>当前分数</p>
+      <span class="score">0</span>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    /* 
+    思路：搭建有限环境
+    满屏环境：{
+      创建小球
+      排列球: {
+        行: {
+          r = h / s
+        },
+        列: {
+          n = w / s
+        }
+      },
+      球初始位置: {
+        left,
+        top
+      }
+    }
+
+    游戏初始分析:
+      #相连#: {
+        一个球有6个方向相连的球
+      },
+      同色消除: {
+        子弹击中相同颜色的球 如果#相连#同颜色球>=3个掉落
+      }
+    */
+
+    const oCon = $('.container'),
+    oGameArea = $('.game-area'),
+    oBallArea = $('.ball-area');
+
+    const ballsData = [],
+    size = 44, 
+    maxH = oBallArea.offsetHeight,
+    maxW = oBallArea.offsetWidth,
+    maxColumns = ~~(maxW / size),
+    maxRows = ~~(maxH / size);
+
+    let idx = 0;
+
+    init();
+    function init() {
+      let fragment = document.createDocumentFragment(); //创建fragment避免频繁操作dom
+      for(let i = 0; i < maxRows; i++) {
+        let isOdd = !(i % 2 === 0);
+        for(let j = 0; j < maxColumns - Number(isOdd); j++) {
+          let ele = document.createElement('div');
+          ele.classList.add('ball');
+          ele.innerText = idx;
+          idx++;
+          let left = size * (j + ((i % 2) /2));
+          let top = i * (size - (i && 6));
+          let color = randomColor();
+          //创建虚拟节点,频繁操作dom影响性能
+          let ball = {
+            left, top, color, ele, idx, row: i
+          }
+          //初始化所有小球的位置
+          setStyle(ele, {
+            left: left + 'px',
+            top: top + 'px',
+            background: color
+          })
+          fragment.appendChild(ele);
+          ballsData.push(ball);
+        }
+      }
+      oBallArea.appendChild(fragment);
+    }
+
+
+    //监听小球点击
+    oBallArea.addEventListener('click', function(e) {
+      if(e.target.className === 'ball') {
+        let idx =Number(e.target.innerText); //转换成数字,在findSeriesNode返回值中避免出现字符串
+        //寻找同色球并变色
+        let colors = findSeriesNode([idx]);
+        // console.log(colors);
+        if(colors.length) {
+          colors.forEach(item => {
+            // console.log(item);
+            ballsData[item].ele.style.backgroundColor = 'black';
+          })
+        }
+      }
+    }, false)
+
+
+    /*
+     *@func:   findSeriesNode
+     *@description: 递归追踪与中心ball坐标相连通的所有复合条件的兄弟节点
+     *@param: {Array} sameColorSiblings [idx]
+     *@return: {Array} 返回所有符合条件的连通节点下标
+     *@author: lv
+    */
+    function findSeriesNode(sameColorSiblings = []) {
+      //slice不传参,复制数组
+      let collectArr = sameColorSiblings.slice();
+      // console.log(sameColorSiblings);
+      recu(collectArr)
+      function recu(arr) {
+        for(let i = 0; i < arr.length; i++) {
+          let siblings = getColorSibilings(arr[i]);
+          // console.log(siblings);
+          //筛选出collectArr不存在的值
+          siblings = siblings.filter(item => !(collectArr.includes(item)));
+          collectArr.push(...siblings);
+          console.log(collectArr);
+          if(siblings.length > 0) {
+            recu(siblings);
+          }
+        }
+      }
+      return collectArr;
+    }
+
+
+    /*
+     *@func: getColorSibilings
+     *@description: 寻找与中心点颜色相同的兄弟下标数组
+     *@param: {number} idx 中心ball下标
+     *@return: {Array} 返回值 [idx1,idx2]
+     *@author: lv
+    */
+    function getColorSibilings(idx) {
+      return Object.entries(findSiblings(idx)).map(([key, value]) => value).filter(item => {
+        //(链式判断,只能右查询))ballsData[item]?.color => ballsData[item]如果存在.color
+        return ballsData[item]?.color === ballsData[idx].color;
+      });
+    }
+
+    /*
+     *@func: findSiblings
+     *@description: 传入下标 返回符合标准的6角方向的兄弟们
+     *@param: {Number} idx 中心球下标
+     *@return: {Object} 返回值
+     *@author: lv
+    */
+    function findSiblings(idx = 0) {
+      let { tens, units } = getDigit(idx);
+      return getRightSlot(idx, {
+        tl: (tens - 1) * 10 + (units - 0),
+        tr: (tens - 1) * 10 + (units + 1),
+        ml: (tens - 0) * 10 + (units - 1),
+        mr: (tens - 0) * 10 + (units + 1),
+        bl: (tens + 1) * 10 + (units - 1),
+        br: (tens + 1) * 10 + (units - 0)
+      });
+    }
+
+    /*
+     *@func: getDigit
+     *@description: 拆分一个数的十位与各位
+     *@param: {Number} num
+     *@return: {Object} {tens,units}
+     *@author: lv
+    */
+    function getDigit(num) {
+      return {
+        tens: ~~(num / 10),
+        units: ~~(num % 10)
+      }
+    }
+
+    /*
+     *@func:   getRightSlot
+     *@description: 重置六个兄弟ball中错误行或不存在的项下标为null
+     *@param: {Number} idx 中心ball下标
+     *@param: {Object} 六角兄弟下标  { tl, tr, ml, mr, bl, br } 
+     *@return: {Object} 重置后的兄弟下标对象 { tl, tr, ml, mr, bl, br }
+     *@author: lv
+    */
+    function getRightSlot(idx, { tl, tr, ml, mr, bl, br } = {}) {
+      const diffRow = {
+        t: -1,
+        m: 0,
+        b: 1
+      }
+      let row = ballsData[idx].row;
+      //把不存在和错位的球下标重置为null
+      return Object.entries({ tl, tr, ml, mr, bl, br }).reduce((acc, [key, value]) => {
+        acc[key] = (ballsData[value] && isRightSlot(ballsData[value].row, row, diffRow[key[0]])) ? value : null;
+        return acc;
+      }, {})
+    }
+
+
+
+    /*
+     *@func:   isRightSlot
+     *@description: 判断某个兄弟球的行号是否正确 边界球会错行
+     *@param: {Number} sRow 兄弟球的行号
+     *@param: {Number} row   中心球行号
+     *@param: {Number} padNum 兄弟球与中心球行号差值
+     *@return: {Boolean} 返回值
+     *@author: lv
+    */
+    function isRightSlot(sRow, row, padNum) {
+      return sRow === (row + padNum);
+    }
+
+
+    /*
+     *@func: randomColor
+     *@description: 随机获取颜色
+     *@return: {String} eg:'#fa5a5a'
+     *@author: lv
+    */
+    function randomColor() {
+      const COLORS = ['#fa5a5a', '#f0d264', '#82c8a0', '#7fccde', '#6698cb', '#cb99c5'];
+      return COLORS[~~(Math.random() * COLORS.length)]
+    }
+  </script>
+</body>
+</html>

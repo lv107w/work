@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>输入验证</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    input {
+      outline: none;
+      width: 240px;
+      height: 45px;
+      margin-top: 100px;
+      padding: 4px 8px;
+      border: 2px solid #222;
+      line-height: 45px;
+      font-size: 18px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <input id="user" type="text" name="userName" placeholder="请设置账号 长度6-20">
+  <script>
+    //在input中输入账号 如果不符合要求就input边框为红色,如果符合要求了 边框为绿色
+    var oUser = document.querySelector('#user');
+
+    oUser.onkeydown = function () {
+      var len = this.value.length;
+      var color = 'red';
+      if (len >= 6 && len <= 20) {
+        color = 'green';
+      }
+      this.style.borderColor = color;
+    }
+
+    oUser.onkeyup = function () {
+      var len = this.value.length;
+      var color = 'red';
+      if (len >= 6 && len <= 20) {
+        color = 'green';
+      }
+      this.style.borderColor = color;
+    }
+
+    //键盘响应到输入 中文输入法输入的时候 无响应
+    oUser.onkeypress = function () {
+      console.log('hahah')
+      var len = this.value.length;
+      var color = 'red';
+      if (len >= 6 && len <= 20) {
+        color = 'green';
+      }
+      this.style.borderColor = color;
+    }
+    
+    //input内容有输入的时候触发 响应输入法
+    oUser.oninput = function () {
+      var len = this.value.length;
+      var color = 'red';
+      if (len >= 6 && len <= 20) {
+        color = 'green';
+      }
+      this.style.borderColor = color;
+    }
+
+    //失去焦点的时候 input的value如果发生了改变 
+    oUser.onchange = function () {
+      var len = this.value.length;
+      console.log('hahah')
+      var color = 'red';
+      if (len >= 6 && len <= 20) {
+        color = 'green';
+      }
+      this.style.borderColor = color;
+    }
+
+
+  </script>
+</body>
+</html>

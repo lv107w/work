@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math 方法</title>
+</head>
+
+<body>
+  <script>
+    /* 
+     Math对象是一个 内核直接提供的静态对象
+    
+     */
+
+    // var arr = [1,2,3];
+    // arr.sort()
+
+    // Array.sort()
+
+    /* 
+      属性
+
+      Math.E  //属性表示自然对数的底数（或称为基数），e，约等于 2.718。
+      Math.LN10 //属性表示 10 的自然对数，约为 2.302：
+      Math.LN2 // 属性表示 2 的自然对数，约为 0.693：
+      Math.LOG10E //属性表示以 10 为底数，e 的对数，约为 0.434：
+      Math.LOG2E //属性表示以 2 为底数，e 的对数，约为 1.442：
+      Math.PI //表示一个圆的周长与直径的比例，约为 3.14159：
+      Math.SQRT1_2 // 属性表示 1/2 的平方根，约为 0.707：
+      Math.SQRT2 //属性表示 2 的平方根，约为 1.414：
+    
+    
+     */
+
+    console.log(Math.PI);
+
+
+
+    /* 
+      方法
+      Math.abs()
+      Math.cos()
+      Math.sin()
+      Math.tan()
+    
+    
+     */
+
+    Math.abs('-1');     // 1
+    Math.abs(-2);       // 2
+    Math.abs(null);     // 0
+    Math.abs("string"); // NaN
+    Math.abs();         // NaN
+
+    console.log(Math.max(1, 2, 3, 4, 5)) //返回参数中的最大值
+    console.log(Math.min(1, 2, 3, 4, 5)) //返回参数中的最小值
+
+    //一个值 随机值 保证最小值为0 最大值为10  0-100 -100 - 100
+    var num = Math.random() * 100;
+    // num = Math.max(0, num);
+    // num = Math.min(10, num);
+
+
+    console.log(Math.max(1, 2, 3, 4, 5)) //返回参数中的最大值
+    console.log(Math.min(1, 2, 3, 4, 5)) //返回参数中的最小值
+
+    console.log(Math.pow(2, 2));
+
+    //伪随机数 取随机值 (0 ,1]之间的随机数  0.999999999999999
+    console.log(Math.random());
+
+    var num = Math.random() * 100; //0 - 100
+
+    var num = (Math.random() * 200) - 100; // -100 到 100
+
+
+    Math.round()
+
+  </script>
+</body>
+
+</html>

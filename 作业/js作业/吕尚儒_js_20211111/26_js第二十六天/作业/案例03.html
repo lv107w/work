@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout 模拟setInterval</title>
+</head>
+<body>
+  <script>
+    var time = Date.now();
+
+    function run() {
+      console.log(Date.now() - time);
+      time = Date.now();
+    }
+
+    //setTimeout 模拟setInterval，就是递归调用setTimeout
+    function setInter(fn, s) {
+      function timeOut(fn, s) {
+        setTimeout(function() {
+          fn();
+          timeOut(fn, s);
+        }, s)
+      }
+      timeOut(fn, s);
+    }
+
+    setInter(run, 1000);
+  </script>
+</body>
+</html>

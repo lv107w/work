@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重选项卡切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+    }
+
+    .wrap {
+      position: relative;
+      width: 326px;
+      margin: 100px auto;
+    }
+
+    .pic,
+    .pic li {
+      display: none;
+    }
+
+    .pic.on,
+    .pic li.on {
+      display: block;
+    }
+
+    .pic-tit {
+      position: absolute;
+      top: 0;
+      left: -80px;
+      cursor: pointer;
+    }
+
+    .pic-tit li {
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      margin-bottom: 2px;
+      background-color: #999;
+    }
+
+    .pic-tit li.active,
+    .pic li.active,
+    .slider>span.active {
+      background-color: orange;
+    }
+
+    .slider {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+      background-color: rgba(0, 0, 0, .3);
+    }
+
+    .slider>span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin-left: 4px;
+      text-align: center;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <ul class="pic pic-car on">
+        <li class="on"><img src="img/1.jpg" alt="汽车" width="326" height="204"></li>
+        <li><img src="img/2.jpg" alt="汽车" width="326" height="204"></li>
+        <li><img src="img/3.jpg" alt="汽车" width="326" height="204"></li>
+        <li><img src="img/4.jpg" alt="汽车" width="326" height="204"></li>
+      </ul>
+      <ul class="pic pic-food">
+        <li class="on"><img src="img/m1.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m2.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m3.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m4.jpg" alt="食物" width="326" height="204"></li>
+        <li><img src="img/m5.jpg" alt="食物" width="326" height="204"></li>
+      </ul>
+      <ul class="pic pic-scenery">
+        <li class="on"><img src="img/s1.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s2.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s3.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s4.jpg" alt="风景" width="326" height="204"></li>
+        <li><img src="img/s5.jpg" alt="风景" width="326" height="204"></li>
+      </ul>
+    </div>
+    <ul class="pic-tit">
+      <li class="active">汽车</li>
+      <li>美食</li>
+      <li>风景</li>
+    </ul>
+    <div class="slider">
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+
+    /*
+      多重选项卡
+
+      分类选项 tit
+        1. 索引导航 原始HTML 已确定
+
+        2. 切换内容 原始HTML 已确定
+      图片选项 pic
+        1. 索引导航 不确定 根据tit选择 实时获取(生成)
+        2. 切换内容
+
+
+        tit索引导航点击的时候 根据下标 确定对应的切换内容 获取对应切换内容(ul)的子元素 li的数量picLen picLen去动态生成对应数量的pic索引导航里的span索引器并且覆盖 slider的innerHTML
+
+        点击tit选项卡 => 获取对应Ul下标 ulIdx => 获取UL的子元素数量 picLen=> 生成picLen个span => 把slider的innerHTML覆盖掉 
+
+
+    */
+    var oTit = $('.pic-tit'); //大选项卡索引容器
+    var aPic = $$('.pic'); //大选项卡内容UL
+    var oSlider = $('.slider'); //小选项卡索引容器
+    var aLi = $$('.pic li');
+    var picIdx = 0; //大选项卡当前下标
+    var sliderIdx = 0; //小选项卡当前下标
+
+    init();
+    oTit.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'li') {
+        var target = e.target;
+        changeTit(function () {
+          picIdx = getElementIdx(target);
+        });
+        var picLen = aPic[picIdx].children.length;
+        resetSlider();
+        createSlider(picLen);
+      }
+    }, false);
+
+
+    oSlider.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'span') {
+        var target = e.target;
+        changeSlider(function () {
+          sliderIdx = getElementIdx(target);
+        });
+      }
+    }, false);
+
+    function init() {
+      createSlider(aPic[0].children.length);
+    }
+
+    function changeTit(callback) {
+      oTit.children[picIdx].classList.remove('active');
+      aPic[picIdx].classList.remove('on');
+      callback && callback();
+      oTit.children[picIdx].classList.add('active');
+      aPic[picIdx].classList.add('on');
+    }
+
+    function changeSlider(callback) {
+      oSlider.children[sliderIdx].classList.remove('active');
+      aPic[picIdx].children[sliderIdx].classList.remove('on');
+      callback && callback();
+      oSlider.children[sliderIdx].classList.add('active');
+      aPic[picIdx].children[sliderIdx].classList.add('on');
+    }
+
+    function resetSlider() {
+      //大选项卡切换的时候 1. 清除所有li的类名on 2. 重置所有slider的状态
+      for (var i = 0, len = aLi.length; i < len; i++) {
+        aLi[i].classList.remove('on')
+      }
+      aPic[picIdx].children[0].classList.add('on');
+      sliderIdx = 0;
+    }
+
+    function createSlider(len) {
+      var str = '';
+      for (var i = 1; i <= len; i++) {
+        var cls = '';
+        if (i === 1) {
+          cls = 'class="active"';
+        }
+        str += `<span ${cls}>${i}</span>`;
+      }
+      oSlider.innerHTML = str;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>continue</title>
+</head>
+
+<body>
+  <script>
+    //打印 1 - 10中 所有的奇数 
+    /*
+      break 和 continue 对比
+      都是跳出循环
+
+      break 跳出整个循环体
+      continue 跳出当前单次循环
+
+    */  
+    for (var i = 1; i <= 10; i++) {
+      if (i % 2 === 0) {
+        continue; 
+      }
+      console.log(i);
+      count += i;
+      console.log(count);
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>break</title>
+</head>
+
+<body>
+  <script>
+    //找到 1-100里第一个 能被 12整除的数 除了12本身
+    var target = 12;
+    var index = 1;
+    for (var i = 1; i <= 100; i++) {
+      if (i !== 12 && i % 12 === 0) {
+        console.log(i);
+        index++;
+        //循环三次退出
+        if (index === 3) {
+          break; 
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

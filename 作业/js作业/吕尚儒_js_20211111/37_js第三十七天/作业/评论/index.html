@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发表评论</title>
+  <style type='text/css'>
+    body {
+      background-color: #eee;
+    }
+
+    body,
+    ul,
+    input {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    #box {
+      width: 500px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+    }
+
+    #box div.b-top {
+      position: relative;
+      height: 40px;
+      background: #ddd;
+    }
+
+    #box div.b-top div.message {
+      position: relative;
+      display: none;
+      font-size: 14px;
+      height: 40px;
+    }
+
+    #box div.b-top span {
+      z-index: 5;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      font-size: 26px;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    #box .b-top img {
+      z-index: 1;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 30px;
+      border-radius: 50%;
+    }
+
+    #box .message input.text {
+      position: absolute;
+      left: 50px;
+      top: 5px;
+      width: 300px;
+      height: 30px;
+      text-indent: 5px;
+      border: none;
+      outline: none;
+    }
+
+    #box .message button {
+      position: absolute;
+      top: 5px;
+      left: 350px;
+      width: 50px;
+      height: 30px;
+      background: orange;
+      border: none;
+      color: #fff;
+    }
+
+    .content {
+      background-color: #fff;
+    }
+
+    .content li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      margin-top: 2px;
+    }
+
+    .content li:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .content li img {
+      float: left;
+      width: 40px;
+      height: 40px;
+      margin-left: 5px;
+      border-radius: 50%;
+    }
+
+    .content li p {
+      float: right;
+      width: 450px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div class='b-top'>
+      <img src="images/1.jpg" alt="">
+      <div class="message">
+        <input type='input' class='text' id='text' contenteditable>
+        <button>发表</button>
+      </div>
+      <span id='add'>+</span>
+    </div>
+    <ul class="content">
+      <!-- <li><img src="images/1.jpg" alt=""><p>hello</p> </li>	 -->
+    </ul>
+  </div>
+</body>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  var oAdd = $('#add');
+  var oMessage = $('.message');
+  var oInput = $('.text');
+  var oContent = $('.content');
+  var flag = false;
+
+  
+  //点击add按钮，显示输入框，加号变减号; 再次点击输入框消失，减号变加号
+  oAdd.addEventListener('click', function(e) {
+    if(!flag) {
+      oMessage.style.display = 'block';
+      oAdd.innerText = '-';
+      flag = true;
+    } else {
+      oMessage.style.display = 'none';
+      oAdd.innerText = '+';
+      flag = false;
+    }
+  }, false) 
+
+  //如果输入框有输入内容，点击发表动态插入图片和文字内容,并清除输入框内容
+  oMessage.addEventListener('click', function(e) {
+    //输入框不能为空或者输入纯空格
+    if(oInput.value == '' || !/\S/.test(oInput.value)) {
+      oInput.value = '';
+      return false;
+    }
+    var vDomStr = `<li><img src="images/1.jpg" alt=""><p>${oInput.value}</p> </li>`;
+    oContent.innerHTML += vDomStr;
+    oInput.value = '';
+  })
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-25 20:46:54
+ * @LastEditTime: 2020-08-25 21:41:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit  
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cookie set封装</title>
+</head>
+
+<body>
+  <script>
+
+    /* 
+      setCookie 设置cookie
+        参数1 json{key=value}
+        参数2 有效期 单位ms  1000ms Infinity(正无穷)
+
+
+          9999-12-31日
+    
+     */
+
+    function setCookie(json, t) {
+      var d = new Date(); //当前事件
+      d.setTime(d.getTime() + t);
+      var time = d.toUTCString();
+      if (t === Infinity) {
+        time = 'Fri, 31 Dec 9999 13:32:02 GMT';
+      }
+      for (var key in json) {
+        document.cookie = `${key}=${encodeURI(json[key])}; expires=${time}`;
+      }
+
+    }
+  </script>
+</body>
+
+</html>

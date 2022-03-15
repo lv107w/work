@@ -1,0 +1,17 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile-styl": "stylus -w styl -o ./public/css",
+    "compile-hbs": "node ./script/execHbs.js"
+  },
+  "author": "kyogre",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "jquery": "^3.5.1"
+  }
+}

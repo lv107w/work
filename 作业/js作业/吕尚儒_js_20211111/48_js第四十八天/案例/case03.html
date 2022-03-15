@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组合寄生继承</title>
+</head>
+
+<body>
+  <script>
+
+
+    /* 
+    
+      1. 构造函数 父类.call调用
+      2. 原型 = Object.create(父类.原型)
+      
+    */
+
+    function Animal() {
+      this.name = 'animal';
+      this.children = [1, 2, 3, 4, 5];
+    }
+
+    Animal.prototype.sayHi = function () {
+      console.log(this.name);
+    }
+
+    function Pig() {
+      Animal.call(this);
+      /* 
+        this.name = 'animal';
+        this.children = [1, 2, 3, 4, 5];
+      */
+      // this.name = 'animal';
+      // this.children = [1, 2, 3, 4, 5];
+      this.age = 12;
+    }
+
+    Pig.prototype.sayHi = function () {
+      console.log('chongxie');
+    }
+
+    //new Animal() {属性,原型} tempFunc.原型 = Animal.原型
+    //  Pig.prototype = tempFunc的实例 {原型}
+
+    Pig.prototype = Object.create(Animal.prototype)// {name,children,__proto__} 创建一个没有必要的Animal实例
+    Pig.constructor = Pig;
+
+    let pig1 = new Pig();
+
+    let ani = new Animal();
+    ani.sayHi(); //
+    pig1.sayHi();
+
+
+    pig1.children.push(0); //__proto__ .children
+    console.log(pig1.children);
+
+    let pig2 = new Pig();
+    console.log(pig2.children);
+
+    console.log(pig1, pig2);
+
+  </script>
+</body>
+
+</html>

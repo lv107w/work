@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>removeChild remove</title>
+</head>
+<body>
+  <div id="wrap">
+    <p class="des">我会被删掉的</p>
+    <p class="des">我不会 嘿嘿嘿</p>
+  </div>
+
+  <script>
+    var oWrap = document.querySelector('#wrap');
+    var aDes = oWrap.querySelectorAll('.des');
+
+    // oWrap.removeChild(aDes[0]);
+    aDes[0].remove();
+  </script>
+</body>
+</html>

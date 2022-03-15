@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="">1234569</a>
+  <img src="" alt="">
+
+  <script>
+    const oImg = document.querySelector('img')
+    const oA = document.querySelector('a')
+
+    const host = 'http://127.0.0.1:3004'
+
+    let xhr = new XMLHttpRequest()
+    //设置返回内容的类型
+    xhr.responseType = 'blob'
+
+    xhr.open('POST', host, true)
+    let postData = JSON.stringify({filename: '1.png'})
+    xhr.setRequestHeader('content-type', 'application/json;charset=utf8')
+    xhr.send(postData)
+
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4, xhr.status === 200) {
+        console.log(xhr.response);
+        let src = URL.createObjectURL(xhr.response)
+        oImg.src = src
+        oA.href = src
+      }
+    }
+  </script>
+</body>
+</html>

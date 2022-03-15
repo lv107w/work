@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素的 位置与尺寸</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      position: relative;
+      background: #000 url('images/bird.png');
+    }
+
+    .mask {
+      position: relative;
+      top: 100px;
+      left: 100px;
+      width: 400px;
+      height: 300px;
+      padding: 20px;
+      background-color: #690;
+      box-shadow: 0 0 8px #222;
+      border: 2px solid red;
+      color: #fff;
+      cursor: move;
+    }
+
+    .pos {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      padding: 2px;
+      border: 2px solid red;
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="mask">
+    <div class="pos"></div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var oMask = $('.mask');
+    var oPos = $('.pos');
+    console.log(oMask.offsetWidth, oMask.offsetHeight); //自身的宽高，包括边框滚动条
+    console.log(oMask.clientWidth, oMask.clientHeight); //自身的宽高，不包括边框滚动条
+    console.log(oMask.clientLeft, oMask.clientTop); //边框的宽度
+    console.log(oPos.offsetLeft, oPos.offsetTop); //元素的左上角(边框外围)距离 定位父级的内容区域左上角的实际距离
+    
+    console.log(oPos.offsetParent); //获取元素的定位父级
+
+    function getPosition(element) {
+      var pos = {
+        left: 0,
+        top: 0
+      }
+      while(element.offsetParent) {
+        pos.left += element.offsetLeft;
+        pos.top += element.offsetTop;
+        element = element.offsetParent;
+        //如果有边框要计算入父级边框 
+        pos.left += element.clientLeft;
+        pos.top += element.clientTop;
+      }
+      return pos;
+    }
+  </script>
+</body>
+</html>

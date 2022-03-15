@@ -1,0 +1,99 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-30 21:03:13
+ * @LastEditTime: 2020-07-30 22:42:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case01.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>reduce 归并</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素 叠加
+
+
+      累计值 可以有初始值
+    */
+
+    // [1, 2, 3, 4, 5] 加法归并结果 15  累计值
+    // [1, 2, 3, 4, 5] 乘法归并结果 1*2*3*4*5  累计值 120
+
+
+    var arr = [1, 2, 3, 4, 5];
+
+    var result = arr.reduce(function (acc, curr, idx, arr) {
+
+      return acc + curr; //25
+    }, 10);
+
+    console.log(result);
+
+
+    function reduce(arr, callback, acc) {//数组 回调函数 初始值
+      for (var i = 0, len = arr.length; i < len; i++) {
+        acc = callback(acc, arr[i], i, arr); //acc+arr[i] => 10 + 1 = acc => 11  for2 acc=>11 arr[i]=>2 11+2; acc = 13; 
+      }
+      return acc;
+    }
+
+    // acc = acc + 1;
+
+
+    console.log(reduce(arr, function (acc, curr) {
+      return acc + curr;
+    }, 10));
+
+    /*
+     "fjadskljgklasdfjhgkldafjhklajdsklgfjaklgjdf"
+     统计每个字出现了多少次
+
+     {f:5,j:8,a:3}
+
+      转数组
+    */
+
+    var arr = "fjadskljgklasdfjhgkldafjhklajdsklgfjaklgjdf".split('');
+
+    console.log(arr);
+
+
+    var resultJson = arr.reduce(function (acc, curr, idx) {
+      if (acc[curr]) { //{} {f:1} {f:1,j:1}... {f:1,j:1,a:1} {f:1,j:2,a:1,....}
+        acc[curr]++; //{f:1,j:2,a:1,....} {f:2,j:2,a:1,....}
+      } else {
+        acc[curr] = 1; //{f:1} {f:1,j:1} {f:1,j:1,a:1}...
+      }
+      return acc;//{f:1} {f:1,j:1} {f:1,j:1,a:1}... {f:1,j:2,a:1,....} {f:2,j:2,a:1,....}
+    }, {});
+
+
+    // var obj = {
+    //   'f': 1
+    // }
+
+    // console.log(obj['f']);//undefined
+
+    // if (obj['f']) { //undefined null '' NaN 0
+    //   obj['f']++; // 1++ 2
+    // } else {
+    //   obj['f'] = 1;
+    // }
+
+
+    console.log(resultJson);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="">321312</a>
+  <img src="" alt="">
+  <script>
+    const oImg = document.querySelector('img')
+    const oA = document.querySelector('a')
+
+    const host = 'http://127.0.0.1:3004'
+
+    let xhr = new XMLHttpRequest()
+    //设置返回内容的类型
+    xhr.responseType = "blob";
+
+    xhr.open('POST', host, true)
+    let postData = JSON.stringify({ filename: '1.png' })
+    xhr.setRequestHeader('content-type', 'application/json;charset=utf8')
+    xhr.send(postData)
+
+    xhr.onreadystatechange = function (res) {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // xhr.response
+        // let blob = new Blob([xhr.response], { type: 'image/png' });
+        console.log(xhr.response)
+        //创建blob 对象URL地址
+        let src = URL.createObjectURL(xhr.response)
+        console.log(src)
+        // let blob = URL.createObjectURL(xhr.response)
+        oImg.src = src
+        oA.href = src
+
+        //blobURL 根据 blob二进制内容生成一个 URL地址 相当于在当前服务器上创建一个临时的对象访问URL地址
+      }
+    }
+  </script>
+</body>
+
+</html>
+<!-- 
+  前端通过ajax 向服务端 请求文件
+
+
+
+ -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array 方法 valueOf toString</title>
+</head>
+
+<body>
+  <script>
+    var num = 10;
+    // console.log(num.toString(2));
+    // console.log([1, 2, 34].toString());
+    // console.log(false.toString());
+
+    var b = new Boolean(false);
+    // console.log(b.toString());
+
+    var obj = { a: 1 };
+    // console.log(obj.toString());
+    // console.log(JSON.stringify(obj));
+
+    function ax() {
+      console.log('海牙好帅啊');
+    }
+
+    // console.log(ax.toString());
+
+
+
+
+    var str = new String('你猜猜我是谁');
+    console.log(b.valueOf(), b);
+    console.log(str.valueOf(), str);
+    /*
+      所有对象都拥有方法 toString  valueOf
+      Array Number Boolean Object Function String
+    */
+
+  </script>
+</body>
+
+</html>

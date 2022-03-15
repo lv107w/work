@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>finally</title>
+</head>
+<body>
+  <script>
+    let x = 0;
+    let p = new Promise((res, rej) => {
+      if(x < 10) {
+        res(x);
+      } else {
+        rej(x);
+      }
+    })
+
+    p.then(x => {
+      console.log('成功', x);
+      return new Promise((res, rej) => {
+        res('haha')
+      })
+    }, x => {
+      console.log('失败', x);
+    }).finally(() => {
+      console.log('结束');
+    }).then(msg => {
+      console.log(msg);
+    }).finally(() => {
+      console.log('结束了');
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      position: absolute;
+    }
+    .wrap {
+      position: relative;
+      width: 500px;
+      height: auto;
+ 
+      background-color: #368;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap"><img src="./images/bird.png" alt=""></div>
+  
+  <script>
+    let wrap = document.querySelector('.wrap');
+    let num = 0;
+    setInterval(function() {
+      num++;
+      wrap.style.left = num + 'px';
+    }, 10)
+
+    let O = {
+      a: 1,
+      b: 2
+    }
+
+    let F = O;
+    F.c = 5;
+    console.log(O);
+ 
+  </script>
+</body>
+</html>

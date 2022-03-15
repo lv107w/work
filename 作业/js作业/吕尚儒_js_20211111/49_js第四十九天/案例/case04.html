@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descriptor 属性描述对象</title>
+</head>
+
+<body>
+  <script>
+    const O = {
+      name: 'kyogre',
+      age: 123
+    };
+
+    let descriptor = Object.getOwnPropertyDescriptor(O, '__proto__');
+
+    console.log(descriptor);
+    //O.__proto__ 非常重要
+
+    /*
+      configurable: true //可配置
+      enumerable: true //可枚举
+      value: "kyogre" //属性值
+      writable: true //可写入
+     */
+
+    let arr = [1, 2, 3, 4];
+
+    let descriptorOfArr = Object.getOwnPropertyDescriptor(arr, 'length');
+
+    console.log(descriptorOfArr);
+    arr.length = 9;
+    console.log(arr)
+
+    /*
+      configurable: false
+      enumerable: false
+      value: 4
+      writable: true
+    */
+
+
+    let str = new String('123');
+
+    for (let i in str) {
+      console.log(i, 'arr');
+    }
+
+    console.log(Object.keys(O)); //把对象的所有属性名称 组成一个数组
+    console.log(JSON.stringify(O));
+
+  </script>
+</body>
+
+</html>

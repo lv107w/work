@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签对象属性2</title>
+</head>
+<body>
+  <img id="pic" style="outline: 1px;" class="photo red" src="./images/bird.png" alt="bird" title="猜猜我是谁">
+  <p>你好 我是</p>
+  <div id="wrap">
+    <h3>我是标题</h3>
+    wrap内容
+  </div>
+
+  <script>
+    var oImg = document.querySelector('#pic');
+
+    console.log(oImg.id);
+    console.log(oImg.className);
+    console.log(oImg.src);
+    console.log(oImg.alt);
+    console.log(oImg.title);
+
+    oImg.title = 'redBird';
+
+    console.log(oImg.style.outline);
+    console.log(oImg.style.padding);
+    oImg.style.padding = '90px';
+
+    var oP = document.querySelector('p');
+
+    console.log(oP.textContent);
+    console.log(oP.innerText);
+
+    var oWrap = document.querySelector('#wrap');
+
+    console.log(oWrap.textContent);
+    console.log(oWrap.innerText);
+
+    console.log(oWrap.innerHTML); //包含标签
+
+  </script>
+</body>
+</html>

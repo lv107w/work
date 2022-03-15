@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+<body>
+  <script>
+    function cerateImgForPromise(src) {
+      return new Promise(function(res, rej) {
+        let img = document.createElement('img');
+        img.src = src;
+        let time = Date.now();
+        img.onload = function () {
+          let nowDate = Date.now();
+          res([src, nowDate - time]);
+        }
+        img.onerror = function() {
+          let nowDate = Date.now();
+          rej(src, nowDate - time);
+        }
+      })
+    }
+
+    function getRandom() {
+      return new Promise(function(res, rej) {
+        setTimeout(function() {
+          let r = ~~(Math.random() * 2)
+          if(r) {
+            res(r);
+          } else {
+            rej(r);
+          }
+        }, 500)
+      })
+    }
+
+    cerateImgForPromise('images/h1.jpg')
+    .then(([src, time]) => {
+      console.log(`用时${time}成功请求到${src}`);
+      return cerateImgForPromise('images/h2.jpg')
+    })
+    .then(([src, time]) => {
+      console.log(`用时${time}成功请求到${src}`);
+      return getRandom();
+    })
+    .then(r => {
+      console.log(r, '成功');
+    })
+    .catch(r => {
+      console.log(r, '失败');
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="output"></div>
+  <script src="js/handlebars.runtime-v4.7.6.js"></script>
+  <script src="template.hbs.js"></script>
+  <script>
+    /*
+      ajax 请求接口 获取数据
+
+      添加html模板代码 渲染数据
+      
+    */
+    let template = Handlebars.templates.template
+    document.getElementById('output').innerHTML = template({ doesWhat: 'rocks!' })
+
+
+
+
+  </script>
+
+</body>
+
+</html>

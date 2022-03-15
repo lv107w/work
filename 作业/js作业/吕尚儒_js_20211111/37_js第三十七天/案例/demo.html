@@ -1,0 +1,59 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 17:42:49
+ * @LastEditTime: 2020-08-24 18:11:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>金额输入修正</title>
+</head>
+
+<body>
+  <input id="money" type="text" placeholder="请输入金额">
+  <script>
+    var oMoney = document.querySelector('#money');
+    oMoney.oninput = function () {
+      this.value = _regValue(this.value);
+    }
+
+    /*
+    *@static _regValue 金额验证
+    *@param {String} str 金额
+    *@return {String} 修正后金额
+    */
+    function _regValue(value) {
+
+      //非数字验证
+      value = value.replace(/[^\d\.]+/g, '');
+
+      //强制保留两位小数
+      var doubleReg = /^(\d+)\.(\d\d).*$/;
+      value = value.replace(doubleReg, '$1.$2');
+
+      //开始非零验证
+      value = value.replace(/^(0)(\d)$/, '$2');
+
+      //小数点验
+      value = value.replace(/^(\.+)$/, '0.');
+      value = value.replace(/^(\d*)(\.+)$/, '$1.');
+
+      //巨大数值
+      value = value.replace(/^(\S{8})(\S+)$/, '$1');
+
+      //只保留一个 .
+      value = value.replace(/(\d+\.)(\d)(\.+)/, '$1$2');
+
+      return value;
+    }
+
+  </script>
+</body>
+
+</html>

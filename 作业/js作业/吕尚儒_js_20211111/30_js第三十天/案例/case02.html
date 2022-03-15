@@ -1,0 +1,95 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-14 13:42:18
+ * @LastEditTime: 2020-08-15 21:14:47
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      width: 800px;
+      height: 400px;
+      padding: 20px;
+      background-color: #ccc;
+      box-shadow: 0 0 8px #222;
+      font-size: 82px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    0
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+
+    /* 
+    
+     持续性触发的事件(频率很高)
+
+     mousemove scroll
+
+
+     节流 
+
+     在很多时候 我们不希望这些持续性触发事件  触发频率太高
+
+     通过设定在一定时间周期内只能触发一次 得方式 进行节流
+
+     加CD
+
+     时间戳版  定时器版  束流版
+
+    */
+
+    var oCon = $('.container');
+    var num = 0;
+    var time = 0; //次数
+
+    oCon.addEventListener('mousemove', function () {
+      time++;
+      if (time % 20 === 0) {
+        //每触发20次 执行一次count
+        count();
+      }
+    }, false);
+
+    function count() {
+      oCon.innerText = num++;
+    }
+
+
+  </script>
+</body>
+
+</html>

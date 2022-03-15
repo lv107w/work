@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+     <p v-for="(value, key, index) of product">of => {{key}}: {{value}} == {{index}}</p>
+     <p v-for="(value, key, index) in product">in => {{key}}: {{value}} == {{index}}</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          product: {
+            id: '456151531357',
+            name: '高性能粒子对撞机',
+            price: 98000000,
+            desc: '创造超越光速的微光粒子'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

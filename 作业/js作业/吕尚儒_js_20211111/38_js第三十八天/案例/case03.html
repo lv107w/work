@@ -1,0 +1,47 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-25 22:16:42
+ * @LastEditTime: 2020-08-25 22:31:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case03.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    (function () {
+      "use strict"
+
+      var index = 0;
+
+      function fn() {
+
+        console.log(this);
+      }
+
+      fn();
+    })();
+    /*
+
+     严格模式下
+
+     1. 不容许隐式声明 变量不声明直接使用
+
+     2. this的指向 默认不指向window 默认为 undefined
+
+
+    */
+
+
+  </script>
+</body>
+
+</html>

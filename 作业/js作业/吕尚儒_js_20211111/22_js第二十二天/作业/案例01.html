@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertBefore cloneNode</title>
+</head>
+<body>
+  <div id="wrap">
+    <ul class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ul class="list">
+      <li>1</li>
+
+      <li>3</li>
+    </ul>
+  </div>
+
+  <script>
+    var oWrap = document.querySelector('#wrap');
+    var aUl = oWrap.querySelectorAll('.list');
+
+    var copyLi = aUl[0].children[1].cloneNode(true);
+    aUl[1].insertBefore(copyLi, aUl[1].children[1]);
+  </script>
+</body>
+</html>

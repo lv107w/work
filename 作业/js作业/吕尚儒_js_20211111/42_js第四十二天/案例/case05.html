@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> bind </title>
+</head>
+
+<body>
+  <script>
+    /*
+      bind 绑定
+
+      函数.bind(绑定对象,参数) 返回一个新函数
+      新函数内部的this永远指向 绑定对象 新函数永远持有bind参数
+
+      和call apply的区别在于 不是主动执行函数的时候进行this的偏转 
+      而是在函数声明或者赋值的时候绑定bind
+
+    */
+
+    const MIMI = {
+      age: 1,
+      add: function () {
+        this.age++;
+        console.log(this.age);
+      }
+    }
+
+
+    const OUA = {
+      age: 4,
+      add: function () {
+        console.log(this)
+        setInterval(function () {
+          console.log(this.age);
+        }.bind(this), 400);
+      }
+    }
+
+    // let add = MIMI.add.bind(MIMI);
+
+    function add() {
+      setInterval(MIMI.add.bind(OUA), 400);
+    }
+    add.call(OUA);
+    // add.call(OUA); //add 已经被永久性绑定给MIMI对象主体了 内部this]永远指向MIMI
+
+    // function fn(cb) {
+    //   // cb && cb.call(MIMI);
+    //   setInterval(cb.bind(MIMI), 100)
+    // }
+
+    // fn(function () {
+    //   console.log(this.age);
+    // })
+
+
+
+
+  </script>
+</body>
+
+</html>

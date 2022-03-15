@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 返回值</title>
+</head>
+<body>
+  <script>
+    let [a, b, ...c] = [1, 2, 4, 5, 65];
+
+    c = 10;
+    
+    console.log(x); //x is not defined  (x既不相当于var声明又不相当于let声明)
+    // var x = 10;
+    // let x = 10;
+    
+    [x] = [2, 3];
+    
+    console.log(x);
+  </script>
+</body>
+</html>

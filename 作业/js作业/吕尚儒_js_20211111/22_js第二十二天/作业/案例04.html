@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>has 检测系列</title>
+</head>
+<body>
+  <p>12312</p>
+  <ul>
+    <li>321</li>
+    <li class="">123</li>
+    <li>321</li>
+  </ul>
+
+  <script>
+
+    var oP = $('p');
+    var oUl = $('ul');
+    var tarLi = $('ul>li:nth-of-type(2)');
+
+    console.log(tarLi.hasAttribute('class'));
+
+    for(var i = 0, len = oUl.children.length; i < len; i++) {
+      if(oUl.children[i].isEqualNode(tarLi)) {
+        console.log(i);
+      }
+    }
+
+    function $(ele) {
+      return document.querySelector(ele);
+    }
+
+    function $$(ele) {
+      return document.querySelectorAll(ele);
+    }
+
+
+  </script>
+</body>
+</html>

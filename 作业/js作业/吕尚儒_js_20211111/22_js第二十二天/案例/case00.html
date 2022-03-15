@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertBefore cloneNode</title>
+</head>
+
+<body>
+
+  <div id="wrap">
+    <p class="des">你好</p>
+  </div>
+  <script>
+    /*
+      把wrap里的.des 复制一份添加到 des之前
+      1. 如何复制一个元素 ELE.cloneNode();
+      2. 如何插入一个元素 parent.insertBefore(B,A); //在父节点parent里面的节点A前面添加节点B
+    */
+
+    var oWrap = document.querySelector('#wrap');
+    var aDes = oWrap.querySelectorAll('.des');
+
+    //拷贝 clone
+    var copyDes = aDes[0].cloneNode();
+
+    copyDes.innerText = '我是新的节点 我拷贝自 原先的 .des标签'
+
+    oWrap.insertBefore(copyDes, aDes[0])
+    // oWrap.append(copyDes);
+    console.log(copyDes);
+
+
+  </script>
+</body>
+
+</html>

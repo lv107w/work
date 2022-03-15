@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this 实用</title>
+</head>
+
+<body>
+  <script>
+
+
+    const pig = {
+      name: 'XIAOHUA',
+      age: 1,
+      sex: '母猪',
+      showName: function () {
+        console.log(`我叫: ${this.name}`);
+        return this;
+      }
+    }
+
+
+
+    const otherPig = {
+      name: 'XIAOHua',
+      age: 2,
+      sex: '公猪'
+    }
+    //NodeList元素集合 arguments实参列表
+    pig.showName.call(otherPig);
+
+    // otherPig.showName.call(pig);
+
+    function sayHi() {
+      console.log(this);
+      console.log(this.name);
+    }
+
+    //调用sayHi的时候 指定调用主体对象
+
+    sayHi.call(pig);
+
+    // let name = 'KYOGRE';
+    // let age = 13;
+
+    // const x = 10;
+    // // console.log(window.x)
+
+    function showSex() {
+      console.log(`性别: ${this.sex}`);
+      return this;
+    }
+
+    function showName() {
+      console.log(`我叫: ${this.name}`);
+      return this;
+    }
+
+    function showAge() {
+      console.log(`今年: ${this.age}岁`);
+      return this;
+    }
+
+    pig.showName();
+
+    window.showName.call(pig);
+    window.showAge.call(otherPig);
+    window.showSex.call(pig);
+
+
+
+
+    // console.log(getMsg(name));
+
+    // console.log(add(getMsg(pig.name), ' ...'));
+    // console.log(add(getMsg(otherPig.name), ' zzz'));
+
+    // console.log(fn(add(getMsg(otherPig.name), ' zzz'), function (str) {
+    //   return str.toUpperCase();
+    // }));
+  </script>
+</body>
+
+</html>

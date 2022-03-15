@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>defineProperty</title>
+</head>
+<body>
+  <script>
+    let O = {
+      name: 'kyogre',
+      age: 13
+    }
+
+    let ageO = 0;
+    Object.defineProperties(O, {
+      "name": {
+        configurable: true,
+        enumerable: true
+      },
+      "age": {
+        configurable: true,
+        enumerable: true
+      }
+    })
+
+    Object.defineProperty(O, 'age', {
+      configurable: true,
+      enumerable: true,
+      set(value) {
+        console.log(`age 的值想要被修改为了 ${value}`);
+        ageO = value;
+      },
+      get() {
+        return ageO;
+      }
+    })
+
+    O.age = 100; //当赋值对象属性会调用钩子函数set()
+  </script>
+</body>
+</html>

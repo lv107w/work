@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON</title>
+</head>
+
+<body>
+
+
+  <script>
+    /*
+      JSON序列化
+      JSON反序列化
+    */
+
+
+    var studentList = [
+      { "name": "张三", "age": 18, "sex": 1 },
+      { "name": "李思", "age": 19, "sex": 0 },
+      { "name": "王武", "age": 98, "sex": 1 },
+      { "name": "赵柳", "age": 77, "sex": 0 }
+    ];
+
+    var responseText = JSON.stringify(studentList);
+
+    console.log(responseText)
+    console.log(JSON.parse(responseText));
+  </script>
+</body>
+
+</html>

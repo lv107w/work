@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代理 proxy</title>
+</head>
+<body>
+  <script>
+    let o = toProxy({
+      name: 'zhangsan',
+      _name: '沏瓦辛格'
+    })
+
+    
+
+    function toProxy(obj) {
+      return new Proxy(obj, {
+        get: function(target, propKey) {
+          if(propKey in target && propKey[0] !== '_') {
+            return target[propKey];
+          }
+        },
+        apply(target, ctx, args) {
+          console.log(target, ctx, args);
+          target(ctx, ...args);
+        }
+      })
+    }
+    console.log(o._name); //undefined
+    console.log(o.name); //zhangsan
+
+    let fnc = toProxy(function () {
+      console.log(this); //指向window
+      console.log(...arguments); //Proxy {name: 'zhangsan', _name: '沏瓦辛格'} 1 2 3
+    });
+    fnc.call(o, 1, 2, 3)
+  </script>
+</body>
+</html>

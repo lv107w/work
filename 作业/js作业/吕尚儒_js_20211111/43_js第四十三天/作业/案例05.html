@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 多维数组解构</title>
+</head>
+<body>
+  <script>
+    const colors = ['#FF00FF', [255, 0, 255], 'rgb(255, 0, 255)'];
+    const [hex, [red, green, blue], str] = colors;
+
+    console.log(hex, red, green, blue, str); //#FF00FF 255 0 255 rgb(255, 0, 255)
+
+
+    let arr = [[1, 2, 3], [1, 2, 3], [1, 2, 3]];
+
+    console.log(arr.flat()); //[1, 2, 3, 1, 2, 3, 1, 2, 3]
+    //自定义flat
+    function flatArr(arr) {
+      return [].concat(...arr);
+    }
+
+    console.log(flatArr(arr));//[1, 2, 3, 1, 2, 3, 1, 2, 3]
+  </script>
+</body>
+</html>

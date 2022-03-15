@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排序</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+    }
+  
+    li {
+      list-style: none;
+    }
+  
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+  
+    /*-----------------------*/
+    .wrap {
+      margin: 100px auto;
+      width: 1100px;
+      height: 600px;
+      border: 1px solid #bbb;
+    }
+  
+    .wrap ul {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      flex-flow: wrap;
+    }
+  
+    .wrap ul li {
+      width: 200px;
+      height: 240px;
+      margin-bottom: 20px;
+      border: 1px solid #bbb;
+    }
+  
+    ul li img {
+      display: block;
+      width: 180px;
+      height: 180px;
+      margin: 10px auto;
+    }
+  
+    div>p:first-child {
+      display: inline-block;
+      text-indent: 10px;
+    }
+  
+    div>p:nth-child(2) {
+      display: inline-block;
+      position: relative;
+      bottom: 5px;
+      right: 5px;
+      height: 40px;
+      width: 40px;
+      line-height: 60px;
+      font-weight: bold;
+      color: red;
+    }
+  
+    .btn-box {
+      float: right;
+      margin-right: 30px;
+      text-align: right;
+    }
+  
+    .btn-box button {
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <ul class="box">
+      <li>
+        <img src="img/1.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>6.5</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/2.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>9</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/3.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>8.9</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/4.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>10</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/5.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>15</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/6.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>5.6</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/7.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>7.9</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/8.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>8.8</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/9.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>13</span>$</p>
+        </div>
+      </li>
+      <li>
+        <img src="img/10.jpg" alt="">
+        <div>
+          <p>粉色玫瑰浪漫系列</p>
+          <p><span>16</span>$</p>
+        </div>
+      </li>
+    </ul>
+    <div class="btn-box">
+      <button>随机</button>
+      <button>价格从小到大</button>
+      <button>价格从大到小</button>
+    </div>
+  </div>
+  
+  <script src="js/common.js"></script>
+  <script>
+
+   /*  思路：
+    1、获取所有价格存到数组
+    2、根据价格大小重新排列数组
+    3、根据重新排列好的数组重新渲染dom */
+
+    var oUl = $('.box');
+    var aPrice = $$('span');
+    var aLi = $$('li');
+    var oBtn = $('.btn-box');
+    var picLen = oUl.children.length;
+
+    var arr = [];
+
+    //创建一个对象数组，通过循环辅赋值,以便通过下标操作Dom
+    for(var i = 0; i < picLen; i++) {
+      arr.push({
+        price: aPrice[i].innerText,
+        vDom: aLi[i].innerHTML
+      });
+    }
+
+    //随机
+    oBtn.children[0].addEventListener('click', function(e) {
+      arr.sort(function(a, b){
+        return Math.random() - Math.random();
+      });
+      reload();
+    })
+
+    //价格从小到大
+    oBtn.children[1].addEventListener('click', function(e) {
+      arr.sort(function(a, b){
+        return a['price'] - b['price'];
+      });
+      reload();
+    })
+
+    //价格从大到小
+    oBtn.children[2].addEventListener('click', function(e) {
+      arr.sort(function(a, b){
+        return b['price'] - a['price'];
+      });
+      reload();
+    })
+
+    //排列好重新渲染
+    function reload() {
+      for(var i =0; i < picLen; i++) {
+        aLi[i].innerHTML = arr[i]['vDom'];
+      }
+    }
+  </script>
+</body>
+</html>

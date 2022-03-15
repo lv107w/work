@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>调试代码</title>
+</head>
+
+<body>
+  <script>
+    var big, middle, small;
+
+    for (big = 1; big <= 50; big++) {
+      for (middle = 1; middle <= 100; middle++) {
+        for (small = 1; small <= 200; small++) {
+          if (big + middle + small === 100 && big * 2 + middle * 1 + small * .5 === 100) {
+             console.log('大马:' + big + ',中马: ' + middle + ',小马: ' + small);
+          }
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

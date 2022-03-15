@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型判断</title>
+</head>
+<body>
+  <script>
+    /* 
+    isPrototypeOf
+
+      构造函数.原型.isPrototypeOf(实例对象)
+      实例对象是__proto__否是这个构造函数的原型
+    */
+    let arr = []; 
+    console.log(Array.prototype.isPrototypeOf(arr)); //true
+
+
+
+
+
+    /* 
+     Object.getPrototypeOf(arr)
+
+      返回arr的__proto__
+     */
+     console.log(Object.getPrototypeOf(arr) === Array.prototype); //true
+
+
+
+
+
+     /* 
+     object.hasOwnProperty(key)
+
+      判断 key属性是否是object的自身属性而非从原型上继承来的属性 
+      是自身属性 返回 true
+      不是自身属性 返回 false
+     */
+
+     function Pig(name = '$pig', age = 1) {
+       this.name = name;
+       this.age = age;
+     }
+
+     Pig.prototype.sex = 1;
+
+     let pig = new Pig('piqi', 2);
+
+     //判断key是否是pig的自身属性而不是原型上属性
+     for (let key in pig) {
+       if (pig.hasOwnProperty(key)) {
+         console.log(key, pig[key]);  
+       }
+     }
+
+
+
+
+    /* 
+    if(key in object)
+      判断 object中是否存在 key这个属性 
+      不区分是否是自身属性还是原型属性
+    */
+    let obj = {
+      a: 1,
+      b: undefined,
+      c: 0
+    }
+    //obj[key] 会布尔值隐式转换 ， in 只判断属性存不存在
+    console.log(!!obj['a'], 'a' in obj); //true true
+    console.log(!!obj['b'], 'b' in obj); //false true
+    console.log(!!obj['c'], 'c' in obj); //false true
+  </script>
+</body>
+</html>

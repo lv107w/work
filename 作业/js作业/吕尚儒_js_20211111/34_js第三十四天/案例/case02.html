@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOM</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      BOM的核心对象是 window
+
+    window作为 BOM对象时的方法
+    window.alert()
+    window.setInterval()
+    window.prompt();
+
+
+    window作为 全局对象
+    
+    全局变量都是window的属性
+
+    in 表达式
+
+    a in b
+
+    判断 a属性是否存在于 b对象之中
+    b是否包含a
+
+    document对象属于 全局window对象的属性分支
+
+    */
+
+
+    var obj = {
+      a: '1',
+      b: undefined
+    }
+
+    console.log('b' in obj); //true
+
+
+    if ('x' in window) {//if for是没有块级作用域的
+      var x = 10;
+    }
+    console.log(x); //10
+
+    var x; //window.x 
+    if ('x' in window) {//x变量是全局变量 为window的属性
+      x = 10;
+    }
+    console.log(x); //10
+
+    console.log(window.document);
+    
+
+  </script>
+</body>
+
+</html>

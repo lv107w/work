@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="" alt="">
+  <script>
+    let img = document.querySelector('img')
+    let xhr = new XMLHttpRequest()
+    xhr.responseType = "blob";
+    xhr.open('GET', 'http://127.0.0.1:8080/stream/avatar')
+    xhr.send(null)
+
+    xhr.addEventListener('load', () => {
+      let blob = xhr.response
+      // 给img赋值
+      img.src = window.URL.createObjectURL(blob)
+    })
+    // xhr.onreadystatechange = function (res) {
+    //   if (xhr.readyState === 4 && xhr.status === 200) {
+
+    //     console.log(xhr.responseText)
+
+    //     //Ajax
+    //     // 设置返回类型为blob
+
+
+    //   }
+
+    // }
+  </script>
+</body>
+
+</html>

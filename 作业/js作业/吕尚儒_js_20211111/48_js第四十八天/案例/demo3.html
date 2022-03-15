@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function A(name = 'a') {
+      this.name = name;
+      this.arr = [1, 2, 3, 4, 5];
+    }
+
+    A.prototype.sayHi = function () {
+      console.log(this.name)
+    }
+
+    function B(name = 'b') {
+      // A.call(this, name);
+    }
+
+    B.prototype.__proto__ = A.prototype;
+    // B.prototype = new A();
+
+    console.log(B.prototype, A.prototype);
+    B.prototype.sayHi = function () {
+      console.log('change');
+    }
+    console.log(B.prototype)
+
+    let b = new B('bb');
+    let c = new B('c');
+    let a = new A('a');
+    b.arr.push(3);
+
+    console.log(b, a)
+    console.log(b.name, b.arr);
+    console.log(c.name, c.arr);
+    console.log(a.name, a.arr)
+    b.sayHi();
+    c.sayHi();
+    a.sayHi();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>instanceof</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ball {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 80px;
+      height: 80px;
+      background-color: #ccc;
+      border-radius: 50%;
+      box-shadow: -8px -12px 18px #8a8989 inset;
+    }
+
+    .unit {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      box-shadow: -8px -12px 18px #e6d81d inset;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="unit"></div>
+  <div class="unit"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function createBall(ele, s) {
+      let ball = new Object();
+      ball.ele = ele;
+      ball.x = s;
+      ball.y = s;
+      return ball;
+    }
+
+    function Ball(ele, s = 1) {
+      this.ele = ele;
+      this.x = s;
+      this.y = s;
+    }
+
+    let ball = createBall($('.ball'), 10);
+    let ball2 = new Ball($('.ball'), 10);
+    console.log(ball instanceof Ball);
+    console.log(ball2 instanceof Ball);
+
+
+
+    /*
+
+      手机
+
+      属性
+        尺寸
+        屏幕
+        按钮
+        天线
+        电池
+      行为
+        打电话
+        发短信
+
+        智能手机
+          属性
+            尺寸
+            屏幕
+            按钮
+            天线
+            电池
+          行为
+            打电话
+            发短信
+
+
+     */
+  </script>
+</body>
+
+</html>

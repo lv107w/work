@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object 方法</title>
+</head>
+
+<body>
+  <script>
+    /*
+      判断是否为同一个值
+
+    */
+    console.log(NaN === NaN);
+    console.log(+0 === -0);
+    console.log(Object.is(+0, -0));
+
+    var obj = {}
+    var x = obj;
+
+    console.log({} === {});
+    console.log(Object.is({}, {}));
+
+    //freeze 冻结对象 不容许对属性进行修改
+    var obj = {
+      prop: 42
+    };
+
+    console.log(Object.freeze(obj));
+
+    obj.prop = 33;
+    obj['prop'] = 33;
+    delete obj.prop;
+
+    console.log(obj.prop);
+    // 42
+
+    //assign
+    var target = { a: 1, b: 2 };
+    var source = { b: 4, c: 5 };
+
+    //数组合并 concat  对象用 assign
+
+    var returnedTarget = Object.assign(target, source);
+    console.log(target, source);   //  { a: 1, b: 4, c: 5 }
+ 
+    console.log(returnedTarget);//  { a: 1, b: 4, c: 5 }
+    
+    //keys
+    Object.keys({
+      a: 1,
+      b: 2,
+      c: 3,
+      d: 5
+    });
+    // ["a", "b", "c", "d"]
+
+    var arr = ['a', 'b', 'c'];
+    console.log(Object.keys(arr));//  ['0', '1', '2']
+
+  </script>
+</body>
+
+</html>

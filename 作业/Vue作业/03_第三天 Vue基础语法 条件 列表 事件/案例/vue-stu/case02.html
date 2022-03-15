@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue 列表渲染</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="product">
+      <p v-for="(val, key, idx) of product">{{key}}: {{val}} ---- {{idx}}</p>
+    </div>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          product: {
+            id: '3937128727381',
+            name: '多功能拖地机',
+            price: 199,
+            desc: '宇宙无敌超值秒杀拖地机器人'
+          }
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

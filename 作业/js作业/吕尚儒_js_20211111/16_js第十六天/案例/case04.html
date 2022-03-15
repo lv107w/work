@@ -1,0 +1,103 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-30 21:03:13
+ * @LastEditTime: 2020-07-30 22:04:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case01.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>问题</title>
+</head>
+
+<body>
+
+  <form action='https://iii.com' method="GET">
+    名字<input type="text" name="name">
+    年龄<input type="text" name="age">
+    性别<input type="text" name="sex">
+    <input type="submit">
+  </form>
+
+
+  <script>
+
+    //
+    /*
+     我们在遗迹里找到了一个数据源 他的记录方式非常原始 他记录了一个班级的学生名字以及性别
+    
+     "张三|男|李四|女|王五|男|赵柳|男|田七|女"
+     
+     领导让你负责整理数据 提取所有同学名称
+
+       {
+      "name": "张三",
+      "age": 12,
+      "sex": "男"
+    }
+
+      name=张三&age=12&sex=男
+
+     */
+    var data = {
+      "name": "张三",
+      "age": 12,
+      "sex": "男"
+    }
+    //key=value&key=value
+    var str = '';
+    var arr = [];
+    for (var key in data) {
+      arr.push(key + '=' + data[key]);
+      // str += key + '=' + data[key] + '&'
+    }
+    console.log(arr.join('&'));
+
+
+
+    var str = "张三|男|李四|女|王五|男|赵柳|男|田七|女";
+
+    var x = "{ 'a': 1, 'b': 2, 'c': 3 }"
+    /*
+
+     偶数  分隔符 |
+
+     转数组 split
+    
+     */
+
+
+    console.log(JSON.parse(str));
+
+    var strArr = str.split('|');
+    console.log(strArr);
+
+    var nameArr = strArr.filter(function (item, idx, arr) {
+      return idx % 2 === 0;
+    });
+
+    console.log(nameArr);
+
+    //https://www.baidu.com/s?wd=苹果&qq=000001&name=kyogre URL GEt
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

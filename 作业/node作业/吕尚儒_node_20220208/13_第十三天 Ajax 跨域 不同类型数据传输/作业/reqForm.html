@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" name="user">
+  <input type="file" name="avator">
+  <button>提交form表单</button>
+  <script>
+    const userInput = document.querySelector('input[name="user"]')
+    const fileInput = document.querySelector('input[name="avator"]')
+    const submitBtn = document.querySelector('button')
+
+    submitBtn.addEventListener('click', () => {
+      let file = fileInput.files[0]
+      let userData = userInput.value
+      if(!file) {
+        return false
+      }
+
+      let form = new FormData()
+      form.append('user', userData)
+      form.append('avator', file)
+      
+      request(form)
+    })
+
+    function request(data) {
+      let xhr = new XMLHttpRequest()
+      xhr.open('POST', 'http://127.0.0.1:3003/upload', true)
+      xhr.send(data)
+
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 &&  xhr.status === 200) {
+          console.log(xhr.response);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

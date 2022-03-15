@@ -1,0 +1,51 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-28 16:40:16
+ * @LastEditTime: 2020-07-28 20:39:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\test.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test </title>
+</head>
+
+<body>
+  <script>
+    //javascript 是静态作用域 
+    var x;
+    function fn1() {
+      x = 30;
+    }
+
+    function fn2() {
+      x = 20; //全局变量x
+      fn1(); // 修改了全局变量x
+      console.log(x); //30
+    }
+    fn2();
+
+    // fn1
+    // fn2
+
+    // fn2();
+
+    // var x; //局部变量x fn2 的私有变量
+    // x = 20;
+    // fn1();
+
+    // var x; // fn1局部作用域的私有变量 x
+    // x = 30; //fn1
+
+    // console.log(x); //只能是 fn2作用域里 或者fn2上级作用域的变量x x
+
+
+  </script>
+</body>
+
+</html>

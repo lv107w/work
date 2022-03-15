@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贪婪 惰性模式</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      贪婪 : `尽可能多`的匹配
+      惰性 : `尽可能少`的匹配
+      前提条件都是要匹配到内容
+
+
+      + {1,} 最少一项最多无限制  最少 最多区间
+      有区间 就有极值 1 正无穷
+
+      贪婪模式 是往尽可能多的方向获取 正无穷
+      惰性模式 尽可能往少的方向获取 1
+
+      * {0,}
+
+
+      非捕获型
+    */
+
+    console.log('你好,我是海牙'.match(/,\S*/));
+
+    console.log('你好,我是海牙'.match(/,\S*?/));
+
+    console.log('windows10'.match(/windows(?=10)/));
+
+
+    //?= 正向预言
+    console.log('windows2000 windows10'.match(/windows(?=10)/));
+
+    //?! 负向预言
+    console.log('windows2000 windows10'.match(/windows(?!10)/));
+
+    var str = 'a海牙b海牙c海牙';
+    // 'a海牙b海牙c海牙' $1 ... $2 ... $n  对应子组 ($1) ($2)
+    //console.log(str.replace(//g, '$1x,$2x'));
+
+    var str = 'abc123'; //'c123'  'c,123'
+
+    console.log(str.replace(/(c)|(\d{3})/, '$1O$2'));
+
+  </script>
+</body>
+
+</html>

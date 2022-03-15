@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签对象属性3</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    41234124
+  </div>
+  <ul id="list" title="">
+    <li>1 gdfhfdhgd</li>
+    <li>2 gdfhfdhgd</li>
+    <li>3 gdfhfdhgd</li>
+    <li id="active">4 gdfhfdhgd</li>
+    <li>5 gdfhfdhgd</li>
+  </ul>
+  <script>
+
+    /*
+     获取的DOM元素命名
+
+     前缀 o  only 获取单一节点对象 querySelector  getElementById
+
+     前缀 a  all  DOM节点集合 NodeList集合
+     getElementsByClassName getElementsByTagName
+     querySelectorAll
+
+   */
+    var oWrap = document.querySelector('#wrap');
+    var aLi = document.querySelectorAll('#list li');
+    var oActive = document.querySelector('#active');
+
+
+    //indexOf
+    console.log(aLi);
+
+    console.log(getElementIdx(aLi, oActive));
+
+    function getElementIdx(elements, item) {
+      for (var i = 0, len = elements.length; i < len; i++) {
+        if (item === elements[i]) {
+          return i;
+        }
+      }
+    }
+
+
+    // console.log([].indexOf.call(aLi, oActive))
+
+
+
+  </script>
+</body>
+
+</html>

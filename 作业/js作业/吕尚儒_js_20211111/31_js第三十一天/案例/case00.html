@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>transtion 运动框架</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #368;
+    }
+
+    .btn {
+      width: 80px;
+      height: 36px;
+      margin: 10px;
+      background-color: orange;
+      line-height: 35px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box"></div>
+  <div class="btn">点击</div>
+  <script src="js/common.js"></script>
+  <script>
+    /*
+     运动框架
+
+     通过javascript 操作DOM元素的样式 使DOM元素的形状 位置 等外在表现发生改变 同时 这个改变是过渡的(transition) width:100px 在.5s 内 变化为 width:200px;
+
+     transtion封装版
+
+     定时器封装版本
+
+     基础DOM运动操作
+
+
+     1. 点击.btn 让 .box 的left值设置为100 height 设置为200
+
+
+     2. 让这个变化 慢慢的变
+
+
+     3. 如何封装一个transtion方法 实现可以多次 调用 可以设置时间 可以自定设置运动结束之后的回调行为
+
+      1. 如何监听到动画结束 
+        500 setTimeout(callback,500); 不太好
+        transitionend 事件 很好
+        目标元素的transition行为结束之后 过渡结束之后 触发
+      
+
+      /* 
+      addEventListener 监听 事件回调函数 可以是匿名或者有名函数
+      解除监听removeEventListener 的时候 必须指定函数名
+
+      1. 绑定的时候如果有解绑需求 使用有名函数
+      
+      2. 解绑事件对应的回调函数必须和监听绑定时是同一个函数
+
+      动画结束 触发transtionend 事件的时候调用end函数
+
+      ... 对ele的transtioned事件进行解除监听(解绑) end
+
+      3. 作用域规则符合
+      
+      */
+
+
+
+    var oBtn = $('.btn');
+    var oBox = $('.box');
+
+
+
+    oBtn.addEventListener('click', function () {
+      animate(oBox, { left: '100px', height: '200px', backgroundColor: 'green' }, 500, 'ease-out',
+        function () {
+          animate(oBox, {
+            left: '200px', height: '100px', backgroundColor: 'blue'
+          }, 1000, 'linear',
+            function () {
+              animate(oBox, {
+                left: '1200px', height: '300px', backgroundColor: 'yellow'
+              }, 1000, 'linear',
+                function () {
+                  console.log('三次运动结束')
+                });
+            });
+        });
+    }, false);
+
+
+    function animate(ele, styleJson, time, speed, callback) {
+      speed = speed || 'linear';
+      time = time || 500;
+      ele.style.transition = `${time}ms ${speed}`;
+      setStyle(ele, styleJson);
+      ele.addEventListener('transitionend', end, false);
+      function end() {
+        callback && callback();
+        ele.removeEventListener('transitionend', end);
+        ele.style.transition = `0`;
+      }
+    }
+  </script>
+</body>
+
+</html>

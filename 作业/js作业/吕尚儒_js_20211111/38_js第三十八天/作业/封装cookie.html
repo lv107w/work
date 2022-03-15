@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cookie封装</title>
+</head>
+<body>
+  <script>
+    function setCookie(json, t) {
+      var d = new Date(); //当前事件
+      d.setTime(d.getTime() + t);
+      var time = d.toUTCString();
+      if (t === Infinity) {
+        time = 'Fri, 31 Dec 9999 13:32:02 GMT';
+      }
+      for (var key in json) {
+        document.cookie = `${key}=${encodeURI(json[key])}; expires=${time}`;
+      }
+    }
+
+    function getCookie() {
+      var cookie = document.cookie;
+      var cookieArr = cookie.match(/[^=;\s]+=([^=;]+)(?:;?)/g);
+      var argData = {}
+      for (var key of arguments) {
+        argData[key] = 1;
+      }
+      return cookieArr.reduce(function (acc, curr) {
+        var tempStr = curr.replace(';', '');
+        var tempArr = tempStr.split('=');
+        if (tempArr[0] && argData[tempArr[0]]) {
+          acc[tempArr[0]] = tempArr[1]
+        }
+        return acc;
+      }, {});
+    }
+
+    function removeCookie() {
+      var json = {};
+      for (var key of arguments) {
+        json[key] = null;
+      }
+      setCookie(json, -1);
+    }
+  </script>
+</body>
+</html>

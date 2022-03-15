@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prototype __proto__</title>
+</head>
+
+<body>
+  <script>
+
+    function fn() {
+
+    }
+
+    let f = new fn();//实例对象
+
+    console.log(fn.prototype);
+
+    console.log(f.__proto__); // __proto__ [[prototype]]
+
+    console.log(f.constructor.prototype === fn.prototype);
+
+    console.log(f.__proto__ === fn.prototype);
+
+    console.log(f.constructor.prototype === f.__proto__);
+
+    console.log(f.constructor === fn);
+
+    /*
+      Function
+      Array
+      Object
+      String
+      Boolean
+      Number
+
+      在javascript中任何一个对象都会指向另一个对象
+
+      原型链 
+        原型
+
+      作用域链
+        作用域
+    */
+
+    let o = { a: 1 };
+
+    console.log(o); //o.__proto__ o的构造函数的prototype  Object
+
+    console.log(o.__proto__ === Object.prototype);
+
+    let arr = new Array(); //
+    console.log(arr.__proto__ === Array.prototype);
+
+    console.log(Array.prototype.__proto__ === Object.prototype);//Object.prototype
+
+    console.log(Array.prototype);
+
+    console.log(String.prototype);
+
+    let arr1 = [1, 2, 3, 4];
+    console.log(arr1.valueOf());//返回对象的值
+
+    console.log(arr1.valueOf === Object.prototype.valueOf);
+
+
+    /* 
+        Array 是继承于 Object 的类
+
+        动物  
+          属性:
+            消化系统
+            繁殖系统
+            免疫系统
+
+        猴子
+          消化系统 => 动物.消化系统
+        猫
+          免疫系统 => 动物.免疫系统
+    
+    
+     */
+
+    let str = '你好';
+    console.log(str.valueOf());
+
+    //null => Object => Array => new Array();
+
+    /*
+      arr1.__proto__ => Array.prototype
+
+      arr1.__proto__.__proto__ => Object.prototype
+
+      Array.prototype.__proto__ => Object.prototype
+
+      arr1.__proto__.__proto__.__proto__ => null
+
+      Object.prototype.__proto__ => null
+
+      arr1是Array的实例化对象 的原型指向Array的原型
+
+      Array的原型(prototype)的原型指向(__proto__) 指向Object的原型(prototype)
+
+      Array的原型的原型是Object的原型
+
+
+      __proto__ : 隐式原型
+        从属: 对象
+        类型: 对象
+        意义: 非标准属性(不可见) 能够通过__proto__ 直接找到对应构造函数的原型 对象.constructor.prototype
+
+
+      prototype : 显式病毒
+        从属: 函数 function
+        类型: 对象
+
+      实例对象的__proto__就是实例的构造函数(constructor)的prototype属性
+
+      let arr = []; //字面量
+      let arr = new Array(); //实例化
+
+      所有的值都是通过某个构造函数实例化出来的
+
+      arr.constructor => Array
+
+      arr.__proto__ => arr.constructor.prototype => Array.prototype
+
+      Array需要从Object继承 Array和Object的关系如何建立
+
+      Array需要从Object的原型上去继承一些方法(属性)
+
+      function Array 如何 从 function Object 的prototype属性上继承一些属性
+
+     Array.prototype.valueOf => Object.prototype.valueOf
+
+
+     function 是一个对象
+
+
+
+
+
+
+     */
+
+    // let arr = new Array();
+    // arr.__proto__ === Array.prototype
+    // prototype.__proto__ === Object.prototype
+    console.log(arr.__proto__.__proto__);
+    //原型的原型 Array.prototype
+
+    /* 
+    Array.prototype 也是一个对象 
+    是Object的实例化 new Object()
+    Array.prototype.__proto__ 指向prototype的实例化构造函数的原型
+
+    Array.prototype.__proto__  === Object.prototype
+
+    arr.__proto__ === Array.prototype
+
+    arr = new Array()
+
+    Array.prototype = new Object()
+
+    Array.prototype.__proto__ === Object.prototype
+
+    
+
+     */
+
+    console.log(Function.prototype.__proto__ === Object.prototype);
+    console.log(Object.__proto__ === Function.prototype);
+    console.log(Function.__proto__ === Function.prototype);
+
+    //所有的对象 都是实例化来的 实例化 new function() 来的 function Function的实例化
+    /* 
+      所有在javascript中的函数 都是Function的实例 
+      所以所有函数的__proto__ 都指向Function (Object 是 Function的实例) 
+      __proto__是对象的属性 函数的实例化 也是对象
+
+      Function 函数对象是由它本身创建的, 所以Function的__proto__ 就是Function的prototype
+    
+      Function 函数的原型对象其实就是 Object函数创建的实例对象, 所以他的__proto__就是 Object函数的原型对象 Object.prototype
+      
+      Object是Function的实例化
+
+      Function的prototype是Object的实例化
+
+      Object 是 函数 也是 对象
+        作为函数的时候 他是 Function的实例化对象 也是js中所有对象的(构造函数) js中对象的实例 = new Object(); 
+
+        作为对象的时候 有prototype属性 prototype的实例构造函数是Object
+
+
+
+
+      Function.prototype.__proto__ === Object.prototype
+
+
+
+      Object.__proto__ === Function.prototype
+
+      Object.__proto__ Object是作为Function的实例化对象来解释的 js中所有的函数都是Function的实例化对象
+
+      arr.__proto__ === Array.prototype
+
+      Object.prototype.__proto__
+
+      Object是作为函数来讲他的原型Object.prototype
+
+      Object.prototype也是Object实例化
+
+       Object.prototype.__proto__ === Object.prototype
+       冲突出现了 我是我爸爸 无法解释了 单纯用js的自身规则无法自圆其说了 引入上届概念  Object.prototype.__proto__ = null
+
+
+      Function.__proto__ === Function.prototype
+
+
+     */
+
+    console.log(typeof Object);
+
+    // let fn = function () {
+    //   console.log(1);
+    // }
+
+    // let fn = new Function('console.log(1)');
+
+
+
+
+
+  </script>
+</body>
+
+</html>

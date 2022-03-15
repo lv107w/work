@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async 异步加载</title>
+  <style>
+    html {
+      font-size: 50px;
+      color: #222;
+    }
+
+    .wrap {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <script defer src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+  <script src="app/b.js"></script>
+  <script>
+    console.log('cs');
+  </script>
+
+</body>
+
+</html>

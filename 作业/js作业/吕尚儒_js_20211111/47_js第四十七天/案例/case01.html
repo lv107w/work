@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型判断</title>
+</head>
+
+<body>
+  <script>
+    /*
+      __proto__ 非标准属性
+
+      arr.__proto__ === Array.prototype
+
+
+
+      isPrototypeOf
+
+      构造函数.原型.isPrototypeOf(实例对象)
+      实例对象是__proto__否是这个构造函数的原型
+
+
+
+      Object.getPrototypeOf(arr)
+
+      返回arr的__proto__
+
+
+
+
+      object.hasOwnProperty(key)
+
+      判断 key属性是否是object的自身属性而非从原型上继承来的属性 
+      是自身属性 返回 true
+      不是自身属性 返回 false
+
+
+      if(key in object)
+      判断 object中是否存在 key这个属性 不区分是否是自身属性还是原型属性
+
+      if(!!object[key])
+
+    */
+
+    let arr = [1, 2, 3];
+
+    // console.log(arr.__proto__ === Array.prototype);
+
+    // console.log(Array.prototype.isPrototypeOf(arr));
+
+    // console.log(Object.getPrototypeOf(arr) === Array.prototype);
+
+
+    function Pig(name = '佩奇', age = 1) {
+      this.name = name;
+      this.age = age;
+    }
+
+    Pig.prototype.sex = 1;
+
+    let pig = new Pig('佩奇', 2);
+
+    // console.log(pig.sex);
+    // console.log(pig);
+
+
+    console.log('name' in pig)
+    for (let key in pig) {
+      if (pig.hasOwnProperty(key)) {
+        console.log(key, pig[key]);
+      }
+
+      //判断key是否是pig的自身属性而不是原型上属性
+    }
+
+    // console.log(arr);
+
+    for (let key in arr) {
+      // console.log(key, arr[key]);
+    }
+
+
+    let obj = {
+      a: 1,
+      b: undefined,
+      c: 0
+    }
+
+    console.log(!!obj['a'], 'a' in obj);
+    console.log(!!obj['b'], 'b' in obj);
+    console.log(!!obj['c'], 'c' in obj);
+  </script>
+</body>
+
+</html>

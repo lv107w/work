@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file">
+  <form action=""></form>
+  <script>
+    const fileInput = document.querySelector('input[type="file"]')
+
+    const host = 'http://127.0.0.1:3007/json'
+
+    let postData = JSON.stringify({name: 'lv', age: 18})
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', host, true)
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=utf8')
+    xhr.send(postData)
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4 && xhr.status === 200) {
+        if(!isJSON(xhr.response)) {
+          console.log('响应数据不符合JSON格式')
+        }
+        console.log(JSON.parse(xhr.response))
+      }
+    }
+
+    //如果请求的不是JSON字符串,捕获错误
+    function isJSON(str) {
+      try {
+        JSON.parse(str)
+        return true
+      } catch (err) {
+        return false
+      }
+      return false
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象Object 可枚举</title>
+</head>
+<body>
+  <script>
+    const O = {
+      name: 'kyogre'
+    }
+
+    let arr = [1, 2, 3, 4, 5];
+    arr.__proto__.x = 8;
+
+    console.log(arr);
+    console.log(O);
+
+    for(let key in O) {
+      console.log(key);
+    }
+
+    //or...in语句以任意顺序遍历一个对象的除Symbol以外的可枚举属性，包括继承的可枚举属性。
+    //length 不可枚举 (无法通过循环遍历的方式找到)
+    //__proto__ 不可枚举的
+    for(let i in arr) {
+      console.log(i);  //0, 1, 2, 3, 4, 5, x
+    }
+
+  </script>
+</body>
+</html>

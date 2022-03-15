@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #368;
+    }
+
+    input {
+      position: absolute;
+      top: 200px;
+      left: 200px;
+      width: 180px;
+      height: 90px;
+      border: 0;
+      background-color: #222;
+      color: #fff;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">我出来了</div>
+  <input id="btn" type="button" value="隐藏">
+
+  <script>
+    var oDiv = document.querySelector('#box');
+    var oBtn = document.querySelector('#btn');
+    var toggle = true;
+
+    oBtn.onclick = function() {
+      var val = '隐藏', dis = 'block';
+
+      if(toggle) {
+        val = '显示';
+        dis = 'none';
+      }
+
+      toggle =! toggle;
+      oDiv.style.display = dis;
+      this.value = val;
+    }
+
+    // oBtn.onclick = function() {
+    //   oDiv.style.display = toggle ? 'none' : 'block';
+    //   this.value = toggle ? '显示' : '隐藏';
+    //   toggle =! toggle;
+    // }
+  </script>
+</body>
+</html>

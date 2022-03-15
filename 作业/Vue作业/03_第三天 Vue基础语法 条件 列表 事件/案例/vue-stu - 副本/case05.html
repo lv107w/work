@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue methods</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{reverse(message)}}</h1>
+    <p>{{fullName}}</p>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Vue的生命周期',
+      firstName: 'san',
+      lastName: 'zhang'
+    },
+    computed: {
+      fullName: {
+        get() {
+          return this.firstName + ' ' + this.lastName
+        },
+        set(newValue) {
+          let names = newValue.split(' ')
+          this.firstName = names[0]
+          this.lastName = names[names.length - 1]
+        }
+      }
+    },
+    methods: {
+      reverse(val) {
+        return val.split('').reverse().join('')
+      }
+    }
+  })
+</script>
+
+</html>

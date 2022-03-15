@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 22:57:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变量 函数预解析情况</title>
+
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      变量 x 和函数x重名
+
+      1. 寻找所有的声明 并且提升
+      2. 先提升变量 然后提升函数
+
+    */
+    // var x = 10;
+    // function x() {
+    //   x = 20;
+    // }
+    // x();
+    // console.log(x);
+
+
+    /* ====================================== */
+    // var x;
+    // function x() { }
+
+    // x = 10; //10
+    // x(); //10() 报错
+    // console.log(x);
+
+    /* ====================================== */
+    console.log(x);
+    var x = 10;
+    function x() {
+      x = 20;
+    }
+    x();
+
+
+    /* ====================================== */
+
+    function x() {
+
+    }
+    var x; //undefined
+
+    console.log(x); //undefined
+
+
+  </script>
+</body>
+
+</html>

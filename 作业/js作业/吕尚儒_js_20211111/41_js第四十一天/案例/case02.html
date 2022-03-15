@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call语法</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <script>
+    /*
+      call 是Function的原型方法
+
+      替换函数调用主体对象为 call的第一个参数(必须是一个对象)
+
+      call的第二个参数到第N个参数 对应函数本身的形参  第一个形参到 第N-1个形参
+
+      在主动调用函数(方法)的时候 可以通过call方法 改变函数内部this的指向为call的对象 改变方法(函数)的调用主体
+
+      [].reduce.call(arguments)
+      用arguments对象替换掉 数组[]对象 执行数组对象拥有的 reduce方法
+      狸猫换太子
+     */
+
+
+    /* 
+      获取每一个li的innerText + 10的结果存放到一个数组中
+    
+     */
+    const aLi = document.querySelectorAll('ul>li'); //类数组 元素集合 
+
+
+    // for (let i = 0, len = aLi.length; i < len; i++) {
+    //   liArr.push(Number(aLi[i].innerText) + 10)
+    // }
+    // console.log(liArr);
+
+    const liArr = [].map.call(aLi, function (item) {
+      return Number(item.innerText) + 10;
+    })
+    console.log(liArr);
+
+
+    //计算所有的参数和
+    // function add() {
+    //   var count = arguments[0];
+    //   for (let i = 1, len = arguments.length; i < len; i++) {
+    //     count += arguments[i];
+    //   }
+    //   return count;
+    // }
+
+    function add() {
+      return [].reduce.call(arguments, function (acc, curr) {
+        return acc + curr;
+      })
+    }
+    console.log(add(1, 2, 3, 4, 5.5, 6));
+
+
+
+    const OBJ = {
+      name: 'kyogre',
+      age: 18
+    }
+    const OTHER_OBJ = {
+      name: '海牙',
+      age: 13,
+    }
+
+    function getName() {
+      return this.name;
+    }
+
+    function getAge() {
+      return this.age;
+    }
+
+    function showMsg(name, age) {
+      console.log(`我叫 ${name} ,今年 ${age}岁`);
+    }
+
+    showMsg(getName.call(OBJ), getAge.call(OTHER_OBJ));
+
+
+
+
+
+  </script>
+</body>
+
+</html>

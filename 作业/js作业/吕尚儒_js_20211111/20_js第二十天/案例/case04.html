@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>attribute</title>
+</head>
+
+<body>
+  <img id="pic" style="outline:1px;" class="photo red" src="images/bird.png" width="1000px" height="100" alt="bird"
+    title="你猜猜我是什么鸟" joker='你好'>
+  <script>
+    var oImg = document.querySelector('#pic');
+    //getAttribute拿到的是标签的属性值 未处理的
+    console.log(oImg.getAttribute('src'));
+    //element.属性 拿到的是元素对象的属性值 处理过的
+    console.log(oImg.src);
+
+    oImg.width = '1000';
+    oImg.setAttribute('width', '1000px')
+    console.log(oImg.getAttribute('width'))
+    console.log(oImg.width);
+    // console.log();
+
+    console.log(oImg.getAttribute('joker'))
+    console.log(oImg.joker);
+
+    console.log(oImg.hasAttribute('joiker'));
+
+    /*  function Element() {
+       this.width = 'xxx';
+       this.id = 'xxx';
+       this.title = 'xxx';
+       this.innerText = 'xxx';
+       this.innerHTML = 'xxx';
+     } */
+  </script>
+</body>
+
+</html>

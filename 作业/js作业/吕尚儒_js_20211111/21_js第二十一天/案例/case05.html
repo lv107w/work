@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关联节点获取练习</title>
+</head>
+
+<body>
+  <div class="item">
+    <h3 class="title">龙牌洗发3水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <div class="item">
+    <h3 class="title">龙牌洗发2水</h3>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="des">龙的传人真正的洗发水 </p>
+    <p class="price">¥999999</p>
+  </div>
+
+  <script>
+    var oItem = document.querySelector('.item');
+    var oP = oItem.querySelector('p:nth-of-type(2)');
+    console.log(oP);
+
+    //打印下一个item里的类名为price的p标签的内容
+
+    console.log(oP.parentNode.nextElementSibling.lastElementChild.innerText);
+
+
+    console.log(oP.parentNode.nextElementSibling.querySelector('p:nth-of-type(3)'));
+
+  </script>
+</body>
+
+</html>

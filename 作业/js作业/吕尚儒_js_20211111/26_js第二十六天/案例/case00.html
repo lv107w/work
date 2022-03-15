@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-11 21:50:59
+ * @LastEditTime: 2020-08-11 22:03:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器 setInterval setTimeout</title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      循环定时器 setInterval
+
+      参数1 callback 回调函数 循环定时去做的事情
+      参数2 time 定时器循环间隔 毫秒 1000 => 1s
+
+      每间隔 time 时长会 运行一次 callback
+
+
+      倒计时定时器 setTimeout 只生效一次
+
+      参数1 callback 回调函数 倒计时结束后需要做的事情
+      参数2 time 定时器倒计时 毫秒 1000 => 1s
+
+      在 time 时间后执行一次 callback
+
+
+      this 非严格模式下指向 window
+
+      返回值 返回一个自身的序号 (手机上定闹钟 闹钟的序号) 序号用于清除的时候作为定时器的标识
+
+
+      清除定时器
+
+      clearInterval(定时器序号) 清除指定序号的循环定时器
+      clearTimeout(定时器序号) 清除指定序号的倒计时定时器
+
+
+
+    */
+    var index = 0;
+    var time = window.setInterval(function () {
+      index++;
+      console.log(index);
+    }, 1000);
+
+
+    var outTime = window.setTimeout(function () {
+      console.log('我出来了,我张三出来了');
+      clearInterval(time);
+    }, 5000);
+
+    console.log(time, outTime)
+  </script>
+</body>
+
+</html>

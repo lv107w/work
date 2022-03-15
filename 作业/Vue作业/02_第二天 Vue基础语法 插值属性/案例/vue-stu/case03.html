@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    #active {
+      color: pink;
+    }
+
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <p :hidden="isHide">{{ message.length}}</p>
+    <p :[attr]="cls">{{ message.toUpperCase().split('').reverse().join('') }}</p>
+    <p :[attr]="cls">{{ String(time)[1] && String(time) || '0' + time }}</p>
+    <p v-text="String(time)[1] && String(time) || '0' + time "></p>
+
+
+    <!-- <p>{{ time++ }}</p> -->
+    <!-- <p>{{ if(time == 0){return '100'} }}</p> -->
+    <!-- <p>{{ let value = time + 1 }}</p> -->
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          message: 'hello Vue',
+          isHide: Boolean(0),
+          cls: 'active',
+          attr: '',
+          time: 1
+        }
+      },
+      methods: {
+        showMsg() {
+          return this.message + ' show msg'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

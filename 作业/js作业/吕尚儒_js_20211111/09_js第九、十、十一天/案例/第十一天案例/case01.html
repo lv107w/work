@@ -1,0 +1,118 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 21:42:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域</title>
+</head>
+
+<body>
+  <script>
+    /*
+      javascript 有作用域概念
+      script 是全局域
+
+      函数 局部域
+      函数内的变量 是 局部变量
+
+      局部内可以访问全局变量
+      局部外不可以访问局部内的私有变量
+     */
+    var w = 10;
+    function fn() {
+      var x = 10; //x 属于fn这个小世界里的变量
+      console.log(w);
+    }
+    fn();
+    console.log(x);//
+    console.log(w);//
+
+
+    var x = 10;
+    function fn() {
+      x = 20; // => 全局变量 x  没有声明符号 var 访问全局变量 x 修改了全局变量x的值
+    }
+    fn(); // 修改了全局变量 x 的值
+
+    // console.log(x);
+
+    var x = 10;
+    function fn() {
+      var x; //当前域有没有声明x
+
+      x = 20; // 声明了一个 局部变量 x 是fn域 私有的变量
+      console.log(x); //20 就近访问
+    }
+    fn();
+    console.log(x);
+
+
+
+    /*
+          1. 在当前域寻找 x 的声明 => 没有 (确定x不是局部变量)
+          2. 向上一级域寻找 x 的声明 一直一层一层找到 全局作用域 => 也没有声明
+          3. 在全局进行隐式声明
+
+     */
+
+    var x; //js解释引擎加上的 隐式声明 默认值为undefined
+    function fn() {
+      x = 10;
+    }
+    console.log(x); //undefeined
+    fn();
+
+
+
+    /*
+      1. 在javascript中 有全局作用域(script) 有局部作用域 (函数{})
+      2. 作用域是单向可访问 内部作用域可以访问外部作用域的变量 外部作用域不可以访问内部作用域的私有变量
+      3. 私有变量 指的是 在当前局部作用域下*声明*的变量 , 如果没有声明符就不是当前作用域的私有变量
+      4. 在调用没有声明的变量的时候 会向上一级作用域寻找 声明 一直找到 全局作用域为止.
+      5. 变量的访问 优先访问自己作用域内的局部变量 自己作用域找不到 向上寻找调用
+      6. 如果一个变量 在局部作用域中直接使用 但是没有声明, 并且向上一直寻找到 全局作用域 也没有 var 声明 ,js引擎会在全局作用域进行隐式声明
+
+     */
+
+    // var y; //上级作用域(全局作用域) 也不存在 隐式声明 y
+    // function fn() {
+    //   //x是fn局部作用域的私有变量
+    //   //y 没有声明 向上层作用域寻找
+    //   // var x = y = 10;
+    //   // x 是局部私有变量 y是通过隐式声明的 全局变量
+    //   var x;
+    //   y = 10;
+    //   x = y;
+    // }
+    // fn();
+
+    // console.log(y); // 10
+    // console.log(x);//....无法逆向访问  因为 x是 fn作用域的私有变量
+
+
+
+    //
+    // var x = 10;
+    var x;
+    x = 10;
+    function fn() {
+      console.log(x); //打印x x没有在当前域找到声明var 向上层寻找 确定是全局变量 打印全局变量 x的值 10
+      x = 20;// 修改全局变量x的值 为20
+    }
+
+    fn();
+
+
+  </script>
+</body>
+
+</html>

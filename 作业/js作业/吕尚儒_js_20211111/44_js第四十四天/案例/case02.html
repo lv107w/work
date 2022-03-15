@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reset</title>
+</head>
+
+<body>
+  <script>
+
+    function add(acc, xc, ...args) { //reset
+      return Math.max(...args); //解构
+
+      // return args.reduce(function (a, c) {
+      //   return a + c;
+      // }, acc);
+    }
+
+
+
+    console.log(add(10, 1, 2, 3, 4, 5))
+  </script>
+</body>
+
+</html>

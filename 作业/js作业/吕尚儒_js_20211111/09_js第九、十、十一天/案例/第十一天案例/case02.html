@@ -1,0 +1,47 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 21:49:33
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域 辨识</title>
+</head>
+
+<body>
+  <script>
+    /*
+     判断 是全局变量 1 还是局部变量 2
+
+    */
+
+    // var x = 10;
+    // function fn() {
+    //   console.log(x); //1
+    // }
+
+    // var x = 10;
+    // function fn() {
+    //   var x = 20;
+    //   console.log(x); //2
+    // }
+
+
+    function fn() {
+      x = 10;
+      console.log(x); //1
+    }
+
+
+
+  </script>
+</body>
+
+</html>

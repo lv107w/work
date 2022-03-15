@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+      overflow: hidden;
+      position: relative;
+      width: 500px;
+      box-shadow: 0 0 8px #333;
+
+    }
+
+    .pic-list {
+      width: 100%;
+    }
+
+    .pic-list li {
+      float: left;
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .btn-wrap span {
+      user-select: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 40px;
+      height: 85px;
+      line-height: 85px;
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+    }
+
+    .btn-wrap span:hover {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .slider .active {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <ul class="pic-list">
+      <li><img src="images/1.jpg" alt="" width="500" height="200"></li>
+      <li><img src="images/2.jpg" alt="" width="500" height="200"></li>
+      <li><img src="images/3.jpg" alt="" width="500" height="200"></li>
+      <li><img src="images/4.jpg" alt="" width="500" height="200"></li>
+    </ul>
+    <div class="slider">
+
+    </div>
+    <div class="btn-wrap">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script>
+    var oUl = $('.pic-list'),
+    aPic = $$('.pic-list li'),
+    oBtnWrap = $('.btn-wrap'),
+    oSlider = $('.slider'),
+    oBanner = $('.banner'),
+    aSlider = oSlider.children,
+    picLen = aPic.length,
+    index = 0,
+    picW = aPic[0].offsetWidth,
+    time;
+
+
+    init();
+    autoTranslate(); 
+
+
+    //左右按钮点击改变index方法映射
+    var tabMap = {
+      'prev': function() {
+        move(function() {
+          index--;
+          index = (picLen + index) % picLen;
+        })
+      },
+      'next': function() {
+        move(function() {
+          index++;
+          index = index % picLen;
+        })
+      }
+    }
+
+    //监听点击左右按钮事件
+    oBtnWrap.addEventListener('click', function(e) {
+      console.log(e.target);
+      e = e || window.event; //兼容写法
+      if(e.target.tagName.toLowerCase() === 'span' && 
+      tabMap[e.target.className] && 
+      typeof tabMap[e.target.className] === 'function') { 
+        tabMap[e.target.className]();
+        // console.log(e.target.className);
+      }
+    })
+
+    //监听鼠标经过滑块事件
+    oSlider.addEventListener('mouseover', function(e) {
+      e = e || window.event;
+      if(e.target.tagName.toLowerCase() === 'span') {
+        // console.log(e.target);
+        move(function() {
+          index = getElementIdx(e.target);
+        })
+      }
+    })
+
+    //鼠标离开banner启动定时器，在banner解绑
+    oBanner.addEventListener('mouseout', function() {
+      autoTranslate();
+    })
+    oBanner.addEventListener('mouseover', function() {
+      clearInterval(time);
+    })
+
+
+    //初始化设置oSlider宽度，创建小滑块
+    function init() {
+      var firstClass = '';
+      var spanStr = '';  
+  
+      //根据图片数量创建sliders,并默认第一个圆点为活跃样式
+      for(var i = 0; i < picLen; i++) {
+        firstClass = '';
+        if(i === 0) {
+          firstClass = 'class = "active"';
+        }
+        spanStr += `<span ${firstClass}>${i + 1}</span>`;
+      }
+      oSlider.innerHTML = spanStr;
+
+      oUl.style.width = `${picLen * 100}%`; //动态设置oUL宽度
+    }
+
+    
+    //封装move函数，轮转法，根据index改变操作Dom
+    function move(callback) {
+      aSlider[index].classList.remove('active');
+      callback && callback();
+      aSlider[index].classList.add('active');
+      //动画图片切换
+      animate(oUl, {
+        marginLeft: -index * picW + 'px'
+      });
+    }
+
+    //封装定时器图片自动切换
+    function autoTranslate() {
+      clearInterval(time);
+      time = setInterval(function() {
+        move(function() {
+          index++;
+          index = index % picLen;
+        }); 
+      }, 1000)
+    }
+   
+    //运动框架
+    function animate(ele, json, callback) {
+      clearInterval(ele.time);//保证每一次都只有一个定时器在运行
+      var toggle = false;
+      var currLeft = parseInt(getStyle(ele, 'left'));
+      ele.time = setInterval(function () {
+        //每次定时循环都暂且认为他们都可以达到最终结果
+        toggle = true;
+        for (var key in json) {
+          var target = parseInt(json[key])
+          curr = parseInt(getStyle(ele, key));
+          speed = (target - curr) / 10;
+          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+          if (curr === target) {
+            //width 先到了指定值了 定时器结束了 
+            ele.style[key] = target + 'px';
+          }
+          ele.style[key] = curr + speed + 'px';
+          if (curr !== target) {
+            //只要有某一个属性的值不到指定结果 关闭锁
+            toggle = false;
+          }
+        }
+        if (toggle) {
+          clearInterval(ele.time);
+          callback && callback();
+        }
+      }, 1000 / 60);
+    }
+  </script>
+</body>
+</html>

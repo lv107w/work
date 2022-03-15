@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+
+<body>
+
+  <script>
+
+
+
+    //等到图片加载完成之后 我们调用img.offsetHeight能够获取正确的结果
+
+    /*  */
+
+    // function creaetImg(src, success, failed) {
+    //   let img = document.createElement('img');
+    //   img.src = src;
+    //   let time = Date.now();
+    //   img.onload = function () {
+    //     let nowDate = Date.now();
+    //     success(src, nowDate - time)
+    //   }
+    //   img.onerror = function () {
+    //     let nowDate = Date.now()
+    //     failed(src, nowDate - time)
+    //   }
+    // }
+
+
+    function creaetImgForPromise(src) {
+      return new Promise(function (reslove, reject) {
+        let img = document.createElement('img');
+        img.src = src;
+        let time = Date.now();
+        img.onload = function () {
+          let nowDate = Date.now();
+          reslove(src, nowDate - time)
+        }
+        img.onerror = function () {
+          let nowDate = Date.now()
+          reject(src, nowDate - time)
+        }
+      })
+    }
+
+
+    // creaetImg('images/h1.jpg', (src, time) => {
+    //   creaetImg('images/h2.jpg', () => {
+    //     creaetImg('images/h3.jpg', () => {
+
+    //     });
+    //   });
+    // });
+
+    function getRandom() {
+      return new Promise(function (res, rej) {
+        setTimeout(function () {
+          let r = ~~(Math.random() * 2)
+          if (r) {
+            res(r);//resolve 成功的话调用res
+          } else {
+            rej(r);//reject 失败的话调用rej
+          }
+        }, 2000)
+      })
+    }
+
+    let p = creaetImgForPromise('images/h1.jpg'); //promise
+    console.log(p)
+    let p2 = p.then((src) => {
+      console.log('成功请求到', src);
+      return getRandom();//promise对象
+    });
+    let p3 = p2.then((r) => {
+      console.log(r, '成功');
+      return creaetImgForPromise('images/h2.jpg');
+    });
+    p3.then((src) => {
+      console.log('成功请求到', src);
+    }).catch((r) => {
+      console.log(r);
+    })
+
+
+
+
+
+  </script>
+</body>
+
+</html>

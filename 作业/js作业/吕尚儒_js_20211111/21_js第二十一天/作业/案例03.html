@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>innerHTML</title>
+  <style>
+    p { 
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p>你猜猜<span>我</span>是谁</p>
+  </div>
+  <script>
+    var oWrap = document.querySelector('.wrap');
+    var oP = oWrap.querySelector('p');
+
+    oP.style.color = 'red';
+
+    console.log(oP.innerHTML);
+    oP.innerHTML += 'hello';
+    
+    console.log(oWrap.innerHTML);
+    oWrap.innerHTML += '';
+    oP = document.querySelector('p'); //oP需重新获取
+    oP.style.color = 'blue';
+  </script>
+</body>
+</html>

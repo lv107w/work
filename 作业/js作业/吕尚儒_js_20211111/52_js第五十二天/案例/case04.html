@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>finally</title>
+</head>
+
+<body>
+  <script>
+    let x = 10;
+    let p = new Promise(function (resolve, reject) {
+      //resolve 成功之后的回调函数
+      //reject 失败之后的回调
+      if (x < 10) {
+        resolve(x); //then的第一个参数对应resolve
+      } else {
+        reject(x);
+      }
+    });
+
+    let p2 = p.then(function (x) { //resolve的实参
+      console.log('x小于10 成功', x);
+      return new Promise(function (res, rej) {
+        res('哈哈哈');
+      });
+    }, function (x) { //reject的实参
+      console.log('x大于等于10 失败了', x);
+    }).finally(() => {
+      console.log('结束了')
+    });
+
+    p2.then(function (msg) {
+      console.log(msg)
+    }).finally(() => {
+      console.log('结束了')
+    });
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

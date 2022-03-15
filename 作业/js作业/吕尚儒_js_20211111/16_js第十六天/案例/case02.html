@@ -1,0 +1,92 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-30 21:03:13
+ * @LastEditTime: 2020-07-30 21:29:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case01.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>filter</title>
+</head>
+
+<body>
+  <!-- 
+    方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。 
+   -->
+
+  <script>
+    /*filter 根据指定条件过滤数组*/
+
+
+    function Brray(arr) {
+      this.arr = arr;
+      this.forEach = function (callback) {
+        for (var i = 0, len = this.arr.length; i < len; i++) {
+          callback(this.arr[i], i, this.arr);
+        }
+      },
+        this.sort = function (callback) {
+          for (var i = 0, len = this.arr.length; i < len; i++) {
+            var result = callback(arr[i], arr[i + 1]);
+            if (result > 0) {
+              //...排序
+            } else if (result === 8) {
+              //...排序
+            }
+          }
+        },
+        this.map = function (callback) {
+          var nw = [];
+          for (var i = 0; i < this.arr.length; i++) {
+            nw[i] = callback(this.arr[i], i, this.arr); // 2
+          }
+          return nw;
+        },
+        this.filter = function (callback) {
+          var nw = [];
+          for (var i = 0; i < this.arr.length; i++) {
+            if (callback(this.arr[i], i, this.arr)) {
+              nw.push(arr[i]);
+            }
+          }
+          return nw;
+        }
+    }
+
+    var arr; //undefined
+
+    arr = [1, 2, 3, 4, 5]; // 获取arr中小于3的项形成新数组 [1,2]
+
+    var result = arr.filter(function (item, idx, arr) {
+      return item < 3; //boolean true false
+    });
+    console.log(result);
+
+    var newBarry = new Brray(arr);
+    var res = newBarry.filter(function (item, idx, arr) {
+      return item < 3; //boolean true false
+    })
+    console.log(res);
+
+    // var nArr = [];
+    // for (var i = 0, len = arr.length; i < len; i++) {
+    //   if (arr[i] < 3) {
+    //     nArr.push(arr[i]);
+    //   }
+    // }
+    // console.log(nArr);
+
+
+
+
+  </script>
+</body>
+
+</html>

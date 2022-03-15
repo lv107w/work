@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 20:33:19
+ * @LastEditTime: 2020-08-24 21:32:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预言模式</title>
+</head>
+
+<body>
+  <script>
+    /*
+       先行断言 x(?=y)
+
+       后行断言 (?<=y)x
+
+       正向否定查找 x(?!y)
+
+       反向否定查找 (?<!y)x
+
+       () 捕获模式
+
+       (?:) 非捕获模式
+    */
+
+    //先行断言 x(?=y) 当x后面是y的时候匹配x 不是y的时候不匹配
+
+    console.log(/海(?=牙)/.test('海前端'));
+
+    // 1.0 2.0 3.0
+    console.log(/\d+(?=\.)/.test('199'));
+
+    //后行断言  (?<=y)x 匹配x 当x前面是y的时候
+    console.log(/(?<=\d+\.)(\d+)/.test('0.12312'));
+
+    //获取整数位大于0的数值的小数位
+    console.log('10.13'.match(/(?<=^[1-9]\d*\.)(\d+)/));
+    //整数位大于0的数值
+    //  ^[1-9]\d*(\.\d+)?$
+    // 0.13 30.13  40
+
+    //正向否定查找 x(?!y) 只有当x后面跟着不是y的时候匹配x
+    console.log(/海(?!牙)/.test('海贵'));
+
+
+    //反向否定查找 (?<!y)x  只有当x前面跟着不是y的时候匹配x
+    console.log(/(?<!海)牙/.test('海牙'));
+
+
+    var regExp = /(abc)(?:\d+)/;
+
+    console.log('abc1abc2dfsd2abc5'.match(regExp));
+
+    console.log('abc123abcde'.replace(regExp, 'bcd'))
+
+
+  </script>
+</body>
+
+</html>

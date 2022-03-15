@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件监听的匿名解绑写法</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 500px;
+      box-shadow: 0 0 8px #333;
+
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .btn-wrap span {
+      user-select: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 40px;
+      height: 85px;
+      line-height: 85px;
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+    }
+
+    .btn-wrap span:hover {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <img id="pic" src="images/p1.jpg" width="500" height="375" alt="pkq">
+    <div class="slider">
+      <span style="background-color: pink;">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+    </div>
+    <div class="btn-wrap">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+
+  <script>
+    var oPic = document.querySelector('#pic');
+    var oSlider = document.querySelector('.slider');
+    var btnPrev = document.querySelector('.prev');
+    var btnNext = document.querySelector('.next');
+    var oBanner = document.querySelector('.banner');
+
+    //事件监听的匿名解绑写法
+    function eventListener(element, type, fn, capture) {
+      capture = capture || false;//capture没有的值初始化为false
+      if (element.addEventListener) {
+        element.addEventListener(type, fn, capture);
+      } else {
+        element.attachEvent('on' + type, fn);
+      }
+
+      return {
+        'remove': function() {
+          if (element.removeEventListener) {
+            element.removeEventListener(type, fn, capture);
+          } else {
+            element.detachEvent('on' + type, fn);
+          }
+        }
+      }
+    }
+
+    var listenBtnNextClick = eventListener(btnNext, 'click', function() {
+      console.log('匿名函数');
+    }, false);
+
+    listenBtnNextClick.remove();
+
+  </script>
+</body>
+</html>

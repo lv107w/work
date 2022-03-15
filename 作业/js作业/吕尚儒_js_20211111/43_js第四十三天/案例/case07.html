@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 对象</title>
+</head>
+
+<body>
+  <script>
+    // [x, y] = [1, 2, 3, 45];
+    //{ } 块作用域 表达式 ()独立语句 [] {} () <>
+    let x, y;
+
+    //{ x, y } = { x: 1, y: 2 } 
+    ({ x, y } = { x: 1, y: 2 });
+    console.log(x, y);
+
+
+    let key = 'title';
+
+    const metadata = {
+      title: 'Scratchpad',
+      translations: [
+        {
+          locale: 'de',
+          localization_tags: [],
+          last_edit: '2014-04-14T08:43:37',
+          url: '/de/docs/Tools/Scratchpad',
+          title: 'JavaScript-Umgebung',
+        },
+      ],
+      url: '/en-US/docs/Tools/Scratchpad',
+    };
+
+    let { [key]: englishTitle } = metadata;
+
+    console.log(key, englishTitle);
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

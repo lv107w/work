@@ -1,0 +1,14 @@
+熟练掌握运用所学的 DOM基础方法
+
+DOM API 节点对象选择器
+DOM 节点对象属性
+DOM API 获取标签属性
+DOM API 获取样式
+DOM API 获取节点内容
+DOM API 获取节点相关节点
+DOM API 创建与添加节点标签
+DOM API 节点替换拷贝
+DOM API 节点删除
+DOM API 节点检查
+
+达到随意想做一个功能的时候 可以不用思考就写出对应方法 对参数 功能了然于心

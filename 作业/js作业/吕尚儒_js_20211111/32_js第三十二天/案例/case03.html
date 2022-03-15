@@ -1,0 +1,229 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-10 20:31:13
+ * @LastEditTime: 2020-08-10 22:39:49
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 轮播</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .banner {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 500px;
+      box-shadow: 0 0 8px #333;
+
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      width: 380px;
+    }
+
+    .slider span {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      background-color: orange;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .btn-wrap span {
+      user-select: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 40px;
+      height: 85px;
+      line-height: 85px;
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: pointer;
+    }
+
+    .btn-wrap span:hover {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <img id="pic" src="images/p1.jpg" width="500" height="375" alt="pkq">
+    <div class="slider">
+      <span style="background-color: pink;">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+    </div>
+    <div class="btn-wrap">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+  <script>
+    /*
+
+      on 绑定事件写法 DOM.on+'事件类型' = 事件处理函数(匿名函数 or 函数名)
+
+      addEventListener 监听 addEventListenter
+
+    */
+
+    var oPic = document.querySelector('#pic');
+    var oSlider = document.querySelector('.slider');
+    var btnPrev = document.querySelector('.prev');
+    var btnNext = document.querySelector('.next');
+    var oBanner = document.querySelector('.banner');
+
+    //on 绑定写法 同一个DOM 同一个事件只能绑定一个处理函数 后面的会覆盖前面的
+
+    // btnNext.onclick = showHa;
+    // btnNext.onclick = showHi;
+
+    function showHa() {
+      console.log('hahahah');
+    }
+
+    function showHi() {
+      console.log('hihihihihi');
+    }
+
+
+    //可以对同一个DOM 的同一个事件进行多次监听
+
+    /*
+
+      DOM.addEventListener(eventType,callback,status);
+
+      eventType: 事件类型 click mouseenter keyDown keyUp
+      callback: 事件监听函数句柄 当监听到这个DOM的click事件发生的时候 执行
+      status: 事件捕获(true) 事件目标阶段 事件冒泡 (false 默认值)
+
+       on绑定都是冒泡阶段调用callback
+
+
+       解绑
+       on写法 解绑是 DOM.on+'eventType' = null;
+       DOM.removeEventListener(事件,事件回调有名函数)
+
+
+       兼容处理
+        IE9 以前 不支持 w3c addEventListener removeEventListener
+        attachEvent  detachEvent
+        对象.attachEvent("on事件类型",命名函数);---绑定事件
+        detachEvent
+
+       兼容封装
+
+
+       注意事项
+
+        1. 绑定方式和解绑方式一一对应
+         on => null
+         addEventListener removeEventListener
+          attachEvent detachEvent
+        2. addEventListener attachEvent 如果需要解绑必须用有名函数
+
+        3.on 和 addEventListener 回调函数内部this指向调用他们的DOM对象
+
+        4. addEventListener 对同一个事件同一个函数进行多次监听不会发生重复
+
+      对比
+
+      on事件会被后面的on的事件覆盖, addEventListener 则不会覆盖;
+
+      addEventListener可以指定事件回调触发时机 (捕获 or  冒泡) on事件只有 冒泡时刻触发
+
+      addEventListener本质是*函数定义与具体调用事件的解耦，实现了同一事件可以调用多个函数，同一函数可以被多个事件调用，推荐使用*。
+
+      自定义一个函数来实现addEventListener匿名解绑
+     */
+
+    function eventListener(element, type, fn, capture) {
+      capture = capture || false; //处理capture的默认值为 false
+      if (element.addEventListener) {
+        //标准浏览器写法
+        element.addEventListener(type, fn, capture);
+      } else {
+        //IE兼容写法
+        element.attachEvent("on" + type, fn);
+      }
+
+      return {
+        'remove': function () {
+          if (element.removeEventListener) {
+            element.removeEventListener(type, fn, false);
+          } else {
+            element.detachEvent("on" + type, fn);
+          }
+        }
+      }
+    }
+
+    var listenBtnNextClick = eventListener(btnNext, 'click', function () {
+      console.log('我是匿名函数');
+    }, false);
+
+    listenBtnNextClick.remove();
+
+
+    function fn(param1, param2) {
+      return function () {
+        console.log(param1, param2);
+      }
+    }
+
+    var x = fn(1, 2);
+    x()
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

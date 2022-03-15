@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则表达式 元字符</title>
+</head>
+
+<body>
+  <script>
+    /*
+      元字符 可以用来指代一类字符的 标识符 \d \D \W \S
+
+      转义符 在需要转义元字符前面家 \  \ => \\ /=>\/
+    */
+
+
+    // . 元字符 匹配除了换行符之外的任何字符 符号 字符串 数字
+    console.log(/./.test('fsdfs'));
+
+    // \d 匹配数字[0-9] digit 
+    console.log(/\d/.test('fs32dfs'));
+
+    // \D 匹配除了[0-9] not digit 
+    console.log(/\D/.test('312314512'));
+
+    // \w [A-Za-z0-9_] word 包括下划线在内的单个字符(数字 字母(大小写))
+    console.log(/\w/.test('^&*%^&$%^&^&*(&*'));
+
+    // \W 非单字字符 除了\w的之外的
+    console.log(/\W/.test('哈哈哈'));
+
+    // \s 空格 空白符 制表符 换页符 换行符 space
+    console.log(/\s/.test('fsdkljfsldfsdfs'));
+
+    // \S not space 匹配非空白字符
+    console.log(/\S/.test('  fdd '));
+
+    // \b  匹配`单词边界` ( 除了 （字)字母 数字_ 都算单词边界) 不常用
+    console.log(/\b/.test('jklfdsjklkljgg sdfs (fsd) | '));
+
+
+
+
+    // \B  匹配\b 不匹配的 不常用
+    console.log(/\B/.test('jklfdsjklkljgg sdfs (fsd) | '));
+
+    // \n 匹配换行符 \r 回车符 \t 匹配制表符  \f换页符 \v垂直制表符 [\b]回退符 backspace
+
+    console.log(/\n|\t/.test('fdsjkflsd\rjfsd'));
+
+
+    // 现在要匹配 '.' 转移符号 .
+    var reX = /\\/;
+    console.log(/\./.test("/345.32d"));
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

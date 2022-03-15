@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function 扩展 es6</title>
+</head>
+<body>
+  <script>
+    //传入对象 和指定属性名称 作为参数返回对应属性的值 如果属性或者属性值不存在 返回null
+    function getValue(o, key) {
+      return o[key] || null;
+    }
+
+    function add(a, b) {
+      a = a ?? 10; //当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
+      b = b ?? 10;
+      return a + b;
+    }
+    console.log(add()); //20
+    console.log(add(undefined, 9)); //19
+    console.log(add(null, 9)); //19
+
+
+
+    let arr = [1, 2, 3, 4, 5];
+   /*  function forEach(arr, cb) {
+      if(!cb || !(typeof cb === 'function')) {
+        cb = function (item, idx, arr) {
+          console.log(item);
+        }
+      }
+      for (let i = 0, len = arr.length; i < len; i++) {
+        cb && cb(arr[i], i, arr);
+      }
+    } */
+
+    function forEach(arr, cb = function(item, idx, arr) {
+      console.log(item);
+    }) {
+      for (let i = 0, len = arr.length; i < len; i++) {
+        cb && cb(arr[i], i, arr);
+      }
+    }
+
+    forEach(arr, function(item, idx, arr) {
+      console.log(item);
+    })
+
+
+    let z = 100;
+    function show(x = 10, y = z) {
+      console.log(x, y, z);
+    } 
+    show(20); //20 100 100
+    z = 199;
+    show(20); //20 199 199
+
+
+    let w = 10;
+    function fn(x = w) {
+      w = 20;
+      return x;
+    }
+    console.log(fn()); //10
+    console.log(w); //20
+
+
+    function fn1(o = {
+      name: 'keogre',
+      cb() {
+        console.log(this.name);
+      }
+    }) {
+      o.cb();
+    }
+
+    fn1(); //keogre
+  </script>
+</body>
+</html>

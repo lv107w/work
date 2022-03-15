@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通道函数 pipeline </title>
+</head>
+
+<body>
+
+  <script>
+    /*
+     肉食工厂
+
+     熏烤培根 火腿肠 午餐肉罐头
+
+     压缩成本 => 合理规划
+
+     生产线有限
+
+     生产资料 => 产出产品
+
+     生产资料:
+     肉
+
+     产出产品:
+     熏烤培根 火腿肠 午餐肉罐头
+
+     加工过程:
+     清洗 切割 塑性 包装 烹饪(熏烤 建渣)
+
+
+     planA 固定生产线
+      1. 熏烤培根生产线 模块: [清洗,切割,塑性,烹饪,包装]
+      2. 火腿肠生产线 模块: [清洗,切割,烹饪,塑性,包装]
+      3. 午餐肉罐头生产线 模块: [清洗,塑性,烹饪,切割,包装]
+
+    */
+    /* 
+        function createPG(m) {
+          m = c(m); //清洗
+          m = q(m); //切割
+          m = s(m); //塑性
+          m = p(m); //烹饪
+          m = b(m); //包装
+          return m;
+        }
+    
+    
+        function createHT() {
+          m = c(m); //清洗
+          m = q(m); //切割
+          m = p(m); //烹饪
+          m = s(m); //塑性
+          m = b(m); //包装
+          return m;
+        }
+    
+        function createGT() {
+          m = c(m); //清洗
+          m = s(m); //塑性
+          m = p(m); //烹饪
+          m = q(m); //切割
+          m = b(m); //包装
+          return m;
+        } */
+
+
+
+    const double = x => x + x;
+
+    const triple = x => 3 * x;
+
+    const quarter = x => x / 4;
+
+
+    //调用pipe 根据参数顺序 组装返回一个新的函数 
+    // function pipe(...funcs) {
+    //   return function (input) {
+    //     return funcs.reduce(function (acc, curr) {
+    //       return curr(acc);
+    //     }, input);
+    //   }
+    // }
+
+
+    const pipe = (...funcs) => input => funcs.reduce((acc, curr) => curr(acc), input);
+
+
+    var result = pipe(quarter, double);
+    console.log(result(10));
+
+
+    // var result1 = pipe(triple, quarter, double);
+    // console.log(result1(20));
+  </script>
+</body>
+
+</html>

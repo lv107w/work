@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数</title>
+</head>
+<body>
+  <script>
+    const S = {
+      num: 10
+    }
+
+    const U = {
+      showNum: function() {
+        console.log(this.num);
+      }
+    }
+
+    //let that = this;不建议用
+    const O = {
+      num: 0,
+      timer: 0,
+      clock: function() {
+        let that = this;
+        clearInterval(this.timer);
+        this.timer = setInterval(function() {
+          that.num++;
+          U.showNum.call(that);
+        }.bind(S), 1000)
+      }
+    }
+
+    O.clock();
+
+    /* 箭头函数用法汇总：
+      1. 参数
+        单个参数 参数 => 函数体
+        多个参数 (参数1,参数2) => 函数体
+
+      2. 返回值
+        多条语句 {}
+          参数 => { 
+            语句1;
+            语句2;
+            ....
+            return 返回值
+          }
+
+        短语 单条语句  表达式 (表达式)
+          参数 => 表达式   //返回值为 表达式本身的值
+          参数 => (表达式1,表达式2,表达式3) //return 表达式3的值
+    */
+
+    //找出字符串出现次数最多的字符
+    const result = 'asdfjkljasklfjgaskldjgklajkl'.split('').reduce(function(acc, curr){
+      acc[curr]++ || (acc[curr] = 1)
+      return acc;
+    }, {})
+    console.log(result);
+
+    //箭头函数写法
+    const result1 = 'asdfjkljasklfjgaskldjgklajkl'.split('').reduce((acc, curr) => (acc[curr]++ || (acc[curr] = 1), acc),{})
+    console.log(result1);
+
+
+
+
+    let fn = function (arg1, arg2) {
+      return arg1 + arg2;
+    }
+    console.log(fn(1, 2));
+
+    let fn1 = (arg1, arg2) => {
+      return arg1 + arg2
+    }
+    console.log(fn1(1, 2));
+
+    let fn2 = a => console.log(a);
+    fn2(1);
+
+    // 函数体代码最后一段 会作为返回值
+    let fn3 = a => a + '1';
+
+    let fn4 = a => (console.log(a), (a += 10), a);
+    // function fn4(a) {
+    //   console.log(a);
+    //   a += 10;
+    //   return a;
+    // }
+
+    //()中 最后一段表达式 会作为返回值 最后一个 "," 后面的值作为返回值
+    let x = 10, y = 0;
+    console.log((y = x + 1, y, x)); //10
+  </script>
+</body>
+</html>

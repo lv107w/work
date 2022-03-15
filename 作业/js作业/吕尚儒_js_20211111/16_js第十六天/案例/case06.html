@@ -1,0 +1,46 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-30 21:03:13
+ * @LastEditTime: 2020-07-30 22:11:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case01.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>reduce 归并</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素 叠加
+
+
+      累计值 可以有初始值
+    */
+
+    // [1, 2, 3, 4, 5] 加法归并结果 15  累计值
+    // [1, 2, 3, 4, 5] 乘法归并结果 1*2*3*4*5  累计值 120
+
+
+    var arr = [1, 2, 3, 4, 5];
+
+    var result = arr.reduce(function (acc, curr, idx, arr) {
+      return acc + curr; //25
+    }, 10);
+
+    console.log(result);
+
+
+
+  </script>
+</body>
+
+</html>

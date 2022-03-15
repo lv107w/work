@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bind 偏函数雏形</title>
+</head>
+<body>
+  <script>
+    function fn(a, b, c, d) {
+      return [].reduce.call(arguments, function(acc, curr) {
+        return acc + curr;
+      })
+    }
+
+    let partial = fn.bind(null, 5); //a的默认实参是5， 调用bind新生成的函数实参只能从b开始传
+    console.log(partial(10));  //15 
+
+
+    let partial1 = fn.bind(null, 5, 10); //a, b的默认实参是5, 10， 调用bind新生成的函数实参只能从c开始传
+    console.log(partial1(10));  //25
+  </script>
+</body>
+</html>

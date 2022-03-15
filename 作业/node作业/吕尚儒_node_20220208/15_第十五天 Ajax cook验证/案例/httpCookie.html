@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/layui-src/dist/css/layui.css">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 460px;
+      padding: 20px;
+      margin: 50px auto;
+      box-shadow: 0 0 4px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form class="layui-form" action="javascript:;">
+      <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+          <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="pwd" lay-verify="required" lay-reqtext="请输入密码" placeholder="请输入密码"
+            autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button id="submit" type="submit" class="layui-btn">登录</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    const $form = $('form')
+    const $submit = $('#submit')
+    const host = 'http://127.0.0.1:3007/login'
+
+    $submit.on('click', function () {
+      let requestData = getFormJson($form);
+      ajax({
+        url: host,
+        method: 'POST',
+        contentType: 'application/json;charset=utf8',
+        withCredentials: true,
+        data: requestData,
+        dataType: 'json',
+        success(data) {
+
+          console.log(data, 'success')
+        },
+        error(err) {
+          console.log(err, 'err')
+        }
+      })
+    })
+
+    function getFormJson(form) {
+      return $(form).serializeArray().reduce((acc, { name, value }) => {
+        acc[name] = value
+        return acc
+      }, {})
+    }
+
+    function ajax({ url = '/', method = 'GET', data = {}, contentType = 'application/x-www-form-urlencoded; charset=UTF-8', dataType = 'json', withCredentials = false, success = function (res) { console.log(res) }, error = function (err) { console.error(err) } }) {
+      method = method.toUpperCase()
+      let xhr = new XMLHttpRequest()
+      let requestData = data;
+
+      if (method === 'GET') {
+        url += '?' + formatJSON(data)
+        data = null
+      }
+
+      if (/json/.test(contentType)) {
+        data = JSON.stringify(data)
+      }
+
+      if (/x-www-form-urlencoded/.test(contentType)) {
+        data = formatJSON(data)
+      }
+      xhr.responseType = dataType //text json  buffer blob
+      xhr.withCredentials = withCredentials;
+      xhr.open(method, url, true)
+      xhr.setRequestHeader('content-type', contentType)
+      xhr.send(data)
+      console.log(method, url, data, contentType, dataType)
+      xhr.onreadystatechange = function () {
+
+        if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status <= 299)) {
+          let response = xhr.response
+          if (dataType === 'json' && isJSON(response)) {
+            response = JSON.parse(response)
+          }
+          success(response)
+        }
+      }
+      xhr.onerror = function (err) {
+        if (err)
+          throw err;
+        error(err)
+      }
+
+      function formatJSON(data) {
+        return Object.entries(data).map(([key, value]) => {
+          return `${key}=${value}`
+        }).join('&')
+      }
+
+      function isJSON(str) {
+        try {
+          JSON.parse(str)
+          return true;
+        } catch (err) {
+          return false;
+        }
+        return false;
+      }
+    }
+
+
+
+
+
+  </script>
+</body>
+<!-- 
+  ajax 跨域之JSONP处理
+
+  ajax 封装
+
+  ajax cookie验证
+
+  ajax 库 jquery axios
+
+ -->
+
+</html>

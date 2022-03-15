@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>replaceChild</title>
+</head>
+
+<body>
+
+  <div id="wrap">
+    <p class="des">我会被替换掉的 好伤心</p>
+
+    <p class="des">我准备替换掉我前面那个哥们</p>
+  </div>
+  <script>
+    /*
+    replaceChild 替换 parent.replaceChild(newEle,ele);  用 newEle替换parent里的ele 
+    newEle如果是已存于页面上的标签元素 会进行剪切操作 直接用自己覆盖ele
+    */
+
+    var oWrap = document.querySelector('#wrap');
+    var aDes = oWrap.querySelectorAll('.des');
+
+    var newDes = document.createElement('p');
+    newDes.className = 'des';
+    newDes.innerText = '哈哈哈哈哈 我是js创建出来的 我要来替换你'
+    oWrap.replaceChild(newDes, aDes[0])
+    console.log(aDes[0], aDes[1])
+
+  </script>
+</body>
+
+</html>

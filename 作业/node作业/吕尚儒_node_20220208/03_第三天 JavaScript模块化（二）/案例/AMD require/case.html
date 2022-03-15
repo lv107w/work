@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>require AMD</title>
+  <style>
+    .wrap {
+      width: 100px;
+      height: 100px;
+      margin: 100px auto;
+      background-color: #368;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap"></div>
+
+  <script src="modules/require.js"></script>
+  <script>
+    //require配置
+    require.config({
+      baseUrl: '/AMD%20require/', //默认路径 以它作为路径根目录 path里面的路径值 都会加上baseUrl路径值
+      paths: { //模块文件路径
+        "jquery": "modules/jquery-1.12.1", //模块别名:模块路径
+        "demo": "./app/demo", //  /AMD%20require/app/demo
+      }
+    });
+
+
+    define('d', function () {
+      return 'd';
+    });
+
+    //定义一个模块 模块名称(标识符)为"c" 模块私有域fn fn内return的值就是模块c 对外暴露的内容 模块内部需要依赖 b.js模块和 d模块
+
+    // 模块名称,模块依赖数组,模块业务回调函数 回调形参 和 模块依赖数组一一对应
+    define('c', ['b.js', 'd', 'demo'], function (b, d, demo) {
+      console.log(b.get(123456))
+      console.log(d)
+      console.log(demo)
+      const x = 10;
+      return x + 10;
+    });
+
+    //引用模块 模块依赖数组 回调函数 回调函数内参数与模块依赖数组一一对应
+    require(['a.js', 'b.js', 'c'], function (ax, bx, cx) {
+      console.log(ax.get(3) + bx.get(10));
+      console.log(cx)
+    })
+
+  </script>
+</body>
+
+</html>

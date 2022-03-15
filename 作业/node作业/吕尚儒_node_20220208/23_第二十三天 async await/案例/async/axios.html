@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async await axios</title>
+</head>
+
+<body>
+  <script src="node_modules/axios/dist/axios.min.js"></script>
+  <script>
+    // axios.get('http://127.0.0.1:3000/async', {}).then(data => {
+    //   console.log(data)
+    //   return axios.get('http://127.0.0.1:3000/getData', { data })
+    // }).then(data => {
+    //   console.log(data)
+    // }).catch(err => [
+    //   console.log(err)
+    // ])
+
+    async function getData() {
+      let data
+      try {
+        resData = await axios.get('http://127.0.0.1:3000/async', {})
+        secData = await axios.post('http://127.0.0.1:3000/getData', { data: resData?.data?.errMsg })
+        console.log(secData)
+        return secData
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  </script>
+</body>
+
+</html>

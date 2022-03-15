@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回顾 call apply</title>
+</head>
+
+<body>
+  <script>
+    const DATA = {
+      num: 1,
+      show: function () {
+        console.log(this.num)
+      },
+      count: function () {
+        return function () {
+          console.log(this)
+          console.log(3 + this.num);
+        }
+      }
+    }
+
+    const OTHER = {
+      num: 55
+    }
+
+    /*
+      参数
+       fn.call(this, ...实参列表)
+       fn.apply(this, [...实参列表])
+    */
+
+    DATA.show.call(OTHER);
+
+    function fn() {
+      let args = [].slice.call(arguments);
+      console.log(args);
+    }
+
+    fn(1, 2, 3, 4, 5);
+
+
+
+
+    function fn1(cb) {
+      let args = [].slice.call(arguments, 1);
+      return cb.apply(null, args);
+    }
+
+    let result = fn1(function () {
+      return [].reduce.call(arguments, function (acc, curr) {
+        return acc + curr;
+      });
+    }, 2, 3, 4, 5, 6); //20
+
+    console.log(result);
+
+
+    /*
+
+      fn1
+        参数 cb,...不定惨
+        返回值 cb的运行结果(返回值)
+
+      cb fn1的实参 函数 回调函数
+        参数
+          形参: 不定
+          实参: fn1的参数列表(not:cb) fn1的除了第一位的剩余实参
+
+        返回值:
+          reduce 归并结果
+
+          reduce 调用主体对象 call (cb的实参列表对象)
+            返回值: cb的实参列表对象的累加和
+
+        reduce的返回结果是cb的实参列表累加和
+        cb的实参列表是 fn1的 实参列表.slice(1)
+
+
+    */
+
+  </script>
+</body>
+
+</html>

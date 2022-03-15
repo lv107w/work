@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-24 20:31:52
+ * @LastEditTime: 2020-07-24 22:00:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 解析 声明提升</title>
+</head>
+
+<body>
+  <script>
+
+
+    /*
+      javascript引擎会对代码进行预解析
+      1. 寻找所有的声明 并提升
+      2. 按照顺序 执行所有的 执行语句
+
+      提升到 当前作用域最顶端
+
+
+      代码执行分两个阶段
+      1. 寻找变量声明 并且提升
+      2. 按照顺序执行所有的执行语句;
+
+     */
+    // x = 10; // 执行语句 (赋值)
+    // console.log(x);// 执行语句 (调用)
+    // var y; //声明语句 
+    // y = x + 10; //执行语句
+
+    // var x; //声明语句
+
+    // 被提升
+
+    // x = 10;
+
+    // var x = y = 10;
+
+    // // ============================ //
+    // var x;
+
+
+    // x = 10;
+    var x; //提升
+
+    console.log(x); //执行 undefined
+    x = 10; //执行 x值变为10
+    console.log(x); // 10
+
+
+
+
+  </script>
+</body>
+
+</html>

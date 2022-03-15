@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proxy construc</title>
+</head>
+<body>
+  <script>
+    class Pig {
+      constructor(name) {
+        this.name = name;
+      }
+      showName() {
+        console.log(this.name);
+      }
+    }
+
+    let P = new Proxy(Pig, {
+      //实例化代理类(构造函数) 的时候触发 construct
+      construct: function(target, args) {
+        console.log('你想实例化Pig吗');
+        return new target(...args);
+      }
+    });
+
+    let pig = new P('jjj');
+    pig.showName();
+    console.log(pig);
+
+
+
+    let o = toProxy({name: 1}, {
+      deleteProperty: function(target, propKey) {
+        if(propKey === 'name') {
+          console.log('禁止删除name属性');
+        }
+      }
+    })
+
+    console.log(o.name);
+    delete o.name; //deleteProperty
+    console.log(o.name);
+
+    function toProxy(obj, pro) {
+      return new Proxy(obj, pro);
+    }
+  </script>
+</body>
+</html>

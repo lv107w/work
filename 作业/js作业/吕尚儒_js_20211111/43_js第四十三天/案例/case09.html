@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值 函数</title>
+</head>
+
+<body>
+  <script>
+    const product = {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }
+
+    const products = [{
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 199,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }, {
+      UID: "0494783472894",
+      productName: undefined,
+      productPrice: undefined,
+      productCount: 99,
+      colors: ['red', 'yellow', 'blue', '#368']
+    }]
+
+    function format({
+      productName: name = '真皮扫地机器人'
+    } = {}) {
+
+      return name;
+    }
+
+    console.log(format());
+
+
+
+    function curr(fn) {
+
+      let args = [].slice.call(arguments, 1);
+      let inlay = function () {
+        if (arguments.length === 0) {
+          return fn.call(this, args);
+        }
+        args.push(...arguments);
+        return inlay;
+      }
+      return inlay;
+    }
+
+    let result = curr((args) => args.reduce((acc, curr) => (acc + curr)), 1, 2, 3);
+    result(2, 3);
+    console.log(result());
+
+
+    let res = [[1, 2, 3, 4, 5], [1, 3, 4]].map(function (item) {
+      return add(...item);
+    });
+    console.log(res); //[3,7]
+
+    function add() {
+      let count = 0;
+      for (let i = 0; i < arguments.length; i++) {
+        count += arguments[i];
+      }
+      return count;
+    }
+
+
+    function fn() {
+      let reg = new RegExp('\\d', 'g');
+      let arr = [1, 2, 3, 4, 5];
+
+      return {
+        reg,
+        arr
+      }
+    }
+
+    let { reg, arr } = fn();
+    console.log(reg, arr)
+
+
+  </script>
+</body>
+
+</html>

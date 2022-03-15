@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小球碰撞案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ball {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 80px;
+      height: 80px;
+      background-color: #ccc;
+      border-radius: 50%;
+      box-shadow: -8px -12px 18px #8a8989 inset;
+    }
+
+    .unit {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      box-shadow: -8px -12px 18px #e6d81d inset;
+    }
+  </style>
+</head>
+<body>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="unit"></div>
+  <div class="unit"></div>
+  <div class="unit"></div>
+  <div class="unit"></div>
+  <div class="unit"></div>
+  <script src="js/common.js"></script>
+  <script>
+    let balls = $$('.ball');
+    let units = $$('.unit');
+    let arr = [];
+
+    balls = [].map.call(balls, item => new Ball(item, ~~(Math.random()* 5+1)));
+    units = [].map.call(units, item => new Unit(item, ~~(Math.random()*5+1), ~~(Math.random()*60 + 1)))
+    arr = balls.concat(units);
+
+    setInterval(function() {
+      arr.forEach(item => item.move())
+    }, 1000/60)
+    
+
+    function Ball(ele, speed) {
+      this.ele = ele;
+      this.x = speed;
+      this.y = speed;
+    }
+    function Unit(ele, speed, deg) {
+      this.ele = ele;
+      this.x = speed;
+      this.y = speed;
+      this.deg = deg;
+    }
+
+    Ball.prototype.move = function() {
+      this.y *= isCloumn(this.ele) ? -1 : 1;
+      this.x *= isRow(this.ele) ? -1 : 1;
+      this.ele.style.top = this.ele.offsetTop + this.y + 'px';
+      this.ele.style.left = this.ele.offsetLeft + this.x + 'px';
+    }
+
+    Unit.prototype.move = function() {
+      this.y *= isCloumn(this.ele) ? -1 : 1;
+        this.x *= isRow(this.ele) ? -1 : 1;
+        this.ele.style.top = this.ele.offsetTop + this.y + 'px';
+        this.ele.style.left = this.ele.offsetLeft + this.x + 'px';
+        this.deg += 0.8;
+        this.ele.style.transform = `rotate(${this.deg}deg)`;
+    }
+
+
+
+    //判断是否碰撞到window窗口
+    
+    function isCloumn(ele) {
+      if(ele.offsetTop > (window.innerHeight - ele.offsetHeight) || ele.offsetTop < 0) {
+        return true;
+      }
+      return false;
+    }
+
+    function isRow(ele) {
+      if(ele.offsetLeft > (window.innerWidth - ele.offsetWidth) || ele.offsetLeft < 0) {
+        return true;
+      }
+      return false;
+    }
+
+
+
+
+  </script>
+</body>
+</html>

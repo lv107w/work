@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      float: left;
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 2px solid red;
+      background-color: #368;
+      /*隐士切换span的display展示模式为block*/
+    }
+
+    input {
+      width: 500px;
+      height: 90px;
+      font-size: 30px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>点我 我就告诉你</div>
+  <input type="text" id="input" value=''>
+  <script>
+    /*
+      什么是事件
+
+    - 当用户点击鼠标时
+    - 当网页加载后
+    - 当图像加载后
+    - 当鼠标移至元素上时
+    - 当输入字段被改变时
+    - 当 HTML 表单被提交时
+    - 当用户敲击按键时
+
+
+    点击div标签 弹出div的内容
+    */
+
+    var oDiv = document.querySelector('div');
+
+    //将事件匿名函数 赋值给 元素对象的 onclick属性 事件绑定
+    //事件的回调函数 用户触发了 click操作的时候 执行了这个函数
+    oDiv.onclick = function (event) {
+      console.log(event); //event对象包含了当前这一次行为所有的事件信息
+
+      console.log(event.target); //触发事件的目标 target 目标
+      console.log(event.type); //事件类型
+      console.log(event.pageX, event.pageY); //事件触发时 鼠标相对window的位置
+      alert(this.innerText); //事件回调函数中的this指向 触发事件的对象 this => oDiv
+    }
+
+    var oInput = document.querySelector('#input');
+    oInput.onkeydown = function () {//在input上敲下键盘按键的时候触发
+      console.log(this.value);
+    }
+
+    oInput.onfocus = function () {//在input上敲下键盘按键的时候触发
+      console.log('你聚焦在了input上');
+    }
+
+    oInput.onblur = function () {//在input上敲下键盘按键的时候触发
+      console.log('input失去了焦点');
+    }
+
+  </script>
+</body>
+
+</html>

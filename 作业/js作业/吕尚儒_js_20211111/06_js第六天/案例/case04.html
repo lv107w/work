@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环 while</title>
+
+</head>
+
+<body>
+
+  <script>
+    //我们需要 打印 1 - 100每次只打印一个 index <= 100
+    var index = 1;
+
+    while (index <= 100) {
+      //满足index <= 100条件 重复执行 {} 里面的语句 不满足 就不执行
+      console.log(index);
+      index++; //一定要有迭代 如果index永远是1 那就是死循环 
+    }
+
+    
+    //打印 1 - 100 内所有的偶数 1 2 3 4 5 ... 100
+    while (index <= 100) {
+      if (index % 2 === 0) {
+        console.log(index);
+      }
+      index++;
+    }
+
+    //打印10 9 8 7 ....1
+    var num = 10; 
+    while (num) { //num 0 => false
+      console.log(num);
+      num--;
+    }
+  </script>
+</body>
+
+</html>

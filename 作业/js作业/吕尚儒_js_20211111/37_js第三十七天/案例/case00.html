@@ -1,0 +1,123 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 20:33:19
+ * @LastEditTime: 2020-08-24 20:47:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case00.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则回顾</title>
+</head>
+
+<body>
+  <script>
+
+
+
+    /*
+      元字符
+      . \d \D \w \W \s \S \b \B [\b]
+
+      . 除了换行符之外任何字符都能匹配
+      \d 数字 [0-9]
+      \D \d 相反 [^0-9]
+      \w [A-Za-z0-9_]
+      \W \w 相反  [^A-Za-z0-9_]
+      \s 制表符 空格 换行 垂直制表..
+      \S 非空字符
+      \b 单词边界 my-name.is,kyogre
+      \B 除了\b
+     */
+
+    /*
+    量词
+
+    {n} 连续 指定前一个匹配项的匹配次数
+
+    {n,} 连续 指定前一个匹配项的匹配次数 (最少n次)
+
+    {n,m} 连续 n-m次
+
+    + 最少出现一次 {1,}
+
+    * 最少出现0次 {0,}
+
+    ? 最少0次 最多1次 {0,1}
+   */
+
+    /*
+     分组 集合
+      () []
+
+      () 子组 分组匹配
+
+      [] 簇 区间
+
+    */
+
+
+    /*
+      ^ 以什么开头
+       ^a[a-z]* 以a开头的任意字母串
+       [^abc]  非abc的项
+
+      - 区间连结
+      [a-z] 有序集合的区间表示
+
+      | 或者
+      a|b|c a或者b或者c任意一个匹配就可以
+
+      $ 以什么结尾
+
+      \d{6}9$ 7位数的数字 必须以9结尾
+    */
+
+    /*
+      转义符
+      \. \( \) \* \\ \/ \[ \] \? \= \! \^ \&
+
+    */
+
+    /*
+      修饰符
+
+      i g m
+
+      i 不区分大小写
+
+      g 全局多次匹配
+
+      m 多行跨换行匹配
+
+    */
+
+    /*
+    String
+      replace方法
+
+      match方法
+
+      search方法
+
+      split方法
+
+    RegExp
+
+    exec
+    在字符串中执行匹配搜索，返回首次匹配结果`数组`
+    对同一个regExp对象的exec匹配是有记忆的
+    多次调用会迭代返回下一项符合匹配规则的项目
+
+    test
+    字符串中是否存在符合正则规则的项目 如果存在就返回true 不存在就返回false
+    */
+  </script>
+</body>
+
+</html>

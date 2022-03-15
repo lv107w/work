@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>instanceof</title>
+  <style>
+    body {
+      color: #db9738;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+
+    console.log(1 instanceof Number); //false
+
+    var str = '你好啊';
+    str.a = 'wob';
+    console.log(str.a);//undefined
+
+    var str = 'fdsfsd'; //值 字面量值 也不是一个对象 string类型的值
+
+    var strO = new String('fdsfsd');//通过String构造实例化的对象 一出生就有各种标准属性和方法
+
+    //在 字面量值直接进行对应类型方法或者属性调用的时候 
+    // 会套上一层包装对象来做 做完之后 包装对象销毁
+
+    console.log(strO, str.toLocaleLowerCase());
+
+    // 对象 是否是某个构造函数厂生产的
+    console.log(strO instanceof String);
+  </script>
+</body>
+
+</html>

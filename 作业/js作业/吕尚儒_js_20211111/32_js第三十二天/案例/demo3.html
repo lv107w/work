@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      width: 200px;
+      height: 200px;
+      background-color: #368;
+    }
+
+
+    .wrap .child {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="wrap">
+
+  </div>
+
+  <script src="js/common.js"></script>
+  <script>
+
+    /*
+      点击wrap
+      如果 wrap中存在child子元素 就不添加 
+      如果wrap中不存在 就添加
+
+
+      动态添加DOM的时候 判断一个元素是否存在 需要用到 临时选择的方式
+
+
+      for 预存length
+
+      循环中不会动态添加或者删除数组元素 不会动态改变length的时候预存 
+      如果for里面会动态修改数组的长度的时候 不要预存
+    `
+    */
+    var oWrap = $('.wrap');
+
+    oWrap.addEventListener('click', function (e) {
+      if (!$('.wrap>.child')) {
+        var vDom = document.createElement('div');
+        vDom.className = 'child';
+        this.appendChild(vDom);
+      }
+    }, false);
+
+
+  </script>
+</body>
+
+</html>

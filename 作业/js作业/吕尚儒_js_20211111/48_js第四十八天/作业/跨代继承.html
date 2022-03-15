@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跨代继承</title>
+</head>
+<body>
+  <script>
+    //跨代继承 既可以调用父类的方法 也可以调用祖类的方法
+    function Animal(name = 'ani') {
+      this.name = name;
+    }
+
+    Animal.prototype.sayHi = function () {
+      console.log(`我是${this.name} 我是Animal的方法`)
+    }
+
+    function Person(name = '人', lan = 'ZH-cn') {
+      Animal.call(this, name);
+      this.lan = lan;
+    }
+
+    Person.prototype = Object.create(Animal.prototype);
+    Person.prototype.constructor = Person;
+
+    Person.prototype.sayHi = function () {
+      console.log(`我是${this.name} 我是Person的方法`)
+    }
+
+
+
+    function Student(name, lan, grade = 3) {
+      Person.call(this, '学生', '汉语')
+      this.grade = grade
+    }
+
+    Student.prototype = Object.create(Person.prototype);
+    Student.prototype.parent = Object.create(Animal.prototype);
+    Student.prototype.constructor = Student;
+
+    let stu1 = new Student('小明', '中文', 6);
+    console.log(stu1);
+    stu1.sayHi();  //我是学生 我是Person的方法
+    stu1.parent.__proto__.sayHi.call(stu1); //我是学生 我是Animal的方法
+  </script>
+</body>
+</html>

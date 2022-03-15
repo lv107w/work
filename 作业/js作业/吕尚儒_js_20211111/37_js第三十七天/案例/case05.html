@@ -1,0 +1,82 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-24 22:02:30
+ * @LastEditTime: 2020-08-24 22:22:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\case05.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单输入实时验证</title>
+  <style>
+    input {
+      outline: none;
+    }
+
+    input.error {
+      border: 1px solid red;
+    }
+
+    input.success {
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+  请输入电话号码: <input name='phone' type="text" placeholder="请输入电话号码" data-reg="^[1][3456789]\d{9}$"> <br>
+  请输入用户名: <input name='user' type="text" placeholder="请输入用户名"><br>
+  请输入密码: <input name='pwd' type="password" placeholder="请输入密码"><br>
+  请输入年龄: <input name='age' type="text" placeholder=" 请输入年龄">
+  <script>
+
+    /*
+      实时输入验证
+
+      1. oinput 事件
+      2. 正则 /^[1][3456789]\d{9}$/ 一共11位
+
+      用户名  
+      密码
+      电话
+      身份证
+      银行卡
+      年龄
+      金额
+      
+    */
+
+
+    var regMap = {
+      'user': /^[\u4e00-\u9fa5]{2,6}$/,
+      'pwd': /^\d{6}$/,
+      'age': /[1-9][0-9]/,
+      'phone': /^[1][3456789]\d{9}$/
+    }
+    var oInput = document.querySelector('input');
+
+    oInput.oninput = function (e) {
+      e.target.className = 'error';
+      var reg = new RegExp(this.dataset.reg);
+      if (reg.test(this.value)) {
+        e.target.className = 'success';
+      }
+      // if (e.target.tagName.toLowerCase() === 'input') {
+      //   e.target.className = 'error';
+      //   if (regMap[e.target.name].test(e.target.value)) {
+      //     e.target.className = 'success';
+      //   }
+      // }
+    }
+
+    var regExp = new RegExp('\d');
+    console.log(regExp.test('321312'))
+  </script>
+</body>
+
+</html>

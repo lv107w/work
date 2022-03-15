@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="http://127.0.0.1/user" method="POST">
+    账号:<input id="user" type="text" name='user' value="">
+    密码:<input id="pwd" type="password" name='pwd' value="">
+    头像:<input id="avatar" type="file" name="avatar">
+    <input type="submit">
+  </form>
+  <script>
+    async function loop() {
+      for (let i = 0; i < 10; i++) {
+        await setInterval(function () {
+          console.log(i)
+        }, 1000);
+        console.log(i)
+      }
+    }
+    loop();
+  </script>
+</body>
+
+</html>

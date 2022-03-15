@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM 获取节点</title>
+</head>
+
+<body>
+  <h1 id="title">你好我是大标题</h1>
+  <p>你好 我是p</p>
+
+  <p class="des red">Lorem, ipsum dolor</p>
+
+  <p class="des fz14">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste,</p>
+
+  <img src="images/bird.png" width="100" height="100" alt="bird">
+
+
+
+  <script>
+    //通过ID名称获取 getElementById
+    var oTitle = document.getElementById('title');
+
+    //getElementsByTagName 通过标签名称获取节点集合
+    var aP = document.getElementsByTagName('p');
+
+    //getElementsByClassName 通过类名名称获取节点集合
+    //非标准方法 IE9+
+    var aDes = document.getElementsByClassName('des red');
+
+
+    console.log(oTitle);
+    console.log(aP[1]);
+    console.log(aDes)
+
+    //H5新时代方法 H5 WEB API  iE8+
+    //querySelector  css合法选择器写法 会选中符合选择器条件的第一个标签节点
+    var oTitle = document.querySelector('#title');
+
+    var aDes = document.querySelectorAll('p.des');
+
+    console.log(oTitle);
+
+    console.log(aDes);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>preventExtensions 不可扩展</title>
+</head>
+
+<body>
+  <script>
+    let o = {
+      a: 1,
+      b: 2
+    }
+
+    Object.preventExtensions(o);
+
+    o.c = 3; //不可扩展 不能新增属性 只能对已有属性进行操作
+    delete o.a;
+    o.b = 10;
+
+
+
+    /* 
+    Object.isExtensible(o) 
+
+    o对象是否可扩展 
+    
+    
+     */
+    console.log(Object.isExtensible(o));
+
+  </script>
+</body>
+
+</html>

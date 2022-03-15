@@ -1,0 +1,93 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-14 13:31:50
+ * @LastEditTime: 2020-08-15 22:08:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \案例\demo1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      height: 1000px;
+      background-image: url(images/bird.png);
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value='设置滚动高度为 100'>
+  <script src="js/common.js"></script>
+  <script>
+
+    /* 
+      scroll事件
+
+      当元素内容发生滚动的时候 (滚动条滚动)的时候 触发这个事件
+      只要滚动条的位置发生变化 都会触发
+
+      持续高频触发的事件
+
+      element.scrollTop 可读写 设置的时候不要写单位
+
+
+
+      mousewheel事件 鼠标滚轮滚动事件 
+
+      持续高频触发的事件
+
+      e.wheelDelta
+      向下滚动 为 负值
+      向上滚动 为 正值
+    
+    */
+
+    document.addEventListener('scroll', function () {
+      //如何获取滚动高度 scrollTop
+      // console.log(document.documentElement.scrollTop || document.body.scrollTop);
+
+    }, false);
+
+
+    document.addEventListener('mousewheel', function (e) {
+      //firfox兼容 window.event
+      e = e || window.event;
+      if (e.wheelDelta > 0) {
+        console.log(' 向上滚动');
+      } else {
+        console.log(' 向下滚动');
+      }
+
+      console.log(document.documentElement.scrollTop || document.body.scrollTop);
+    }, false);
+
+
+    $('input').addEventListener('click', function () {
+      document.documentElement.scrollTop = 100;
+      console.log(document.documentElement.scrollTop || document.body.scrollTop);
+
+    }, false);
+
+
+
+
+  </script>
+</body>
+
+</html>

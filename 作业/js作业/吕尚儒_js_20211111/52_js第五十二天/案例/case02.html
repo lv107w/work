@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol</title>
+</head>
+
+<body>
+  <script>
+
+    //Symbol.for() 强制性全局注册一个Symbol值为 name
+
+    //Symbol() 
+
+    function a() {
+      let o = {
+        [Symbol.for('name')]: 'joker'
+      }
+      return o;
+    }
+
+    console.log(a()[Symbol('name')])
+
+
+    let x = Symbol.for('kkk');
+
+    console.log(Symbol.keyFor(x))
+
+    class A {
+      [Symbol.hasInstance](value) {
+        return value instanceof Array;
+      }
+    }
+
+    console.log([1, 2, 3] instanceof new A());
+
+
+    let arr2 = ['c', 'd'];
+    arr2[Symbol.isConcatSpreadable] = true;
+    console.log(['a', 'b'].concat(arr2, 'e')) // ['a', 'b', ['c','d'], 'e']
+
+
+  </script>
+</body>
+
+</html>

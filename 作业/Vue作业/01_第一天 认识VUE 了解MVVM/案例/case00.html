@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      padding: 20px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="view"></p>
+
+
+  <script>
+    /*
+     view   html css innerHTML innerText
+     model 用于封装和程序业务逻辑相关的数据以及数据的处理方式 
+    */
+
+    //view 作为视图层 主要负责数据的展示
+    class View {
+      constructor(controller) {
+        this.ele = document.querySelector('.view')
+        this.ele.addEventListener('click', controller.add.bind(controller))
+      }
+      render(model) {
+        this.ele.innerText = model.getVal()
+      }
+    }
+
+    //控制层 业务逻辑封装
+    class Controller {
+      constructor() {
+        this.init()
+      }
+      init() {
+        this.model = new Model()
+        this.view = new View(this)
+        this.model.register(this.view)
+        this.model.notify()
+      }
+      add() {
+        this.model.add()
+        this.model.notify()
+      }
+    }
+
+    //作为数据层 对业务逻辑所需数据以及数据处理方法的封装
+    class Model {
+      constructor() {
+        this.num = 0 //数据
+        this.views = []
+      }
+      add() {
+        this.num++
+      }
+      sub() {
+        this.num--
+      }
+      getVal() {
+        return this.num
+      }
+      //注册
+      register(view) {
+        this.views.push(view)
+      }
+      //发布
+      notify() {
+        for (let i = 0; i < this.views.length; i++) {
+          this.views[i].render(this)
+        }
+      }
+    }
+
+
+    new Controller()
+
+  </script>
+</body>
+
+</html>

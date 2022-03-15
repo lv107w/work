@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue 列表渲染</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="(item, idx) in list">{{ item.id }} : {{ item.content }} </li>
+    </ul>
+  </div>
+
+  <!-- <script src="./node_modules/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: document.querySelector('#app'),
+      data() {
+        return {
+          list: [
+            {
+              id: 1,
+              content: '回锅肉'
+            },
+            {
+              id: 2,
+              content: [1, 2, 3]
+            },
+            {
+              id: 3,
+              content: '佛跳墙'
+            }
+          ]
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
